@@ -1,0 +1,30 @@
+{
+  "name": "fusio/model",
+  "description": "Fusio generated models",
+  "homepage": "http://fusio-project.org",
+  "license": "AGPL-3.0-only",
+  "authors": [
+    {
+      "name": "Christoph Kappestein",
+      "email": "christoph.kappestein@gmail.com",
+      "homepage": "http://christoph.kappestein.com"
+    }
+  ],
+  "scripts": {
+    "generate": "@php gen.php",
+    "psalm": "@php vendor/vimeo/psalm/psalm"
+  },
+  "require": {
+    "php": ">=7.2",
+    "psx/record": "^1.0"
+  },
+  "require-dev": {
+    "vimeo/psalm": "^4.0",
+    "psx/schema": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Fusio\\Model\\": "src/"
+    }
+  }
+}
