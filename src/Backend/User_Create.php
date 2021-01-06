@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 /**
- * @Required({"status", "name", "email", "password"})
+ * @Required({"roleId", "status", "name", "email", "password"})
  */
 class User_Create extends User implements \JsonSerializable
 {

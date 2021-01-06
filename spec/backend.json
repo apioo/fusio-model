@@ -1779,6 +1779,7 @@
         }
       },
       "required": [
+        "roleId",
         "status",
         "name",
         "email",
