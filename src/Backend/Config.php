@@ -24,7 +24,7 @@ class Config implements \JsonSerializable
      */
     protected $description;
     /**
-     * @var string|float|int|bool|null
+     * @var mixed|null
      */
     protected $value;
     /**
@@ -84,14 +84,14 @@ class Config implements \JsonSerializable
         return $this->description;
     }
     /**
-     * @param string|float|int|bool|null $value
+     * @param mixed|null $value
      */
     public function setValue($value) : void
     {
         $this->value = $value;
     }
     /**
-     * @return string|float|int|bool|null
+     * @return mixed|null
      */
     public function getValue()
     {
