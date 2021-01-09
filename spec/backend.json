@@ -451,9 +451,6 @@
               "type": "number"
             },
             {
-              "type": "integer"
-            },
-            {
               "type": "boolean"
             }
           ]
