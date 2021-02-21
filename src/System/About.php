@@ -44,6 +44,18 @@ class About implements \JsonSerializable
      */
     protected $licenseUrl;
     /**
+     * @var array<string>|null
+     */
+    protected $categories;
+    /**
+     * @var array<string>|null
+     */
+    protected $scopes;
+    /**
+     * @var \PSX\Record\Record<string>|null
+     */
+    protected $apps;
+    /**
      * @var array<About_Link>|null
      */
     protected $links;
@@ -174,6 +186,48 @@ class About implements \JsonSerializable
         return $this->licenseUrl;
     }
     /**
+     * @param array<string>|null $categories
+     */
+    public function setCategories(?array $categories) : void
+    {
+        $this->categories = $categories;
+    }
+    /**
+     * @return array<string>|null
+     */
+    public function getCategories() : ?array
+    {
+        return $this->categories;
+    }
+    /**
+     * @param array<string>|null $scopes
+     */
+    public function setScopes(?array $scopes) : void
+    {
+        $this->scopes = $scopes;
+    }
+    /**
+     * @return array<string>|null
+     */
+    public function getScopes() : ?array
+    {
+        return $this->scopes;
+    }
+    /**
+     * @param \PSX\Record\Record<string>|null $apps
+     */
+    public function setApps(?\PSX\Record\Record $apps) : void
+    {
+        $this->apps = $apps;
+    }
+    /**
+     * @return \PSX\Record\Record<string>|null
+     */
+    public function getApps() : ?\PSX\Record\Record
+    {
+        return $this->apps;
+    }
+    /**
      * @param array<About_Link>|null $links
      */
     public function setLinks(?array $links) : void
@@ -189,7 +243,7 @@ class About implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('apiVersion' => $this->apiVersion, 'title' => $this->title, 'description' => $this->description, 'termsOfService' => $this->termsOfService, 'contactName' => $this->contactName, 'contactUrl' => $this->contactUrl, 'contactEmail' => $this->contactEmail, 'licenseName' => $this->licenseName, 'licenseUrl' => $this->licenseUrl, 'links' => $this->links), static function ($value) : bool {
+        return (object) array_filter(array('apiVersion' => $this->apiVersion, 'title' => $this->title, 'description' => $this->description, 'termsOfService' => $this->termsOfService, 'contactName' => $this->contactName, 'contactUrl' => $this->contactUrl, 'contactEmail' => $this->contactEmail, 'licenseName' => $this->licenseName, 'licenseUrl' => $this->licenseUrl, 'categories' => $this->categories, 'scopes' => $this->scopes, 'apps' => $this->apps, 'links' => $this->links), static function ($value) : bool {
             return $value !== null;
         });
     }
