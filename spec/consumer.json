@@ -272,6 +272,29 @@
         "T": "Grant"
       }
     },
+    "Page": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        }
+      }
+    },
+    "Page_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Page"
+      }
+    },
     "Plan": {
       "type": "object",
       "properties": {
