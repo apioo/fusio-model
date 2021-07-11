@@ -12,6 +12,10 @@ class Page implements \JsonSerializable
      */
     protected $id;
     /**
+     * @var int|null
+     */
+    protected $status;
+    /**
      * @var string|null
      */
     protected $title;
@@ -36,6 +40,20 @@ class Page implements \JsonSerializable
     public function getId() : ?int
     {
         return $this->id;
+    }
+    /**
+     * @param int|null $status
+     */
+    public function setStatus(?int $status) : void
+    {
+        $this->status = $status;
+    }
+    /**
+     * @return int|null
+     */
+    public function getStatus() : ?int
+    {
+        return $this->status;
     }
     /**
      * @param string|null $title
@@ -81,7 +99,7 @@ class Page implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('id' => $this->id, 'title' => $this->title, 'slug' => $this->slug, 'content' => $this->content), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'title' => $this->title, 'slug' => $this->slug, 'content' => $this->content), static function ($value) : bool {
             return $value !== null;
         });
     }
