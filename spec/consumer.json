@@ -251,6 +251,45 @@
       },
       "required": ["event", "endpoint"]
     },
+    "Log": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "appId": {
+          "type": "integer"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "userAgent": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "header": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Log_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Log"
+      }
+    },
     "Grant": {
       "type": "object",
       "properties": {
