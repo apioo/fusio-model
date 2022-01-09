@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Audit_Collection extends \Fusio\Model\Collection
 {
 }
+

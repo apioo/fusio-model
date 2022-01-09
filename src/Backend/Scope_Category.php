@@ -7,42 +7,24 @@ namespace Fusio\Model\Backend;
 
 class Scope_Category implements \JsonSerializable
 {
-    /**
-     * @var int|null
-     */
-    protected $id;
-    /**
-     * @var string|null
-     */
-    protected $name;
+    protected ?int $id = null;
+    protected ?string $name = null;
     /**
      * @var array<Scope_Category_Scope>|null
      */
-    protected $scopes;
-    /**
-     * @param int|null $id
-     */
+    protected ?array $scopes = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
     }
-    /**
-     * @return int|null
-     */
     public function getId() : ?int
     {
         return $this->id;
     }
-    /**
-     * @param string|null $name
-     */
     public function setName(?string $name) : void
     {
         $this->name = $name;
     }
-    /**
-     * @return string|null
-     */
     public function getName() : ?string
     {
         return $this->name;
@@ -54,17 +36,15 @@ class Scope_Category implements \JsonSerializable
     {
         $this->scopes = $scopes;
     }
-    /**
-     * @return array<Scope_Category_Scope>|null
-     */
     public function getScopes() : ?array
     {
         return $this->scopes;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'scopes' => $this->scopes), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

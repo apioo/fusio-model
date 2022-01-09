@@ -8,3 +8,4 @@ namespace Fusio\Model\Backend;
 class Scope_Update extends Scope implements \JsonSerializable
 {
 }
+

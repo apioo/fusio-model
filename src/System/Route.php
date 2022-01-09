@@ -7,28 +7,20 @@ namespace Fusio\Model\System;
 
 class Route implements \JsonSerializable
 {
-    /**
-     * @var Route_Path|null
-     */
-    protected $routes;
-    /**
-     * @param Route_Path|null $routes
-     */
+    protected ?Route_Path $routes = null;
     public function setRoutes(?Route_Path $routes) : void
     {
         $this->routes = $routes;
     }
-    /**
-     * @return Route_Path|null
-     */
     public function getRoutes() : ?Route_Path
     {
         return $this->routes;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('routes' => $this->routes), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

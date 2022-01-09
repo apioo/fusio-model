@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Dashboard_Transactions extends \Fusio\Model\Collection
 {
 }
+

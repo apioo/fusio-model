@@ -10,3 +10,4 @@ namespace Fusio\Model\Consumer;
 class App_Collection extends \Fusio\Model\Collection
 {
 }
+

@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Dashboard_Users extends \Fusio\Model\Collection
 {
 }
+

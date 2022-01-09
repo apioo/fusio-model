@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Action_Execute_Response_Headers extends \PSX\Record\Record
 {
 }
+

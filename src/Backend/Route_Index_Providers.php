@@ -10,7 +10,7 @@ class Route_Index_Providers implements \JsonSerializable
     /**
      * @var array<Route_Provider>|null
      */
-    protected $providers;
+    protected ?array $providers = null;
     /**
      * @param array<Route_Provider>|null $providers
      */
@@ -18,17 +18,15 @@ class Route_Index_Providers implements \JsonSerializable
     {
         $this->providers = $providers;
     }
-    /**
-     * @return array<Route_Provider>|null
-     */
     public function getProviders() : ?array
     {
         return $this->providers;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('providers' => $this->providers), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

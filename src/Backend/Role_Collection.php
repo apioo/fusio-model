@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Role_Collection extends \Fusio\Model\Collection
 {
 }
+

@@ -10,3 +10,4 @@ namespace Fusio\Model\Consumer;
 class Plan_Contract_Collection extends \Fusio\Model\Collection
 {
 }
+

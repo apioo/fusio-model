@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Event_Collection extends \Fusio\Model\Collection
 {
 }
+

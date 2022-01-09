@@ -10,39 +10,39 @@ class Adapter implements \JsonSerializable
     /**
      * @var array<string>|null
      */
-    protected $actionClass;
+    protected ?array $actionClass = null;
     /**
      * @var array<string>|null
      */
-    protected $connectionClass;
+    protected ?array $connectionClass = null;
     /**
      * @var array<string>|null
      */
-    protected $paymentClass;
+    protected ?array $paymentClass = null;
     /**
      * @var array<string>|null
      */
-    protected $userClass;
+    protected ?array $userClass = null;
     /**
      * @var array<string>|null
      */
-    protected $routesClass;
+    protected ?array $routesClass = null;
     /**
      * @var array<Connection>|null
      */
-    protected $connection;
+    protected ?array $connection = null;
     /**
      * @var array<Schema>|null
      */
-    protected $schema;
+    protected ?array $schema = null;
     /**
      * @var array<Action>|null
      */
-    protected $action;
+    protected ?array $action = null;
     /**
      * @var array<Route>|null
      */
-    protected $routes;
+    protected ?array $routes = null;
     /**
      * @param array<string>|null $actionClass
      */
@@ -50,9 +50,6 @@ class Adapter implements \JsonSerializable
     {
         $this->actionClass = $actionClass;
     }
-    /**
-     * @return array<string>|null
-     */
     public function getActionClass() : ?array
     {
         return $this->actionClass;
@@ -64,9 +61,6 @@ class Adapter implements \JsonSerializable
     {
         $this->connectionClass = $connectionClass;
     }
-    /**
-     * @return array<string>|null
-     */
     public function getConnectionClass() : ?array
     {
         return $this->connectionClass;
@@ -78,9 +72,6 @@ class Adapter implements \JsonSerializable
     {
         $this->paymentClass = $paymentClass;
     }
-    /**
-     * @return array<string>|null
-     */
     public function getPaymentClass() : ?array
     {
         return $this->paymentClass;
@@ -92,9 +83,6 @@ class Adapter implements \JsonSerializable
     {
         $this->userClass = $userClass;
     }
-    /**
-     * @return array<string>|null
-     */
     public function getUserClass() : ?array
     {
         return $this->userClass;
@@ -106,9 +94,6 @@ class Adapter implements \JsonSerializable
     {
         $this->routesClass = $routesClass;
     }
-    /**
-     * @return array<string>|null
-     */
     public function getRoutesClass() : ?array
     {
         return $this->routesClass;
@@ -120,9 +105,6 @@ class Adapter implements \JsonSerializable
     {
         $this->connection = $connection;
     }
-    /**
-     * @return array<Connection>|null
-     */
     public function getConnection() : ?array
     {
         return $this->connection;
@@ -134,9 +116,6 @@ class Adapter implements \JsonSerializable
     {
         $this->schema = $schema;
     }
-    /**
-     * @return array<Schema>|null
-     */
     public function getSchema() : ?array
     {
         return $this->schema;
@@ -148,9 +127,6 @@ class Adapter implements \JsonSerializable
     {
         $this->action = $action;
     }
-    /**
-     * @return array<Action>|null
-     */
     public function getAction() : ?array
     {
         return $this->action;
@@ -162,17 +138,15 @@ class Adapter implements \JsonSerializable
     {
         $this->routes = $routes;
     }
-    /**
-     * @return array<Route>|null
-     */
     public function getRoutes() : ?array
     {
         return $this->routes;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('actionClass' => $this->actionClass, 'connectionClass' => $this->connectionClass, 'paymentClass' => $this->paymentClass, 'userClass' => $this->userClass, 'routesClass' => $this->routesClass, 'connection' => $this->connection, 'schema' => $this->schema, 'action' => $this->action, 'routes' => $this->routes), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

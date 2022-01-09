@@ -10,15 +10,15 @@ class Statistic_Chart implements \JsonSerializable
     /**
      * @var array<string>|null
      */
-    protected $labels;
+    protected ?array $labels = null;
     /**
      * @var array<Statistic_Chart_Data>|null
      */
-    protected $data;
+    protected ?array $data = null;
     /**
      * @var array<string>|null
      */
-    protected $series;
+    protected ?array $series = null;
     /**
      * @param array<string>|null $labels
      */
@@ -26,9 +26,6 @@ class Statistic_Chart implements \JsonSerializable
     {
         $this->labels = $labels;
     }
-    /**
-     * @return array<string>|null
-     */
     public function getLabels() : ?array
     {
         return $this->labels;
@@ -40,9 +37,6 @@ class Statistic_Chart implements \JsonSerializable
     {
         $this->data = $data;
     }
-    /**
-     * @return array<Statistic_Chart_Data>|null
-     */
     public function getData() : ?array
     {
         return $this->data;
@@ -54,17 +48,15 @@ class Statistic_Chart implements \JsonSerializable
     {
         $this->series = $series;
     }
-    /**
-     * @return array<string>|null
-     */
     public function getSeries() : ?array
     {
         return $this->series;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('labels' => $this->labels, 'data' => $this->data, 'series' => $this->series), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

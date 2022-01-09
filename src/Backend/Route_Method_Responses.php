@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Route_Method_Responses extends \PSX\Record\Record
 {
 }
+

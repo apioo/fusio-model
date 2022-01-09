@@ -8,3 +8,4 @@ namespace Fusio\Model\Backend;
 class Connection_Update extends Connection implements \JsonSerializable
 {
 }
+

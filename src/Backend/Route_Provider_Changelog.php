@@ -10,15 +10,15 @@ class Route_Provider_Changelog implements \JsonSerializable
     /**
      * @var array<Schema>|null
      */
-    protected $schemas;
+    protected ?array $schemas = null;
     /**
      * @var array<Action>|null
      */
-    protected $actions;
+    protected ?array $actions = null;
     /**
      * @var array<Route>|null
      */
-    protected $routes;
+    protected ?array $routes = null;
     /**
      * @param array<Schema>|null $schemas
      */
@@ -26,9 +26,6 @@ class Route_Provider_Changelog implements \JsonSerializable
     {
         $this->schemas = $schemas;
     }
-    /**
-     * @return array<Schema>|null
-     */
     public function getSchemas() : ?array
     {
         return $this->schemas;
@@ -40,9 +37,6 @@ class Route_Provider_Changelog implements \JsonSerializable
     {
         $this->actions = $actions;
     }
-    /**
-     * @return array<Action>|null
-     */
     public function getActions() : ?array
     {
         return $this->actions;
@@ -54,17 +48,15 @@ class Route_Provider_Changelog implements \JsonSerializable
     {
         $this->routes = $routes;
     }
-    /**
-     * @return array<Route>|null
-     */
     public function getRoutes() : ?array
     {
         return $this->routes;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('schemas' => $this->schemas, 'actions' => $this->actions, 'routes' => $this->routes), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

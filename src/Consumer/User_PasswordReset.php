@@ -4,51 +4,34 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
-/**
- * @Required({"token", "newPassword"})
- */
+use PSX\Schema\Attribute\Required;
+
+#[Required(array('token', 'newPassword'))]
 class User_PasswordReset implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $token;
-    /**
-     * @var string|null
-     */
-    protected $newPassword;
-    /**
-     * @param string|null $token
-     */
+    protected ?string $token = null;
+    protected ?string $newPassword = null;
     public function setToken(?string $token) : void
     {
         $this->token = $token;
     }
-    /**
-     * @return string|null
-     */
     public function getToken() : ?string
     {
         return $this->token;
     }
-    /**
-     * @param string|null $newPassword
-     */
     public function setNewPassword(?string $newPassword) : void
     {
         $this->newPassword = $newPassword;
     }
-    /**
-     * @return string|null
-     */
     public function getNewPassword() : ?string
     {
         return $this->newPassword;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('token' => $this->token, 'newPassword' => $this->newPassword), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

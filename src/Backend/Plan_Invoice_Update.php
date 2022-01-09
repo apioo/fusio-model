@@ -8,3 +8,4 @@ namespace Fusio\Model\Backend;
 class Plan_Invoice_Update extends Plan_Invoice implements \JsonSerializable
 {
 }
+

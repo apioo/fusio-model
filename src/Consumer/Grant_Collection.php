@@ -10,3 +10,4 @@ namespace Fusio\Model\Consumer;
 class Grant_Collection extends \Fusio\Model\Collection
 {
 }
+

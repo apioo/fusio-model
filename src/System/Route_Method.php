@@ -10,3 +10,4 @@ namespace Fusio\Model\System;
 class Route_Method extends \PSX\Record\Record
 {
 }
+

@@ -10,3 +10,4 @@ namespace Fusio\Model\Consumer;
 class Scope_Collection extends \Fusio\Model\Collection
 {
 }
+

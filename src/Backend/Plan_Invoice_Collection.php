@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Plan_Invoice_Collection extends \Fusio\Model\Collection
 {
 }
+

@@ -7,46 +7,29 @@ namespace Fusio\Model\Backend;
 
 class Action_Index_Entry implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $name;
-    /**
-     * @var string|null
-     */
-    protected $class;
-    /**
-     * @param string|null $name
-     */
+    protected ?string $name = null;
+    protected ?string $class = null;
     public function setName(?string $name) : void
     {
         $this->name = $name;
     }
-    /**
-     * @return string|null
-     */
     public function getName() : ?string
     {
         return $this->name;
     }
-    /**
-     * @param string|null $class
-     */
     public function setClass(?string $class) : void
     {
         $this->class = $class;
     }
-    /**
-     * @return string|null
-     */
     public function getClass() : ?string
     {
         return $this->class;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('name' => $this->name, 'class' => $this->class), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

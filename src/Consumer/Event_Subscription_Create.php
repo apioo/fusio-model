@@ -4,51 +4,34 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
-/**
- * @Required({"event", "endpoint"})
- */
+use PSX\Schema\Attribute\Required;
+
+#[Required(array('event', 'endpoint'))]
 class Event_Subscription_Create implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $event;
-    /**
-     * @var string|null
-     */
-    protected $endpoint;
-    /**
-     * @param string|null $event
-     */
+    protected ?string $event = null;
+    protected ?string $endpoint = null;
     public function setEvent(?string $event) : void
     {
         $this->event = $event;
     }
-    /**
-     * @return string|null
-     */
     public function getEvent() : ?string
     {
         return $this->event;
     }
-    /**
-     * @param string|null $endpoint
-     */
     public function setEndpoint(?string $endpoint) : void
     {
         $this->endpoint = $endpoint;
     }
-    /**
-     * @return string|null
-     */
     public function getEndpoint() : ?string
     {
         return $this->endpoint;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('event' => $this->event, 'endpoint' => $this->endpoint), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

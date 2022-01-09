@@ -10,3 +10,4 @@ namespace Fusio\Model\System;
 class Health extends \PSX\Record\Record
 {
 }
+

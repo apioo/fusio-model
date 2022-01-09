@@ -10,3 +10,4 @@ namespace Fusio\Model\System;
 class Schema_TypeSchema extends \PSX\Record\Record
 {
 }
+

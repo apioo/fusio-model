@@ -10,3 +10,4 @@ namespace Fusio\Model\System;
 class Debug_Body extends \PSX\Record\Record
 {
 }
+

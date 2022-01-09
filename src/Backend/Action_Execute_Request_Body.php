@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Action_Execute_Request_Body extends \PSX\Record\Record
 {
 }
+

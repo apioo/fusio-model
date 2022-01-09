@@ -10,3 +10,4 @@ namespace Fusio\Model\Consumer;
 class Event_Subscription_Collection extends \Fusio\Model\Collection
 {
 }
+

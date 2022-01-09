@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Schema_Collection extends \Fusio\Model\Collection
 {
 }
+

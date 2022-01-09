@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Marketplace_Collection_Apps extends \PSX\Record\Record
 {
 }
+

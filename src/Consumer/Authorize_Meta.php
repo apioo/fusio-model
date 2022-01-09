@@ -7,42 +7,24 @@ namespace Fusio\Model\Consumer;
 
 class Authorize_Meta implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $name;
-    /**
-     * @var string|null
-     */
-    protected $url;
+    protected ?string $name = null;
+    protected ?string $url = null;
     /**
      * @var array<Scope>|null
      */
-    protected $scopes;
-    /**
-     * @param string|null $name
-     */
+    protected ?array $scopes = null;
     public function setName(?string $name) : void
     {
         $this->name = $name;
     }
-    /**
-     * @return string|null
-     */
     public function getName() : ?string
     {
         return $this->name;
     }
-    /**
-     * @param string|null $url
-     */
     public function setUrl(?string $url) : void
     {
         $this->url = $url;
     }
-    /**
-     * @return string|null
-     */
     public function getUrl() : ?string
     {
         return $this->url;
@@ -54,17 +36,15 @@ class Authorize_Meta implements \JsonSerializable
     {
         $this->scopes = $scopes;
     }
-    /**
-     * @return array<Scope>|null
-     */
     public function getScopes() : ?array
     {
         return $this->scopes;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('name' => $this->name, 'url' => $this->url, 'scopes' => $this->scopes), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

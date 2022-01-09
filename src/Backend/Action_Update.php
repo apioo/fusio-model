@@ -8,3 +8,4 @@ namespace Fusio\Model\Backend;
 class Action_Update extends Action implements \JsonSerializable
 {
 }
+

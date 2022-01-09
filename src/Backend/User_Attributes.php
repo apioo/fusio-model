@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class User_Attributes extends \PSX\Record\Record
 {
 }
+

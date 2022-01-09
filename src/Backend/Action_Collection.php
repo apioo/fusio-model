@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Action_Collection extends \Fusio\Model\Collection
 {
 }
+

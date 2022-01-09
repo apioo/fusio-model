@@ -8,3 +8,4 @@ namespace Fusio\Model\Backend;
 class Role_Update extends Role implements \JsonSerializable
 {
 }
+

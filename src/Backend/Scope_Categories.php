@@ -10,7 +10,7 @@ class Scope_Categories implements \JsonSerializable
     /**
      * @var array<Scope_Category>|null
      */
-    protected $categories;
+    protected ?array $categories = null;
     /**
      * @param array<Scope_Category>|null $categories
      */
@@ -18,17 +18,15 @@ class Scope_Categories implements \JsonSerializable
     {
         $this->categories = $categories;
     }
-    /**
-     * @return array<Scope_Category>|null
-     */
     public function getCategories() : ?array
     {
         return $this->categories;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('categories' => $this->categories), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

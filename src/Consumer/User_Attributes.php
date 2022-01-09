@@ -10,3 +10,4 @@ namespace Fusio\Model\Consumer;
 class User_Attributes extends \PSX\Record\Record
 {
 }
+

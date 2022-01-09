@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Statistic_Chart_Data extends \PSX\Record\Record
 {
 }
+

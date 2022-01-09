@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
-/**
- * @Required({"path", "config"})
- */
+use PSX\Schema\Attribute\Required;
+
+#[Required(array('path', 'config'))]
 class Route_Create extends Route implements \JsonSerializable
 {
 }
+

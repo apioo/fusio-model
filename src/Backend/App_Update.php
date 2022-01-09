@@ -8,3 +8,4 @@ namespace Fusio\Model\Backend;
 class App_Update extends App implements \JsonSerializable
 {
 }
+

@@ -8,3 +8,4 @@ namespace Fusio\Model\Backend;
 class Event_Update extends Event implements \JsonSerializable
 {
 }
+

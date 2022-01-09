@@ -8,3 +8,4 @@ namespace Fusio\Model\Backend;
 class User_Update extends User implements \JsonSerializable
 {
 }
+

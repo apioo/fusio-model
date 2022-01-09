@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class App_Token_Collection extends \Fusio\Model\Collection
 {
 }
+

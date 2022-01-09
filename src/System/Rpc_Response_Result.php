@@ -10,3 +10,4 @@ namespace Fusio\Model\System;
 class Rpc_Response_Result extends \PSX\Record\Record
 {
 }
+

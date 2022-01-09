@@ -8,3 +8,4 @@ namespace Fusio\Model\Backend;
 class Cronjob_Update extends Cronjob implements \JsonSerializable
 {
 }
+

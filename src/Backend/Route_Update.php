@@ -8,3 +8,4 @@ namespace Fusio\Model\Backend;
 class Route_Update extends Route implements \JsonSerializable
 {
 }
+

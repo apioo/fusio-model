@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Log_Error_Collection extends \Fusio\Model\Collection
 {
 }
+

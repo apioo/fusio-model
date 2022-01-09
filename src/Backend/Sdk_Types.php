@@ -10,3 +10,4 @@ namespace Fusio\Model\Backend;
 class Sdk_Types extends \PSX\Record\Record
 {
 }
+

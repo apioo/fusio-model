@@ -4,33 +4,25 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
-/**
- * @Required({"planId"})
- */
+use PSX\Schema\Attribute\Required;
+
+#[Required(array('planId'))]
 class Plan_Order_Request implements \JsonSerializable
 {
-    /**
-     * @var int|null
-     */
-    protected $planId;
-    /**
-     * @param int|null $planId
-     */
+    protected ?int $planId = null;
     public function setPlanId(?int $planId) : void
     {
         $this->planId = $planId;
     }
-    /**
-     * @return int|null
-     */
     public function getPlanId() : ?int
     {
         return $this->planId;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('planId' => $this->planId), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

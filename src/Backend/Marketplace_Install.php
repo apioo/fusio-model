@@ -7,28 +7,20 @@ namespace Fusio\Model\Backend;
 
 class Marketplace_Install implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $name;
-    /**
-     * @param string|null $name
-     */
+    protected ?string $name = null;
     public function setName(?string $name) : void
     {
         $this->name = $name;
     }
-    /**
-     * @return string|null
-     */
     public function getName() : ?string
     {
         return $this->name;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : \stdClass
     {
         return (object) array_filter(array('name' => $this->name), static function ($value) : bool {
             return $value !== null;
         });
     }
 }
+

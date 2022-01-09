@@ -8,3 +8,4 @@ namespace Fusio\Model\Backend;
 class Rate_Update extends Rate implements \JsonSerializable
 {
 }
+
