@@ -24,7 +24,7 @@ class About implements \JsonSerializable
      * @var array<string>|null
      */
     protected ?array $scopes = null;
-    protected ?\PSX\Record\Record $apps = null;
+    protected ?About_Apps $apps = null;
     /**
      * @var array<About_Link>|null
      */
@@ -123,11 +123,11 @@ class About implements \JsonSerializable
     {
         return $this->scopes;
     }
-    public function setApps(?\PSX\Record\Record $apps) : void
+    public function setApps(?About_Apps $apps) : void
     {
         $this->apps = $apps;
     }
-    public function getApps() : ?\PSX\Record\Record
+    public function getApps() : ?About_Apps
     {
         return $this->apps;
     }
