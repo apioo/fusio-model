@@ -360,93 +360,30 @@
         "T": "Plan"
       }
     },
-    "Plan_Contract": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "integer"
-        },
-        "plan": {
-          "$ref": "Plan"
-        },
-        "amount": {
-          "type": "number"
-        },
-        "points": {
-          "type": "integer"
-        },
-        "period": {
-          "type": "integer"
-        },
-        "invoices": {
-          "type": "array",
-          "items": {
-            "$ref": "Plan_Invoice"
-          }
-        },
-        "insertDate": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
-    },
-    "Plan_Contract_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Plan_Contract"
-      }
-    },
-    "Plan_Invoice": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "integer"
-        },
-        "amount": {
-          "type": "number"
-        },
-        "points": {
-          "type": "integer"
-        },
-        "payDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "insertDate": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
-    },
-    "Plan_Invoice_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Plan_Invoice"
-      }
-    },
-    "Plan_Order_Request": {
+    "Payment_Checkout_Request": {
       "type": "object",
       "properties": {
         "planId": {
           "type": "integer"
+        },
+        "returnUrl": {
+          "type": "string"
         }
-      },
-      "required": ["planId"]
+      }
     },
-    "Plan_Order_Response": {
+    "Payment_Checkout_Response": {
       "type": "object",
       "properties": {
-        "contractId": {
-          "type": "integer"
-        },
-        "invoiceId": {
-          "type": "integer"
+        "approvalUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "Payment_Portal_Response": {
+      "type": "object",
+      "properties": {
+        "redirectUrl": {
+          "type": "string"
         }
       }
     },
@@ -500,26 +437,6 @@
       "$ref": "common:Collection",
       "$template": {
         "T": "Transaction"
-      }
-    },
-    "Transaction_Prepare_Request": {
-      "type": "object",
-      "properties": {
-        "invoiceId": {
-          "type": "integer"
-        },
-        "returnUrl": {
-          "type": "string"
-        }
-      },
-      "required": ["invoiceId", "returnUrl"]
-    },
-    "Transaction_Prepare_Response": {
-      "type": "object",
-      "properties": {
-        "approvalUrl": {
-          "type": "string"
-        }
       }
     },
     "User_Attributes": {

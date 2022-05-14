@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Consumer;
 
 
-class Transaction_Prepare_Response implements \JsonSerializable
+class Payment_Checkout_Response implements \JsonSerializable
 {
     protected ?string $approvalUrl = null;
     public function setApprovalUrl(?string $approvalUrl) : void
