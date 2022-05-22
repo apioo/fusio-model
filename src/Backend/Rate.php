@@ -10,7 +10,6 @@ use PSX\Schema\Attribute\Pattern;
 class Rate implements \JsonSerializable
 {
     protected ?int $id = null;
-    protected ?int $planId = null;
     #[Minimum(0)]
     protected ?int $priority = null;
     #[Pattern('^[a-zA-Z0-9\\-\\_]{3,64}$')]
@@ -29,14 +28,6 @@ class Rate implements \JsonSerializable
     public function getId() : ?int
     {
         return $this->id;
-    }
-    public function setPlanId(?int $planId) : void
-    {
-        $this->planId = $planId;
-    }
-    public function getPlanId() : ?int
-    {
-        return $this->planId;
     }
     public function setPriority(?int $priority) : void
     {
@@ -83,7 +74,7 @@ class Rate implements \JsonSerializable
     }
     public function jsonSerialize() : \stdClass
     {
-        return (object) array_filter(array('id' => $this->id, 'planId' => $this->planId, 'priority' => $this->priority, 'name' => $this->name, 'rateLimit' => $this->rateLimit, 'timespan' => $this->timespan, 'allocation' => $this->allocation), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'priority' => $this->priority, 'name' => $this->name, 'rateLimit' => $this->rateLimit, 'timespan' => $this->timespan, 'allocation' => $this->allocation), static function ($value) : bool {
             return $value !== null;
         });
     }
