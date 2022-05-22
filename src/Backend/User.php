@@ -10,6 +10,7 @@ class User implements \JsonSerializable
 {
     protected ?int $id = null;
     protected ?int $roleId = null;
+    protected ?int $planId = null;
     protected ?int $status = null;
     #[Pattern('^[a-zA-Z0-9\\-\\_\\.]{3,32}$')]
     protected ?string $name = null;
@@ -40,6 +41,14 @@ class User implements \JsonSerializable
     public function getRoleId() : ?int
     {
         return $this->roleId;
+    }
+    public function setPlanId(?int $planId) : void
+    {
+        $this->planId = $planId;
+    }
+    public function getPlanId() : ?int
+    {
+        return $this->planId;
     }
     public function setStatus(?int $status) : void
     {
@@ -113,7 +122,7 @@ class User implements \JsonSerializable
     }
     public function jsonSerialize() : \stdClass
     {
-        return (object) array_filter(array('id' => $this->id, 'roleId' => $this->roleId, 'status' => $this->status, 'name' => $this->name, 'email' => $this->email, 'points' => $this->points, 'scopes' => $this->scopes, 'apps' => $this->apps, 'attributes' => $this->attributes, 'date' => $this->date), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'roleId' => $this->roleId, 'planId' => $this->planId, 'status' => $this->status, 'name' => $this->name, 'email' => $this->email, 'points' => $this->points, 'scopes' => $this->scopes, 'apps' => $this->apps, 'attributes' => $this->attributes, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;
         });
     }
