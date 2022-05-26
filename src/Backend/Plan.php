@@ -13,6 +13,7 @@ class Plan implements \JsonSerializable
     protected ?float $price = null;
     protected ?int $points = null;
     protected ?int $period = null;
+    protected ?string $externalId = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -61,9 +62,17 @@ class Plan implements \JsonSerializable
     {
         return $this->period;
     }
+    public function setExternalId(?string $externalId) : void
+    {
+        $this->externalId = $externalId;
+    }
+    public function getExternalId() : ?string
+    {
+        return $this->externalId;
+    }
     public function jsonSerialize() : \stdClass
     {
-        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description, 'price' => $this->price, 'points' => $this->points, 'period' => $this->period), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description, 'price' => $this->price, 'points' => $this->points, 'period' => $this->period, 'externalId' => $this->externalId), static function ($value) : bool {
             return $value !== null;
         });
     }
