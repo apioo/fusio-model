@@ -1599,6 +1599,37 @@
         }
       }
     },
+    "Trash_Types": {
+      "type": "object",
+      "properties": {
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Trash_Data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Trash_Data_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Trash_Data"
+      }
+    },
     "User": {
       "type": "object",
       "properties": {
