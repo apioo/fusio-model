@@ -8,6 +8,7 @@ namespace Fusio\Model\Backend;
 class App_Token implements \JsonSerializable
 {
     protected ?int $id = null;
+    protected ?int $status = null;
     protected ?string $token = null;
     protected ?string $scope = null;
     protected ?string $ip = null;
@@ -20,6 +21,14 @@ class App_Token implements \JsonSerializable
     public function getId() : ?int
     {
         return $this->id;
+    }
+    public function setStatus(?int $status) : void
+    {
+        $this->status = $status;
+    }
+    public function getStatus() : ?int
+    {
+        return $this->status;
     }
     public function setToken(?string $token) : void
     {
@@ -63,7 +72,7 @@ class App_Token implements \JsonSerializable
     }
     public function jsonSerialize() : \stdClass
     {
-        return (object) array_filter(array('id' => $this->id, 'token' => $this->token, 'scope' => $this->scope, 'ip' => $this->ip, 'expire' => $this->expire, 'date' => $this->date), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'token' => $this->token, 'scope' => $this->scope, 'ip' => $this->ip, 'expire' => $this->expire, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;
         });
     }
