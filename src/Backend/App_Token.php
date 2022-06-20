@@ -10,7 +10,10 @@ class App_Token implements \JsonSerializable
     protected ?int $id = null;
     protected ?int $status = null;
     protected ?string $token = null;
-    protected ?string $scope = null;
+    /**
+     * @var array<string>|null
+     */
+    protected ?array $scope = null;
     protected ?string $ip = null;
     protected ?\DateTime $expire = null;
     protected ?\DateTime $date = null;
@@ -38,11 +41,14 @@ class App_Token implements \JsonSerializable
     {
         return $this->token;
     }
-    public function setScope(?string $scope) : void
+    /**
+     * @param array<string>|null $scope
+     */
+    public function setScope(?array $scope) : void
     {
         $this->scope = $scope;
     }
-    public function getScope() : ?string
+    public function getScope() : ?array
     {
         return $this->scope;
     }
