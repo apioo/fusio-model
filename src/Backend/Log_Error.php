@@ -7,10 +7,19 @@ namespace Fusio\Model\Backend;
 
 class Log_Error implements \JsonSerializable
 {
+    protected ?int $id = null;
     protected ?int $message = null;
     protected ?string $trace = null;
     protected ?string $file = null;
     protected ?int $line = null;
+    public function setId(?int $id) : void
+    {
+        $this->id = $id;
+    }
+    public function getId() : ?int
+    {
+        return $this->id;
+    }
     public function setMessage(?int $message) : void
     {
         $this->message = $message;
@@ -45,7 +54,7 @@ class Log_Error implements \JsonSerializable
     }
     public function jsonSerialize() : \stdClass
     {
-        return (object) array_filter(array('message' => $this->message, 'trace' => $this->trace, 'file' => $this->file, 'line' => $this->line), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'message' => $this->message, 'trace' => $this->trace, 'file' => $this->file, 'line' => $this->line), static function ($value) : bool {
             return $value !== null;
         });
     }

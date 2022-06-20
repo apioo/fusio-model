@@ -852,6 +852,9 @@
     "Log_Error": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "integer"
+        },
         "message": {
           "type": "integer"
         },
