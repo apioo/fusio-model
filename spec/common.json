@@ -150,6 +150,14 @@
           "type": "string"
         }
       }
+    },
+    "Form_Query": {
+      "type": "object",
+      "properties": {
+        "class": {
+          "type": "string"
+        }
+      }
     }
   }
 }
