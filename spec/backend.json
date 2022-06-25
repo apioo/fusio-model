@@ -1540,6 +1540,14 @@
         }
       }
     },
+    "Sdk_Response": {
+      "type": "object",
+      "properties": {
+        "types": {
+          "$ref": "Sdk_Types"
+        }
+      }
+    },
     "Sdk_Types": {
       "type": "object",
       "additionalProperties": {
