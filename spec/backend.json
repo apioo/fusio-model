@@ -1560,7 +1560,10 @@
         "id": {
           "type": "integer"
         },
-        "status": {
+        "userId": {
+          "type": "integer"
+        },
+        "planId": {
           "type": "integer"
         },
         "transactionId": {
@@ -1569,9 +1572,8 @@
         "amount": {
           "type": "number"
         },
-        "updateDate": {
-          "type": "string",
-          "format": "date-time"
+        "points": {
+          "type": "number"
         },
         "insertDate": {
           "type": "string",
