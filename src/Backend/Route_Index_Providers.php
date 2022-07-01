@@ -8,11 +8,11 @@ namespace Fusio\Model\Backend;
 class Route_Index_Providers implements \JsonSerializable
 {
     /**
-     * @var array<Route_Provider>|null
+     * @var array<Route_Index_Provider>|null
      */
     protected ?array $providers = null;
     /**
-     * @param array<Route_Provider>|null $providers
+     * @param array<Route_Index_Provider>|null $providers
      */
     public function setProviders(?array $providers) : void
     {

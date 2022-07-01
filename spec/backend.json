@@ -1279,7 +1279,7 @@
         "providers": {
           "type": "array",
           "items": {
-            "$ref": "Route_Provider"
+            "$ref": "Route_Index_Provider"
           }
         }
       }
