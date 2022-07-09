@@ -1649,6 +1649,14 @@
         "T": "Trash_Data"
       }
     },
+    "Trash_Restore": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        }
+      }
+    },
     "User": {
       "type": "object",
       "properties": {
