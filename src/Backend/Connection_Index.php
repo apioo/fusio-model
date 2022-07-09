@@ -22,7 +22,7 @@ class Connection_Index implements \JsonSerializable
     {
         return $this->connections;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('connections' => $this->connections), static function ($value) : bool {
             return $value !== null;

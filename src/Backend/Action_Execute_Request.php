@@ -56,7 +56,7 @@ class Action_Execute_Request implements \JsonSerializable
     {
         return $this->body;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('method' => $this->method, 'uriFragments' => $this->uriFragments, 'parameters' => $this->parameters, 'headers' => $this->headers, 'body' => $this->body), static function ($value) : bool {
             return $value !== null;

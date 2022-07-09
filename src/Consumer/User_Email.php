@@ -27,7 +27,7 @@ class User_Email implements \JsonSerializable
     {
         return $this->captcha;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('email' => $this->email, 'captcha' => $this->captcha), static function ($value) : bool {
             return $value !== null;

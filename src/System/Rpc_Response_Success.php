@@ -34,7 +34,7 @@ class Rpc_Response_Success implements \JsonSerializable
     {
         return $this->id;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('jsonrpc' => $this->jsonrpc, 'result' => $this->result, 'id' => $this->id), static function ($value) : bool {
             return $value !== null;

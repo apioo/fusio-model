@@ -34,7 +34,7 @@ class Action_Execute_Response implements \JsonSerializable
     {
         return $this->body;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('statusCode' => $this->statusCode, 'headers' => $this->headers, 'body' => $this->body), static function ($value) : bool {
             return $value !== null;

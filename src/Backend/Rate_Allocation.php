@@ -61,7 +61,7 @@ class Rate_Allocation implements \JsonSerializable
     {
         return $this->authenticated;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'routeId' => $this->routeId, 'userId' => $this->userId, 'planId' => $this->planId, 'appId' => $this->appId, 'authenticated' => $this->authenticated), static function ($value) : bool {
             return $value !== null;

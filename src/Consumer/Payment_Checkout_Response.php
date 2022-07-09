@@ -16,7 +16,7 @@ class Payment_Checkout_Response implements \JsonSerializable
     {
         return $this->approvalUrl;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('approvalUrl' => $this->approvalUrl), static function ($value) : bool {
             return $value !== null;

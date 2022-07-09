@@ -22,7 +22,7 @@ class Scope_Categories implements \JsonSerializable
     {
         return $this->categories;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('categories' => $this->categories), static function ($value) : bool {
             return $value !== null;

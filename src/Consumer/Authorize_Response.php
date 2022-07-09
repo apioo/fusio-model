@@ -43,7 +43,7 @@ class Authorize_Response implements \JsonSerializable
     {
         return $this->redirectUri;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('type' => $this->type, 'token' => $this->token, 'code' => $this->code, 'redirectUri' => $this->redirectUri), static function ($value) : bool {
             return $value !== null;

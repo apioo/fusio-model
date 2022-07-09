@@ -52,7 +52,7 @@ class Route_Provider_Changelog implements \JsonSerializable
     {
         return $this->routes;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('schemas' => $this->schemas, 'actions' => $this->actions, 'routes' => $this->routes), static function ($value) : bool {
             return $value !== null;

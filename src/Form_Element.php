@@ -45,7 +45,7 @@ class Form_Element implements \JsonSerializable
     {
         return $this->help;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('element' => $this->element, 'name' => $this->name, 'title' => $this->title, 'help' => $this->help), static function ($value) : bool {
             return $value !== null;

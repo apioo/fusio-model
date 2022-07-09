@@ -52,7 +52,7 @@ class Config implements \JsonSerializable
     {
         return $this->value;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'type' => $this->type, 'name' => $this->name, 'description' => $this->description, 'value' => $this->value), static function ($value) : bool {
             return $value !== null;

@@ -73,7 +73,7 @@ class Route implements \JsonSerializable
     {
         return $this->config;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'priority' => $this->priority, 'path' => $this->path, 'controller' => $this->controller, 'scopes' => $this->scopes, 'config' => $this->config), static function ($value) : bool {
             return $value !== null;

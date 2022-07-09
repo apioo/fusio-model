@@ -25,7 +25,7 @@ class Form_Element_Select_Option implements \JsonSerializable
     {
         return $this->value;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('key' => $this->key, 'value' => $this->value), static function ($value) : bool {
             return $value !== null;

@@ -34,7 +34,7 @@ class Scope_Category_Scope implements \JsonSerializable
     {
         return $this->description;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description), static function ($value) : bool {
             return $value !== null;

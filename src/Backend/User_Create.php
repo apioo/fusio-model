@@ -18,7 +18,7 @@ class User_Create extends User implements \JsonSerializable
     {
         return $this->password;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('password' => $this->password), static function ($value) : bool {
             return $value !== null;

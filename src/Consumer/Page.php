@@ -43,7 +43,7 @@ class Page implements \JsonSerializable
     {
         return $this->content;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'title' => $this->title, 'slug' => $this->slug, 'content' => $this->content), static function ($value) : bool {
             return $value !== null;

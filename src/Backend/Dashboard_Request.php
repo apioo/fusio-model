@@ -34,7 +34,7 @@ class Dashboard_Request implements \JsonSerializable
     {
         return $this->date;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('path' => $this->path, 'ip' => $this->ip, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;

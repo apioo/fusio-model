@@ -34,7 +34,7 @@ class Scope_Route implements \JsonSerializable
     {
         return $this->methods;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('routeId' => $this->routeId, 'allow' => $this->allow, 'methods' => $this->methods), static function ($value) : bool {
             return $value !== null;

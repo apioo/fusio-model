@@ -142,7 +142,7 @@ class About implements \JsonSerializable
     {
         return $this->links;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('apiVersion' => $this->apiVersion, 'title' => $this->title, 'description' => $this->description, 'termsOfService' => $this->termsOfService, 'contactName' => $this->contactName, 'contactUrl' => $this->contactUrl, 'contactEmail' => $this->contactEmail, 'licenseName' => $this->licenseName, 'licenseUrl' => $this->licenseUrl, 'categories' => $this->categories, 'scopes' => $this->scopes, 'apps' => $this->apps, 'links' => $this->links), static function ($value) : bool {
             return $value !== null;

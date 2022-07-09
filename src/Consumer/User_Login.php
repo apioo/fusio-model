@@ -40,7 +40,7 @@ class User_Login implements \JsonSerializable
     {
         return $this->scopes;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('username' => $this->username, 'password' => $this->password, 'scopes' => $this->scopes), static function ($value) : bool {
             return $value !== null;

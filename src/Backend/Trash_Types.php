@@ -22,7 +22,7 @@ class Trash_Types implements \JsonSerializable
     {
         return $this->types;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('types' => $this->types), static function ($value) : bool {
             return $value !== null;

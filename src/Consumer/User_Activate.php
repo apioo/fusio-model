@@ -18,7 +18,7 @@ class User_Activate implements \JsonSerializable
     {
         return $this->token;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('token' => $this->token), static function ($value) : bool {
             return $value !== null;

@@ -34,7 +34,7 @@ class Route_Version implements \JsonSerializable
     {
         return $this->methods;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('version' => $this->version, 'status' => $this->status, 'methods' => $this->methods), static function ($value) : bool {
             return $value !== null;

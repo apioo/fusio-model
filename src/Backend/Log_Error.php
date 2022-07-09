@@ -52,7 +52,7 @@ class Log_Error implements \JsonSerializable
     {
         return $this->line;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'message' => $this->message, 'trace' => $this->trace, 'file' => $this->file, 'line' => $this->line), static function ($value) : bool {
             return $value !== null;

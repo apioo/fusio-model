@@ -63,7 +63,7 @@ class Authorize_Request implements \JsonSerializable
     {
         return $this->allow;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('responseType' => $this->responseType, 'clientId' => $this->clientId, 'redirectUri' => $this->redirectUri, 'scope' => $this->scope, 'state' => $this->state, 'allow' => $this->allow), static function ($value) : bool {
             return $value !== null;

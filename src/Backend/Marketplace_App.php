@@ -61,7 +61,7 @@ class Marketplace_App implements \JsonSerializable
     {
         return $this->sha1Hash;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('version' => $this->version, 'description' => $this->description, 'screenshot' => $this->screenshot, 'website' => $this->website, 'downloadUrl' => $this->downloadUrl, 'sha1Hash' => $this->sha1Hash), static function ($value) : bool {
             return $value !== null;

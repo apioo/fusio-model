@@ -34,7 +34,7 @@ class Debug implements \JsonSerializable
     {
         return $this->body;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('headers' => $this->headers, 'parameters' => $this->parameters, 'body' => $this->body), static function ($value) : bool {
             return $value !== null;

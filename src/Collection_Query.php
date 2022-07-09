@@ -34,7 +34,7 @@ class Collection_Query implements \JsonSerializable
     {
         return $this->search;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('startIndex' => $this->startIndex, 'count' => $this->count, 'search' => $this->search), static function ($value) : bool {
             return $value !== null;

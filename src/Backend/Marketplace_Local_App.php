@@ -16,7 +16,7 @@ class Marketplace_Local_App extends Marketplace_App implements \JsonSerializable
     {
         return $this->remote;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('remote' => $this->remote), static function ($value) : bool {
             return $value !== null;

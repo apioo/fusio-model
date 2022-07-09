@@ -79,7 +79,7 @@ class Transaction_Collection_Query extends \Fusio\Model\Collection_Query impleme
     {
         return $this->search;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('from' => $this->from, 'to' => $this->to, 'planId' => $this->planId, 'userId' => $this->userId, 'appId' => $this->appId, 'status' => $this->status, 'provider' => $this->provider, 'search' => $this->search), static function ($value) : bool {
             return $value !== null;

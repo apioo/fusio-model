@@ -16,7 +16,7 @@ class Route implements \JsonSerializable
     {
         return $this->routes;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('routes' => $this->routes), static function ($value) : bool {
             return $value !== null;

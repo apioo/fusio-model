@@ -42,7 +42,7 @@ class Account_ChangePassword implements \JsonSerializable
     {
         return $this->verifyPassword;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('oldPassword' => $this->oldPassword, 'newPassword' => $this->newPassword, 'verifyPassword' => $this->verifyPassword), static function ($value) : bool {
             return $value !== null;

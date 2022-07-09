@@ -43,7 +43,7 @@ class Event_Subscription_Response implements \JsonSerializable
     {
         return $this->executeDate;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('status' => $this->status, 'code' => $this->code, 'attempts' => $this->attempts, 'executeDate' => $this->executeDate), static function ($value) : bool {
             return $value !== null;

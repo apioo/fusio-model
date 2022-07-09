@@ -45,7 +45,7 @@ class Event implements \JsonSerializable
     {
         return $this->schema;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description, 'schema' => $this->schema), static function ($value) : bool {
             return $value !== null;

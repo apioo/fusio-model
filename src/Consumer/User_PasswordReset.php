@@ -27,7 +27,7 @@ class User_PasswordReset implements \JsonSerializable
     {
         return $this->newPassword;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('token' => $this->token, 'newPassword' => $this->newPassword), static function ($value) : bool {
             return $value !== null;

@@ -40,7 +40,7 @@ class Route_Provider implements \JsonSerializable
     {
         return $this->config;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('path' => $this->path, 'scopes' => $this->scopes, 'config' => $this->config), static function ($value) : bool {
             return $value !== null;

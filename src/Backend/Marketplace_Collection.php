@@ -16,7 +16,7 @@ class Marketplace_Collection implements \JsonSerializable
     {
         return $this->apps;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('apps' => $this->apps), static function ($value) : bool {
             return $value !== null;

@@ -61,7 +61,7 @@ class Plan_Usage_Collection_Query extends \Fusio\Model\Collection_Query implemen
     {
         return $this->search;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('from' => $this->from, 'to' => $this->to, 'routeId' => $this->routeId, 'appId' => $this->appId, 'userId' => $this->userId, 'search' => $this->search), static function ($value) : bool {
             return $value !== null;

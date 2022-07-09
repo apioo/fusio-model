@@ -45,7 +45,7 @@ class User_Remote implements \JsonSerializable
     {
         return $this->email;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('provider' => $this->provider, 'remoteId' => $this->remoteId, 'name' => $this->name, 'email' => $this->email), static function ($value) : bool {
             return $value !== null;

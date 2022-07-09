@@ -79,7 +79,7 @@ class Audit implements \JsonSerializable
     {
         return $this->date;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'app' => $this->app, 'user' => $this->user, 'event' => $this->event, 'ip' => $this->ip, 'message' => $this->message, 'content' => $this->content, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;

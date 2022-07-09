@@ -34,7 +34,7 @@ class Statistic_Count implements \JsonSerializable
     {
         return $this->to;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('count' => $this->count, 'from' => $this->from, 'to' => $this->to), static function ($value) : bool {
             return $value !== null;

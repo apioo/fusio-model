@@ -142,7 +142,7 @@ class Adapter implements \JsonSerializable
     {
         return $this->routes;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('actionClass' => $this->actionClass, 'connectionClass' => $this->connectionClass, 'paymentClass' => $this->paymentClass, 'userClass' => $this->userClass, 'routesClass' => $this->routesClass, 'connection' => $this->connection, 'schema' => $this->schema, 'action' => $this->action, 'routes' => $this->routes), static function ($value) : bool {
             return $value !== null;

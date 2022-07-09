@@ -52,7 +52,7 @@ class Dashboard_Transaction implements \JsonSerializable
     {
         return $this->date;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('status' => $this->status, 'provider' => $this->provider, 'transactionId' => $this->transactionId, 'amount' => $this->amount, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;

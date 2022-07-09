@@ -94,7 +94,7 @@ class Log implements \JsonSerializable
     {
         return $this->errors;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'ip' => $this->ip, 'userAgent' => $this->userAgent, 'method' => $this->method, 'path' => $this->path, 'header' => $this->header, 'body' => $this->body, 'date' => $this->date, 'errors' => $this->errors), static function ($value) : bool {
             return $value !== null;

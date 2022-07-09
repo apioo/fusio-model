@@ -34,7 +34,7 @@ class User_JWT implements \JsonSerializable
     {
         return $this->refresh_token;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('token' => $this->token, 'expires_in' => $this->expires_in, 'refresh_token' => $this->refresh_token), static function ($value) : bool {
             return $value !== null;

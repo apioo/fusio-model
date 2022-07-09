@@ -16,7 +16,7 @@ class Form_Query implements \JsonSerializable
     {
         return $this->class;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('class' => $this->class), static function ($value) : bool {
             return $value !== null;

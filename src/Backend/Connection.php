@@ -45,7 +45,7 @@ class Connection implements \JsonSerializable
     {
         return $this->config;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'class' => $this->class, 'config' => $this->config), static function ($value) : bool {
             return $value !== null;

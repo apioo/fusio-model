@@ -79,7 +79,7 @@ class App_Token_Collection_Query extends \Fusio\Model\Collection_Query implement
     {
         return $this->search;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('from' => $this->from, 'to' => $this->to, 'appId' => $this->appId, 'userId' => $this->userId, 'status' => $this->status, 'scope' => $this->scope, 'ip' => $this->ip, 'search' => $this->search), static function ($value) : bool {
             return $value !== null;

@@ -34,7 +34,7 @@ class User_Provider implements \JsonSerializable
     {
         return $this->redirectUri;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('code' => $this->code, 'clientId' => $this->clientId, 'redirectUri' => $this->redirectUri), static function ($value) : bool {
             return $value !== null;

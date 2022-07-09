@@ -16,7 +16,7 @@ class Trash_Restore implements \JsonSerializable
     {
         return $this->id;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id), static function ($value) : bool {
             return $value !== null;

@@ -22,7 +22,7 @@ class Route_Index_Providers implements \JsonSerializable
     {
         return $this->providers;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('providers' => $this->providers), static function ($value) : bool {
             return $value !== null;

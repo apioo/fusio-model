@@ -16,7 +16,7 @@ class Payment_Portal_Response implements \JsonSerializable
     {
         return $this->redirectUrl;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('redirectUrl' => $this->redirectUrl), static function ($value) : bool {
             return $value !== null;

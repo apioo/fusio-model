@@ -25,7 +25,7 @@ class Sdk_Generate implements \JsonSerializable
     {
         return $this->config;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('format' => $this->format, 'config' => $this->config), static function ($value) : bool {
             return $value !== null;

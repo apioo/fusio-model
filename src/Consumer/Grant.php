@@ -34,7 +34,7 @@ class Grant implements \JsonSerializable
     {
         return $this->createDate;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'app' => $this->app, 'createDate' => $this->createDate), static function ($value) : bool {
             return $value !== null;

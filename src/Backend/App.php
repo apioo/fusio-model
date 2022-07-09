@@ -120,7 +120,7 @@ class App implements \JsonSerializable
     {
         return $this->tokens;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'userId' => $this->userId, 'status' => $this->status, 'name' => $this->name, 'url' => $this->url, 'parameters' => $this->parameters, 'appKey' => $this->appKey, 'appSecret' => $this->appSecret, 'date' => $this->date, 'scopes' => $this->scopes, 'tokens' => $this->tokens), static function ($value) : bool {
             return $value !== null;

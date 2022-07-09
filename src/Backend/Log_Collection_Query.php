@@ -115,7 +115,7 @@ class Log_Collection_Query extends \Fusio\Model\Collection_Query implements \Jso
     {
         return $this->search;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('from' => $this->from, 'to' => $this->to, 'routeId' => $this->routeId, 'appId' => $this->appId, 'userId' => $this->userId, 'ip' => $this->ip, 'userAgent' => $this->userAgent, 'method' => $this->method, 'path' => $this->path, 'header' => $this->header, 'body' => $this->body, 'search' => $this->search), static function ($value) : bool {
             return $value !== null;

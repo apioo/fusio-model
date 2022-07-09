@@ -27,7 +27,7 @@ class Event_Subscription_Create implements \JsonSerializable
     {
         return $this->endpoint;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('event' => $this->event, 'endpoint' => $this->endpoint), static function ($value) : bool {
             return $value !== null;

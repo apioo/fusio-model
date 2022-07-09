@@ -25,7 +25,7 @@ class Schema implements \JsonSerializable
     {
         return $this->form;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('schema' => $this->schema, 'form' => $this->form), static function ($value) : bool {
             return $value !== null;

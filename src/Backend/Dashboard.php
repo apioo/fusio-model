@@ -88,7 +88,7 @@ class Dashboard implements \JsonSerializable
     {
         return $this->latestTransactions;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('errorsPerRoute' => $this->errorsPerRoute, 'incomingRequests' => $this->incomingRequests, 'incomingTransactions' => $this->incomingTransactions, 'mostUsedRoutes' => $this->mostUsedRoutes, 'timePerRoute' => $this->timePerRoute, 'latestApps' => $this->latestApps, 'latestRequests' => $this->latestRequests, 'latestUsers' => $this->latestUsers, 'latestTransactions' => $this->latestTransactions), static function ($value) : bool {
             return $value !== null;

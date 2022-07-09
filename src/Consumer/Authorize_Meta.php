@@ -40,7 +40,7 @@ class Authorize_Meta implements \JsonSerializable
     {
         return $this->scopes;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('name' => $this->name, 'url' => $this->url, 'scopes' => $this->scopes), static function ($value) : bool {
             return $value !== null;

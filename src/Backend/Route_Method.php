@@ -124,7 +124,7 @@ class Route_Method implements \JsonSerializable
     {
         return $this->costs;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('method' => $this->method, 'version' => $this->version, 'status' => $this->status, 'active' => $this->active, 'public' => $this->public, 'description' => $this->description, 'operationId' => $this->operationId, 'parameters' => $this->parameters, 'request' => $this->request, 'response' => $this->response, 'responses' => $this->responses, 'action' => $this->action, 'costs' => $this->costs), static function ($value) : bool {
             return $value !== null;

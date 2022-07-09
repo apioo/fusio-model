@@ -25,7 +25,7 @@ class Connection_Index_Entry implements \JsonSerializable
     {
         return $this->class;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('name' => $this->name, 'class' => $this->class), static function ($value) : bool {
             return $value !== null;

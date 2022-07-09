@@ -25,7 +25,7 @@ class Payment_Checkout_Request implements \JsonSerializable
     {
         return $this->returnUrl;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('planId' => $this->planId, 'returnUrl' => $this->returnUrl), static function ($value) : bool {
             return $value !== null;

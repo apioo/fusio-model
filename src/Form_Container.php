@@ -22,7 +22,7 @@ class Form_Container implements \JsonSerializable
     {
         return $this->element;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('element' => $this->element), static function ($value) : bool {
             return $value !== null;

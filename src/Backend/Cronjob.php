@@ -78,7 +78,7 @@ class Cronjob implements \JsonSerializable
     {
         return $this->errors;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'cron' => $this->cron, 'action' => $this->action, 'executeDate' => $this->executeDate, 'exitCode' => $this->exitCode, 'errors' => $this->errors), static function ($value) : bool {
             return $value !== null;

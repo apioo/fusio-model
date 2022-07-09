@@ -25,7 +25,7 @@ class Health_Check implements \JsonSerializable
     {
         return $this->error;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('healthy' => $this->healthy, 'error' => $this->error), static function ($value) : bool {
             return $value !== null;

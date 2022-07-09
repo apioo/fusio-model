@@ -16,7 +16,7 @@ class Collection_Category_Query extends Collection_Query implements \JsonSeriali
     {
         return $this->categoryId;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('categoryId' => $this->categoryId), static function ($value) : bool {
             return $value !== null;

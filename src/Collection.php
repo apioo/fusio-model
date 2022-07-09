@@ -42,7 +42,7 @@ class Collection implements \JsonSerializable
     {
         return $this->entry;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('totalResults' => $this->totalResults, 'startIndex' => $this->startIndex, 'entry' => $this->entry), static function ($value) : bool {
             return $value !== null;

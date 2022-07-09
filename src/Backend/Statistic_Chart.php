@@ -52,7 +52,7 @@ class Statistic_Chart implements \JsonSerializable
     {
         return $this->series;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('labels' => $this->labels, 'data' => $this->data, 'series' => $this->series), static function ($value) : bool {
             return $value !== null;

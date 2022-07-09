@@ -16,7 +16,7 @@ class Form_Element_TextArea extends Form_Element implements \JsonSerializable
     {
         return $this->mode;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('mode' => $this->mode), static function ($value) : bool {
             return $value !== null;

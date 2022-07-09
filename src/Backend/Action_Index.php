@@ -22,7 +22,7 @@ class Action_Index implements \JsonSerializable
     {
         return $this->actions;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('actions' => $this->actions), static function ($value) : bool {
             return $value !== null;

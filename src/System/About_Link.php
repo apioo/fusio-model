@@ -25,7 +25,7 @@ class About_Link implements \JsonSerializable
     {
         return $this->href;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('rel' => $this->rel, 'href' => $this->href), static function ($value) : bool {
             return $value !== null;

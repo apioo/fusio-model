@@ -51,7 +51,7 @@ class Role implements \JsonSerializable
     {
         return $this->scopes;
     }
-    public function jsonSerialize() : \stdClass
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('id' => $this->id, 'categoryId' => $this->categoryId, 'name' => $this->name, 'scopes' => $this->scopes), static function ($value) : bool {
             return $value !== null;
