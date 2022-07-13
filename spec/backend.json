@@ -770,6 +770,23 @@
     "Event_Subscription_Update": {
       "$extends": "Event_Subscription"
     },
+    "Generator_Config": {
+      "type": "object",
+      "properties": {
+        "connection": {
+          "type": "integer"
+        },
+        "path": {
+          "type": "string"
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "Log": {
       "type": "object",
       "properties": {
