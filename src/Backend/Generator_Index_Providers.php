@@ -5,14 +5,14 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class Route_Index_Providers implements \JsonSerializable
+class Generator_Index_Providers implements \JsonSerializable
 {
     /**
-     * @var array<Route_Index_Provider>|null
+     * @var array<Generator_Index_Provider>|null
      */
     protected ?array $providers = null;
     /**
-     * @param array<Route_Index_Provider>|null $providers
+     * @param array<Generator_Index_Provider>|null $providers
      */
     public function setProviders(?array $providers) : void
     {

@@ -770,6 +770,73 @@
     "Event_Subscription_Update": {
       "$extends": "Event_Subscription"
     },
+    "Generator_Index_Providers": {
+      "type": "object",
+      "properties": {
+        "providers": {
+          "type": "array",
+          "items": {
+            "$ref": "Generator_Index_Provider"
+          }
+        }
+      }
+    },
+    "Generator_Index_Provider": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "class": {
+          "type": "string"
+        }
+      }
+    },
+    "Generator_Provider": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "config": {
+          "$ref": "Generator_Provider_Config"
+        }
+      }
+    },
+    "Generator_Provider_Config": {
+      "type": "object",
+      "additionalProperties": true,
+      "maxProperties": 16
+    },
+    "Generator_Provider_Changelog": {
+      "type": "object",
+      "properties": {
+        "schemas": {
+          "type": "array",
+          "items": {
+            "$ref": "Schema"
+          }
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "Action"
+          }
+        },
+        "routes": {
+          "type": "array",
+          "items": {
+            "$ref": "Route"
+          }
+        }
+      }
+    },
     "Log": {
       "type": "object",
       "properties": {
@@ -1272,73 +1339,6 @@
     },
     "Route_Update": {
       "$extends": "Route"
-    },
-    "Route_Index_Providers": {
-      "type": "object",
-      "properties": {
-        "providers": {
-          "type": "array",
-          "items": {
-            "$ref": "Route_Index_Provider"
-          }
-        }
-      }
-    },
-    "Route_Index_Provider": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "class": {
-          "type": "string"
-        }
-      }
-    },
-    "Route_Provider": {
-      "type": "object",
-      "properties": {
-        "path": {
-          "type": "string"
-        },
-        "scopes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "config": {
-          "$ref": "Route_Provider_Config"
-        }
-      }
-    },
-    "Route_Provider_Config": {
-      "type": "object",
-      "additionalProperties": true,
-      "maxProperties": 16
-    },
-    "Route_Provider_Changelog": {
-      "type": "object",
-      "properties": {
-        "schemas": {
-          "type": "array",
-          "items": {
-            "$ref": "Schema"
-          }
-        },
-        "actions": {
-          "type": "array",
-          "items": {
-            "$ref": "Action"
-          }
-        },
-        "routes": {
-          "type": "array",
-          "items": {
-            "$ref": "Route"
-          }
-        }
-      }
     },
     "Schema": {
       "type": "object",

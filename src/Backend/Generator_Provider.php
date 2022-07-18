@@ -5,14 +5,14 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class Route_Provider implements \JsonSerializable
+class Generator_Provider implements \JsonSerializable
 {
     protected ?string $path = null;
     /**
      * @var array<string>|null
      */
     protected ?array $scopes = null;
-    protected ?Route_Provider_Config $config = null;
+    protected ?Generator_Provider_Config $config = null;
     public function setPath(?string $path) : void
     {
         $this->path = $path;
@@ -32,11 +32,11 @@ class Route_Provider implements \JsonSerializable
     {
         return $this->scopes;
     }
-    public function setConfig(?Route_Provider_Config $config) : void
+    public function setConfig(?Generator_Provider_Config $config) : void
     {
         $this->config = $config;
     }
-    public function getConfig() : ?Route_Provider_Config
+    public function getConfig() : ?Generator_Provider_Config
     {
         return $this->config;
     }

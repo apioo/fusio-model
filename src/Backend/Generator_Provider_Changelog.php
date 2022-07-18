@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class Route_Provider_Changelog implements \JsonSerializable
+class Generator_Provider_Changelog implements \JsonSerializable
 {
     /**
      * @var array<Schema>|null

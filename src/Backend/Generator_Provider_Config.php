@@ -9,7 +9,7 @@ use PSX\Schema\Attribute\MaxProperties;
  * @extends \PSX\Record\Record<mixed>
  */
 #[MaxProperties(16)]
-class Route_Provider_Config extends \PSX\Record\Record
+class Generator_Provider_Config extends \PSX\Record\Record
 {
 }
 

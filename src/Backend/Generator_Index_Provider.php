@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class Route_Index_Provider implements \JsonSerializable
+class Generator_Index_Provider implements \JsonSerializable
 {
     protected ?string $name = null;
     protected ?string $class = null;
