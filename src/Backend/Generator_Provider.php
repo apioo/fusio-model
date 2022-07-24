@@ -12,6 +12,7 @@ class Generator_Provider implements \JsonSerializable
      * @var array<string>|null
      */
     protected ?array $scopes = null;
+    protected ?bool $public = null;
     protected ?Generator_Provider_Config $config = null;
     public function setPath(?string $path) : void
     {
@@ -32,6 +33,14 @@ class Generator_Provider implements \JsonSerializable
     {
         return $this->scopes;
     }
+    public function setPublic(?bool $public) : void
+    {
+        $this->public = $public;
+    }
+    public function getPublic() : ?bool
+    {
+        return $this->public;
+    }
     public function setConfig(?Generator_Provider_Config $config) : void
     {
         $this->config = $config;
@@ -42,7 +51,7 @@ class Generator_Provider implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('path' => $this->path, 'scopes' => $this->scopes, 'config' => $this->config), static function ($value) : bool {
+        return (object) array_filter(array('path' => $this->path, 'scopes' => $this->scopes, 'public' => $this->public, 'config' => $this->config), static function ($value) : bool {
             return $value !== null;
         });
     }
