@@ -7,11 +7,20 @@ namespace Fusio\Model\Backend;
 
 class Dashboard_Transaction implements \JsonSerializable
 {
+    protected ?int $id = null;
     protected ?string $status = null;
     protected ?string $provider = null;
     protected ?string $transactionId = null;
     protected ?float $amount = null;
     protected ?\DateTime $date = null;
+    public function setId(?int $id) : void
+    {
+        $this->id = $id;
+    }
+    public function getId() : ?int
+    {
+        return $this->id;
+    }
     public function setStatus(?string $status) : void
     {
         $this->status = $status;
@@ -54,7 +63,7 @@ class Dashboard_Transaction implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('status' => $this->status, 'provider' => $this->provider, 'transactionId' => $this->transactionId, 'amount' => $this->amount, 'date' => $this->date), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'provider' => $this->provider, 'transactionId' => $this->transactionId, 'amount' => $this->amount, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;
         });
     }

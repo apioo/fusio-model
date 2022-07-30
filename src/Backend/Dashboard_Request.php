@@ -7,9 +7,18 @@ namespace Fusio\Model\Backend;
 
 class Dashboard_Request implements \JsonSerializable
 {
+    protected ?int $id = null;
     protected ?string $path = null;
     protected ?string $ip = null;
     protected ?\DateTime $date = null;
+    public function setId(?int $id) : void
+    {
+        $this->id = $id;
+    }
+    public function getId() : ?int
+    {
+        return $this->id;
+    }
     public function setPath(?string $path) : void
     {
         $this->path = $path;
@@ -36,7 +45,7 @@ class Dashboard_Request implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('path' => $this->path, 'ip' => $this->ip, 'date' => $this->date), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'path' => $this->path, 'ip' => $this->ip, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;
         });
     }
