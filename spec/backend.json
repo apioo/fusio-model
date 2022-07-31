@@ -519,6 +519,48 @@
         }
       }
     },
+    "Connection_Introspection_Entities": {
+      "type": "object",
+      "properties": {
+        "entities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Connection_Introspection_Entity": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "headers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "Connection_Introspection_Entity_Row"
+          }
+        }
+      }
+    },
+    "Connection_Introspection_Entity_Row": {
+      "type": "object",
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "Cronjob": {
       "type": "object",
       "properties": {
