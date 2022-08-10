@@ -822,6 +822,9 @@
         "status": {
           "type": "integer"
         },
+        "code": {
+          "type": "integer"
+        },
         "attempts": {
           "type": "integer"
         },
