@@ -9,6 +9,7 @@ class Event_Subscription_Response implements \JsonSerializable
 {
     protected ?int $id = null;
     protected ?int $status = null;
+    protected ?int $code = null;
     protected ?int $attempts = null;
     protected ?string $error = null;
     protected ?\DateTime $executeDate = null;
@@ -27,6 +28,14 @@ class Event_Subscription_Response implements \JsonSerializable
     public function getStatus() : ?int
     {
         return $this->status;
+    }
+    public function setCode(?int $code) : void
+    {
+        $this->code = $code;
+    }
+    public function getCode() : ?int
+    {
+        return $this->code;
     }
     public function setAttempts(?int $attempts) : void
     {
@@ -54,7 +63,7 @@ class Event_Subscription_Response implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'attempts' => $this->attempts, 'error' => $this->error, 'executeDate' => $this->executeDate), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'code' => $this->code, 'attempts' => $this->attempts, 'error' => $this->error, 'executeDate' => $this->executeDate), static function ($value) : bool {
             return $value !== null;
         });
     }
