@@ -10,6 +10,7 @@ class User_JWT implements \JsonSerializable
     protected ?string $token = null;
     protected ?string $expires_in = null;
     protected ?string $refresh_token = null;
+    protected ?string $scope = null;
     public function setToken(?string $token) : void
     {
         $this->token = $token;
@@ -34,9 +35,17 @@ class User_JWT implements \JsonSerializable
     {
         return $this->refresh_token;
     }
+    public function setScope(?string $scope) : void
+    {
+        $this->scope = $scope;
+    }
+    public function getScope() : ?string
+    {
+        return $this->scope;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('token' => $this->token, 'expires_in' => $this->expires_in, 'refresh_token' => $this->refresh_token), static function ($value) : bool {
+        return (object) array_filter(array('token' => $this->token, 'expires_in' => $this->expires_in, 'refresh_token' => $this->refresh_token, 'scope' => $this->scope), static function ($value) : bool {
             return $value !== null;
         });
     }
