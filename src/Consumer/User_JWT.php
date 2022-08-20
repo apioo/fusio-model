@@ -8,7 +8,7 @@ namespace Fusio\Model\Consumer;
 class User_JWT implements \JsonSerializable
 {
     protected ?string $token = null;
-    protected ?string $expires_in = null;
+    protected ?int $expires_in = null;
     protected ?string $refresh_token = null;
     protected ?string $scope = null;
     public function setToken(?string $token) : void
@@ -19,11 +19,11 @@ class User_JWT implements \JsonSerializable
     {
         return $this->token;
     }
-    public function setExpires_in(?string $expires_in) : void
+    public function setExpires_in(?int $expires_in) : void
     {
         $this->expires_in = $expires_in;
     }
-    public function getExpires_in() : ?string
+    public function getExpires_in() : ?int
     {
         return $this->expires_in;
     }
