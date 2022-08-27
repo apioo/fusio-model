@@ -1318,6 +1318,9 @@
         "id": {
           "type": "integer"
         },
+        "status": {
+          "type": "integer"
+        },
         "priority": {
           "type": "integer"
         },
