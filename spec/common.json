@@ -54,6 +54,12 @@
         }
       }
     },
+    "Metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
     "Form_Container": {
       "type": "object",
       "properties": {

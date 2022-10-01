@@ -17,6 +17,7 @@ class App implements \JsonSerializable
     protected ?string $parameters = null;
     protected ?string $appKey = null;
     protected ?string $appSecret = null;
+    protected ?\Fusio\Model\Metadata $metadata = null;
     protected ?\DateTime $date = null;
     /**
      * @var array<string>|null
@@ -90,6 +91,14 @@ class App implements \JsonSerializable
     {
         return $this->appSecret;
     }
+    public function setMetadata(?\Fusio\Model\Metadata $metadata) : void
+    {
+        $this->metadata = $metadata;
+    }
+    public function getMetadata() : ?\Fusio\Model\Metadata
+    {
+        return $this->metadata;
+    }
     public function setDate(?\DateTime $date) : void
     {
         $this->date = $date;
@@ -122,7 +131,7 @@ class App implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'userId' => $this->userId, 'status' => $this->status, 'name' => $this->name, 'url' => $this->url, 'parameters' => $this->parameters, 'appKey' => $this->appKey, 'appSecret' => $this->appSecret, 'date' => $this->date, 'scopes' => $this->scopes, 'tokens' => $this->tokens), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'userId' => $this->userId, 'status' => $this->status, 'name' => $this->name, 'url' => $this->url, 'parameters' => $this->parameters, 'appKey' => $this->appKey, 'appSecret' => $this->appSecret, 'metadata' => $this->metadata, 'date' => $this->date, 'scopes' => $this->scopes, 'tokens' => $this->tokens), static function ($value) : bool {
             return $value !== null;
         });
     }

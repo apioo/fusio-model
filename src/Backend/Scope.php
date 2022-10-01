@@ -16,6 +16,7 @@ class Scope implements \JsonSerializable
      * @var array<Scope_Route>|null
      */
     protected ?array $routes = null;
+    protected ?\Fusio\Model\Metadata $metadata = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -51,9 +52,17 @@ class Scope implements \JsonSerializable
     {
         return $this->routes;
     }
+    public function setMetadata(?\Fusio\Model\Metadata $metadata) : void
+    {
+        $this->metadata = $metadata;
+    }
+    public function getMetadata() : ?\Fusio\Model\Metadata
+    {
+        return $this->metadata;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description, 'routes' => $this->routes), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'name' => $this->name, 'description' => $this->description, 'routes' => $this->routes, 'metadata' => $this->metadata), static function ($value) : bool {
             return $value !== null;
         });
     }

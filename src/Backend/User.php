@@ -24,7 +24,7 @@ class User implements \JsonSerializable
      * @var array<App>|null
      */
     protected ?array $apps = null;
-    protected ?User_Attributes $attributes = null;
+    protected ?\Fusio\Model\Metadata $metadata = null;
     protected ?\DateTime $date = null;
     public function setId(?int $id) : void
     {
@@ -104,13 +104,13 @@ class User implements \JsonSerializable
     {
         return $this->apps;
     }
-    public function setAttributes(?User_Attributes $attributes) : void
+    public function setMetadata(?\Fusio\Model\Metadata $metadata) : void
     {
-        $this->attributes = $attributes;
+        $this->metadata = $metadata;
     }
-    public function getAttributes() : ?User_Attributes
+    public function getMetadata() : ?\Fusio\Model\Metadata
     {
-        return $this->attributes;
+        return $this->metadata;
     }
     public function setDate(?\DateTime $date) : void
     {
@@ -122,7 +122,7 @@ class User implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'roleId' => $this->roleId, 'planId' => $this->planId, 'status' => $this->status, 'name' => $this->name, 'email' => $this->email, 'points' => $this->points, 'scopes' => $this->scopes, 'apps' => $this->apps, 'attributes' => $this->attributes, 'date' => $this->date), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'roleId' => $this->roleId, 'planId' => $this->planId, 'status' => $this->status, 'name' => $this->name, 'email' => $this->email, 'points' => $this->points, 'scopes' => $this->scopes, 'apps' => $this->apps, 'metadata' => $this->metadata, 'date' => $this->date), static function ($value) : bool {
             return $value !== null;
         });
     }

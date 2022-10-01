@@ -16,6 +16,7 @@ class Action implements \JsonSerializable
     protected ?bool $async = null;
     protected ?string $engine = null;
     protected ?Action_Config $config = null;
+    protected ?\Fusio\Model\Metadata $metadata = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -72,9 +73,17 @@ class Action implements \JsonSerializable
     {
         return $this->config;
     }
+    public function setMetadata(?\Fusio\Model\Metadata $metadata) : void
+    {
+        $this->metadata = $metadata;
+    }
+    public function getMetadata() : ?\Fusio\Model\Metadata
+    {
+        return $this->metadata;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'name' => $this->name, 'class' => $this->class, 'async' => $this->async, 'engine' => $this->engine, 'config' => $this->config), static function ($value) : bool {
+        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'name' => $this->name, 'class' => $this->class, 'async' => $this->async, 'engine' => $this->engine, 'config' => $this->config, 'metadata' => $this->metadata), static function ($value) : bool {
             return $value !== null;
         });
     }
