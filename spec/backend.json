@@ -47,6 +47,9 @@
         },
         "config": {
           "$ref": "Action_Config"
+        },
+        "metadata": {
+          "$ref": "common:Metadata"
         }
       }
     },
@@ -229,6 +232,9 @@
         },
         "appSecret": {
           "type": "string"
+        },
+        "metadata": {
+          "$ref": "common:Metadata"
         },
         "date": {
           "type": "string",
@@ -477,6 +483,9 @@
         },
         "config": {
           "$ref": "Connection_Config"
+        },
+        "metadata": {
+          "$ref": "common:Metadata"
         }
       }
     },
@@ -583,6 +592,9 @@
         },
         "exitCode": {
           "type": "integer"
+        },
+        "metadata": {
+          "$ref": "common:Metadata"
         },
         "errors": {
           "type": "array",
@@ -772,6 +784,9 @@
         },
         "schema": {
           "type": "string"
+        },
+        "metadata": {
+          "$ref": "common:Metadata"
         }
       }
     },
@@ -1115,6 +1130,9 @@
         },
         "content": {
           "type": "string"
+        },
+        "metadata": {
+          "$ref": "common:Metadata"
         }
       }
     },
@@ -1163,6 +1181,9 @@
           "items": {
             "type": "string"
           }
+        },
+        "metadata": {
+          "$ref": "common:Metadata"
         }
       }
     },
@@ -1271,6 +1292,9 @@
           "items": {
             "$ref": "Rate_Allocation"
           }
+        },
+        "metadata": {
+          "$ref": "common:Metadata"
         }
       }
     },
@@ -1341,6 +1365,9 @@
           "items": {
             "$ref": "Route_Version"
           }
+        },
+        "metadata": {
+          "$ref": "common:Metadata"
         }
       }
     },
@@ -1448,6 +1475,9 @@
         },
         "form": {
           "$ref": "Schema_Form"
+        },
+        "metadata": {
+          "$ref": "common:Metadata"
         }
       }
     },
@@ -1502,6 +1532,9 @@
           "items": {
             "$ref": "Scope_Route"
           }
+        },
+        "metadata": {
+          "$ref": "common:Metadata"
         }
       }
     },
@@ -1665,6 +1698,14 @@
         "points": {
           "type": "number"
         },
+        "periodStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "periodEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
         "insertDate": {
           "type": "string",
           "format": "date-time"
@@ -1784,8 +1825,8 @@
             "$ref": "App"
           }
         },
-        "attributes": {
-          "$ref": "User_Attributes"
+        "metadata": {
+          "$ref": "common:Metadata"
         },
         "date": {
           "type": "string",
