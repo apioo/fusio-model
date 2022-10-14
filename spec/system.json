@@ -30,6 +30,9 @@
         "licenseUrl": {
           "type": "string"
         },
+        "paymentCurrency": {
+          "type": "string"
+        },
         "categories": {
           "type": "array",
           "items": {

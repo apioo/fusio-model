@@ -16,6 +16,7 @@ class About implements \JsonSerializable
     protected ?string $contactEmail = null;
     protected ?string $licenseName = null;
     protected ?string $licenseUrl = null;
+    protected ?string $paymentCurrency = null;
     /**
      * @var array<string>|null
      */
@@ -101,6 +102,14 @@ class About implements \JsonSerializable
     {
         return $this->licenseUrl;
     }
+    public function setPaymentCurrency(?string $paymentCurrency) : void
+    {
+        $this->paymentCurrency = $paymentCurrency;
+    }
+    public function getPaymentCurrency() : ?string
+    {
+        return $this->paymentCurrency;
+    }
     /**
      * @param array<string>|null $categories
      */
@@ -144,7 +153,7 @@ class About implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('apiVersion' => $this->apiVersion, 'title' => $this->title, 'description' => $this->description, 'termsOfService' => $this->termsOfService, 'contactName' => $this->contactName, 'contactUrl' => $this->contactUrl, 'contactEmail' => $this->contactEmail, 'licenseName' => $this->licenseName, 'licenseUrl' => $this->licenseUrl, 'categories' => $this->categories, 'scopes' => $this->scopes, 'apps' => $this->apps, 'links' => $this->links), static function ($value) : bool {
+        return (object) array_filter(array('apiVersion' => $this->apiVersion, 'title' => $this->title, 'description' => $this->description, 'termsOfService' => $this->termsOfService, 'contactName' => $this->contactName, 'contactUrl' => $this->contactUrl, 'contactEmail' => $this->contactEmail, 'licenseName' => $this->licenseName, 'licenseUrl' => $this->licenseUrl, 'paymentCurrency' => $this->paymentCurrency, 'categories' => $this->categories, 'scopes' => $this->scopes, 'apps' => $this->apps, 'links' => $this->links), static function ($value) : bool {
             return $value !== null;
         });
     }
