@@ -1,0 +1,13 @@
+<?php
+
+declare(strict_types = 1);
+
+namespace Fusio\Model\Consumer;
+
+/**
+ * @extends \Fusio\Model\Collection<Page>
+ */
+class PageCollection extends \Fusio\Model\Collection
+{
+}
+

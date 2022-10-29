@@ -17,7 +17,7 @@ class Cronjob implements \JsonSerializable
     protected ?int $exitCode = null;
     protected ?\Fusio\Model\Metadata $metadata = null;
     /**
-     * @var array<Cronjob_Error>|null
+     * @var array<CronjobError>|null
      */
     protected ?array $errors = null;
     public function setId(?int $id) : void
@@ -77,7 +77,7 @@ class Cronjob implements \JsonSerializable
         return $this->metadata;
     }
     /**
-     * @param array<Cronjob_Error>|null $errors
+     * @param array<CronjobError>|null $errors
      */
     public function setErrors(?array $errors) : void
     {

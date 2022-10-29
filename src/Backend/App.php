@@ -24,7 +24,7 @@ class App implements \JsonSerializable
      */
     protected ?array $scopes = null;
     /**
-     * @var array<App_Token>|null
+     * @var array<AppToken>|null
      */
     protected ?array $tokens = null;
     public function setId(?int $id) : void
@@ -119,7 +119,7 @@ class App implements \JsonSerializable
         return $this->scopes;
     }
     /**
-     * @param array<App_Token>|null $tokens
+     * @param array<AppToken>|null $tokens
      */
     public function setTokens(?array $tokens) : void
     {

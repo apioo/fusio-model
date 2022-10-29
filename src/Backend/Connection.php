@@ -12,7 +12,7 @@ class Connection implements \JsonSerializable
     #[Pattern('^[a-zA-Z0-9\\-\\_]{3,255}$')]
     protected ?string $name = null;
     protected ?string $class = null;
-    protected ?Connection_Config $config = null;
+    protected ?ConnectionConfig $config = null;
     protected ?\Fusio\Model\Metadata $metadata = null;
     public function setId(?int $id) : void
     {
@@ -38,11 +38,11 @@ class Connection implements \JsonSerializable
     {
         return $this->class;
     }
-    public function setConfig(?Connection_Config $config) : void
+    public function setConfig(?ConnectionConfig $config) : void
     {
         $this->config = $config;
     }
-    public function getConfig() : ?Connection_Config
+    public function getConfig() : ?ConnectionConfig
     {
         return $this->config;
     }

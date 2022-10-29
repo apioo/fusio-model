@@ -7,12 +7,12 @@ namespace Fusio\Model\System;
 
 class Route implements \JsonSerializable
 {
-    protected ?Route_Path $routes = null;
-    public function setRoutes(?Route_Path $routes) : void
+    protected ?RoutePath $routes = null;
+    public function setRoutes(?RoutePath $routes) : void
     {
         $this->routes = $routes;
     }
-    public function getRoutes() : ?Route_Path
+    public function getRoutes() : ?RoutePath
     {
         return $this->routes;
     }

@@ -12,8 +12,8 @@ class Schema implements \JsonSerializable
     protected ?int $status = null;
     #[Pattern('^[a-zA-Z0-9\\-\\_]{3,255}$')]
     protected ?string $name = null;
-    protected ?Schema_Source $source = null;
-    protected ?Schema_Form $form = null;
+    protected ?SchemaSource $source = null;
+    protected ?SchemaForm $form = null;
     protected ?\Fusio\Model\Metadata $metadata = null;
     public function setId(?int $id) : void
     {
@@ -39,19 +39,19 @@ class Schema implements \JsonSerializable
     {
         return $this->name;
     }
-    public function setSource(?Schema_Source $source) : void
+    public function setSource(?SchemaSource $source) : void
     {
         $this->source = $source;
     }
-    public function getSource() : ?Schema_Source
+    public function getSource() : ?SchemaSource
     {
         return $this->source;
     }
-    public function setForm(?Schema_Form $form) : void
+    public function setForm(?SchemaForm $form) : void
     {
         $this->form = $form;
     }
-    public function getForm() : ?Schema_Form
+    public function getForm() : ?SchemaForm
     {
         return $this->form;
     }

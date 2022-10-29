@@ -13,7 +13,7 @@ class Scope implements \JsonSerializable
     protected ?string $name = null;
     protected ?string $description = null;
     /**
-     * @var array<Scope_Route>|null
+     * @var array<ScopeRoute>|null
      */
     protected ?array $routes = null;
     protected ?\Fusio\Model\Metadata $metadata = null;
@@ -42,7 +42,7 @@ class Scope implements \JsonSerializable
         return $this->description;
     }
     /**
-     * @param array<Scope_Route>|null $routes
+     * @param array<ScopeRoute>|null $routes
      */
     public function setRoutes(?array $routes) : void
     {

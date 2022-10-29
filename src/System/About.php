@@ -25,9 +25,9 @@ class About implements \JsonSerializable
      * @var array<string>|null
      */
     protected ?array $scopes = null;
-    protected ?About_Apps $apps = null;
+    protected ?AboutApps $apps = null;
     /**
-     * @var array<About_Link>|null
+     * @var array<AboutLink>|null
      */
     protected ?array $links = null;
     public function setApiVersion(?string $apiVersion) : void
@@ -132,16 +132,16 @@ class About implements \JsonSerializable
     {
         return $this->scopes;
     }
-    public function setApps(?About_Apps $apps) : void
+    public function setApps(?AboutApps $apps) : void
     {
         $this->apps = $apps;
     }
-    public function getApps() : ?About_Apps
+    public function getApps() : ?AboutApps
     {
         return $this->apps;
     }
     /**
-     * @param array<About_Link>|null $links
+     * @param array<AboutLink>|null $links
      */
     public function setLinks(?array $links) : void
     {

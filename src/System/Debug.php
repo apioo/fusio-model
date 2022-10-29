@@ -7,30 +7,30 @@ namespace Fusio\Model\System;
 
 class Debug implements \JsonSerializable
 {
-    protected ?Debug_Headers $headers = null;
-    protected ?Debug_Parameters $parameters = null;
-    protected ?Debug_Body $body = null;
-    public function setHeaders(?Debug_Headers $headers) : void
+    protected ?DebugHeaders $headers = null;
+    protected ?DebugParameters $parameters = null;
+    protected ?DebugBody $body = null;
+    public function setHeaders(?DebugHeaders $headers) : void
     {
         $this->headers = $headers;
     }
-    public function getHeaders() : ?Debug_Headers
+    public function getHeaders() : ?DebugHeaders
     {
         return $this->headers;
     }
-    public function setParameters(?Debug_Parameters $parameters) : void
+    public function setParameters(?DebugParameters $parameters) : void
     {
         $this->parameters = $parameters;
     }
-    public function getParameters() : ?Debug_Parameters
+    public function getParameters() : ?DebugParameters
     {
         return $this->parameters;
     }
-    public function setBody(?Debug_Body $body) : void
+    public function setBody(?DebugBody $body) : void
     {
         $this->body = $body;
     }
-    public function getBody() : ?Debug_Body
+    public function getBody() : ?DebugBody
     {
         return $this->body;
     }

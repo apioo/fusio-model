@@ -16,7 +16,7 @@ class Log implements \JsonSerializable
     protected ?string $body = null;
     protected ?\DateTime $date = null;
     /**
-     * @var array<Log_Error>|null
+     * @var array<LogError>|null
      */
     protected ?array $errors = null;
     public function setId(?int $id) : void
@@ -84,7 +84,7 @@ class Log implements \JsonSerializable
         return $this->date;
     }
     /**
-     * @param array<Log_Error>|null $errors
+     * @param array<LogError>|null $errors
      */
     public function setErrors(?array $errors) : void
     {

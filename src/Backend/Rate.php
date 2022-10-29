@@ -18,7 +18,7 @@ class Rate implements \JsonSerializable
     protected ?int $rateLimit = null;
     protected ?\DateInterval $timespan = null;
     /**
-     * @var array<Rate_Allocation>|null
+     * @var array<RateAllocation>|null
      */
     protected ?array $allocation = null;
     protected ?\Fusio\Model\Metadata $metadata = null;
@@ -63,7 +63,7 @@ class Rate implements \JsonSerializable
         return $this->timespan;
     }
     /**
-     * @param array<Rate_Allocation>|null $allocation
+     * @param array<RateAllocation>|null $allocation
      */
     public function setAllocation(?array $allocation) : void
     {

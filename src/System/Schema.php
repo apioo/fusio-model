@@ -7,21 +7,21 @@ namespace Fusio\Model\System;
 
 class Schema implements \JsonSerializable
 {
-    protected ?Schema_TypeSchema $schema = null;
-    protected ?Schema_Form $form = null;
-    public function setSchema(?Schema_TypeSchema $schema) : void
+    protected ?SchemaTypeSchema $schema = null;
+    protected ?SchemaForm $form = null;
+    public function setSchema(?SchemaTypeSchema $schema) : void
     {
         $this->schema = $schema;
     }
-    public function getSchema() : ?Schema_TypeSchema
+    public function getSchema() : ?SchemaTypeSchema
     {
         return $this->schema;
     }
-    public function setForm(?Schema_Form $form) : void
+    public function setForm(?SchemaForm $form) : void
     {
         $this->form = $form;
     }
-    public function getForm() : ?Schema_Form
+    public function getForm() : ?SchemaForm
     {
         return $this->form;
     }
