@@ -502,12 +502,38 @@
             "type": "string"
           }
         },
+        "plans": {
+          "type": "array",
+          "items": {
+            "$ref": "User_Plan"
+          }
+        },
         "metadata": {
           "$ref": "common:Metadata"
         },
         "date": {
           "type": "string",
           "format": "date-time"
+        }
+      }
+    },
+    "User_Plan": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer"
+        },
+        "points": {
+          "type": "integer"
+        },
+        "period": {
+          "type": "integer"
         }
       }
     },
