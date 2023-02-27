@@ -15,6 +15,7 @@ class MarketplaceApp implements \JsonSerializable
     protected ?string $downloadUrl = null;
     #[Key('sha1Hash')]
     protected ?string $shaHash = null;
+    protected ?string $startUrl = null;
     public function setVersion(?string $version) : void
     {
         $this->version = $version;
@@ -63,9 +64,17 @@ class MarketplaceApp implements \JsonSerializable
     {
         return $this->shaHash;
     }
+    public function setStartUrl(?string $startUrl) : void
+    {
+        $this->startUrl = $startUrl;
+    }
+    public function getStartUrl() : ?string
+    {
+        return $this->startUrl;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('version' => $this->version, 'description' => $this->description, 'screenshot' => $this->screenshot, 'website' => $this->website, 'downloadUrl' => $this->downloadUrl, 'sha1Hash' => $this->shaHash), static function ($value) : bool {
+        return (object) array_filter(array('version' => $this->version, 'description' => $this->description, 'screenshot' => $this->screenshot, 'website' => $this->website, 'downloadUrl' => $this->downloadUrl, 'sha1Hash' => $this->shaHash, 'startUrl' => $this->startUrl), static function ($value) : bool {
             return $value !== null;
         });
     }
