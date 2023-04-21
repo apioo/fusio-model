@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class ActionExecuteResponse implements \JsonSerializable
+class ActionExecuteResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $statusCode = null;
     protected ?ActionExecuteResponseHeaders $headers = null;
@@ -34,11 +34,18 @@ class ActionExecuteResponse implements \JsonSerializable
     {
         return $this->body;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('statusCode', $this->statusCode);
+        $record->put('headers', $this->headers);
+        $record->put('body', $this->body);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('statusCode' => $this->statusCode, 'headers' => $this->headers, 'body' => $this->body), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

@@ -6,7 +6,7 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Pattern;
 
-class UserRemote implements \JsonSerializable
+class UserRemote implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $provider = null;
     protected ?string $remoteId = null;
@@ -45,11 +45,19 @@ class UserRemote implements \JsonSerializable
     {
         return $this->email;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('provider', $this->provider);
+        $record->put('remoteId', $this->remoteId);
+        $record->put('name', $this->name);
+        $record->put('email', $this->email);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('provider' => $this->provider, 'remoteId' => $this->remoteId, 'name' => $this->name, 'email' => $this->email), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

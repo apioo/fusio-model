@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class ConnectionIndex implements \JsonSerializable
+class ConnectionIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<ConnectionIndexEntry>|null
@@ -22,11 +22,16 @@ class ConnectionIndex implements \JsonSerializable
     {
         return $this->connections;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('connections', $this->connections);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('connections' => $this->connections), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model;
 
 
-class CollectionQuery implements \JsonSerializable
+class CollectionQuery implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $startIndex = null;
     protected ?int $count = null;
@@ -34,11 +34,18 @@ class CollectionQuery implements \JsonSerializable
     {
         return $this->search;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('startIndex', $this->startIndex);
+        $record->put('count', $this->count);
+        $record->put('search', $this->search);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('startIndex' => $this->startIndex, 'count' => $this->count, 'search' => $this->search), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\System;
 
 
-class AboutLink implements \JsonSerializable
+class AboutLink implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $rel = null;
     protected ?string $href = null;
@@ -25,11 +25,17 @@ class AboutLink implements \JsonSerializable
     {
         return $this->href;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('rel', $this->rel);
+        $record->put('href', $this->href);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('rel' => $this->rel, 'href' => $this->href), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

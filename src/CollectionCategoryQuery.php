@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model;
 
 
-class CollectionCategoryQuery extends CollectionQuery implements \JsonSerializable
+class CollectionCategoryQuery extends CollectionQuery implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $categoryId = null;
     public function setCategoryId(?int $categoryId) : void
@@ -16,11 +16,16 @@ class CollectionCategoryQuery extends CollectionQuery implements \JsonSerializab
     {
         return $this->categoryId;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = parent::toRecord();
+        $record->put('categoryId', $this->categoryId);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('categoryId' => $this->categoryId), static function ($value) : bool {
-            return $value !== null;
-        }));
+        return (object) $this->toRecord()->getAll();
     }
 }
 

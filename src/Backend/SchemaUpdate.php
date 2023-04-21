@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class SchemaUpdate extends Schema implements \JsonSerializable
+class SchemaUpdate extends Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
 

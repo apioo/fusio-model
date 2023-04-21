@@ -5,14 +5,14 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class EventSubscriptionResponse implements \JsonSerializable
+class EventSubscriptionResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $status = null;
     protected ?int $code = null;
     protected ?int $attempts = null;
     protected ?string $error = null;
-    protected ?\DateTime $executeDate = null;
+    protected ?\PSX\DateTime\LocalDateTime $executeDate = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -53,19 +53,29 @@ class EventSubscriptionResponse implements \JsonSerializable
     {
         return $this->error;
     }
-    public function setExecuteDate(?\DateTime $executeDate) : void
+    public function setExecuteDate(?\PSX\DateTime\LocalDateTime $executeDate) : void
     {
         $this->executeDate = $executeDate;
     }
-    public function getExecuteDate() : ?\DateTime
+    public function getExecuteDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->executeDate;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('status', $this->status);
+        $record->put('code', $this->code);
+        $record->put('attempts', $this->attempts);
+        $record->put('error', $this->error);
+        $record->put('executeDate', $this->executeDate);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'status' => $this->status, 'code' => $this->code, 'attempts' => $this->attempts, 'error' => $this->error, 'executeDate' => $this->executeDate), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

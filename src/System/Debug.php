@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\System;
 
 
-class Debug implements \JsonSerializable
+class Debug implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?DebugHeaders $headers = null;
     protected ?DebugParameters $parameters = null;
@@ -34,11 +34,18 @@ class Debug implements \JsonSerializable
     {
         return $this->body;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('headers', $this->headers);
+        $record->put('parameters', $this->parameters);
+        $record->put('body', $this->body);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('headers' => $this->headers, 'parameters' => $this->parameters, 'body' => $this->body), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

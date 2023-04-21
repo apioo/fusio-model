@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\System;
 
 
-class RpcResponseSuccess implements \JsonSerializable
+class RpcResponseSuccess implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $jsonrpc = null;
     protected ?RpcResponseResult $result = null;
@@ -34,11 +34,18 @@ class RpcResponseSuccess implements \JsonSerializable
     {
         return $this->id;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('jsonrpc', $this->jsonrpc);
+        $record->put('result', $this->result);
+        $record->put('id', $this->id);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('jsonrpc' => $this->jsonrpc, 'result' => $this->result, 'id' => $this->id), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

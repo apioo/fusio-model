@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class MarketplaceLocalApp extends MarketplaceApp implements \JsonSerializable
+class MarketplaceLocalApp extends MarketplaceApp implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?MarketplaceApp $remote = null;
     public function setRemote(?MarketplaceApp $remote) : void
@@ -16,11 +16,16 @@ class MarketplaceLocalApp extends MarketplaceApp implements \JsonSerializable
     {
         return $this->remote;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = parent::toRecord();
+        $record->put('remote', $this->remote);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('remote' => $this->remote), static function ($value) : bool {
-            return $value !== null;
-        }));
+        return (object) $this->toRecord()->getAll();
     }
 }
 

@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model;
 
 
-class FormContainer implements \JsonSerializable
+class FormContainer implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<FormElementInput|FormElementSelect|FormElementTag|FormElementTextArea>|null
@@ -22,11 +22,16 @@ class FormContainer implements \JsonSerializable
     {
         return $this->element;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('element', $this->element);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('element' => $this->element), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

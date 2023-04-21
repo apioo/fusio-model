@@ -5,29 +5,29 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class AppTokenCollectionQuery extends \Fusio\Model\CollectionQuery implements \JsonSerializable
+class AppTokenCollectionQuery extends \Fusio\Model\CollectionQuery implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    protected ?\DateTime $from = null;
-    protected ?\DateTime $to = null;
+    protected ?\PSX\DateTime\LocalDateTime $from = null;
+    protected ?\PSX\DateTime\LocalDateTime $to = null;
     protected ?int $appId = null;
     protected ?int $userId = null;
     protected ?int $status = null;
     protected ?string $scope = null;
     protected ?string $ip = null;
     protected ?string $search = null;
-    public function setFrom(?\DateTime $from) : void
+    public function setFrom(?\PSX\DateTime\LocalDateTime $from) : void
     {
         $this->from = $from;
     }
-    public function getFrom() : ?\DateTime
+    public function getFrom() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->from;
     }
-    public function setTo(?\DateTime $to) : void
+    public function setTo(?\PSX\DateTime\LocalDateTime $to) : void
     {
         $this->to = $to;
     }
-    public function getTo() : ?\DateTime
+    public function getTo() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->to;
     }
@@ -79,11 +79,23 @@ class AppTokenCollectionQuery extends \Fusio\Model\CollectionQuery implements \J
     {
         return $this->search;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = parent::toRecord();
+        $record->put('from', $this->from);
+        $record->put('to', $this->to);
+        $record->put('appId', $this->appId);
+        $record->put('userId', $this->userId);
+        $record->put('status', $this->status);
+        $record->put('scope', $this->scope);
+        $record->put('ip', $this->ip);
+        $record->put('search', $this->search);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('from' => $this->from, 'to' => $this->to, 'appId' => $this->appId, 'userId' => $this->userId, 'status' => $this->status, 'scope' => $this->scope, 'ip' => $this->ip, 'search' => $this->search), static function ($value) : bool {
-            return $value !== null;
-        }));
+        return (object) $this->toRecord()->getAll();
     }
 }
 

@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\System;
 
 
-class HealthCheck implements \JsonSerializable
+class HealthCheck implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?bool $healthy = null;
     protected ?string $error = null;
@@ -25,11 +25,17 @@ class HealthCheck implements \JsonSerializable
     {
         return $this->error;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('healthy', $this->healthy);
+        $record->put('error', $this->error);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('healthy' => $this->healthy, 'error' => $this->error), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

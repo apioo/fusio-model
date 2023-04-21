@@ -6,7 +6,7 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Key;
 
-class AuthorizeResponseToken implements \JsonSerializable
+class AuthorizeResponseToken implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Key('access_token')]
     protected ?string $accessToken = null;
@@ -47,11 +47,19 @@ class AuthorizeResponseToken implements \JsonSerializable
     {
         return $this->scope;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('access_token', $this->accessToken);
+        $record->put('token_type', $this->tokenType);
+        $record->put('expires_in', $this->expiresIn);
+        $record->put('scope', $this->scope);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('access_token' => $this->accessToken, 'token_type' => $this->tokenType, 'expires_in' => $this->expiresIn, 'scope' => $this->scope), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\System;
 
 
-class Schema implements \JsonSerializable
+class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?SchemaTypeSchema $schema = null;
     protected ?SchemaForm $form = null;
@@ -25,11 +25,17 @@ class Schema implements \JsonSerializable
     {
         return $this->form;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('schema', $this->schema);
+        $record->put('form', $this->form);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('schema' => $this->schema, 'form' => $this->form), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

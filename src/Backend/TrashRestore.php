@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class TrashRestore implements \JsonSerializable
+class TrashRestore implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     public function setId(?int $id) : void
@@ -16,11 +16,16 @@ class TrashRestore implements \JsonSerializable
     {
         return $this->id;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

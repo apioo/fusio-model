@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class GeneratorIndexProviders implements \JsonSerializable
+class GeneratorIndexProviders implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<GeneratorIndexProvider>|null
@@ -22,11 +22,16 @@ class GeneratorIndexProviders implements \JsonSerializable
     {
         return $this->providers;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('providers', $this->providers);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('providers' => $this->providers), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class GeneratorProviderChangelog implements \JsonSerializable
+class GeneratorProviderChangelog implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<Schema>|null
@@ -52,11 +52,18 @@ class GeneratorProviderChangelog implements \JsonSerializable
     {
         return $this->routes;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('schemas', $this->schemas);
+        $record->put('actions', $this->actions);
+        $record->put('routes', $this->routes);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('schemas' => $this->schemas, 'actions' => $this->actions, 'routes' => $this->routes), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

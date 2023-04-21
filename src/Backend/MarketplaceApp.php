@@ -6,7 +6,7 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Key;
 
-class MarketplaceApp implements \JsonSerializable
+class MarketplaceApp implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $version = null;
     protected ?string $description = null;
@@ -72,11 +72,22 @@ class MarketplaceApp implements \JsonSerializable
     {
         return $this->startUrl;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('version', $this->version);
+        $record->put('description', $this->description);
+        $record->put('screenshot', $this->screenshot);
+        $record->put('website', $this->website);
+        $record->put('downloadUrl', $this->downloadUrl);
+        $record->put('sha1Hash', $this->shaHash);
+        $record->put('startUrl', $this->startUrl);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('version' => $this->version, 'description' => $this->description, 'screenshot' => $this->screenshot, 'website' => $this->website, 'downloadUrl' => $this->downloadUrl, 'sha1Hash' => $this->shaHash, 'startUrl' => $this->startUrl), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

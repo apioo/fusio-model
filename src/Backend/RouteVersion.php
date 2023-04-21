@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class RouteVersion implements \JsonSerializable
+class RouteVersion implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $version = null;
     protected ?int $status = null;
@@ -34,11 +34,18 @@ class RouteVersion implements \JsonSerializable
     {
         return $this->methods;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('version', $this->version);
+        $record->put('status', $this->status);
+        $record->put('methods', $this->methods);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('version' => $this->version, 'status' => $this->status, 'methods' => $this->methods), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

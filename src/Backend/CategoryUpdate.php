@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class CategoryUpdate extends Category implements \JsonSerializable
+class CategoryUpdate extends Category implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
 

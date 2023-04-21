@@ -6,7 +6,7 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Pattern;
 
-class App implements \JsonSerializable
+class App implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $userId = null;
@@ -18,7 +18,7 @@ class App implements \JsonSerializable
     protected ?string $appKey = null;
     protected ?string $appSecret = null;
     protected ?\Fusio\Model\Metadata $metadata = null;
-    protected ?\DateTime $date = null;
+    protected ?\PSX\DateTime\LocalDateTime $date = null;
     /**
      * @var array<string>|null
      */
@@ -99,11 +99,11 @@ class App implements \JsonSerializable
     {
         return $this->metadata;
     }
-    public function setDate(?\DateTime $date) : void
+    public function setDate(?\PSX\DateTime\LocalDateTime $date) : void
     {
         $this->date = $date;
     }
-    public function getDate() : ?\DateTime
+    public function getDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->date;
     }
@@ -129,11 +129,27 @@ class App implements \JsonSerializable
     {
         return $this->tokens;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('userId', $this->userId);
+        $record->put('status', $this->status);
+        $record->put('name', $this->name);
+        $record->put('url', $this->url);
+        $record->put('parameters', $this->parameters);
+        $record->put('appKey', $this->appKey);
+        $record->put('appSecret', $this->appSecret);
+        $record->put('metadata', $this->metadata);
+        $record->put('date', $this->date);
+        $record->put('scopes', $this->scopes);
+        $record->put('tokens', $this->tokens);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'userId' => $this->userId, 'status' => $this->status, 'name' => $this->name, 'url' => $this->url, 'parameters' => $this->parameters, 'appKey' => $this->appKey, 'appSecret' => $this->appSecret, 'metadata' => $this->metadata, 'date' => $this->date, 'scopes' => $this->scopes, 'tokens' => $this->tokens), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

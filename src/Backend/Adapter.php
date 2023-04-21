@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class Adapter implements \JsonSerializable
+class Adapter implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<string>|null
@@ -142,11 +142,24 @@ class Adapter implements \JsonSerializable
     {
         return $this->routes;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('actionClass', $this->actionClass);
+        $record->put('connectionClass', $this->connectionClass);
+        $record->put('paymentClass', $this->paymentClass);
+        $record->put('userClass', $this->userClass);
+        $record->put('routesClass', $this->routesClass);
+        $record->put('connection', $this->connection);
+        $record->put('schema', $this->schema);
+        $record->put('action', $this->action);
+        $record->put('routes', $this->routes);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('actionClass' => $this->actionClass, 'connectionClass' => $this->connectionClass, 'paymentClass' => $this->paymentClass, 'userClass' => $this->userClass, 'routesClass' => $this->routesClass, 'connection' => $this->connection, 'schema' => $this->schema, 'action' => $this->action, 'routes' => $this->routes), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

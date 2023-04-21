@@ -6,7 +6,7 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Key;
 
-class UserRefresh implements \JsonSerializable
+class UserRefresh implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Key('refresh_token')]
     protected ?string $refreshToken = null;
@@ -18,11 +18,16 @@ class UserRefresh implements \JsonSerializable
     {
         return $this->refreshToken;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('refresh_token', $this->refreshToken);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('refresh_token' => $this->refreshToken), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

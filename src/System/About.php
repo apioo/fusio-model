@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\System;
 
 
-class About implements \JsonSerializable
+class About implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $apiVersion = null;
     protected ?string $title = null;
@@ -151,11 +151,29 @@ class About implements \JsonSerializable
     {
         return $this->links;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('apiVersion', $this->apiVersion);
+        $record->put('title', $this->title);
+        $record->put('description', $this->description);
+        $record->put('termsOfService', $this->termsOfService);
+        $record->put('contactName', $this->contactName);
+        $record->put('contactUrl', $this->contactUrl);
+        $record->put('contactEmail', $this->contactEmail);
+        $record->put('licenseName', $this->licenseName);
+        $record->put('licenseUrl', $this->licenseUrl);
+        $record->put('paymentCurrency', $this->paymentCurrency);
+        $record->put('categories', $this->categories);
+        $record->put('scopes', $this->scopes);
+        $record->put('apps', $this->apps);
+        $record->put('links', $this->links);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('apiVersion' => $this->apiVersion, 'title' => $this->title, 'description' => $this->description, 'termsOfService' => $this->termsOfService, 'contactName' => $this->contactName, 'contactUrl' => $this->contactUrl, 'contactEmail' => $this->contactEmail, 'licenseName' => $this->licenseName, 'licenseUrl' => $this->licenseUrl, 'paymentCurrency' => $this->paymentCurrency, 'categories' => $this->categories, 'scopes' => $this->scopes, 'apps' => $this->apps, 'links' => $this->links), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

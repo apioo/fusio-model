@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\System;
 
 
-class Route implements \JsonSerializable
+class Route implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?RoutePath $routes = null;
     public function setRoutes(?RoutePath $routes) : void
@@ -16,11 +16,16 @@ class Route implements \JsonSerializable
     {
         return $this->routes;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('routes', $this->routes);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('routes' => $this->routes), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

@@ -7,7 +7,7 @@ namespace Fusio\Model;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('element'))]
-class FormElement implements \JsonSerializable
+class FormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $element = null;
     protected ?string $name = null;
@@ -45,11 +45,19 @@ class FormElement implements \JsonSerializable
     {
         return $this->help;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('element', $this->element);
+        $record->put('name', $this->name);
+        $record->put('title', $this->title);
+        $record->put('help', $this->help);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('element' => $this->element, 'name' => $this->name, 'title' => $this->title, 'help' => $this->help), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

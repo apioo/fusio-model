@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Consumer;
 
 
-class EventSubscriptionResponse implements \JsonSerializable
+class EventSubscriptionResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $status = null;
     protected ?int $code = null;
@@ -43,11 +43,19 @@ class EventSubscriptionResponse implements \JsonSerializable
     {
         return $this->executeDate;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('status', $this->status);
+        $record->put('code', $this->code);
+        $record->put('attempts', $this->attempts);
+        $record->put('executeDate', $this->executeDate);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('status' => $this->status, 'code' => $this->code, 'attempts' => $this->attempts, 'executeDate' => $this->executeDate), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

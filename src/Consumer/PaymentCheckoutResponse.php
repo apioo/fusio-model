@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Consumer;
 
 
-class PaymentCheckoutResponse implements \JsonSerializable
+class PaymentCheckoutResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $approvalUrl = null;
     public function setApprovalUrl(?string $approvalUrl) : void
@@ -16,11 +16,16 @@ class PaymentCheckoutResponse implements \JsonSerializable
     {
         return $this->approvalUrl;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('approvalUrl', $this->approvalUrl);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('approvalUrl' => $this->approvalUrl), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

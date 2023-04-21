@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class Dashboard implements \JsonSerializable
+class Dashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?StatisticChart $errorsPerRoute = null;
     protected ?StatisticChart $incomingRequests = null;
@@ -88,11 +88,24 @@ class Dashboard implements \JsonSerializable
     {
         return $this->latestTransactions;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('errorsPerRoute', $this->errorsPerRoute);
+        $record->put('incomingRequests', $this->incomingRequests);
+        $record->put('incomingTransactions', $this->incomingTransactions);
+        $record->put('mostUsedRoutes', $this->mostUsedRoutes);
+        $record->put('timePerRoute', $this->timePerRoute);
+        $record->put('latestApps', $this->latestApps);
+        $record->put('latestRequests', $this->latestRequests);
+        $record->put('latestUsers', $this->latestUsers);
+        $record->put('latestTransactions', $this->latestTransactions);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('errorsPerRoute' => $this->errorsPerRoute, 'incomingRequests' => $this->incomingRequests, 'incomingTransactions' => $this->incomingTransactions, 'mostUsedRoutes' => $this->mostUsedRoutes, 'timePerRoute' => $this->timePerRoute, 'latestApps' => $this->latestApps, 'latestRequests' => $this->latestRequests, 'latestUsers' => $this->latestUsers, 'latestTransactions' => $this->latestTransactions), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

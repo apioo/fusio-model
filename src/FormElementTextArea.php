@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model;
 
 
-class FormElementTextArea extends FormElement implements \JsonSerializable
+class FormElementTextArea extends FormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $mode = null;
     public function setMode(?string $mode) : void
@@ -16,11 +16,16 @@ class FormElementTextArea extends FormElement implements \JsonSerializable
     {
         return $this->mode;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = parent::toRecord();
+        $record->put('mode', $this->mode);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('mode' => $this->mode), static function ($value) : bool {
-            return $value !== null;
-        }));
+        return (object) $this->toRecord()->getAll();
     }
 }
 

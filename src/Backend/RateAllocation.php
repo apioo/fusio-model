@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class RateAllocation implements \JsonSerializable
+class RateAllocation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $routeId = null;
@@ -61,11 +61,21 @@ class RateAllocation implements \JsonSerializable
     {
         return $this->authenticated;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('id', $this->id);
+        $record->put('routeId', $this->routeId);
+        $record->put('userId', $this->userId);
+        $record->put('planId', $this->planId);
+        $record->put('appId', $this->appId);
+        $record->put('authenticated', $this->authenticated);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('id' => $this->id, 'routeId' => $this->routeId, 'userId' => $this->userId, 'planId' => $this->planId, 'appId' => $this->appId, 'authenticated' => $this->authenticated), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

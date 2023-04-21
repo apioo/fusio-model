@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class RouteMethod implements \JsonSerializable
+class RouteMethod implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $method = null;
     protected ?int $version = null;
@@ -124,11 +124,28 @@ class RouteMethod implements \JsonSerializable
     {
         return $this->costs;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('method', $this->method);
+        $record->put('version', $this->version);
+        $record->put('status', $this->status);
+        $record->put('active', $this->active);
+        $record->put('public', $this->public);
+        $record->put('description', $this->description);
+        $record->put('operationId', $this->operationId);
+        $record->put('parameters', $this->parameters);
+        $record->put('request', $this->request);
+        $record->put('response', $this->response);
+        $record->put('responses', $this->responses);
+        $record->put('action', $this->action);
+        $record->put('costs', $this->costs);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('method' => $this->method, 'version' => $this->version, 'status' => $this->status, 'active' => $this->active, 'public' => $this->public, 'description' => $this->description, 'operationId' => $this->operationId, 'parameters' => $this->parameters, 'request' => $this->request, 'response' => $this->response, 'responses' => $this->responses, 'action' => $this->action, 'costs' => $this->costs), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

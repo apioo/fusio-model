@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class SchemaPreviewResponse implements \JsonSerializable
+class SchemaPreviewResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $preview = null;
     public function setPreview(?string $preview) : void
@@ -16,11 +16,16 @@ class SchemaPreviewResponse implements \JsonSerializable
     {
         return $this->preview;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('preview', $this->preview);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('preview' => $this->preview), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

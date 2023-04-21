@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class MarketplaceCollection implements \JsonSerializable
+class MarketplaceCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?MarketplaceCollectionApps $apps = null;
     public function setApps(?MarketplaceCollectionApps $apps) : void
@@ -16,11 +16,16 @@ class MarketplaceCollection implements \JsonSerializable
     {
         return $this->apps;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('apps', $this->apps);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('apps' => $this->apps), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

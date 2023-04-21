@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class ScopeRoute implements \JsonSerializable
+class ScopeRoute implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $routeId = null;
     protected ?bool $allow = null;
@@ -34,11 +34,18 @@ class ScopeRoute implements \JsonSerializable
     {
         return $this->methods;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('routeId', $this->routeId);
+        $record->put('allow', $this->allow);
+        $record->put('methods', $this->methods);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('routeId' => $this->routeId, 'allow' => $this->allow, 'methods' => $this->methods), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class GeneratorProvider implements \JsonSerializable
+class GeneratorProvider implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $path = null;
     /**
@@ -49,11 +49,19 @@ class GeneratorProvider implements \JsonSerializable
     {
         return $this->config;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('path', $this->path);
+        $record->put('scopes', $this->scopes);
+        $record->put('public', $this->public);
+        $record->put('config', $this->config);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('path' => $this->path, 'scopes' => $this->scopes, 'public' => $this->public, 'config' => $this->config), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 

@@ -7,7 +7,7 @@ namespace Fusio\Model\Backend;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('name'))]
-class SchemaCreate extends Schema implements \JsonSerializable
+class SchemaCreate extends Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
 
