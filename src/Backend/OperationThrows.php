@@ -7,7 +7,7 @@ namespace Fusio\Model\Backend;
 /**
  * @extends \PSX\Record\Record<string>
  */
-class RouteMethodResponses extends \PSX\Record\Record
+class OperationThrows extends \PSX\Record\Record
 {
 }
 

@@ -1116,6 +1116,98 @@
         }
       }
     },
+    "Operation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "public": {
+          "type": "boolean"
+        },
+        "stability": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "httpMethod": {
+          "type": "string"
+        },
+        "httpPath": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parameters": {
+          "$ref": "Operation_Parameters"
+        },
+        "incoming": {
+          "type": "string"
+        },
+        "outgoing": {
+          "type": "string"
+        },
+        "throws": {
+          "$ref": "Operation_Throws"
+        },
+        "action": {
+          "type": "string"
+        },
+        "costs": {
+          "type": "integer"
+        },
+        "metadata": {
+          "$ref": "common:Metadata"
+        }
+      }
+    },
+    "Operation_Parameters": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "Operation_Schema"
+      }
+    },
+    "Operation_Throws": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "Operation_Schema": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Operation_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Operation"
+      }
+    },
+    "Operation_Create": {
+      "$extends": "Operation",
+      "required": [
+        "httpMethod",
+        "httpPath",
+        "name",
+        "outgoing",
+        "action"
+      ]
+    },
+    "Operation_Update": {
+      "$extends": "Operation"
+    },
     "Page": {
       "type": "object",
       "properties": {
@@ -1338,127 +1430,6 @@
           "type": "boolean"
         }
       }
-    },
-    "Route": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "integer"
-        },
-        "priority": {
-          "type": "integer"
-        },
-        "path": {
-          "type": "string"
-        },
-        "controller": {
-          "type": "string"
-        },
-        "scopes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "config": {
-          "type": "array",
-          "items": {
-            "$ref": "Route_Version"
-          }
-        },
-        "metadata": {
-          "$ref": "common:Metadata"
-        }
-      }
-    },
-    "Route_Version": {
-      "type": "object",
-      "properties": {
-        "version": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "integer"
-        },
-        "methods": {
-          "$ref": "Route_Methods"
-        }
-      }
-    },
-    "Route_Methods": {
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "Route_Method"
-      }
-    },
-    "Route_Method": {
-      "type": "object",
-      "properties": {
-        "method": {
-          "type": "string"
-        },
-        "version": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "integer"
-        },
-        "active": {
-          "type": "boolean"
-        },
-        "public": {
-          "type": "boolean"
-        },
-        "description": {
-          "type": "string"
-        },
-        "operationId": {
-          "type": "string"
-        },
-        "parameters": {
-          "type": "string"
-        },
-        "request": {
-          "type": "string"
-        },
-        "response": {
-          "type": "string"
-        },
-        "responses": {
-          "$ref": "Route_Method_Responses"
-        },
-        "action": {
-          "type": "string"
-        },
-        "costs": {
-          "type": "integer"
-        }
-      }
-    },
-    "Route_Method_Responses": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "string"
-      }
-    },
-    "Route_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Route"
-      }
-    },
-    "Route_Create": {
-      "$extends": "Route",
-      "required": [
-        "path",
-        "config"
-      ]
-    },
-    "Route_Update": {
-      "$extends": "Route"
     },
     "Schema": {
       "type": "object",
