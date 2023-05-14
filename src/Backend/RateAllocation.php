@@ -8,7 +8,7 @@ namespace Fusio\Model\Backend;
 class RateAllocation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
-    protected ?int $routeId = null;
+    protected ?int $operationId = null;
     protected ?int $userId = null;
     protected ?int $planId = null;
     protected ?int $appId = null;
@@ -21,13 +21,13 @@ class RateAllocation implements \JsonSerializable, \PSX\Record\RecordableInterfa
     {
         return $this->id;
     }
-    public function setRouteId(?int $routeId) : void
+    public function setOperationId(?int $operationId) : void
     {
-        $this->routeId = $routeId;
+        $this->operationId = $operationId;
     }
-    public function getRouteId() : ?int
+    public function getOperationId() : ?int
     {
-        return $this->routeId;
+        return $this->operationId;
     }
     public function setUserId(?int $userId) : void
     {
@@ -66,7 +66,7 @@ class RateAllocation implements \JsonSerializable, \PSX\Record\RecordableInterfa
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('id', $this->id);
-        $record->put('routeId', $this->routeId);
+        $record->put('operationId', $this->operationId);
         $record->put('userId', $this->userId);
         $record->put('planId', $this->planId);
         $record->put('appId', $this->appId);

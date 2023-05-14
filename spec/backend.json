@@ -146,65 +146,6 @@
         }
       }
     },
-    "Adapter": {
-      "type": "object",
-      "properties": {
-        "actionClass": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "connectionClass": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "paymentClass": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "userClass": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "routesClass": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "connection": {
-          "type": "array",
-          "items": {
-            "$ref": "Connection"
-          }
-        },
-        "schema": {
-          "type": "array",
-          "items": {
-            "$ref": "Schema"
-          }
-        },
-        "action": {
-          "type": "array",
-          "items": {
-            "$ref": "Action"
-          }
-        },
-        "routes": {
-          "type": "array",
-          "items": {
-            "$ref": "Route"
-          }
-        }
-      }
-    },
     "App": {
       "type": "object",
       "properties": {
@@ -641,7 +582,7 @@
     "Dashboard": {
       "type": "object",
       "properties": {
-        "errorsPerRoute": {
+        "errorsPerOperation": {
           "$ref": "Statistic_Chart"
         },
         "incomingRequests": {
@@ -650,10 +591,10 @@
         "incomingTransactions": {
           "$ref": "Statistic_Chart"
         },
-        "mostUsedRoutes": {
+        "mostUsedOperations": {
           "$ref": "Statistic_Chart"
         },
-        "timePerRoute": {
+        "timePerOperation": {
           "$ref": "Statistic_Chart"
         },
         "latestApps": {
@@ -931,10 +872,10 @@
             "$ref": "Action"
           }
         },
-        "routes": {
+        "operations": {
           "type": "array",
           "items": {
-            "$ref": "Route"
+            "$ref": "Operation"
           }
         }
       }
@@ -992,7 +933,7 @@
           "type": "string",
           "format": "date-time"
         },
-        "routeId": {
+        "operationId": {
           "type": "integer"
         },
         "appId": {
@@ -1309,7 +1250,7 @@
           "type": "string",
           "format": "date-time"
         },
-        "routeId": {
+        "operationId": {
           "type": "integer"
         },
         "appId": {
@@ -1414,7 +1355,7 @@
         "id": {
           "type": "integer"
         },
-        "routeId": {
+        "operationId": {
           "type": "integer"
         },
         "userId": {
@@ -1501,10 +1442,10 @@
         "description": {
           "type": "string"
         },
-        "routes": {
+        "operations": {
           "type": "array",
           "items": {
-            "$ref": "Scope_Route"
+            "$ref": "Scope_Operation"
           }
         },
         "metadata": {
@@ -1512,10 +1453,10 @@
         }
       }
     },
-    "Scope_Route": {
+    "Scope_Operation": {
       "type": "object",
       "properties": {
-        "routeId": {
+        "operationId": {
           "type": "integer"
         },
         "allow": {

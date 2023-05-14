@@ -16,9 +16,9 @@ class GeneratorProviderChangelog implements \JsonSerializable, \PSX\Record\Recor
      */
     protected ?array $actions = null;
     /**
-     * @var array<Route>|null
+     * @var array<Operation>|null
      */
-    protected ?array $routes = null;
+    protected ?array $operations = null;
     /**
      * @param array<Schema>|null $schemas
      */
@@ -42,15 +42,15 @@ class GeneratorProviderChangelog implements \JsonSerializable, \PSX\Record\Recor
         return $this->actions;
     }
     /**
-     * @param array<Route>|null $routes
+     * @param array<Operation>|null $operations
      */
-    public function setRoutes(?array $routes) : void
+    public function setOperations(?array $operations) : void
     {
-        $this->routes = $routes;
+        $this->operations = $operations;
     }
-    public function getRoutes() : ?array
+    public function getOperations() : ?array
     {
-        return $this->routes;
+        return $this->operations;
     }
     public function toRecord() : \PSX\Record\RecordInterface
     {
@@ -58,7 +58,7 @@ class GeneratorProviderChangelog implements \JsonSerializable, \PSX\Record\Recor
         $record = new \PSX\Record\Record();
         $record->put('schemas', $this->schemas);
         $record->put('actions', $this->actions);
-        $record->put('routes', $this->routes);
+        $record->put('operations', $this->operations);
         return $record;
     }
     public function jsonSerialize() : object

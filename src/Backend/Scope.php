@@ -13,9 +13,9 @@ class Scope implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $name = null;
     protected ?string $description = null;
     /**
-     * @var array<ScopeRoute>|null
+     * @var array<ScopeOperation>|null
      */
-    protected ?array $routes = null;
+    protected ?array $operations = null;
     protected ?\Fusio\Model\Metadata $metadata = null;
     public function setId(?int $id) : void
     {
@@ -42,15 +42,15 @@ class Scope implements \JsonSerializable, \PSX\Record\RecordableInterface
         return $this->description;
     }
     /**
-     * @param array<ScopeRoute>|null $routes
+     * @param array<ScopeOperation>|null $operations
      */
-    public function setRoutes(?array $routes) : void
+    public function setOperations(?array $operations) : void
     {
-        $this->routes = $routes;
+        $this->operations = $operations;
     }
-    public function getRoutes() : ?array
+    public function getOperations() : ?array
     {
-        return $this->routes;
+        return $this->operations;
     }
     public function setMetadata(?\Fusio\Model\Metadata $metadata) : void
     {
@@ -67,7 +67,7 @@ class Scope implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('id', $this->id);
         $record->put('name', $this->name);
         $record->put('description', $this->description);
-        $record->put('routes', $this->routes);
+        $record->put('operations', $this->operations);
         $record->put('metadata', $this->metadata);
         return $record;
     }

@@ -9,7 +9,7 @@ class LogCollectionQuery extends \Fusio\Model\CollectionQuery implements \JsonSe
 {
     protected ?\PSX\DateTime\LocalDateTime $from = null;
     protected ?\PSX\DateTime\LocalDateTime $to = null;
-    protected ?int $routeId = null;
+    protected ?int $operationId = null;
     protected ?int $appId = null;
     protected ?int $userId = null;
     protected ?string $ip = null;
@@ -35,13 +35,13 @@ class LogCollectionQuery extends \Fusio\Model\CollectionQuery implements \JsonSe
     {
         return $this->to;
     }
-    public function setRouteId(?int $routeId) : void
+    public function setOperationId(?int $operationId) : void
     {
-        $this->routeId = $routeId;
+        $this->operationId = $operationId;
     }
-    public function getRouteId() : ?int
+    public function getOperationId() : ?int
     {
-        return $this->routeId;
+        return $this->operationId;
     }
     public function setAppId(?int $appId) : void
     {
@@ -121,7 +121,7 @@ class LogCollectionQuery extends \Fusio\Model\CollectionQuery implements \JsonSe
         $record = parent::toRecord();
         $record->put('from', $this->from);
         $record->put('to', $this->to);
-        $record->put('routeId', $this->routeId);
+        $record->put('operationId', $this->operationId);
         $record->put('appId', $this->appId);
         $record->put('userId', $this->userId);
         $record->put('ip', $this->ip);
