@@ -1084,8 +1084,12 @@
         "httpPath": {
           "type": "string"
         },
+        "httpCode": {
+          "type": "integer"
+        },
         "name": {
-          "type": "string"
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
         },
         "parameters": {
           "$ref": "Operation_Parameters"
@@ -1104,6 +1108,12 @@
         },
         "costs": {
           "type": "integer"
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "metadata": {
           "$ref": "common:Metadata"
@@ -1141,6 +1151,7 @@
       "required": [
         "httpMethod",
         "httpPath",
+        "httpCode",
         "name",
         "outgoing",
         "action"

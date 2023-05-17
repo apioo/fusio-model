@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Pattern;
 
 class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
@@ -15,6 +16,8 @@ class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $description = null;
     protected ?string $httpMethod = null;
     protected ?string $httpPath = null;
+    protected ?int $httpCode = null;
+    #[Pattern('^[a-zA-Z0-9\\-\\_\\.]{3,64}$')]
     protected ?string $name = null;
     protected ?OperationParameters $parameters = null;
     protected ?string $incoming = null;
@@ -22,6 +25,10 @@ class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?OperationThrows $throws = null;
     protected ?string $action = null;
     protected ?int $costs = null;
+    /**
+     * @var array<string>|null
+     */
+    protected ?array $scopes = null;
     protected ?\Fusio\Model\Metadata $metadata = null;
     public function setId(?int $id) : void
     {
@@ -87,6 +94,14 @@ class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->httpPath;
     }
+    public function setHttpCode(?int $httpCode) : void
+    {
+        $this->httpCode = $httpCode;
+    }
+    public function getHttpCode() : ?int
+    {
+        return $this->httpCode;
+    }
     public function setName(?string $name) : void
     {
         $this->name = $name;
@@ -143,6 +158,17 @@ class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->costs;
     }
+    /**
+     * @param array<string>|null $scopes
+     */
+    public function setScopes(?array $scopes) : void
+    {
+        $this->scopes = $scopes;
+    }
+    public function getScopes() : ?array
+    {
+        return $this->scopes;
+    }
     public function setMetadata(?\Fusio\Model\Metadata $metadata) : void
     {
         $this->metadata = $metadata;
@@ -163,6 +189,7 @@ class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('description', $this->description);
         $record->put('httpMethod', $this->httpMethod);
         $record->put('httpPath', $this->httpPath);
+        $record->put('httpCode', $this->httpCode);
         $record->put('name', $this->name);
         $record->put('parameters', $this->parameters);
         $record->put('incoming', $this->incoming);
@@ -170,6 +197,7 @@ class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('throws', $this->throws);
         $record->put('action', $this->action);
         $record->put('costs', $this->costs);
+        $record->put('scopes', $this->scopes);
         $record->put('metadata', $this->metadata);
         return $record;
     }
