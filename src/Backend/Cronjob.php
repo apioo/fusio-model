@@ -15,7 +15,7 @@ class Cronjob implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $action = null;
     protected ?\PSX\DateTime\LocalDateTime $executeDate = null;
     protected ?int $exitCode = null;
-    protected ?\Fusio\Model\Metadata $metadata = null;
+    protected ?\Fusio\Model\Common\Metadata $metadata = null;
     /**
      * @var array<CronjobError>|null
      */
@@ -68,11 +68,11 @@ class Cronjob implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->exitCode;
     }
-    public function setMetadata(?\Fusio\Model\Metadata $metadata) : void
+    public function setMetadata(?\Fusio\Model\Common\Metadata $metadata) : void
     {
         $this->metadata = $metadata;
     }
-    public function getMetadata() : ?\Fusio\Model\Metadata
+    public function getMetadata() : ?\Fusio\Model\Common\Metadata
     {
         return $this->metadata;
     }

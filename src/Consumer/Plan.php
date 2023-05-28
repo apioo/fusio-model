@@ -12,7 +12,7 @@ class Plan implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $description = null;
     protected ?float $price = null;
     protected ?int $points = null;
-    protected ?\Fusio\Model\Metadata $metadata = null;
+    protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -53,11 +53,11 @@ class Plan implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->points;
     }
-    public function setMetadata(?\Fusio\Model\Metadata $metadata) : void
+    public function setMetadata(?\Fusio\Model\Common\Metadata $metadata) : void
     {
         $this->metadata = $metadata;
     }
-    public function getMetadata() : ?\Fusio\Model\Metadata
+    public function getMetadata() : ?\Fusio\Model\Common\Metadata
     {
         return $this->metadata;
     }

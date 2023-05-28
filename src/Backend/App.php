@@ -17,7 +17,7 @@ class App implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $parameters = null;
     protected ?string $appKey = null;
     protected ?string $appSecret = null;
-    protected ?\Fusio\Model\Metadata $metadata = null;
+    protected ?\Fusio\Model\Common\Metadata $metadata = null;
     protected ?\PSX\DateTime\LocalDateTime $date = null;
     /**
      * @var array<string>|null
@@ -91,11 +91,11 @@ class App implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->appSecret;
     }
-    public function setMetadata(?\Fusio\Model\Metadata $metadata) : void
+    public function setMetadata(?\Fusio\Model\Common\Metadata $metadata) : void
     {
         $this->metadata = $metadata;
     }
-    public function getMetadata() : ?\Fusio\Model\Metadata
+    public function getMetadata() : ?\Fusio\Model\Common\Metadata
     {
         return $this->metadata;
     }

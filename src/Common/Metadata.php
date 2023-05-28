@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Fusio\Model;
+namespace Fusio\Model\Common;
 
 /**
  * @extends \PSX\Record\Record<string>

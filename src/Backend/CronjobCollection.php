@@ -5,9 +5,9 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 /**
- * @extends \Fusio\Model\Collection<Cronjob>
+ * @extends \Fusio\Model\Common\Collection<Cronjob>
  */
-class CronjobCollection extends \Fusio\Model\Collection
+class CronjobCollection extends \Fusio\Model\Common\Collection
 {
 }
 

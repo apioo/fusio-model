@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class LogCollectionQuery extends \Fusio\Model\CollectionQuery implements \JsonSerializable, \PSX\Record\RecordableInterface
+class LogCollectionQuery extends \Fusio\Model\Common\CollectionQuery implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?\PSX\DateTime\LocalDateTime $from = null;
     protected ?\PSX\DateTime\LocalDateTime $to = null;

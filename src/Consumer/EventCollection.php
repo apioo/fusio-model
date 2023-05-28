@@ -5,9 +5,9 @@ declare(strict_types = 1);
 namespace Fusio\Model\Consumer;
 
 /**
- * @extends \Fusio\Model\Collection<Event>
+ * @extends \Fusio\Model\Common\Collection<Event>
  */
-class EventCollection extends \Fusio\Model\Collection
+class EventCollection extends \Fusio\Model\Common\Collection
 {
 }
 

@@ -24,7 +24,7 @@ class User implements \JsonSerializable, \PSX\Record\RecordableInterface
      * @var array<App>|null
      */
     protected ?array $apps = null;
-    protected ?\Fusio\Model\Metadata $metadata = null;
+    protected ?\Fusio\Model\Common\Metadata $metadata = null;
     protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setId(?int $id) : void
     {
@@ -104,11 +104,11 @@ class User implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->apps;
     }
-    public function setMetadata(?\Fusio\Model\Metadata $metadata) : void
+    public function setMetadata(?\Fusio\Model\Common\Metadata $metadata) : void
     {
         $this->metadata = $metadata;
     }
-    public function getMetadata() : ?\Fusio\Model\Metadata
+    public function getMetadata() : ?\Fusio\Model\Common\Metadata
     {
         return $this->metadata;
     }

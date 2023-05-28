@@ -5,9 +5,9 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 /**
- * @extends \Fusio\Model\Collection<AppToken>
+ * @extends \Fusio\Model\Common\Collection<AppToken>
  */
-class AppTokenCollection extends \Fusio\Model\Collection
+class AppTokenCollection extends \Fusio\Model\Common\Collection
 {
 }
 

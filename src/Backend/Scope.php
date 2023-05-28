@@ -16,7 +16,7 @@ class Scope implements \JsonSerializable, \PSX\Record\RecordableInterface
      * @var array<ScopeOperation>|null
      */
     protected ?array $operations = null;
-    protected ?\Fusio\Model\Metadata $metadata = null;
+    protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -52,11 +52,11 @@ class Scope implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->operations;
     }
-    public function setMetadata(?\Fusio\Model\Metadata $metadata) : void
+    public function setMetadata(?\Fusio\Model\Common\Metadata $metadata) : void
     {
         $this->metadata = $metadata;
     }
-    public function getMetadata() : ?\Fusio\Model\Metadata
+    public function getMetadata() : ?\Fusio\Model\Common\Metadata
     {
         return $this->metadata;
     }

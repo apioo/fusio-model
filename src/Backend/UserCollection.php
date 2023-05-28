@@ -5,9 +5,9 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 /**
- * @extends \Fusio\Model\Collection<User>
+ * @extends \Fusio\Model\Common\Collection<User>
  */
-class UserCollection extends \Fusio\Model\Collection
+class UserCollection extends \Fusio\Model\Common\Collection
 {
 }
 

@@ -29,7 +29,7 @@ class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
      * @var array<string>|null
      */
     protected ?array $scopes = null;
-    protected ?\Fusio\Model\Metadata $metadata = null;
+    protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id) : void
     {
         $this->id = $id;
@@ -169,11 +169,11 @@ class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->scopes;
     }
-    public function setMetadata(?\Fusio\Model\Metadata $metadata) : void
+    public function setMetadata(?\Fusio\Model\Common\Metadata $metadata) : void
     {
         $this->metadata = $metadata;
     }
-    public function getMetadata() : ?\Fusio\Model\Metadata
+    public function getMetadata() : ?\Fusio\Model\Common\Metadata
     {
         return $this->metadata;
     }
