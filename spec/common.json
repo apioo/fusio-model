@@ -20,29 +20,6 @@
         }
       }
     },
-    "Collection_Query": {
-      "type": "object",
-      "properties": {
-        "startIndex": {
-          "type": "integer"
-        },
-        "count": {
-          "type": "integer"
-        },
-        "search": {
-          "type": "string"
-        }
-      }
-    },
-    "Collection_Category_Query": {
-      "$extends": "Collection_Query",
-      "type": "object",
-      "properties": {
-        "categoryId": {
-          "type": "integer"
-        }
-      }
-    },
     "Message": {
       "type": "object",
       "properties": {
@@ -50,6 +27,9 @@
           "type": "boolean"
         },
         "message": {
+          "type": "string"
+        },
+        "id": {
           "type": "string"
         }
       }
