@@ -25,21 +25,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Backend
-        uses: apioo/typeschema-generator-action@v0.1
+        uses: apioo/typeschema-generator-action@v0.1.0
         with:
           format: 'php'
           config: 'namespace=Fusio\Model\Backend&mapping[common]=Fusio\Model'
           source: 'spec/backend.json'
           output: './src/Backend'
       - name: Consumer
-        uses: apioo/typeschema-generator-action@v0.1
+        uses: apioo/typeschema-generator-action@v0.1.0
         with:
           format: 'php'
           config: 'namespace=Fusio\Model\Consumer&mapping[common]=Fusio\Model'
           source: 'spec/consumer.json'
           output: './src/Consumer'
       - name: System
-        uses: apioo/typeschema-generator-action@v0.1
+        uses: apioo/typeschema-generator-action@v0.1.0
         with:
           format: 'php'
           config: 'namespace=Fusio\Model\System&mapping[common]=Fusio\Model'
