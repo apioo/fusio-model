@@ -5,19 +5,21 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Pattern;
+use PSX\Schema\Attribute\Required;
 
+#[Required(array('provider', 'remoteId', 'name'))]
 class UserRemote implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    protected ?string $provider = null;
+    protected ?int $provider = null;
     protected ?string $remoteId = null;
     #[Pattern('^[a-zA-Z0-9\\-\\_\\.]{3,32}$')]
     protected ?string $name = null;
     protected ?string $email = null;
-    public function setProvider(?string $provider) : void
+    public function setProvider(?int $provider) : void
     {
         $this->provider = $provider;
     }
-    public function getProvider() : ?string
+    public function getProvider() : ?int
     {
         return $this->provider;
     }
