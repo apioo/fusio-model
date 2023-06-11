@@ -1618,7 +1618,7 @@
       "type": "object",
       "properties": {
         "provider": {
-          "type": "string"
+          "type": "integer"
         },
         "remoteId": {
           "type": "string"
@@ -1630,7 +1630,12 @@
         "email": {
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "provider",
+        "remoteId",
+        "name"
+      ]
     },
     "User_Collection": {
       "$ref": "common:Collection",
