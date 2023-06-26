@@ -14,7 +14,6 @@ class Action implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $name = null;
     protected ?string $class = null;
     protected ?bool $async = null;
-    protected ?string $engine = null;
     protected ?ActionConfig $config = null;
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id) : void
@@ -57,14 +56,6 @@ class Action implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->async;
     }
-    public function setEngine(?string $engine) : void
-    {
-        $this->engine = $engine;
-    }
-    public function getEngine() : ?string
-    {
-        return $this->engine;
-    }
     public function setConfig(?ActionConfig $config) : void
     {
         $this->config = $config;
@@ -90,7 +81,6 @@ class Action implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('name', $this->name);
         $record->put('class', $this->class);
         $record->put('async', $this->async);
-        $record->put('engine', $this->engine);
         $record->put('config', $this->config);
         $record->put('metadata', $this->metadata);
         return $record;
