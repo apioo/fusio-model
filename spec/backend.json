@@ -42,9 +42,6 @@
         "async": {
           "type": "boolean"
         },
-        "engine": {
-          "type": "string"
-        },
         "config": {
           "$ref": "Action_Config"
         },
