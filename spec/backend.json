@@ -745,6 +745,72 @@
     "Event_Subscription_Update": {
       "$extends": "Event_Subscription"
     },
+    "Identity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "roleId": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "class": {
+          "type": "string"
+        },
+        "clientId": {
+          "type": "string"
+        },
+        "clientSecret": {
+          "type": "string"
+        },
+        "authorizationUri": {
+          "type": "string"
+        },
+        "tokenUri": {
+          "type": "string"
+        },
+        "userInfoUri": {
+          "type": "string"
+        },
+        "idProperty": {
+          "type": "string"
+        },
+        "nameProperty": {
+          "type": "string"
+        },
+        "emailProperty": {
+          "type": "string"
+        },
+        "allowCreate": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Identity_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Identity"
+      }
+    },
+    "Identity_Create": {
+      "$extends": "Identity",
+      "required": [
+        "name",
+        "class",
+        "clientId",
+        "clientSecret"
+      ]
+    },
+    "Identity_Update": {
+      "$extends": "Identity"
+    },
     "Generator_Index_Providers": {
       "type": "object",
       "properties": {
