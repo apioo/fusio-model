@@ -9,6 +9,7 @@ use PSX\Schema\Attribute\Pattern;
 class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
+    protected ?int $appId = null;
     protected ?int $roleId = null;
     #[Pattern('^[a-zA-Z0-9\\-\\_]{3,255}$')]
     protected ?string $name = null;
@@ -30,6 +31,14 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
     public function getId() : ?int
     {
         return $this->id;
+    }
+    public function setAppId(?int $appId) : void
+    {
+        $this->appId = $appId;
+    }
+    public function getAppId() : ?int
+    {
+        return $this->appId;
     }
     public function setRoleId(?int $roleId) : void
     {
@@ -140,6 +149,7 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('id', $this->id);
+        $record->put('appId', $this->appId);
         $record->put('roleId', $this->roleId);
         $record->put('name', $this->name);
         $record->put('icon', $this->icon);
