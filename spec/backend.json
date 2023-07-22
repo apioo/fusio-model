@@ -1674,29 +1674,6 @@
         "type": "string"
       }
     },
-    "User_Remote": {
-      "type": "object",
-      "properties": {
-        "provider": {
-          "type": "integer"
-        },
-        "remoteId": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,32}$"
-        },
-        "email": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "provider",
-        "remoteId",
-        "name"
-      ]
-    },
     "User_Collection": {
       "$ref": "common:Collection",
       "$template": {
