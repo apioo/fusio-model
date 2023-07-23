@@ -257,6 +257,29 @@
       },
       "required": ["event", "endpoint"]
     },
+    "Identity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "redirect": {
+          "type": "string"
+        }
+      }
+    },
+    "Identity_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Identity"
+      }
+    },
     "Log": {
       "type": "object",
       "properties": {
@@ -603,20 +626,6 @@
         }
       },
       "required": ["token", "newPassword"]
-    },
-    "User_Provider": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "clientId": {
-          "type": "string"
-        },
-        "redirectUri": {
-          "type": "string"
-        }
-      }
     },
     "User_Refresh": {
       "type": "object",
