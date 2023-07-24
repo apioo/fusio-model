@@ -814,6 +814,28 @@
     "Identity_Update": {
       "$extends": "Identity"
     },
+    "Identity_Index": {
+      "type": "object",
+      "properties": {
+        "providers": {
+          "type": "array",
+          "items": {
+            "$ref": "Identity_Index_Entry"
+          }
+        }
+      }
+    },
+    "Identity_Index_Entry": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "class": {
+          "type": "string"
+        }
+      }
+    },
     "Generator_Index_Providers": {
       "type": "object",
       "properties": {
