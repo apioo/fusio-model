@@ -767,34 +767,17 @@
         "class": {
           "type": "string"
         },
-        "clientId": {
-          "type": "string"
-        },
-        "clientSecret": {
-          "type": "string"
-        },
-        "authorizationUri": {
-          "type": "string"
-        },
-        "tokenUri": {
-          "type": "string"
-        },
-        "userInfoUri": {
-          "type": "string"
-        },
-        "idProperty": {
-          "type": "string"
-        },
-        "nameProperty": {
-          "type": "string"
-        },
-        "emailProperty": {
-          "type": "string"
+        "config": {
+          "$ref": "Identity_Config"
         },
         "allowCreate": {
           "type": "boolean"
         }
       }
+    },
+    "Identity_Config": {
+      "type": "object",
+      "additionalProperties": true
     },
     "Identity_Collection": {
       "$ref": "common:Collection",
@@ -805,10 +788,10 @@
     "Identity_Create": {
       "$extends": "Identity",
       "required": [
+        "appId",
         "name",
-        "class",
-        "clientId",
-        "clientSecret"
+        "icon",
+        "class"
       ]
     },
     "Identity_Update": {
