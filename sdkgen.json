@@ -1,0 +1,30 @@
+{
+  "type": "model-php",
+  "require": {
+    "./spec/common.json": {
+      "target": "./src/Common",
+      "namespace": "Fusio\\Model\\Common"
+    },
+    "./spec/backend.json": {
+      "target": "./src/Backend",
+      "namespace": "Fusio\\Model\\Backend",
+      "mapping": {
+        "common": "Fusio\\Model\\Common"
+      }
+    },
+    "./spec/consumer.json": {
+      "target": "./src/Consumer",
+      "namespace": "Fusio\\Model\\Consumer",
+      "mapping": {
+        "common": "Fusio\\Model\\Common"
+      }
+    },
+    "./spec/system.json": {
+      "target": "./src/System",
+      "namespace": "Fusio\\Model\\System",
+      "mapping": {
+        "common": "Fusio\\Model\\Common"
+      }
+    }
+  }
+}
