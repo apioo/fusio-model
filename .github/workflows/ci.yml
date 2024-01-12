@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Backend
-        uses: apioo/sdkgen-generator-action@v0.1.2
+        uses: apioo/sdkgen-generator-action@v0.1.3
         with:
           client_id: '${{ secrets.SDKGEN_CLIENT_ID }}'
           client_secret: '${{ secrets.SDKGEN_CLIENT_SECRET }}'
