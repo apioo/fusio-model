@@ -9,34 +9,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Common
-        uses: apioo/typeschema-generator-action@v0.1.3
-        with:
-          format: 'php'
-          config: 'namespace=Fusio\Model\Common'
-          source: 'spec/common.json'
-          output: './src/Common'
       - name: Backend
-        uses: apioo/typeschema-generator-action@v0.1.3
+        uses: apioo/sdkgen-generator-action@v0.1.2
         with:
-          format: 'php'
-          config: 'namespace=Fusio\Model\Backend&mapping[common]=Fusio\Model\Common'
-          source: 'spec/backend.json'
-          output: './src/Backend'
-      - name: Consumer
-        uses: apioo/typeschema-generator-action@v0.1.3
-        with:
-          format: 'php'
-          config: 'namespace=Fusio\Model\Consumer&mapping[common]=Fusio\Model\Common'
-          source: 'spec/consumer.json'
-          output: './src/Consumer'
-      - name: System
-        uses: apioo/typeschema-generator-action@v0.1.3
-        with:
-          format: 'php'
-          config: 'namespace=Fusio\Model\System&mapping[common]=Fusio\Model\Common'
-          source: 'spec/system.json'
-          output: './src/System'
+          client_id: '${{ secrets.SDKGEN_CLIENT_ID }}'
+          client_secret: '${{ secrets.SDKGEN_CLIENT_SECRET }}'
       - name: Composer install
         run: composer install --no-interaction --no-ansi --no-progress
       - name: Run Psalm
