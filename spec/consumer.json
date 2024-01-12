@@ -1,6 +1,6 @@
 {
   "$import": {
-    "common": "file:///common.json"
+    "common": "https://raw.githubusercontent.com/apioo/fusio-model/main/spec/common.json"
   },
   "definitions": {
     "App": {
