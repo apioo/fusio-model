@@ -90,6 +90,9 @@ class Log implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->errors = $errors;
     }
+    /**
+     * @return array<LogError>|null
+     */
     public function getErrors() : ?array
     {
         return $this->errors;

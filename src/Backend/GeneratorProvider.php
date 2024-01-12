@@ -29,6 +29,9 @@ class GeneratorProvider implements \JsonSerializable, \PSX\Record\RecordableInte
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<string>|null
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;

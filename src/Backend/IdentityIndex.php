@@ -18,6 +18,9 @@ class IdentityIndex implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         $this->providers = $providers;
     }
+    /**
+     * @return array<IdentityIndexEntry>|null
+     */
     public function getProviders() : ?array
     {
         return $this->providers;

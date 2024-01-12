@@ -18,6 +18,9 @@ class ScopeCategories implements \JsonSerializable, \PSX\Record\RecordableInterf
     {
         $this->categories = $categories;
     }
+    /**
+     * @return array<ScopeCategory>|null
+     */
     public function getCategories() : ?array
     {
         return $this->categories;

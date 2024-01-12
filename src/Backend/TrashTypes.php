@@ -18,6 +18,9 @@ class TrashTypes implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->types = $types;
     }
+    /**
+     * @return array<string>|null
+     */
     public function getTypes() : ?array
     {
         return $this->types;

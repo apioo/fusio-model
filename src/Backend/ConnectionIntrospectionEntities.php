@@ -18,6 +18,9 @@ class ConnectionIntrospectionEntities implements \JsonSerializable, \PSX\Record\
     {
         $this->entities = $entities;
     }
+    /**
+     * @return array<string>|null
+     */
     public function getEntities() : ?array
     {
         return $this->entities;

@@ -18,6 +18,9 @@ class GeneratorIndexProviders implements \JsonSerializable, \PSX\Record\Recordab
     {
         $this->providers = $providers;
     }
+    /**
+     * @return array<GeneratorIndexProvider>|null
+     */
     public function getProviders() : ?array
     {
         return $this->providers;

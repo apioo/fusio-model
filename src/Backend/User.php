@@ -89,6 +89,9 @@ class User implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<string>|null
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;
@@ -100,6 +103,9 @@ class User implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->apps = $apps;
     }
+    /**
+     * @return array<App>|null
+     */
     public function getApps() : ?array
     {
         return $this->apps;

@@ -54,6 +54,9 @@ class EventSubscription implements \JsonSerializable, \PSX\Record\RecordableInte
     {
         $this->responses = $responses;
     }
+    /**
+     * @return array<EventSubscriptionResponse>|null
+     */
     public function getResponses() : ?array
     {
         return $this->responses;

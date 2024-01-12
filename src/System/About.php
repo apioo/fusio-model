@@ -117,6 +117,9 @@ class About implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->categories = $categories;
     }
+    /**
+     * @return array<string>|null
+     */
     public function getCategories() : ?array
     {
         return $this->categories;
@@ -128,6 +131,9 @@ class About implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<string>|null
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;
@@ -147,6 +153,9 @@ class About implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->links = $links;
     }
+    /**
+     * @return array<AboutLink>|null
+     */
     public function getLinks() : ?array
     {
         return $this->links;

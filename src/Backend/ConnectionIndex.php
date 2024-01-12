@@ -18,6 +18,9 @@ class ConnectionIndex implements \JsonSerializable, \PSX\Record\RecordableInterf
     {
         $this->connections = $connections;
     }
+    /**
+     * @return array<ConnectionIndexEntry>|null
+     */
     public function getConnections() : ?array
     {
         return $this->connections;

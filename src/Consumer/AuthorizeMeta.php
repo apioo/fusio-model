@@ -36,6 +36,9 @@ class AuthorizeMeta implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<Scope>|null
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;

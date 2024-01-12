@@ -26,6 +26,9 @@ class StatisticChart implements \JsonSerializable, \PSX\Record\RecordableInterfa
     {
         $this->labels = $labels;
     }
+    /**
+     * @return array<string>|null
+     */
     public function getLabels() : ?array
     {
         return $this->labels;
@@ -37,6 +40,9 @@ class StatisticChart implements \JsonSerializable, \PSX\Record\RecordableInterfa
     {
         $this->data = $data;
     }
+    /**
+     * @return array<StatisticChartData>|null
+     */
     public function getData() : ?array
     {
         return $this->data;
@@ -48,6 +54,9 @@ class StatisticChart implements \JsonSerializable, \PSX\Record\RecordableInterfa
     {
         $this->series = $series;
     }
+    /**
+     * @return array<string>|null
+     */
     public function getSeries() : ?array
     {
         return $this->series;

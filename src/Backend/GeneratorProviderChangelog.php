@@ -26,6 +26,9 @@ class GeneratorProviderChangelog implements \JsonSerializable, \PSX\Record\Recor
     {
         $this->schemas = $schemas;
     }
+    /**
+     * @return array<Schema>|null
+     */
     public function getSchemas() : ?array
     {
         return $this->schemas;
@@ -37,6 +40,9 @@ class GeneratorProviderChangelog implements \JsonSerializable, \PSX\Record\Recor
     {
         $this->actions = $actions;
     }
+    /**
+     * @return array<Action>|null
+     */
     public function getActions() : ?array
     {
         return $this->actions;
@@ -48,6 +54,9 @@ class GeneratorProviderChangelog implements \JsonSerializable, \PSX\Record\Recor
     {
         $this->operations = $operations;
     }
+    /**
+     * @return array<Operation>|null
+     */
     public function getOperations() : ?array
     {
         return $this->operations;

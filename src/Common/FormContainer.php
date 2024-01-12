@@ -18,6 +18,9 @@ class FormContainer implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         $this->element = $element;
     }
+    /**
+     * @return array<FormElementInput|FormElementSelect|FormElementTag|FormElementTextArea>|null
+     */
     public function getElement() : ?array
     {
         return $this->element;

@@ -69,6 +69,9 @@ class Rate implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->allocation = $allocation;
     }
+    /**
+     * @return array<RateAllocation>|null
+     */
     public function getAllocation() : ?array
     {
         return $this->allocation;

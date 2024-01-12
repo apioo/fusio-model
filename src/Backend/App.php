@@ -114,6 +114,9 @@ class App implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<string>|null
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;
@@ -125,6 +128,9 @@ class App implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->tokens = $tokens;
     }
+    /**
+     * @return array<AppToken>|null
+     */
     public function getTokens() : ?array
     {
         return $this->tokens;

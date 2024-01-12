@@ -36,6 +36,9 @@ class UserLogin implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<string>|null
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;

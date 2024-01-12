@@ -48,6 +48,9 @@ class Scope implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->operations = $operations;
     }
+    /**
+     * @return array<ScopeOperation>|null
+     */
     public function getOperations() : ?array
     {
         return $this->operations;

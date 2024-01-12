@@ -18,6 +18,9 @@ class ActionIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->actions = $actions;
     }
+    /**
+     * @return array<ActionIndexEntry>|null
+     */
     public function getActions() : ?array
     {
         return $this->actions;

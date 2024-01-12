@@ -36,6 +36,9 @@ class ScopeCategory implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         $this->scopes = $scopes;
     }
+    /**
+     * @return array<ScopeCategoryScope>|null
+     */
     public function getScopes() : ?array
     {
         return $this->scopes;

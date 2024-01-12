@@ -48,6 +48,9 @@ class AppToken implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->scope = $scope;
     }
+    /**
+     * @return array<string>|null
+     */
     public function getScope() : ?array
     {
         return $this->scope;

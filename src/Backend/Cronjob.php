@@ -83,6 +83,9 @@ class Cronjob implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         $this->errors = $errors;
     }
+    /**
+     * @return array<CronjobError>|null
+     */
     public function getErrors() : ?array
     {
         return $this->errors;

@@ -18,6 +18,9 @@ class FormElementSelect extends FormElement implements \JsonSerializable, \PSX\R
     {
         $this->options = $options;
     }
+    /**
+     * @return array<FormElementSelectOption>|null
+     */
     public function getOptions() : ?array
     {
         return $this->options;

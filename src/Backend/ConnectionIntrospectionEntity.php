@@ -31,6 +31,9 @@ class ConnectionIntrospectionEntity implements \JsonSerializable, \PSX\Record\Re
     {
         $this->headers = $headers;
     }
+    /**
+     * @return array<string>|null
+     */
     public function getHeaders() : ?array
     {
         return $this->headers;
@@ -42,6 +45,9 @@ class ConnectionIntrospectionEntity implements \JsonSerializable, \PSX\Record\Re
     {
         $this->rows = $rows;
     }
+    /**
+     * @return array<ConnectionIntrospectionEntityRow>|null
+     */
     public function getRows() : ?array
     {
         return $this->rows;
