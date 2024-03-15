@@ -6,7 +6,7 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Required;
 
-#[Required(array('eventId', 'userId', 'endpoint'))]
+#[Required(array('eventId', 'userId', 'name', 'endpoint'))]
 class WebhookCreate extends Webhook implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

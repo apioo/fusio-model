@@ -10,6 +10,7 @@ class Webhook implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?int $id = null;
     protected ?int $eventId = null;
     protected ?int $userId = null;
+    protected ?string $name = null;
     protected ?string $endpoint = null;
     /**
      * @var array<WebhookResponse>|null
@@ -38,6 +39,14 @@ class Webhook implements \JsonSerializable, \PSX\Record\RecordableInterface
     public function getUserId() : ?int
     {
         return $this->userId;
+    }
+    public function setName(?string $name) : void
+    {
+        $this->name = $name;
+    }
+    public function getName() : ?string
+    {
+        return $this->name;
     }
     public function setEndpoint(?string $endpoint) : void
     {
@@ -68,6 +77,7 @@ class Webhook implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('id', $this->id);
         $record->put('eventId', $this->eventId);
         $record->put('userId', $this->userId);
+        $record->put('name', $this->name);
         $record->put('endpoint', $this->endpoint);
         $record->put('responses', $this->responses);
         return $record;

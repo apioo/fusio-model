@@ -6,10 +6,11 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Required;
 
-#[Required(array('event', 'endpoint'))]
+#[Required(array('event', 'name', 'endpoint'))]
 class WebhookUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $event = null;
+    protected ?string $name = null;
     protected ?string $endpoint = null;
     public function setEvent(?string $event) : void
     {
@@ -18,6 +19,14 @@ class WebhookUpdate implements \JsonSerializable, \PSX\Record\RecordableInterfac
     public function getEvent() : ?string
     {
         return $this->event;
+    }
+    public function setName(?string $name) : void
+    {
+        $this->name = $name;
+    }
+    public function getName() : ?string
+    {
+        return $this->name;
     }
     public function setEndpoint(?string $endpoint) : void
     {
@@ -32,6 +41,7 @@ class WebhookUpdate implements \JsonSerializable, \PSX\Record\RecordableInterfac
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('event', $this->event);
+        $record->put('name', $this->name);
         $record->put('endpoint', $this->endpoint);
         return $record;
     }
