@@ -5,14 +5,14 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 
-class EventSubscription implements \JsonSerializable, \PSX\Record\RecordableInterface
+class Webhook implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $eventId = null;
     protected ?int $userId = null;
     protected ?string $endpoint = null;
     /**
-     * @var array<EventSubscriptionResponse>|null
+     * @var array<WebhookResponse>|null
      */
     protected ?array $responses = null;
     public function setId(?int $id) : void
@@ -48,14 +48,14 @@ class EventSubscription implements \JsonSerializable, \PSX\Record\RecordableInte
         return $this->endpoint;
     }
     /**
-     * @param array<EventSubscriptionResponse>|null $responses
+     * @param array<WebhookResponse>|null $responses
      */
     public function setResponses(?array $responses) : void
     {
         $this->responses = $responses;
     }
     /**
-     * @return array<EventSubscriptionResponse>|null
+     * @return array<WebhookResponse>|null
      */
     public function getResponses() : ?array
     {
