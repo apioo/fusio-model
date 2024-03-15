@@ -187,76 +187,6 @@
         "T": "Event"
       }
     },
-    "Event_Subscription": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "integer"
-        },
-        "event": {
-          "type": "string"
-        },
-        "endpoint": {
-          "type": "string"
-        },
-        "responses": {
-          "type": "array",
-          "items": {
-            "$ref": "Event_Subscription_Response"
-          }
-        }
-      }
-    },
-    "Event_Subscription_Response": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "type": "integer"
-        },
-        "code": {
-          "type": "integer"
-        },
-        "attempts": {
-          "type": "string"
-        },
-        "executeDate": {
-          "type": "string"
-        }
-      }
-    },
-    "Event_Subscription_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Event_Subscription"
-      }
-    },
-    "Event_Subscription_Create": {
-      "type": "object",
-      "properties": {
-        "event": {
-          "type": "string"
-        },
-        "endpoint": {
-          "type": "string"
-        }
-      },
-      "required": ["event", "endpoint"]
-    },
-    "Event_Subscription_Update": {
-      "type": "object",
-      "properties": {
-        "event": {
-          "type": "string"
-        },
-        "endpoint": {
-          "type": "string"
-        }
-      },
-      "required": ["event", "endpoint"]
-    },
     "Identity": {
       "type": "object",
       "properties": {
@@ -652,6 +582,76 @@
         }
       },
       "required": ["name", "email", "password"]
+    },
+    "Webhook": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "event": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "responses": {
+          "type": "array",
+          "items": {
+            "$ref": "Event_Subscription_Response"
+          }
+        }
+      }
+    },
+    "Webhook_Response": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer"
+        },
+        "code": {
+          "type": "integer"
+        },
+        "attempts": {
+          "type": "string"
+        },
+        "executeDate": {
+          "type": "string"
+        }
+      }
+    },
+    "Webhook_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Event_Subscription"
+      }
+    },
+    "Webhook_Create": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        }
+      },
+      "required": ["event", "endpoint"]
+    },
+    "Webhook_Update": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        }
+      },
+      "required": ["event", "endpoint"]
     }
   }
 }
