@@ -7,7 +7,7 @@ namespace Fusio\Model\Consumer;
 use PSX\Schema\Attribute\Required;
 
 #[Required(array('event', 'endpoint'))]
-class EventSubscriptionUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
+class WebhookUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $event = null;
     protected ?string $endpoint = null;

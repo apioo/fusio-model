@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Fusio\Model\Consumer;
 
 
-class EventSubscriptionResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
+class WebhookResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $status = null;
     protected ?int $code = null;
