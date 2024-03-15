@@ -681,70 +681,6 @@
     "Event_Update": {
       "$extends": "Event"
     },
-    "Event_Subscription": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "eventId": {
-          "type": "integer"
-        },
-        "userId": {
-          "type": "integer"
-        },
-        "endpoint": {
-          "type": "string"
-        },
-        "responses": {
-          "type": "array",
-          "items": {
-            "$ref": "Event_Subscription_Response"
-          }
-        }
-      }
-    },
-    "Event_Subscription_Response": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "integer"
-        },
-        "code": {
-          "type": "integer"
-        },
-        "attempts": {
-          "type": "integer"
-        },
-        "error": {
-          "type": "string"
-        },
-        "executeDate": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
-    },
-    "Event_Subscription_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Event_Subscription"
-      }
-    },
-    "Event_Subscription_Create": {
-      "$extends": "Event_Subscription",
-      "required": [
-        "eventId",
-        "userId",
-        "endpoint"
-      ]
-    },
-    "Event_Subscription_Update": {
-      "$extends": "Event_Subscription"
-    },
     "Identity": {
       "type": "object",
       "properties": {
@@ -1706,6 +1642,70 @@
     },
     "User_Update": {
       "$extends": "User"
+    },
+    "Webhook": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "eventId": {
+          "type": "integer"
+        },
+        "userId": {
+          "type": "integer"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "responses": {
+          "type": "array",
+          "items": {
+            "$ref": "Webhook_Response"
+          }
+        }
+      }
+    },
+    "Webhook_Response": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "code": {
+          "type": "integer"
+        },
+        "attempts": {
+          "type": "integer"
+        },
+        "error": {
+          "type": "string"
+        },
+        "executeDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Webhook_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Webhook"
+      }
+    },
+    "Webhook_Create": {
+      "$extends": "Webhook",
+      "required": [
+        "eventId",
+        "userId",
+        "endpoint"
+      ]
+    },
+    "Webhook_Update": {
+      "$extends": "Webhook"
     }
   }
 }
