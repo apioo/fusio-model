@@ -601,7 +601,7 @@
         "responses": {
           "type": "array",
           "items": {
-            "$ref": "Event_Subscription_Response"
+            "$ref": "Webhook_Response"
           }
         }
       }
@@ -626,7 +626,7 @@
     "Webhook_Collection": {
       "$ref": "common:Collection",
       "$template": {
-        "T": "Event_Subscription"
+        "T": "Webhook"
       }
     },
     "Webhook_Create": {
