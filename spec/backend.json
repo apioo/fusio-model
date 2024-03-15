@@ -1655,6 +1655,9 @@
         "userId": {
           "type": "integer"
         },
+        "name": {
+          "type": "string"
+        },
         "endpoint": {
           "type": "string"
         },
@@ -1701,6 +1704,7 @@
       "required": [
         "eventId",
         "userId",
+        "name",
         "endpoint"
       ]
     },

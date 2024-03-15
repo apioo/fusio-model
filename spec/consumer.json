@@ -595,6 +595,9 @@
         "event": {
           "type": "string"
         },
+        "name": {
+          "type": "string"
+        },
         "endpoint": {
           "type": "string"
         },
@@ -635,11 +638,14 @@
         "event": {
           "type": "string"
         },
+        "name": {
+          "type": "string"
+        },
         "endpoint": {
           "type": "string"
         }
       },
-      "required": ["event", "endpoint"]
+      "required": ["event", "name", "endpoint"]
     },
     "Webhook_Update": {
       "type": "object",
@@ -647,11 +653,14 @@
         "event": {
           "type": "string"
         },
+        "name": {
+          "type": "string"
+        },
         "endpoint": {
           "type": "string"
         }
       },
-      "required": ["event", "endpoint"]
+      "required": ["event", "name", "endpoint"]
     }
   }
 }
