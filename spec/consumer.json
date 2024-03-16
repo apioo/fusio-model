@@ -384,6 +384,81 @@
         "T": "Scope"
       }
     },
+    "Token": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "token": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ip": {
+          "type": "string"
+        },
+        "expire": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Token_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Token"
+      }
+    },
+    "Token_Create": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "integer"
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expire": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["scope", "expire"]
+    },
+    "Token_Update": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "integer"
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expire": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["scope", "expire"]
+    },
     "Transaction": {
       "type": "object",
       "properties": {
