@@ -424,9 +424,6 @@
     "Token_Create": {
       "type": "object",
       "properties": {
-        "appId": {
-          "type": "integer"
-        },
         "scope": {
           "type": "array",
           "items": {
@@ -443,21 +440,32 @@
     "Token_Update": {
       "type": "object",
       "properties": {
-        "appId": {
-          "type": "integer"
-        },
-        "scope": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "expire": {
           "type": "string",
           "format": "date-time"
         }
       },
-      "required": ["scope", "expire"]
+      "required": ["expire"]
+    },
+    "Token_AccessToken": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string"
+        },
+        "token_type": {
+          "type": "string"
+        },
+        "expires_in": {
+          "type": "integer"
+        },
+        "refresh_token": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        }
+      }
     },
     "Transaction": {
       "type": "object",
