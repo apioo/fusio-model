@@ -192,43 +192,6 @@
         }
       }
     },
-    "App_Token": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "integer"
-        },
-        "token": {
-          "type": "string"
-        },
-        "scope": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "ip": {
-          "type": "string"
-        },
-        "expire": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "date": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
-    },
-    "App_Token_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "App_token"
-      }
-    },
     "App_Create": {
       "$extends": "App",
       "required": [
@@ -1564,6 +1527,43 @@
         "id": {
           "type": "integer"
         }
+      }
+    },
+    "Token": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "token": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ip": {
+          "type": "string"
+        },
+        "expire": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Token_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "App_token"
       }
     },
     "User": {
