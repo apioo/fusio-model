@@ -6,37 +6,10 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Required;
 
-#[Required(array('scope', 'expire'))]
+#[Required(array('expire'))]
 class TokenUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    protected ?int $appId = null;
-    /**
-     * @var array<string>|null
-     */
-    protected ?array $scope = null;
     protected ?\PSX\DateTime\LocalDateTime $expire = null;
-    public function setAppId(?int $appId) : void
-    {
-        $this->appId = $appId;
-    }
-    public function getAppId() : ?int
-    {
-        return $this->appId;
-    }
-    /**
-     * @param array<string>|null $scope
-     */
-    public function setScope(?array $scope) : void
-    {
-        $this->scope = $scope;
-    }
-    /**
-     * @return array<string>|null
-     */
-    public function getScope() : ?array
-    {
-        return $this->scope;
-    }
     public function setExpire(?\PSX\DateTime\LocalDateTime $expire) : void
     {
         $this->expire = $expire;
@@ -49,8 +22,6 @@ class TokenUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
-        $record->put('appId', $this->appId);
-        $record->put('scope', $this->scope);
         $record->put('expire', $this->expire);
         return $record;
     }
