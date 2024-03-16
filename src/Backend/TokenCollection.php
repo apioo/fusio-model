@@ -7,7 +7,7 @@ namespace Fusio\Model\Backend;
 /**
  * @extends \Fusio\Model\Common\Collection<AppToken>
  */
-class AppTokenCollection extends \Fusio\Model\Common\Collection
+class TokenCollection extends \Fusio\Model\Common\Collection
 {
 }
 
