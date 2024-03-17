@@ -9,11 +9,20 @@ use PSX\Schema\Attribute\Required;
 #[Required(array('scope', 'expire'))]
 class TokenCreate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    protected ?string $name = null;
     /**
      * @var array<string>|null
      */
     protected ?array $scope = null;
     protected ?\PSX\DateTime\LocalDateTime $expire = null;
+    public function setName(?string $name) : void
+    {
+        $this->name = $name;
+    }
+    public function getName() : ?string
+    {
+        return $this->name;
+    }
     /**
      * @param array<string>|null $scope
      */
@@ -40,6 +49,7 @@ class TokenCreate implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('name', $this->name);
         $record->put('scope', $this->scope);
         $record->put('expire', $this->expire);
         return $record;
