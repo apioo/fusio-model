@@ -424,6 +424,9 @@
     "Token_Create": {
       "type": "object",
       "properties": {
+        "name": {
+          "type": "string"
+        },
         "scope": {
           "type": "array",
           "items": {
@@ -440,6 +443,9 @@
     "Token_Update": {
       "type": "object",
       "properties": {
+        "name": {
+          "type": "string"
+        },
         "expire": {
           "type": "string",
           "format": "date-time"
