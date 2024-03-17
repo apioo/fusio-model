@@ -1538,7 +1538,7 @@
         "status": {
           "type": "integer"
         },
-        "token": {
+        "name": {
           "type": "string"
         },
         "scope": {
