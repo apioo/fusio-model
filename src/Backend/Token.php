@@ -9,7 +9,7 @@ class Token implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $status = null;
-    protected ?string $token = null;
+    protected ?string $name = null;
     /**
      * @var array<string>|null
      */
@@ -33,13 +33,13 @@ class Token implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->status;
     }
-    public function setToken(?string $token) : void
+    public function setName(?string $name) : void
     {
-        $this->token = $token;
+        $this->name = $name;
     }
-    public function getToken() : ?string
+    public function getName() : ?string
     {
-        return $this->token;
+        return $this->name;
     }
     /**
      * @param array<string>|null $scope
@@ -85,7 +85,7 @@ class Token implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record = new \PSX\Record\Record();
         $record->put('id', $this->id);
         $record->put('status', $this->status);
-        $record->put('token', $this->token);
+        $record->put('name', $this->name);
         $record->put('scope', $this->scope);
         $record->put('ip', $this->ip);
         $record->put('expire', $this->expire);
