@@ -136,24 +136,6 @@
         "$ref": "string"
       }
     },
-    "Rpc_Response_Success": {
-      "type": "object",
-      "properties": {
-        "jsonrpc": {
-          "type": "string"
-        },
-        "result": {
-          "$ref": "Rpc_Response_Result"
-        },
-        "id": {
-          "type": "integer"
-        }
-      }
-    },
-    "Rpc_Response_Result": {
-      "type": "object",
-      "additionalProperties": true
-    },
     "Schema": {
       "type": "object",
       "properties": {
