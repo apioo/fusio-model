@@ -427,7 +427,7 @@
         "name": {
           "type": "string"
         },
-        "scope": {
+        "scopes": {
           "type": "array",
           "items": {
             "type": "string"
@@ -438,7 +438,7 @@
           "format": "date-time"
         }
       },
-      "required": ["scope", "expire"]
+      "required": ["name", "scopes", "expire"]
     },
     "Token_Update": {
       "type": "object",
@@ -451,7 +451,7 @@
           "format": "date-time"
         }
       },
-      "required": ["expire"]
+      "required": ["name", "expire"]
     },
     "Token_AccessToken": {
       "type": "object",
