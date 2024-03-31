@@ -314,6 +314,9 @@
         "points": {
           "type": "integer"
         },
+        "period": {
+          "type": "integer"
+        },
         "metadata": {
           "$ref": "common:Metadata"
         }
