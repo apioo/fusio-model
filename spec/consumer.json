@@ -407,7 +407,7 @@
         },
         "expire": {
           "type": "string",
-          "format": "date-time"
+          "format": "date"
         },
         "date": {
           "type": "string",
@@ -435,7 +435,7 @@
         },
         "expire": {
           "type": "string",
-          "format": "date-time"
+          "format": "date"
         }
       },
       "required": ["name", "scopes", "expire"]
@@ -448,7 +448,7 @@
         },
         "expire": {
           "type": "string",
-          "format": "date-time"
+          "format": "date"
         }
       },
       "required": ["name", "expire"]
