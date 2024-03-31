@@ -15,7 +15,7 @@ class Token implements \JsonSerializable, \PSX\Record\RecordableInterface
      */
     protected ?array $scopes = null;
     protected ?string $ip = null;
-    protected ?\PSX\DateTime\LocalDateTime $expire = null;
+    protected ?\PSX\DateTime\LocalDate $expire = null;
     protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setId(?int $id) : void
     {
@@ -63,11 +63,11 @@ class Token implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->ip;
     }
-    public function setExpire(?\PSX\DateTime\LocalDateTime $expire) : void
+    public function setExpire(?\PSX\DateTime\LocalDate $expire) : void
     {
         $this->expire = $expire;
     }
-    public function getExpire() : ?\PSX\DateTime\LocalDateTime
+    public function getExpire() : ?\PSX\DateTime\LocalDate
     {
         return $this->expire;
     }

@@ -10,7 +10,7 @@ use PSX\Schema\Attribute\Required;
 class TokenUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $name = null;
-    protected ?\PSX\DateTime\LocalDateTime $expire = null;
+    protected ?\PSX\DateTime\LocalDate $expire = null;
     public function setName(?string $name) : void
     {
         $this->name = $name;
@@ -19,11 +19,11 @@ class TokenUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->name;
     }
-    public function setExpire(?\PSX\DateTime\LocalDateTime $expire) : void
+    public function setExpire(?\PSX\DateTime\LocalDate $expire) : void
     {
         $this->expire = $expire;
     }
-    public function getExpire() : ?\PSX\DateTime\LocalDateTime
+    public function getExpire() : ?\PSX\DateTime\LocalDate
     {
         return $this->expire;
     }
