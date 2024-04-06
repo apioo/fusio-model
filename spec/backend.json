@@ -251,6 +251,39 @@
         "T": "Audit"
       }
     },
+    "Backup_Export": {
+      "type": "object",
+      "properties": {
+        "export": {
+          "type": "string"
+        }
+      }
+    },
+    "Backup_Import": {
+      "type": "object",
+      "properties": {
+        "import": {
+          "type": "string"
+        }
+      }
+    },
+    "Backup_Import_Result": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        },
+        "logs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "Category": {
       "type": "object",
       "properties": {
