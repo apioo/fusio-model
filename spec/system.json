@@ -116,7 +116,7 @@
         }
       }
     },
-    "OAuth2_Configuration": {
+    "OAuth_Configuration": {
       "type": "object",
       "properties": {
         "issuer": {
