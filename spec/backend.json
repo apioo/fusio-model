@@ -446,6 +446,14 @@
         }
       }
     },
+    "Connection_Redirect_Response": {
+      "type": "object",
+      "properties": {
+        "redirectUri": {
+          "type": "string"
+        }
+      }
+    },
     "Cronjob": {
       "type": "object",
       "properties": {
