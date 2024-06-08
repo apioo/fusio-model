@@ -585,6 +585,9 @@
         "notNull": {
           "type": "boolean"
         },
+        "autoIncrement": {
+          "type": "boolean"
+        },
         "default": {
           "type": "any"
         },
