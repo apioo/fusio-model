@@ -522,6 +522,89 @@
     "Cronjob_Update": {
       "$extends": "Cronjob"
     },
+    "Database_Connections": {
+      "type": "object",
+      "properties": {
+        "connections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Database_Tables": {
+      "type": "object",
+      "properties": {
+        "tables": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Database_Table": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "columns": {
+          "type": "array",
+          "items": {
+            "$ref": "Database_Table_Column"
+          }
+        }
+      }
+    },
+    "Database_Table_Column": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "length": {
+          "type": "integer"
+        },
+        "precision": {
+          "type": "integer"
+        },
+        "scale": {
+          "type": "integer"
+        },
+        "unsigned": {
+          "type": "boolean"
+        },
+        "fixed": {
+          "type": "boolean"
+        },
+        "notNull": {
+          "type": "boolean"
+        },
+        "default": {
+          "type": "any"
+        },
+        "comment": {
+          "type": "string"
+        }
+      }
+    },
+    "Database_Rows": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Database_Row"
+      }
+    },
+    "Database_Row": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "any"
+      }
+    },
     "Dashboard": {
       "type": "object",
       "properties": {
