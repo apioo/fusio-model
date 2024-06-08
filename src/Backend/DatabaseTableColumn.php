@@ -15,6 +15,7 @@ class DatabaseTableColumn implements \JsonSerializable, \PSX\Record\RecordableIn
     protected ?bool $unsigned = null;
     protected ?bool $fixed = null;
     protected ?bool $notNull = null;
+    protected ?bool $autoIncrement = null;
     protected mixed $default = null;
     protected ?string $comment = null;
     public function setName(?string $name) : void
@@ -81,6 +82,14 @@ class DatabaseTableColumn implements \JsonSerializable, \PSX\Record\RecordableIn
     {
         return $this->notNull;
     }
+    public function setAutoIncrement(?bool $autoIncrement) : void
+    {
+        $this->autoIncrement = $autoIncrement;
+    }
+    public function getAutoIncrement() : ?bool
+    {
+        return $this->autoIncrement;
+    }
     public function setDefault(mixed $default) : void
     {
         $this->default = $default;
@@ -109,6 +118,7 @@ class DatabaseTableColumn implements \JsonSerializable, \PSX\Record\RecordableIn
         $record->put('unsigned', $this->unsigned);
         $record->put('fixed', $this->fixed);
         $record->put('notNull', $this->notNull);
+        $record->put('autoIncrement', $this->autoIncrement);
         $record->put('default', $this->default);
         $record->put('comment', $this->comment);
         return $record;
