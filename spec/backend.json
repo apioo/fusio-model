@@ -555,6 +555,21 @@
           "items": {
             "$ref": "Database_Table_Column"
           }
+        },
+        "primaryKey": {
+          "$ref": "Database_Table_Index"
+        },
+        "indexes": {
+          "type": "array",
+          "items": {
+            "$ref": "Database_Table_Index"
+          }
+        },
+        "foreignKeys": {
+          "type": "array",
+          "items": {
+            "$ref": "Database_Table_ForeignKeyConstraint"
+          }
         }
       }
     },
@@ -593,6 +608,43 @@
         },
         "comment": {
           "type": "string"
+        }
+      }
+    },
+    "Database_Table_Index": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "unique": {
+          "type": "boolean"
+        },
+        "columns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Database_Table_ForeignKeyConstraint": {
+      "type": "object",
+      "properties": {
+        "foreignTable": {
+          "type": "string"
+        },
+        "localColumnNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "foreignColumnNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
