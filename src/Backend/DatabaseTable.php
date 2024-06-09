@@ -12,6 +12,15 @@ class DatabaseTable implements \JsonSerializable, \PSX\Record\RecordableInterfac
      * @var array<DatabaseTableColumn>|null
      */
     protected ?array $columns = null;
+    protected ?DatabaseTableIndex $primaryKey = null;
+    /**
+     * @var array<DatabaseTableIndex>|null
+     */
+    protected ?array $indexes = null;
+    /**
+     * @var array<DatabaseTableForeignKeyConstraint>|null
+     */
+    protected ?array $foreignKeys = null;
     public function setName(?string $name) : void
     {
         $this->name = $name;
@@ -34,12 +43,51 @@ class DatabaseTable implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         return $this->columns;
     }
+    public function setPrimaryKey(?DatabaseTableIndex $primaryKey) : void
+    {
+        $this->primaryKey = $primaryKey;
+    }
+    public function getPrimaryKey() : ?DatabaseTableIndex
+    {
+        return $this->primaryKey;
+    }
+    /**
+     * @param array<DatabaseTableIndex>|null $indexes
+     */
+    public function setIndexes(?array $indexes) : void
+    {
+        $this->indexes = $indexes;
+    }
+    /**
+     * @return array<DatabaseTableIndex>|null
+     */
+    public function getIndexes() : ?array
+    {
+        return $this->indexes;
+    }
+    /**
+     * @param array<DatabaseTableForeignKeyConstraint>|null $foreignKeys
+     */
+    public function setForeignKeys(?array $foreignKeys) : void
+    {
+        $this->foreignKeys = $foreignKeys;
+    }
+    /**
+     * @return array<DatabaseTableForeignKeyConstraint>|null
+     */
+    public function getForeignKeys() : ?array
+    {
+        return $this->foreignKeys;
+    }
     public function toRecord() : \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('name', $this->name);
         $record->put('columns', $this->columns);
+        $record->put('primaryKey', $this->primaryKey);
+        $record->put('indexes', $this->indexes);
+        $record->put('foreignKeys', $this->foreignKeys);
         return $record;
     }
     public function jsonSerialize() : object
