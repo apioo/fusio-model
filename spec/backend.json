@@ -631,6 +631,9 @@
     "Database_Table_ForeignKeyConstraint": {
       "type": "object",
       "properties": {
+        "name": {
+          "type": "string"
+        },
         "foreignTable": {
           "type": "string"
         },
