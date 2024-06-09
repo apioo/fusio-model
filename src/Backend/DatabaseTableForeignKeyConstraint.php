@@ -7,6 +7,7 @@ namespace Fusio\Model\Backend;
 
 class DatabaseTableForeignKeyConstraint implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    protected ?string $name = null;
     protected ?string $foreignTable = null;
     /**
      * @var array<string>|null
@@ -16,6 +17,14 @@ class DatabaseTableForeignKeyConstraint implements \JsonSerializable, \PSX\Recor
      * @var array<string>|null
      */
     protected ?array $foreignColumnNames = null;
+    public function setName(?string $name) : void
+    {
+        $this->name = $name;
+    }
+    public function getName() : ?string
+    {
+        return $this->name;
+    }
     public function setForeignTable(?string $foreignTable) : void
     {
         $this->foreignTable = $foreignTable;
@@ -56,6 +65,7 @@ class DatabaseTableForeignKeyConstraint implements \JsonSerializable, \PSX\Recor
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('name', $this->name);
         $record->put('foreignTable', $this->foreignTable);
         $record->put('localColumnNames', $this->localColumnNames);
         $record->put('foreignColumnNames', $this->foreignColumnNames);
