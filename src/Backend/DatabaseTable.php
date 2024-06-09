@@ -12,7 +12,7 @@ class DatabaseTable implements \JsonSerializable, \PSX\Record\RecordableInterfac
      * @var array<DatabaseTableColumn>|null
      */
     protected ?array $columns = null;
-    protected ?DatabaseTableIndex $primaryKey = null;
+    protected ?string $primaryKey = null;
     /**
      * @var array<DatabaseTableIndex>|null
      */
@@ -43,11 +43,11 @@ class DatabaseTable implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         return $this->columns;
     }
-    public function setPrimaryKey(?DatabaseTableIndex $primaryKey) : void
+    public function setPrimaryKey(?string $primaryKey) : void
     {
         $this->primaryKey = $primaryKey;
     }
-    public function getPrimaryKey() : ?DatabaseTableIndex
+    public function getPrimaryKey() : ?string
     {
         return $this->primaryKey;
     }
