@@ -557,7 +557,7 @@
           }
         },
         "primaryKey": {
-          "$ref": "Database_Table_Index"
+          "type": "string"
         },
         "indexes": {
           "type": "array",
