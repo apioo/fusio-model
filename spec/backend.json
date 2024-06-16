@@ -1610,17 +1610,6 @@
         }
       }
     },
-    "Sdk_Generate": {
-      "type": "object",
-      "properties": {
-        "format": {
-          "type": "string"
-        },
-        "config": {
-          "type": "string"
-        }
-      }
-    },
     "Sdk_Response": {
       "type": "object",
       "properties": {
@@ -1633,6 +1622,31 @@
       "type": "object",
       "additionalProperties": {
         "type": "string"
+      }
+    },
+    "Sdk_Generate": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "string"
+        },
+        "config": {
+          "type": "string"
+        }
+      }
+    },
+    "Sdk_Message": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        }
       }
     },
     "Transaction": {
