@@ -6,32 +6,17 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Key;
 
-class MarketplaceApp implements \JsonSerializable, \PSX\Record\RecordableInterface
+class MarketplaceApp extends MarketplaceObject implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    protected ?string $version = null;
-    protected ?string $description = null;
     protected ?string $screenshot = null;
     protected ?string $website = null;
+    /**
+     * @var array<string>|null
+     */
+    protected ?array $scopes = null;
     protected ?string $downloadUrl = null;
     #[Key('sha1Hash')]
     protected ?string $shaHash = null;
-    protected ?string $startUrl = null;
-    public function setVersion(?string $version) : void
-    {
-        $this->version = $version;
-    }
-    public function getVersion() : ?string
-    {
-        return $this->version;
-    }
-    public function setDescription(?string $description) : void
-    {
-        $this->description = $description;
-    }
-    public function getDescription() : ?string
-    {
-        return $this->description;
-    }
     public function setScreenshot(?string $screenshot) : void
     {
         $this->screenshot = $screenshot;
@@ -47,6 +32,20 @@ class MarketplaceApp implements \JsonSerializable, \PSX\Record\RecordableInterfa
     public function getWebsite() : ?string
     {
         return $this->website;
+    }
+    /**
+     * @param array<string>|null $scopes
+     */
+    public function setScopes(?array $scopes) : void
+    {
+        $this->scopes = $scopes;
+    }
+    /**
+     * @return array<string>|null
+     */
+    public function getScopes() : ?array
+    {
+        return $this->scopes;
     }
     public function setDownloadUrl(?string $downloadUrl) : void
     {
@@ -64,25 +63,15 @@ class MarketplaceApp implements \JsonSerializable, \PSX\Record\RecordableInterfa
     {
         return $this->shaHash;
     }
-    public function setStartUrl(?string $startUrl) : void
-    {
-        $this->startUrl = $startUrl;
-    }
-    public function getStartUrl() : ?string
-    {
-        return $this->startUrl;
-    }
     public function toRecord() : \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
-        $record = new \PSX\Record\Record();
-        $record->put('version', $this->version);
-        $record->put('description', $this->description);
+        $record = parent::toRecord();
         $record->put('screenshot', $this->screenshot);
         $record->put('website', $this->website);
+        $record->put('scopes', $this->scopes);
         $record->put('downloadUrl', $this->downloadUrl);
         $record->put('sha1Hash', $this->shaHash);
-        $record->put('startUrl', $this->startUrl);
         return $record;
     }
     public function jsonSerialize() : object
