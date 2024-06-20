@@ -1050,62 +1050,81 @@
         }
       }
     },
-    "Marketplace_App": {
+    "Marketplace_Object": {
       "type": "object",
       "properties": {
+        "name": {
+          "type": "string"
+        },
         "version": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "summary": {
           "type": "string"
         },
         "description": {
           "type": "string"
         },
+        "author": {
+          "type": "string"
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "costs": {
+          "type": "integer"
+        }
+      }
+    },
+    "Marketplace_Action": {
+      "$extends": "Marketplace_Object",
+      "type": "object",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "config": {
+          "$ref": "Action_Config"
+        }
+      }
+    },
+    "Marketplace_Action_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Marketplace_Action"
+      }
+    },
+    "Marketplace_App": {
+      "$extends": "Marketplace_Object",
+      "type": "object",
+      "properties": {
         "screenshot": {
           "type": "string"
         },
         "website": {
           "type": "string"
         },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "downloadUrl": {
           "type": "string"
         },
         "sha1Hash": {
           "type": "string"
-        },
-        "startUrl": {
-          "type": "string"
         }
       }
     },
-    "Marketplace_Remote_App": {
-      "$extends": "Marketplace_App",
-      "type": "object",
-      "properties": {
-        "local": {
-          "$ref": "Marketplace_App"
-        }
-      }
-    },
-    "Marketplace_Local_App": {
-      "$extends": "Marketplace_App",
-      "type": "object",
-      "properties": {
-        "remote": {
-          "$ref": "Marketplace_App"
-        }
-      }
-    },
-    "Marketplace_Collection_Apps": {
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "Marketplace_Remote_App"
-      }
-    },
-    "Marketplace_Collection": {
-      "type": "object",
-      "properties": {
-        "apps": {
-          "$ref": "Marketplace_Collection_Apps"
-        }
+    "Marketplace_App_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Marketplace_App"
       }
     },
     "Operation": {
