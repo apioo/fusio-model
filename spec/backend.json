@@ -1583,6 +1583,35 @@
         }
       }
     },
+    "Test": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "operationName": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "config": {
+          "$ref": "Test_Config"
+        }
+      }
+    },
+    "Test_Config": {
+      "$extends": "Action_Execute_Request"
+    },
+    "Test_Collection": {
+      "$ref": "common:Collection",
+      "$template": {
+        "T": "Test"
+      }
+    },
     "Transaction": {
       "type": "object",
       "properties": {
