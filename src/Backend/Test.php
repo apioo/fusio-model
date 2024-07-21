@@ -11,6 +11,7 @@ class Test implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?int $status = null;
     protected ?string $operationName = null;
     protected ?string $message = null;
+    protected ?string $response = null;
     protected ?TestConfig $config = null;
     public function setId(?int $id) : void
     {
@@ -44,6 +45,14 @@ class Test implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->message;
     }
+    public function setResponse(?string $response) : void
+    {
+        $this->response = $response;
+    }
+    public function getResponse() : ?string
+    {
+        return $this->response;
+    }
     public function setConfig(?TestConfig $config) : void
     {
         $this->config = $config;
@@ -60,6 +69,7 @@ class Test implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('status', $this->status);
         $record->put('operationName', $this->operationName);
         $record->put('message', $this->message);
+        $record->put('response', $this->response);
         $record->put('config', $this->config);
         return $record;
     }
