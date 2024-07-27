@@ -681,6 +681,9 @@
         "timePerOperation": {
           "$ref": "Statistic_Chart"
         },
+        "testCoverage": {
+          "$ref": "Statistic_Chart"
+        },
         "latestApps": {
           "$ref": "Dashboard_Apps"
         },
@@ -689,9 +692,6 @@
         },
         "latestUsers": {
           "$ref": "Dashboard_Users"
-        },
-        "latestTransactions": {
-          "$ref": "Dashboard_Transactions"
         }
       }
     },
