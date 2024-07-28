@@ -684,114 +684,15 @@
         "testCoverage": {
           "$ref": "Statistic_Chart"
         },
-        "latestApps": {
-          "$ref": "Dashboard_Apps"
+        "mostUsedActivities": {
+          "$ref": "Statistic_Chart"
         },
-        "latestRequests": {
-          "$ref": "Dashboard_Requests"
+        "activitiesPerUser": {
+          "$ref": "Statistic_Chart"
         },
-        "latestUsers": {
-          "$ref": "Dashboard_Users"
+        "userRegistrations": {
+          "$ref": "Statistic_Chart"
         }
-      }
-    },
-    "Dashboard_App": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "date": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
-    },
-    "Dashboard_Apps": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Dashboard_App"
-      }
-    },
-    "Dashboard_Request": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "path": {
-          "type": "string"
-        },
-        "ip": {
-          "type": "string"
-        },
-        "date": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
-    },
-    "Dashboard_Requests": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Dashboard_Request"
-      }
-    },
-    "Dashboard_Transaction": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "string"
-        },
-        "provider": {
-          "type": "string"
-        },
-        "transactionId": {
-          "type": "string"
-        },
-        "amount": {
-          "type": "number"
-        },
-        "date": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
-    },
-    "Dashboard_Transactions": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Dashboard_Transaction"
-      }
-    },
-    "Dashboard_User": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "date": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
-    },
-    "Dashboard_Users": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Dashboard_User"
       }
     },
     "Event": {
