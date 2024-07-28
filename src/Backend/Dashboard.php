@@ -13,9 +13,9 @@ class Dashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?StatisticChart $mostUsedOperations = null;
     protected ?StatisticChart $timePerOperation = null;
     protected ?StatisticChart $testCoverage = null;
-    protected ?DashboardApps $latestApps = null;
-    protected ?DashboardRequests $latestRequests = null;
-    protected ?DashboardUsers $latestUsers = null;
+    protected ?StatisticChart $mostUsedActivities = null;
+    protected ?StatisticChart $activitiesPerUser = null;
+    protected ?StatisticChart $userRegistrations = null;
     public function setErrorsPerOperation(?StatisticChart $errorsPerOperation) : void
     {
         $this->errorsPerOperation = $errorsPerOperation;
@@ -64,29 +64,29 @@ class Dashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->testCoverage;
     }
-    public function setLatestApps(?DashboardApps $latestApps) : void
+    public function setMostUsedActivities(?StatisticChart $mostUsedActivities) : void
     {
-        $this->latestApps = $latestApps;
+        $this->mostUsedActivities = $mostUsedActivities;
     }
-    public function getLatestApps() : ?DashboardApps
+    public function getMostUsedActivities() : ?StatisticChart
     {
-        return $this->latestApps;
+        return $this->mostUsedActivities;
     }
-    public function setLatestRequests(?DashboardRequests $latestRequests) : void
+    public function setActivitiesPerUser(?StatisticChart $activitiesPerUser) : void
     {
-        $this->latestRequests = $latestRequests;
+        $this->activitiesPerUser = $activitiesPerUser;
     }
-    public function getLatestRequests() : ?DashboardRequests
+    public function getActivitiesPerUser() : ?StatisticChart
     {
-        return $this->latestRequests;
+        return $this->activitiesPerUser;
     }
-    public function setLatestUsers(?DashboardUsers $latestUsers) : void
+    public function setUserRegistrations(?StatisticChart $userRegistrations) : void
     {
-        $this->latestUsers = $latestUsers;
+        $this->userRegistrations = $userRegistrations;
     }
-    public function getLatestUsers() : ?DashboardUsers
+    public function getUserRegistrations() : ?StatisticChart
     {
-        return $this->latestUsers;
+        return $this->userRegistrations;
     }
     public function toRecord() : \PSX\Record\RecordInterface
     {
@@ -98,9 +98,9 @@ class Dashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('mostUsedOperations', $this->mostUsedOperations);
         $record->put('timePerOperation', $this->timePerOperation);
         $record->put('testCoverage', $this->testCoverage);
-        $record->put('latestApps', $this->latestApps);
-        $record->put('latestRequests', $this->latestRequests);
-        $record->put('latestUsers', $this->latestUsers);
+        $record->put('mostUsedActivities', $this->mostUsedActivities);
+        $record->put('activitiesPerUser', $this->activitiesPerUser);
+        $record->put('userRegistrations', $this->userRegistrations);
         return $record;
     }
     public function jsonSerialize() : object
