@@ -16,12 +16,10 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[A-z0-9\\-\\_]{3,64}$"
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "minLength": 8
+          "type": "string"
         },
         "appKey": {
           "type": "string"
@@ -53,12 +51,10 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string",
-          "pattern": "^[A-z0-9\\-\\_]{3,64}$"
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "minLength": 8
+          "type": "string"
         },
         "scopes": {
           "type": "array",
@@ -66,19 +62,16 @@
             "type": "string"
           }
         }
-      },
-      "required": ["name", "url", "scopes"]
+      }
     },
     "App_Update": {
       "type": "object",
       "properties": {
         "name": {
-          "type": "string",
-          "pattern": "^[A-z0-9\\-\\_]{3,64}$"
+          "type": "string"
         },
         "url": {
-          "type": "string",
-          "minLength": 8
+          "type": "string"
         },
         "scopes": {
           "type": "array",
@@ -86,8 +79,7 @@
             "type": "string"
           }
         }
-      },
-      "required": ["name", "url", "scopes"]
+      }
     },
     "Authorize_Meta": {
       "type": "object",
@@ -127,8 +119,7 @@
         "allow": {
           "type": "boolean"
         }
-      },
-      "required": ["responseType", "clientId", "scope", "allow"]
+      }
     },
     "Authorize_Response": {
       "type": "object",
@@ -370,8 +361,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[A-z0-9\\-\\_]{3,64}$"
+          "type": "string"
         },
         "description": {
           "type": "string"
@@ -440,8 +430,7 @@
           "type": "string",
           "format": "date"
         }
-      },
-      "required": ["name", "scopes", "expire"]
+      }
     },
     "Token_Update": {
       "type": "object",
@@ -453,8 +442,7 @@
           "type": "string",
           "format": "date"
         }
-      },
-      "required": ["name", "expire"]
+      }
     },
     "Token_AccessToken": {
       "type": "object",
@@ -588,8 +576,7 @@
         "token": {
           "type": "string"
         }
-      },
-      "required": ["token"]
+      }
     },
     "User_Email": {
       "type": "object",
@@ -600,8 +587,7 @@
         "captcha": {
           "type": "string"
         }
-      },
-      "required": ["email"]
+      }
     },
     "User_JWT": {
       "type": "object",
@@ -646,8 +632,7 @@
         "newPassword": {
           "type": "string"
         }
-      },
-      "required": ["token", "newPassword"]
+      }
     },
     "User_Refresh": {
       "type": "object",
@@ -672,8 +657,7 @@
         "captcha": {
           "type": "string"
         }
-      },
-      "required": ["name", "email", "password"]
+      }
     },
     "Webhook": {
       "type": "object",
@@ -736,8 +720,7 @@
         "endpoint": {
           "type": "string"
         }
-      },
-      "required": ["event", "name", "endpoint"]
+      }
     },
     "Webhook_Update": {
       "type": "object",
@@ -751,8 +734,7 @@
         "endpoint": {
           "type": "string"
         }
-      },
-      "required": ["event", "name", "endpoint"]
+      }
     }
   }
 }

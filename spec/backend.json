@@ -7,19 +7,13 @@
       "type": "object",
       "properties": {
         "oldPassword": {
-          "type": "string",
-          "minLength": 8,
-          "maxLength": 128
+          "type": "string"
         },
         "newPassword": {
-          "type": "string",
-          "minLength": 8,
-          "maxLength": 128
+          "type": "string"
         },
         "verifyPassword": {
-          "type": "string",
-          "minLength": 8,
-          "maxLength": 128
+          "type": "string"
         }
       }
     },
@@ -33,8 +27,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
+          "type": "string"
         },
         "class": {
           "type": "string"
@@ -55,10 +48,7 @@
       "additionalProperties": true
     },
     "Action_Create": {
-      "$extends": "Action",
-      "required": [
-        "name"
-      ]
+      "$extends": "Action"
     },
     "Action_Update": {
       "$extends": "Action"
@@ -99,8 +89,7 @@
       "type": "object",
       "properties": {
         "method": {
-          "type": "string",
-          "pattern": "GET|POST|PUT|PATCH|DELETE"
+          "type": "string"
         },
         "uriFragments": {
           "type": "string"
@@ -114,10 +103,7 @@
         "body": {
           "$ref": "Action_Execute_Request_Body"
         }
-      },
-      "required": [
-        "method"
-      ]
+      }
     },
     "Action_Execute_Response_Headers": {
       "type": "object",
@@ -156,8 +142,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_]{3,64}$"
+          "type": "string"
         },
         "url": {
           "type": "string"
@@ -193,13 +178,7 @@
       }
     },
     "App_Create": {
-      "$extends": "App",
-      "required": [
-        "userId",
-        "name",
-        "url",
-        "scopes"
-      ]
+      "$extends": "App"
     },
     "App_Update": {
       "$extends": "App"
@@ -291,8 +270,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_]{3,64}$"
+          "type": "string"
         }
       }
     },
@@ -303,10 +281,7 @@
       }
     },
     "Category_Create": {
-      "$extends": "Category",
-      "required": [
-        "name"
-      ]
+      "$extends": "Category"
     },
     "Category_Update": {
       "$extends": "Category"
@@ -347,8 +322,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
+          "type": "string"
         },
         "class": {
           "type": "string"
@@ -461,8 +435,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_]{3,64}$"
+          "type": "string"
         },
         "cron": {
           "type": "string"
@@ -512,12 +485,7 @@
       }
     },
     "Cronjob_Create": {
-      "$extends": "Cronjob",
-      "required": [
-        "name",
-        "cron",
-        "action"
-      ]
+      "$extends": "Cronjob"
     },
     "Cronjob_Update": {
       "$extends": "Cronjob"
@@ -702,8 +670,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
+          "type": "string"
         },
         "description": {
           "type": "string"
@@ -723,10 +690,7 @@
       }
     },
     "Event_Create": {
-      "$extends": "Event",
-      "required": [
-        "name"
-      ]
+      "$extends": "Event"
     },
     "Event_Update": {
       "$extends": "Event"
@@ -744,8 +708,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
+          "type": "string"
         },
         "icon": {
           "type": "string"
@@ -772,13 +735,7 @@
       }
     },
     "Identity_Create": {
-      "$extends": "Identity",
-      "required": [
-        "appId",
-        "name",
-        "icon",
-        "class"
-      ]
+      "$extends": "Identity"
     },
     "Identity_Update": {
       "$extends": "Identity"
@@ -974,8 +931,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\_\\.]{3,64}$"
+          "type": "string"
         },
         "parameters": {
           "$ref": "Operation_Parameters"
@@ -1042,15 +998,7 @@
       }
     },
     "Operation_Create": {
-      "$extends": "Operation",
-      "required": [
-        "httpMethod",
-        "httpPath",
-        "httpCode",
-        "name",
-        "outgoing",
-        "action"
-      ]
+      "$extends": "Operation"
     },
     "Operation_Update": {
       "$extends": "Operation"
@@ -1085,11 +1033,7 @@
       }
     },
     "Page_Create": {
-      "$extends": "Page",
-      "required": [
-        "title",
-        "content"
-      ]
+      "$extends": "Page"
     },
     "Page_Update": {
       "$extends": "Page"
@@ -1136,11 +1080,7 @@
       }
     },
     "Plan_Create": {
-      "$extends": "Plan",
-      "required": [
-        "name",
-        "price"
-      ]
+      "$extends": "Plan"
     },
     "Plan_Update": {
       "$extends": "Plan"
@@ -1155,8 +1095,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_]{3,64}$"
+          "type": "string"
         },
         "scopes": {
           "type": "array",
@@ -1173,11 +1112,7 @@
       }
     },
     "Role_Create": {
-      "$extends": "Role",
-      "required": [
-        "categoryId",
-        "name"
-      ]
+      "$extends": "Role"
     },
     "Role_Update": {
       "$extends": "Role"
@@ -1189,20 +1124,16 @@
           "type": "integer"
         },
         "priority": {
-          "type": "integer",
-          "minimum": 0
+          "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_]{3,64}$"
+          "type": "string"
         },
         "rateLimit": {
-          "type": "integer",
-          "minimum": 0
+          "type": "integer"
         },
         "timespan": {
-          "type": "string",
-          "format": "duration"
+          "type": "string"
         },
         "allocation": {
           "type": "array",
@@ -1222,10 +1153,7 @@
       }
     },
     "Rate_Create": {
-      "$extends": "Rate",
-      "required": [
-        "name"
-      ]
+      "$extends": "Rate"
     },
     "Rate_Update": {
       "$extends": "Rate"
@@ -1263,8 +1191,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
+          "type": "string"
         },
         "source": {
           "$ref": "Schema_Source"
@@ -1294,10 +1221,7 @@
       }
     },
     "Schema_Create": {
-      "$extends": "Schema",
-      "required": [
-        "name"
-      ]
+      "$extends": "Schema"
     },
     "Schema_Update": {
       "$extends": "Schema"
@@ -1317,8 +1241,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
+          "type": "string"
         },
         "description": {
           "type": "string"
@@ -1352,10 +1275,7 @@
       }
     },
     "Scope_Create": {
-      "$extends": "Scope",
-      "required": [
-        "name"
-      ]
+      "$extends": "Scope"
     },
     "Scope_Update": {
       "$extends": "Scope"
@@ -1649,8 +1569,7 @@
           "type": "integer"
         },
         "name": {
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,32}$"
+          "type": "string"
         },
         "email": {
           "type": "string"
@@ -1698,14 +1617,7 @@
         "password": {
           "type": "string"
         }
-      },
-      "required": [
-        "roleId",
-        "status",
-        "name",
-        "email",
-        "password"
-      ]
+      }
     },
     "User_Update": {
       "$extends": "User"
@@ -1767,13 +1679,7 @@
       }
     },
     "Webhook_Create": {
-      "$extends": "Webhook",
-      "required": [
-        "eventId",
-        "userId",
-        "name",
-        "endpoint"
-      ]
+      "$extends": "Webhook"
     },
     "Webhook_Update": {
       "$extends": "Webhook"

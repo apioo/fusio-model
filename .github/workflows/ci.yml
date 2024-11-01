@@ -9,11 +9,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-#      - name: Backend
-#        uses: apioo/sdkgen-generator-action@v0.2.1
-#        with:
-#          client_id: '${{ secrets.SDKGEN_CLIENT_ID }}'
-#          client_secret: '${{ secrets.SDKGEN_CLIENT_SECRET }}'
+      - name: Backend
+        uses: apioo/sdkgen-generator-action@v0.2.1
+        with:
+          client_id: '${{ secrets.SDKGEN_CLIENT_ID }}'
+          client_secret: '${{ secrets.SDKGEN_CLIENT_SECRET }}'
       - name: Composer install
         run: composer install --no-interaction --no-ansi --no-progress
       - name: Run Psalm
