@@ -4,9 +4,6 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
-use PSX\Schema\Attribute\Required;
-
-#[Required(array('name', 'expire'))]
 class TokenUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $name = null;

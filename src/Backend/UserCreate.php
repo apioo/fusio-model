@@ -4,9 +4,6 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
-use PSX\Schema\Attribute\Required;
-
-#[Required(array('roleId', 'status', 'name', 'email', 'password'))]
 class UserCreate extends User implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $password = null;

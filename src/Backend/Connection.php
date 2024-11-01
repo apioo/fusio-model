@@ -6,12 +6,10 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 use PSX\Schema\Attribute\Key;
-use PSX\Schema\Attribute\Pattern;
 
 class Connection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
-    #[Pattern('^[a-zA-Z0-9\\-\\_]{3,255}$')]
     protected ?string $name = null;
     protected ?string $class = null;
     #[Key('oauth2')]
