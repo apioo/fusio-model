@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+
 class UserActivate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $token = null;

@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+
 class UserPasswordReset implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $token = null;
