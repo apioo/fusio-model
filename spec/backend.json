@@ -341,8 +341,7 @@
     },
     "Connection_Config": {
       "type": "object",
-      "additionalProperties": true,
-      "maxProperties": 16
+      "additionalProperties": true
     },
     "Connection_Collection": {
       "$ref": "common:Collection",
@@ -806,8 +805,7 @@
     },
     "Generator_Provider_Config": {
       "type": "object",
-      "additionalProperties": true,
-      "maxProperties": 16
+      "additionalProperties": true
     },
     "Generator_Provider_Changelog": {
       "type": "object",

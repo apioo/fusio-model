@@ -88,10 +88,7 @@
         "help": {
           "type": "string"
         }
-      },
-      "required": [
-        "element"
-      ]
+      }
     },
     "Form_Element_Input": {
       "$extends": "Form_Element",
