@@ -4,12 +4,15 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Pattern;
+
 class User implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $roleId = null;
     protected ?int $planId = null;
     protected ?int $status = null;
+    #[Pattern('^[a-zA-Z0-9\\-\\_\\.]{3,32}$')]
     protected ?string $name = null;
     protected ?string $email = null;
     protected ?int $points = null;

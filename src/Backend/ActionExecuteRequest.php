@@ -4,8 +4,13 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Pattern;
+use PSX\Schema\Attribute\Required;
+
+#[Required(array('method'))]
 class ActionExecuteRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Pattern('GET|POST|PUT|PATCH|DELETE')]
     protected ?string $method = null;
     protected ?string $uriFragments = null;
     protected ?string $parameters = null;

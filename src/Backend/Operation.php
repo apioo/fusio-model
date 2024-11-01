@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Pattern;
+
 class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
@@ -15,6 +17,7 @@ class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $httpMethod = null;
     protected ?string $httpPath = null;
     protected ?int $httpCode = null;
+    #[Pattern('^[a-zA-Z0-9\\_\\.]{3,64}$')]
     protected ?string $name = null;
     protected ?OperationParameters $parameters = null;
     protected ?string $incoming = null;

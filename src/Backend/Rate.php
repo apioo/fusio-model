@@ -4,13 +4,19 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Minimum;
+use PSX\Schema\Attribute\Pattern;
+
 class Rate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
+    #[Minimum(0)]
     protected ?int $priority = null;
+    #[Pattern('^[a-zA-Z0-9\\-\\_]{3,64}$')]
     protected ?string $name = null;
+    #[Minimum(0)]
     protected ?int $rateLimit = null;
-    protected ?\PSX\DateTime\Duration $timespan = null;
+    protected ?string $timespan = null;
     /**
      * @var array<RateAllocation>|null
      */
@@ -48,11 +54,11 @@ class Rate implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->rateLimit;
     }
-    public function setTimespan(?\PSX\DateTime\Duration $timespan) : void
+    public function setTimespan(?string $timespan) : void
     {
         $this->timespan = $timespan;
     }
-    public function getTimespan() : ?\PSX\DateTime\Duration
+    public function getTimespan() : ?string
     {
         return $this->timespan;
     }

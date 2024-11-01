@@ -4,9 +4,16 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\MinLength;
+use PSX\Schema\Attribute\Pattern;
+use PSX\Schema\Attribute\Required;
+
+#[Required(array('name', 'url', 'scopes'))]
 class AppUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Pattern('^[A-z0-9\\-\\_]{3,64}$')]
     protected ?string $name = null;
+    #[MinLength(8)]
     protected ?string $url = null;
     /**
      * @var array<string>|null

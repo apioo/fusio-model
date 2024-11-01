@@ -4,10 +4,13 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Pattern;
+
 class Role implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $categoryId = null;
+    #[Pattern('^[a-zA-Z0-9\\-\\_]{3,64}$')]
     protected ?string $name = null;
     /**
      * @var array<string>|null
