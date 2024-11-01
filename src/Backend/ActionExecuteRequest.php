@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+
 class ActionExecuteRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $method = null;
