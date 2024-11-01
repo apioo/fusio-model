@@ -4,9 +4,6 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Common;
 
-use PSX\Schema\Attribute\Required;
-
-#[Required(array('element'))]
 class FormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $element = null;

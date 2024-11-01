@@ -4,13 +4,10 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
-use PSX\Schema\Attribute\Pattern;
-
 class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?int $id = null;
     protected ?int $status = null;
-    #[Pattern('^[a-zA-Z0-9\\-\\_]{3,255}$')]
     protected ?string $name = null;
     protected ?SchemaSource $source = null;
     protected ?SchemaForm $form = null;

@@ -4,19 +4,10 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
-use PSX\Schema\Attribute\MaxLength;
-use PSX\Schema\Attribute\MinLength;
-
 class AccountChangePassword implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    #[MinLength(8)]
-    #[MaxLength(128)]
     protected ?string $oldPassword = null;
-    #[MinLength(8)]
-    #[MaxLength(128)]
     protected ?string $newPassword = null;
-    #[MinLength(8)]
-    #[MaxLength(128)]
     protected ?string $verifyPassword = null;
     public function setOldPassword(?string $oldPassword) : void
     {
