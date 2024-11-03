@@ -7,7 +7,7 @@ namespace Fusio\Model\Backend;
 /**
  * @extends \Fusio\Model\Common\Collection<Cronjob>
  */
-class CronjobCollection extends \Fusio\Model\Common\Collection
+class CronjobCollection extends \Fusio\Model\Common\Collection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
 

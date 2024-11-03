@@ -7,7 +7,7 @@ namespace Fusio\Model\Consumer;
 /**
  * @extends \Fusio\Model\Common\Collection<Page>
  */
-class PageCollection extends \Fusio\Model\Common\Collection
+class PageCollection extends \Fusio\Model\Common\Collection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
 

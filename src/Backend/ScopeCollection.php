@@ -7,7 +7,7 @@ namespace Fusio\Model\Backend;
 /**
  * @extends \Fusio\Model\Common\Collection<Scope>
  */
-class ScopeCollection extends \Fusio\Model\Common\Collection
+class ScopeCollection extends \Fusio\Model\Common\Collection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
 

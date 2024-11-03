@@ -8,18 +8,18 @@ namespace Fusio\Model\Common;
 class FormContainer implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
-     * @var array<FormElementInput|FormElementSelect|FormElementTag|FormElementTextArea>|null
+     * @var array<FormElement>|null
      */
     protected ?array $element = null;
     /**
-     * @param array<FormElementInput|FormElementSelect|FormElementTag|FormElementTextArea>|null $element
+     * @param array<FormElement>|null $element
      */
     public function setElement(?array $element) : void
     {
         $this->element = $element;
     }
     /**
-     * @return array<FormElementInput|FormElementSelect|FormElementTag|FormElementTextArea>|null
+     * @return array<FormElement>|null
      */
     public function getElement() : ?array
     {

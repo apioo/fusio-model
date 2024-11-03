@@ -13,7 +13,10 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $name = null;
     protected ?string $icon = null;
     protected ?string $class = null;
-    protected ?IdentityConfig $config = null;
+    /**
+     * @var \PSX\Record\Record|null
+     */
+    protected ?\PSX\Record\Record $config = null;
     protected ?bool $allowCreate = null;
     public function setId(?int $id) : void
     {
@@ -63,11 +66,17 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->class;
     }
-    public function setConfig(?IdentityConfig $config) : void
+    /**
+     * @param \PSX\Record\Record|null $config
+     */
+    public function setConfig(?\PSX\Record\Record $config) : void
     {
         $this->config = $config;
     }
-    public function getConfig() : ?IdentityConfig
+    /**
+     * @return \PSX\Record\Record|null
+     */
+    public function getConfig() : ?\PSX\Record\Record
     {
         return $this->config;
     }

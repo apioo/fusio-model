@@ -7,21 +7,39 @@ namespace Fusio\Model\System;
 
 class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    protected ?SchemaTypeSchema $schema = null;
-    protected ?SchemaForm $form = null;
-    public function setSchema(?SchemaTypeSchema $schema) : void
+    /**
+     * @var \PSX\Record\Record|null
+     */
+    protected ?\PSX\Record\Record $schema = null;
+    /**
+     * @var \PSX\Record\Record|null
+     */
+    protected ?\PSX\Record\Record $form = null;
+    /**
+     * @param \PSX\Record\Record|null $schema
+     */
+    public function setSchema(?\PSX\Record\Record $schema) : void
     {
         $this->schema = $schema;
     }
-    public function getSchema() : ?SchemaTypeSchema
+    /**
+     * @return \PSX\Record\Record|null
+     */
+    public function getSchema() : ?\PSX\Record\Record
     {
         return $this->schema;
     }
-    public function setForm(?SchemaForm $form) : void
+    /**
+     * @param \PSX\Record\Record|null $form
+     */
+    public function setForm(?\PSX\Record\Record $form) : void
     {
         $this->form = $form;
     }
-    public function getForm() : ?SchemaForm
+    /**
+     * @return \PSX\Record\Record|null
+     */
+    public function getForm() : ?\PSX\Record\Record
     {
         return $this->form;
     }

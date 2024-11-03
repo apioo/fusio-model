@@ -7,7 +7,7 @@ namespace Fusio\Model\Consumer;
 /**
  * @extends \Fusio\Model\Common\Collection<Event>
  */
-class EventCollection extends \Fusio\Model\Common\Collection
+class EventCollection extends \Fusio\Model\Common\Collection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
 

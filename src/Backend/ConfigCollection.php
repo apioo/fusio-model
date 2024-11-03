@@ -7,7 +7,7 @@ namespace Fusio\Model\Backend;
 /**
  * @extends \Fusio\Model\Common\Collection<Config>
  */
-class ConfigCollection extends \Fusio\Model\Common\Collection
+class ConfigCollection extends \Fusio\Model\Common\Collection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
 

@@ -7,7 +7,7 @@ namespace Fusio\Model\Consumer;
 /**
  * @extends \Fusio\Model\Common\Collection<Identity>
  */
-class IdentityCollection extends \Fusio\Model\Common\Collection
+class IdentityCollection extends \Fusio\Model\Common\Collection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
 

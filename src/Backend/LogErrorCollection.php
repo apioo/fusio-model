@@ -5,9 +5,9 @@ declare(strict_types = 1);
 namespace Fusio\Model\Backend;
 
 /**
- * @extends \Fusio\Model\Common\Collection<LogError>
+ * @extends \Fusio\Model\Common\Collection<Log_Error>
  */
-class LogErrorCollection extends \Fusio\Model\Common\Collection
+class LogErrorCollection extends \Fusio\Model\Common\Collection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
 

@@ -13,7 +13,10 @@ class Audit implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $event = null;
     protected ?string $ip = null;
     protected ?string $message = null;
-    protected ?AuditObject $content = null;
+    /**
+     * @var \PSX\Record\Record|null
+     */
+    protected ?\PSX\Record\Record $content = null;
     protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setId(?int $id) : void
     {
@@ -63,11 +66,17 @@ class Audit implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->message;
     }
-    public function setContent(?AuditObject $content) : void
+    /**
+     * @param \PSX\Record\Record|null $content
+     */
+    public function setContent(?\PSX\Record\Record $content) : void
     {
         $this->content = $content;
     }
-    public function getContent() : ?AuditObject
+    /**
+     * @return \PSX\Record\Record|null
+     */
+    public function getContent() : ?\PSX\Record\Record
     {
         return $this->content;
     }

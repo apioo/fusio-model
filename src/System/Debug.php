@@ -7,30 +7,57 @@ namespace Fusio\Model\System;
 
 class Debug implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    protected ?DebugHeaders $headers = null;
-    protected ?DebugParameters $parameters = null;
-    protected ?DebugBody $body = null;
-    public function setHeaders(?DebugHeaders $headers) : void
+    /**
+     * @var \PSX\Record\Record|null
+     */
+    protected ?\PSX\Record\Record $headers = null;
+    /**
+     * @var \PSX\Record\Record|null
+     */
+    protected ?\PSX\Record\Record $parameters = null;
+    /**
+     * @var \PSX\Record\Record|null
+     */
+    protected ?\PSX\Record\Record $body = null;
+    /**
+     * @param \PSX\Record\Record|null $headers
+     */
+    public function setHeaders(?\PSX\Record\Record $headers) : void
     {
         $this->headers = $headers;
     }
-    public function getHeaders() : ?DebugHeaders
+    /**
+     * @return \PSX\Record\Record|null
+     */
+    public function getHeaders() : ?\PSX\Record\Record
     {
         return $this->headers;
     }
-    public function setParameters(?DebugParameters $parameters) : void
+    /**
+     * @param \PSX\Record\Record|null $parameters
+     */
+    public function setParameters(?\PSX\Record\Record $parameters) : void
     {
         $this->parameters = $parameters;
     }
-    public function getParameters() : ?DebugParameters
+    /**
+     * @return \PSX\Record\Record|null
+     */
+    public function getParameters() : ?\PSX\Record\Record
     {
         return $this->parameters;
     }
-    public function setBody(?DebugBody $body) : void
+    /**
+     * @param \PSX\Record\Record|null $body
+     */
+    public function setBody(?\PSX\Record\Record $body) : void
     {
         $this->body = $body;
     }
-    public function getBody() : ?DebugBody
+    /**
+     * @return \PSX\Record\Record|null
+     */
+    public function getBody() : ?\PSX\Record\Record
     {
         return $this->body;
     }

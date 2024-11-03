@@ -11,7 +11,10 @@ class ActionExecuteRequest implements \JsonSerializable, \PSX\Record\RecordableI
     protected ?string $uriFragments = null;
     protected ?string $parameters = null;
     protected ?string $headers = null;
-    protected ?ActionExecuteRequestBody $body = null;
+    /**
+     * @var \PSX\Record\Record|null
+     */
+    protected ?\PSX\Record\Record $body = null;
     public function setMethod(?string $method) : void
     {
         $this->method = $method;
@@ -44,11 +47,17 @@ class ActionExecuteRequest implements \JsonSerializable, \PSX\Record\RecordableI
     {
         return $this->headers;
     }
-    public function setBody(?ActionExecuteRequestBody $body) : void
+    /**
+     * @param \PSX\Record\Record|null $body
+     */
+    public function setBody(?\PSX\Record\Record $body) : void
     {
         $this->body = $body;
     }
-    public function getBody() : ?ActionExecuteRequestBody
+    /**
+     * @return \PSX\Record\Record|null
+     */
+    public function getBody() : ?\PSX\Record\Record
     {
         return $this->body;
     }

@@ -7,7 +7,7 @@ namespace Fusio\Model\Consumer;
 /**
  * @extends \Fusio\Model\Common\Collection<Grant>
  */
-class GrantCollection extends \Fusio\Model\Common\Collection
+class GrantCollection extends \Fusio\Model\Common\Collection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }
 
