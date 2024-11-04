@@ -8,10 +8,10 @@ use PSX\Schema\Attribute\DerivedType;
 use PSX\Schema\Attribute\Discriminator;
 
 #[Discriminator('type')]
-#[DerivedType('Form_Element_Input', 'http://fusio-project.org/ns/2015/form/input')]
-#[DerivedType('Form_Element_Select', 'http://fusio-project.org/ns/2015/form/select')]
-#[DerivedType('Form_Element_Tag', 'http://fusio-project.org/ns/2015/form/tag')]
-#[DerivedType('Form_Element_TextArea', 'http://fusio-project.org/ns/2015/form/textarea')]
+#[DerivedType('FormElementInput', 'http://fusio-project.org/ns/2015/form/input')]
+#[DerivedType('FormElementSelect', 'http://fusio-project.org/ns/2015/form/select')]
+#[DerivedType('FormElementTag', 'http://fusio-project.org/ns/2015/form/tag')]
+#[DerivedType('FormElementTextArea', 'http://fusio-project.org/ns/2015/form/textarea')]
 abstract class FormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $type = null;
