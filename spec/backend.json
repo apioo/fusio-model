@@ -44,8 +44,10 @@
       }
     },
     "Action_Config": {
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Action_Create": {
       "$extends": "Action"
@@ -82,8 +84,10 @@
       }
     },
     "Action_Execute_Request_Body": {
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Action_Execute_Request": {
       "type": "object",
@@ -112,8 +116,10 @@
       }
     },
     "Action_Execute_Response_Body": {
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Action_Execute_Response": {
       "type": "object",
@@ -221,8 +227,10 @@
     },
     "Audit_Object": {
       "description": "A key value object containing the changes",
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Audit_Collection": {
       "$ref": "common:Collection",
@@ -340,8 +348,10 @@
       }
     },
     "Connection_Config": {
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Connection_Collection": {
       "$ref": "common:Collection",
@@ -724,8 +734,10 @@
       }
     },
     "Identity_Config": {
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Identity_Collection": {
       "$ref": "common:Collection",
@@ -804,8 +816,10 @@
       }
     },
     "Generator_Provider_Config": {
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Generator_Provider_Changelog": {
       "type": "object",
@@ -1204,13 +1218,17 @@
     },
     "Schema_Source": {
       "description": "Contains the TypeSchema specification",
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Schema_Form": {
       "description": "Contains a UI vocabulary to describe the UI of the schema",
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Schema_Collection": {
       "$ref": "common:Collection",
@@ -1321,8 +1339,10 @@
       }
     },
     "Statistic_Chart_Data": {
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Statistic_Chart": {
       "type": "object",

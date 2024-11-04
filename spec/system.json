@@ -180,12 +180,16 @@
       }
     },
     "Schema_TypeSchema": {
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Schema_Form": {
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     }
   }
 }
