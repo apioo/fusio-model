@@ -10,14 +10,8 @@ class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?int $id = null;
     protected ?int $status = null;
     protected ?string $name = null;
-    /**
-     * @var \PSX\Record\Record|null
-     */
-    protected ?\PSX\Record\Record $source = null;
-    /**
-     * @var \PSX\Record\Record|null
-     */
-    protected ?\PSX\Record\Record $form = null;
+    protected ?SchemaSource $source = null;
+    protected ?SchemaForm $form = null;
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id) : void
     {
@@ -43,31 +37,19 @@ class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->name;
     }
-    /**
-     * @param \PSX\Record\Record|null $source
-     */
-    public function setSource(?\PSX\Record\Record $source) : void
+    public function setSource(?SchemaSource $source) : void
     {
         $this->source = $source;
     }
-    /**
-     * @return \PSX\Record\Record|null
-     */
-    public function getSource() : ?\PSX\Record\Record
+    public function getSource() : ?SchemaSource
     {
         return $this->source;
     }
-    /**
-     * @param \PSX\Record\Record|null $form
-     */
-    public function setForm(?\PSX\Record\Record $form) : void
+    public function setForm(?SchemaForm $form) : void
     {
         $this->form = $form;
     }
-    /**
-     * @return \PSX\Record\Record|null
-     */
-    public function getForm() : ?\PSX\Record\Record
+    public function getForm() : ?SchemaForm
     {
         return $this->form;
     }

@@ -9,10 +9,7 @@ class ActionExecuteResponse implements \JsonSerializable, \PSX\Record\Recordable
 {
     protected ?int $statusCode = null;
     protected ?ActionExecuteResponseHeaders $headers = null;
-    /**
-     * @var \PSX\Record\Record|null
-     */
-    protected ?\PSX\Record\Record $body = null;
+    protected ?ActionExecuteResponseBody $body = null;
     public function setStatusCode(?int $statusCode) : void
     {
         $this->statusCode = $statusCode;
@@ -29,17 +26,11 @@ class ActionExecuteResponse implements \JsonSerializable, \PSX\Record\Recordable
     {
         return $this->headers;
     }
-    /**
-     * @param \PSX\Record\Record|null $body
-     */
-    public function setBody(?\PSX\Record\Record $body) : void
+    public function setBody(?ActionExecuteResponseBody $body) : void
     {
         $this->body = $body;
     }
-    /**
-     * @return \PSX\Record\Record|null
-     */
-    public function getBody() : ?\PSX\Record\Record
+    public function getBody() : ?ActionExecuteResponseBody
     {
         return $this->body;
     }

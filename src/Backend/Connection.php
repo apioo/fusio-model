@@ -15,10 +15,7 @@ class Connection implements \JsonSerializable, \PSX\Record\RecordableInterface
     #[Key('oauth2')]
     #[Description('Indicates whether it is possible to start an OAuth2 authorization code flow on this connection')]
     protected ?bool $oauth = null;
-    /**
-     * @var \PSX\Record\Record|null
-     */
-    protected ?\PSX\Record\Record $config = null;
+    protected ?ConnectionConfig $config = null;
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id) : void
     {
@@ -52,17 +49,11 @@ class Connection implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->oauth;
     }
-    /**
-     * @param \PSX\Record\Record|null $config
-     */
-    public function setConfig(?\PSX\Record\Record $config) : void
+    public function setConfig(?ConnectionConfig $config) : void
     {
         $this->config = $config;
     }
-    /**
-     * @return \PSX\Record\Record|null
-     */
-    public function getConfig() : ?\PSX\Record\Record
+    public function getConfig() : ?ConnectionConfig
     {
         return $this->config;
     }

@@ -13,10 +13,7 @@ class GeneratorProvider implements \JsonSerializable, \PSX\Record\RecordableInte
      */
     protected ?array $scopes = null;
     protected ?bool $public = null;
-    /**
-     * @var \PSX\Record\Record|null
-     */
-    protected ?\PSX\Record\Record $config = null;
+    protected ?GeneratorProviderConfig $config = null;
     public function setPath(?string $path) : void
     {
         $this->path = $path;
@@ -47,17 +44,11 @@ class GeneratorProvider implements \JsonSerializable, \PSX\Record\RecordableInte
     {
         return $this->public;
     }
-    /**
-     * @param \PSX\Record\Record|null $config
-     */
-    public function setConfig(?\PSX\Record\Record $config) : void
+    public function setConfig(?GeneratorProviderConfig $config) : void
     {
         $this->config = $config;
     }
-    /**
-     * @return \PSX\Record\Record|null
-     */
-    public function getConfig() : ?\PSX\Record\Record
+    public function getConfig() : ?GeneratorProviderConfig
     {
         return $this->config;
     }

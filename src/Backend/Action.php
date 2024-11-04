@@ -12,10 +12,7 @@ class Action implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $name = null;
     protected ?string $class = null;
     protected ?bool $async = null;
-    /**
-     * @var \PSX\Record\Record|null
-     */
-    protected ?\PSX\Record\Record $config = null;
+    protected ?ActionConfig $config = null;
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id) : void
     {
@@ -57,17 +54,11 @@ class Action implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->async;
     }
-    /**
-     * @param \PSX\Record\Record|null $config
-     */
-    public function setConfig(?\PSX\Record\Record $config) : void
+    public function setConfig(?ActionConfig $config) : void
     {
         $this->config = $config;
     }
-    /**
-     * @return \PSX\Record\Record|null
-     */
-    public function getConfig() : ?\PSX\Record\Record
+    public function getConfig() : ?ActionConfig
     {
         return $this->config;
     }
