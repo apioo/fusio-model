@@ -4,8 +4,10 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
-
-class GeneratorProviderConfig implements \JsonSerializable, \PSX\Record\RecordableInterface
+/**
+ * @extends \PSX\Record\Record<mixed>
+ */
+class GeneratorProviderConfig extends \PSX\Record\Record
 {
 }
 

@@ -4,8 +4,10 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
-
-class ActionExecuteRequestBody implements \JsonSerializable, \PSX\Record\RecordableInterface
+/**
+ * @extends \PSX\Record\Record<mixed>
+ */
+class ActionExecuteRequestBody extends \PSX\Record\Record
 {
 }
 

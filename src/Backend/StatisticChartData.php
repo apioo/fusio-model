@@ -4,8 +4,10 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
-
-class StatisticChartData implements \JsonSerializable, \PSX\Record\RecordableInterface
+/**
+ * @extends \PSX\Record\Record<mixed>
+ */
+class StatisticChartData extends \PSX\Record\Record
 {
 }
 
