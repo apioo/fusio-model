@@ -1,6 +1,7 @@
 {
   "definitions": {
     "Collection": {
+      "description": "Base collection",
       "type": "object",
       "properties": {
         "totalResults": {
@@ -21,6 +22,7 @@
       }
     },
     "Message": {
+      "description": "Common error message",
       "type": "object",
       "properties": {
         "success": {
