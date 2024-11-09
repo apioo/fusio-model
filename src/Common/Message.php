@@ -4,7 +4,9 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Common;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Common error message')]
 class Message implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?bool $success = null;
