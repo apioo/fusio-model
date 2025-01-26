@@ -4,7 +4,7 @@
   },
   "definitions": {
     "App": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -32,23 +32,27 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
     "App_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "App"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "App"
+        }
       }
     },
     "App_Create": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
@@ -58,14 +62,14 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "App_Update": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
@@ -75,14 +79,14 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "Authorize_Meta": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
@@ -92,14 +96,15 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
-            "$ref": "Scope"
+          "schema": {
+            "type": "reference",
+            "target": "Scope"
           }
         }
       }
     },
     "Authorize_Request": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "responseType": {
           "type": "string"
@@ -122,13 +127,14 @@
       }
     },
     "Authorize_Response": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "type": {
           "type": "string"
         },
         "token": {
-          "$ref": "Authorize_Response_Token"
+          "type": "reference",
+          "target": "Authorize_Response_Token"
         },
         "code": {
           "type": "string"
@@ -139,7 +145,7 @@
       }
     },
     "Authorize_Response_Token": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "access_token": {
           "type": "string"
@@ -156,7 +162,7 @@
       }
     },
     "Event": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -168,18 +174,22 @@
           "type": "string"
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
     "Event_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Event"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Event"
+        }
       }
     },
     "Identity": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -196,13 +206,16 @@
       }
     },
     "Identity_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Identity"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Identity"
+        }
       }
     },
     "Log": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -235,19 +248,23 @@
       }
     },
     "Log_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Log"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Log"
+        }
       }
     },
     "Grant": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
         },
         "app": {
-          "$ref": "App"
+          "type": "reference",
+          "target": "App"
         },
         "createDate": {
           "type": "string",
@@ -256,13 +273,16 @@
       }
     },
     "Grant_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Grant"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Grant"
+        }
       }
     },
     "Page": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -277,18 +297,22 @@
           "type": "string"
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
     "Page_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Page"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Page"
+        }
       }
     },
     "Plan": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -309,18 +333,22 @@
           "type": "integer"
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
     "Plan_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Plan"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Plan"
+        }
       }
     },
     "Payment_Checkout_Request": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "planId": {
           "type": "integer"
@@ -331,7 +359,7 @@
       }
     },
     "Payment_Checkout_Response": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "approvalUrl": {
           "type": "string"
@@ -339,7 +367,7 @@
       }
     },
     "Payment_Portal_Request": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "returnUrl": {
           "type": "string"
@@ -347,7 +375,7 @@
       }
     },
     "Payment_Portal_Response": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "redirectUrl": {
           "type": "string"
@@ -355,7 +383,7 @@
       }
     },
     "Scope": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -367,18 +395,22 @@
           "type": "string"
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
     "Scope_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Scope"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Scope"
+        }
       }
     },
     "Token": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -391,7 +423,7 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
@@ -409,20 +441,23 @@
       }
     },
     "Token_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Token"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Token"
+        }
       }
     },
     "Token_Create": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
@@ -433,7 +468,7 @@
       }
     },
     "Token_Update": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
@@ -445,7 +480,7 @@
       }
     },
     "Token_AccessToken": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "access_token": {
           "type": "string"
@@ -465,7 +500,7 @@
       }
     },
     "Transaction": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -477,7 +512,8 @@
           "type": "integer"
         },
         "plan": {
-          "$ref": "Plan"
+          "type": "reference",
+          "target": "Plan"
         },
         "transactionId": {
           "type": "string"
@@ -503,13 +539,16 @@
       }
     },
     "Transaction_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Transaction"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Transaction"
+        }
       }
     },
     "User_Account": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -531,18 +570,20 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
         "plans": {
           "type": "array",
-          "items": {
-            "$ref": "User_Plan"
+          "schema": {
+            "type": "reference",
+            "target": "User_Plan"
           }
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         },
         "date": {
           "type": "string",
@@ -551,7 +592,7 @@
       }
     },
     "User_Plan": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -571,7 +612,7 @@
       }
     },
     "User_Activate": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "token": {
           "type": "string"
@@ -579,7 +620,7 @@
       }
     },
     "User_Email": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "email": {
           "type": "string"
@@ -590,7 +631,7 @@
       }
     },
     "User_JWT": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "token": {
           "type": "string"
@@ -607,7 +648,7 @@
       }
     },
     "User_Login": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "username": {
           "type": "string"
@@ -617,14 +658,14 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "User_PasswordReset": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "token": {
           "type": "string"
@@ -635,7 +676,7 @@
       }
     },
     "User_Refresh": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "refresh_token": {
           "type": "string"
@@ -643,7 +684,7 @@
       }
     },
     "User_Register": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
@@ -660,7 +701,7 @@
       }
     },
     "Webhook": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -679,14 +720,15 @@
         },
         "responses": {
           "type": "array",
-          "items": {
-            "$ref": "Webhook_Response"
+          "schema": {
+            "type": "reference",
+            "target": "Webhook_Response"
           }
         }
       }
     },
     "Webhook_Response": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "status": {
           "type": "integer"
@@ -703,13 +745,16 @@
       }
     },
     "Webhook_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Webhook"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Webhook"
+        }
       }
     },
     "Webhook_Create": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "event": {
           "type": "string"
@@ -723,7 +768,7 @@
       }
     },
     "Webhook_Update": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "event": {
           "type": "string"

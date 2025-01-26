@@ -2,7 +2,7 @@
   "definitions": {
     "Collection": {
       "description": "Base collection",
-      "type": "object",
+      "type": "struct",
       "properties": {
         "totalResults": {
           "type": "integer"
@@ -15,15 +15,16 @@
         },
         "entry": {
           "type": "array",
-          "items": {
-            "$generic": "T"
+          "schema": {
+            "type": "generic",
+            "name": "T"
           }
         }
       }
     },
     "Message": {
       "description": "Common error message",
-      "type": "object",
+      "type": "struct",
       "properties": {
         "success": {
           "type": "boolean"
@@ -37,13 +38,13 @@
       }
     },
     "Metadata": {
-      "type": "object",
-      "additionalProperties": {
+      "type": "map",
+      "schema": {
         "type": "string"
       }
     },
     "Form_Container": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "element": {
           "type": "array",
@@ -55,7 +56,7 @@
       }
     },
     "Form_Element": {
-      "type": "object",
+      "type": "struct",
       "base": true,
       "discriminator": "type",
       "mapping": {
@@ -98,8 +99,9 @@
       "properties": {
         "options": {
           "type": "array",
-          "items": {
-            "$ref": "Form_Element_Select_Option"
+          "schema": {
+            "type": "reference",
+            "target": "Form_Element_Select_Option"
           }
         }
       }

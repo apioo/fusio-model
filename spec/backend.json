@@ -4,7 +4,7 @@
   },
   "definitions": {
     "Account_ChangePassword": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "oldPassword": {
           "type": "string"
@@ -18,7 +18,7 @@
       }
     },
     "Action": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -36,10 +36,12 @@
           "type": "boolean"
         },
         "config": {
-          "$ref": "Action_Config"
+          "type": "reference",
+          "target": "Action_Config"
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
@@ -50,24 +52,31 @@
       }
     },
     "Action_Create": {
-      "$extends": "Action"
+      "parent": {
+        "type": "reference",
+        "target": "Action"
+      }
     },
     "Action_Update": {
-      "$extends": "Action"
+      "parent": {
+        "type": "reference",
+        "target": "Action"
+      }
     },
     "Action_Index": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "actions": {
           "type": "array",
-          "items": {
-            "$ref": "Action_Index_Entry"
+          "schema": {
+            "type": "reference",
+            "target": "Action_Index_Entry"
           }
         }
       }
     },
     "Action_Index_Entry": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
@@ -78,9 +87,12 @@
       }
     },
     "Action_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Action"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Action"
+        }
       }
     },
     "Action_Execute_Request_Body": {
@@ -90,7 +102,7 @@
       }
     },
     "Action_Execute_Request": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "method": {
           "type": "string"
@@ -105,13 +117,14 @@
           "type": "string"
         },
         "body": {
-          "$ref": "Action_Execute_Request_Body"
+          "type": "reference",
+          "target": "Action_Execute_Request_Body"
         }
       }
     },
     "Action_Execute_Response_Headers": {
-      "type": "object",
-      "additionalProperties": {
+      "type": "map",
+      "schema": {
         "type": "string"
       }
     },
@@ -122,21 +135,23 @@
       }
     },
     "Action_Execute_Response": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "statusCode": {
           "type": "integer"
         },
         "headers": {
-          "$ref": "Action_Execute_Response_Headers"
+          "type": "reference",
+          "target": "Action_Execute_Response_Headers"
         },
         "body": {
-          "$ref": "Action_Execute_Response_Body"
+          "type": "reference",
+          "target": "Action_Execute_Response_Body"
         }
       }
     },
     "App": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -163,7 +178,8 @@
           "type": "string"
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         },
         "date": {
           "type": "string",
@@ -171,41 +187,53 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
         "tokens": {
           "type": "array",
-          "items": {
-            "$ref": "Token"
+          "schema": {
+            "type": "reference",
+            "target": "Token"
           }
         }
       }
     },
     "App_Create": {
-      "$extends": "App"
+      "parent": {
+        "type": "reference",
+        "target": "App"
+      }
     },
     "App_Update": {
-      "$extends": "App"
+      "parent": {
+        "type": "reference",
+        "target": "App"
+      }
     },
     "App_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "App"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "App"
+        }
       }
     },
     "Audit": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
         },
         "app": {
-          "$ref": "App"
+          "type": "reference",
+          "target": "App"
         },
         "user": {
-          "$ref": "User"
+          "type": "reference",
+          "target": "User"
         },
         "event": {
           "type": "string"
@@ -217,7 +245,8 @@
           "type": "string"
         },
         "content": {
-          "$ref": "Audit_Object"
+          "type": "reference",
+          "target": "Audit_Object"
         },
         "date": {
           "type": "string",
@@ -233,13 +262,16 @@
       }
     },
     "Audit_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Audit"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Audit"
+        }
       }
     },
     "Backup_Export": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "export": {
           "type": "string"
@@ -247,7 +279,7 @@
       }
     },
     "Backup_Import": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "import": {
           "type": "string"
@@ -255,7 +287,7 @@
       }
     },
     "Backup_Import_Result": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "success": {
           "type": "boolean"
@@ -265,14 +297,14 @@
         },
         "logs": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "Category": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -283,19 +315,28 @@
       }
     },
     "Category_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Category"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Category"
+        }
       }
     },
     "Category_Create": {
-      "$extends": "Category"
+      "parent": {
+        "type": "reference",
+        "target": "Category"
+      }
     },
     "Category_Update": {
-      "$extends": "Category"
+      "parent": {
+        "type": "reference",
+        "target": "Category"
+      }
     },
     "Config": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -315,16 +356,22 @@
       }
     },
     "Config_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Config"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Config"
+        }
       }
     },
     "Config_Update": {
-      "$extends": "Config"
+      "parent": {
+        "type": "reference",
+        "target": "Config"
+      }
     },
     "Connection": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -340,10 +387,12 @@
           "type": "boolean"
         },
         "config": {
-          "$ref": "Connection_Config"
+          "type": "reference",
+          "target": "Connection_Config"
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
@@ -354,30 +403,40 @@
       }
     },
     "Connection_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Connection"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Connection"
+        }
       }
     },
     "Connection_Create": {
-      "$extends": "Connection"
+      "parent": {
+        "type": "reference",
+        "target": "Connection"
+      }
     },
     "Connection_Update": {
-      "$extends": "Connection"
+      "parent": {
+        "type": "reference",
+        "target": "Connection"
+      }
     },
     "Connection_Index": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "connections": {
           "type": "array",
-          "items": {
-            "$ref": "Connection_Index_Entry"
+          "schema": {
+            "type": "reference",
+            "target": "Connection_Index_Entry"
           }
         }
       }
     },
     "Connection_Index_Entry": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
@@ -388,49 +447,50 @@
       }
     },
     "Connection_Introspection_Entities": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "entities": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "Connection_Introspection_Entity": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
         },
         "headers": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
         "rows": {
           "type": "array",
-          "items": {
-            "$ref": "Connection_Introspection_Entity_Row"
+          "schema": {
+            "type": "reference",
+            "target": "Connection_Introspection_Entity_Row"
           }
         }
       }
     },
     "Connection_Introspection_Entity_Row": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "values": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "Connection_Redirect_Response": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "redirectUri": {
           "type": "string"
@@ -438,7 +498,7 @@
       }
     },
     "Cronjob": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -460,18 +520,20 @@
           "type": "integer"
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         },
         "errors": {
           "type": "array",
-          "items": {
-            "$ref": "Cronjob_Error"
+          "schema": {
+            "type": "reference",
+            "target": "Cronjob_Error"
           }
         }
       }
     },
     "Cronjob_Error": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "message": {
           "type": "string"
@@ -488,49 +550,59 @@
       }
     },
     "Cronjob_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Cronjob"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Cronjob"
+        }
       }
     },
     "Cronjob_Create": {
-      "$extends": "Cronjob"
+      "parent": {
+        "type": "reference",
+        "target": "Cronjob"
+      }
     },
     "Cronjob_Update": {
-      "$extends": "Cronjob"
+      "parent": {
+        "type": "reference",
+        "target": "Cronjob"
+      }
     },
     "Database_Connections": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "connections": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "Database_Tables": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "tables": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "Database_Table": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
         },
         "columns": {
           "type": "array",
-          "items": {
-            "$ref": "Database_Table_Column"
+          "schema": {
+            "type": "reference",
+            "target": "Database_Table_Column"
           }
         },
         "primaryKey": {
@@ -538,20 +610,22 @@
         },
         "indexes": {
           "type": "array",
-          "items": {
-            "$ref": "Database_Table_Index"
+          "schema": {
+            "type": "reference",
+            "target": "Database_Table_Index"
           }
         },
         "foreignKeys": {
           "type": "array",
-          "items": {
-            "$ref": "Database_Table_ForeignKeyConstraint"
+          "schema": {
+            "type": "reference",
+            "target": "Database_Table_ForeignKeyConstraint"
           }
         }
       }
     },
     "Database_Table_Column": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
@@ -589,7 +663,7 @@
       }
     },
     "Database_Table_Index": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
@@ -599,14 +673,14 @@
         },
         "columns": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "Database_Table_ForeignKeyConstraint": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
@@ -616,64 +690,76 @@
         },
         "localColumnNames": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
         "foreignColumnNames": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "Database_Rows": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Database_Row"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Database_Row"
+        }
       }
     },
     "Database_Row": {
-      "type": "object",
-      "additionalProperties": {
+      "type": "map",
+      "schema": {
         "type": "any"
       }
     },
     "Dashboard": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "errorsPerOperation": {
-          "$ref": "Statistic_Chart"
+          "type": "reference",
+          "target": "Statistic_Chart"
         },
         "incomingRequests": {
-          "$ref": "Statistic_Chart"
+          "type": "reference",
+          "target": "Statistic_Chart"
         },
         "incomingTransactions": {
-          "$ref": "Statistic_Chart"
+          "type": "reference",
+          "target": "Statistic_Chart"
         },
         "mostUsedOperations": {
-          "$ref": "Statistic_Chart"
+          "type": "reference",
+          "target": "Statistic_Chart"
         },
         "timePerOperation": {
-          "$ref": "Statistic_Chart"
+          "type": "reference",
+          "target": "Statistic_Chart"
         },
         "testCoverage": {
-          "$ref": "Statistic_Chart"
+          "type": "reference",
+          "target": "Statistic_Chart"
         },
         "mostUsedActivities": {
-          "$ref": "Statistic_Chart"
+          "type": "reference",
+          "target": "Statistic_Chart"
         },
         "activitiesPerUser": {
-          "$ref": "Statistic_Chart"
+          "type": "reference",
+          "target": "Statistic_Chart"
         },
         "userRegistrations": {
-          "$ref": "Statistic_Chart"
+          "type": "reference",
+          "target": "Statistic_Chart"
         }
       }
     },
     "Event": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -688,24 +774,34 @@
           "type": "string"
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
     "Event_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Event"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Event"
+        }
       }
     },
     "Event_Create": {
-      "$extends": "Event"
+      "parent": {
+        "type": "reference",
+        "target": "Event"
+      }
     },
     "Event_Update": {
-      "$extends": "Event"
+      "parent": {
+        "type": "reference",
+        "target": "Event"
+      }
     },
     "Identity": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -726,7 +822,8 @@
           "type": "string"
         },
         "config": {
-          "$ref": "Identity_Config"
+          "type": "reference",
+          "target": "Identity_Config"
         },
         "allowCreate": {
           "type": "boolean"
@@ -740,30 +837,40 @@
       }
     },
     "Identity_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Identity"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Identity"
+        }
       }
     },
     "Identity_Create": {
-      "$extends": "Identity"
+      "parent": {
+        "type": "reference",
+        "target": "Identity"
+      }
     },
     "Identity_Update": {
-      "$extends": "Identity"
+      "parent": {
+        "type": "reference",
+        "target": "Identity"
+      }
     },
     "Identity_Index": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "providers": {
           "type": "array",
-          "items": {
-            "$ref": "Identity_Index_Entry"
+          "schema": {
+            "type": "reference",
+            "target": "Identity_Index_Entry"
           }
         }
       }
     },
     "Identity_Index_Entry": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
@@ -774,18 +881,19 @@
       }
     },
     "Generator_Index_Providers": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "providers": {
           "type": "array",
-          "items": {
-            "$ref": "Generator_Index_Provider"
+          "schema": {
+            "type": "reference",
+            "target": "Generator_Index_Provider"
           }
         }
       }
     },
     "Generator_Index_Provider": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "name": {
           "type": "string"
@@ -796,14 +904,14 @@
       }
     },
     "Generator_Provider": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "path": {
           "type": "string"
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
@@ -811,7 +919,8 @@
           "type": "boolean"
         },
         "config": {
-          "$ref": "Generator_Provider_Config"
+          "type": "reference",
+          "target": "Generator_Provider_Config"
         }
       }
     },
@@ -822,30 +931,33 @@
       }
     },
     "Generator_Provider_Changelog": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "schemas": {
           "type": "array",
-          "items": {
-            "$ref": "Schema"
+          "schema": {
+            "type": "reference",
+            "target": "Schema"
           }
         },
         "actions": {
           "type": "array",
-          "items": {
-            "$ref": "Action"
+          "schema": {
+            "type": "reference",
+            "target": "Action"
           }
         },
         "operations": {
           "type": "array",
-          "items": {
-            "$ref": "Operation"
+          "schema": {
+            "type": "reference",
+            "target": "Operation"
           }
         }
       }
     },
     "Log": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -874,20 +986,24 @@
         },
         "errors": {
           "type": "array",
-          "items": {
-            "$ref": "Log_Error"
+          "schema": {
+            "type": "reference",
+            "target": "Log_Error"
           }
         }
       }
     },
     "Log_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Log"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Log"
+        }
       }
     },
     "Log_Error": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -907,13 +1023,16 @@
       }
     },
     "Log_Error_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Log_Error"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Log_Error"
+        }
       }
     },
     "Operation": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -946,7 +1065,8 @@
           "type": "string"
         },
         "parameters": {
-          "$ref": "Operation_Parameters"
+          "type": "reference",
+          "target": "Operation_Parameters"
         },
         "incoming": {
           "type": "string"
@@ -955,7 +1075,8 @@
           "type": "string"
         },
         "throws": {
-          "$ref": "Operation_Throws"
+          "type": "reference",
+          "target": "Operation_Throws"
         },
         "action": {
           "type": "string"
@@ -965,29 +1086,31 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
     "Operation_Parameters": {
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "Operation_Schema"
+      "type": "map",
+      "schema": {
+        "type": "reference",
+        "target": "Operation_Schema"
       }
     },
     "Operation_Throws": {
-      "type": "object",
-      "additionalProperties": {
+      "type": "map",
+      "schema": {
         "type": "string"
       }
     },
     "Operation_Schema": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "description": {
           "type": "string"
@@ -1004,19 +1127,28 @@
       }
     },
     "Operation_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Operation"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Operation"
+        }
       }
     },
     "Operation_Create": {
-      "$extends": "Operation"
+      "parent": {
+        "type": "reference",
+        "target": "Operation"
+      }
     },
     "Operation_Update": {
-      "$extends": "Operation"
+      "parent": {
+        "type": "reference",
+        "target": "Operation"
+      }
     },
     "Page": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1034,24 +1166,34 @@
           "type": "string"
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
     "Page_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Page"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Page"
+        }
       }
     },
     "Page_Create": {
-      "$extends": "Page"
+      "parent": {
+        "type": "reference",
+        "target": "Page"
+      }
     },
     "Page_Update": {
-      "$extends": "Page"
+      "parent": {
+        "type": "reference",
+        "target": "Page"
+      }
     },
     "Plan": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1076,29 +1218,39 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
     "Plan_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Plan"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Plan"
+        }
       }
     },
     "Plan_Create": {
-      "$extends": "Plan"
+      "parent": {
+        "type": "reference",
+        "target": "Plan"
+      }
     },
     "Plan_Update": {
-      "$extends": "Plan"
+      "parent": {
+        "type": "reference",
+        "target": "Plan"
+      }
     },
     "Role": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1111,26 +1263,35 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "Role_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Role"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Role"
+        }
       }
     },
     "Role_Create": {
-      "$extends": "Role"
+      "parent": {
+        "type": "reference",
+        "target": "Role"
+      }
     },
     "Role_Update": {
-      "$extends": "Role"
+      "parent": {
+        "type": "reference",
+        "target": "Role"
+      }
     },
     "Rate": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1149,29 +1310,40 @@
         },
         "allocation": {
           "type": "array",
-          "items": {
-            "$ref": "Rate_Allocation"
+          "schema": {
+            "type": "reference",
+            "target": "Rate_Allocation"
           }
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
     "Rate_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Rate"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Rate"
+        }
       }
     },
     "Rate_Create": {
-      "$extends": "Rate"
+      "parent": {
+        "type": "reference",
+        "target": "Rate"
+      }
     },
     "Rate_Update": {
-      "$extends": "Rate"
+      "parent": {
+        "type": "reference",
+        "target": "Rate"
+      }
     },
     "Rate_Allocation": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1194,7 +1366,7 @@
       }
     },
     "Schema": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1206,13 +1378,16 @@
           "type": "string"
         },
         "source": {
-          "$ref": "Schema_Source"
+          "type": "reference",
+          "target": "Schema_Source"
         },
         "form": {
-          "$ref": "Schema_Form"
+          "type": "reference",
+          "target": "Schema_Form"
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
@@ -1231,19 +1406,28 @@
       }
     },
     "Schema_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Schema"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Schema"
+        }
       }
     },
     "Schema_Create": {
-      "$extends": "Schema"
+      "parent": {
+        "type": "reference",
+        "target": "Schema"
+      }
     },
     "Schema_Update": {
-      "$extends": "Schema"
+      "parent": {
+        "type": "reference",
+        "target": "Schema"
+      }
     },
     "Schema_Preview_Response": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "preview": {
           "type": "string"
@@ -1251,7 +1435,7 @@
       }
     },
     "Scope": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1264,17 +1448,19 @@
         },
         "operations": {
           "type": "array",
-          "items": {
-            "$ref": "Scope_Operation"
+          "schema": {
+            "type": "reference",
+            "target": "Scope_Operation"
           }
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         }
       }
     },
     "Scope_Operation": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "operationId": {
           "type": "integer"
@@ -1285,30 +1471,40 @@
       }
     },
     "Scope_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Scope"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Scope"
+        }
       }
     },
     "Scope_Create": {
-      "$extends": "Scope"
+      "parent": {
+        "type": "reference",
+        "target": "Scope"
+      }
     },
     "Scope_Update": {
-      "$extends": "Scope"
+      "parent": {
+        "type": "reference",
+        "target": "Scope"
+      }
     },
     "Scope_Categories": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "categories": {
           "type": "array",
-          "items": {
-            "$ref": "Scope_Category"
+          "schema": {
+            "type": "reference",
+            "target": "Scope_Category"
           }
         }
       }
     },
     "Scope_Category": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1318,14 +1514,15 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
-            "$ref": "Scope_Category_Scope"
+          "schema": {
+            "type": "reference",
+            "target": "Scope_Category_Scope"
           }
         }
       }
     },
     "Scope_Category_Scope": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1345,30 +1542,31 @@
       }
     },
     "Statistic_Chart": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "labels": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
         "data": {
           "type": "array",
-          "items": {
-            "$ref": "Statistic_Chart_Data"
+          "schema": {
+            "type": "reference",
+            "target": "Statistic_Chart_Data"
           }
         },
         "series": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "Statistic_Count": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "count": {
           "type": "integer"
@@ -1384,21 +1582,22 @@
       }
     },
     "Sdk_Response": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "types": {
-          "$ref": "Sdk_Types"
+          "type": "reference",
+          "target": "Sdk_Types"
         }
       }
     },
     "Sdk_Types": {
-      "type": "object",
-      "additionalProperties": {
+      "type": "map",
+      "schema": {
         "type": "string"
       }
     },
     "Sdk_Generate": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "format": {
           "type": "string"
@@ -1409,7 +1608,7 @@
       }
     },
     "Sdk_Message": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "success": {
           "type": "boolean"
@@ -1423,7 +1622,7 @@
       }
     },
     "Test": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1441,21 +1640,28 @@
           "type": "string"
         },
         "config": {
-          "$ref": "Test_Config"
+          "type": "reference",
+          "target": "Test_Config"
         }
       }
     },
     "Test_Config": {
-      "$extends": "Action_Execute_Request"
+      "parent": {
+        "type": "reference",
+        "target": "Action_Execute_Request"
+      }
     },
     "Test_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Test"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Test"
+        }
       }
     },
     "Transaction": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1490,24 +1696,27 @@
       }
     },
     "Transaction_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Transaction"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Transaction"
+        }
       }
     },
     "Trash_Types": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "types": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "Trash_Data": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1521,13 +1730,16 @@
       }
     },
     "Trash_Data_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Trash_Data"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Trash_Data"
+        }
       }
     },
     "Trash_Restore": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1535,7 +1747,7 @@
       }
     },
     "Token": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1548,7 +1760,7 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
@@ -1566,13 +1778,16 @@
       }
     },
     "Token_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Token"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Token"
+        }
       }
     },
     "User": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1597,18 +1812,20 @@
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
         "apps": {
           "type": "array",
-          "items": {
-            "$ref": "App"
+          "schema": {
+            "type": "reference",
+            "target": "App"
           }
         },
         "metadata": {
-          "$ref": "common:Metadata"
+          "type": "reference",
+          "target": "common:Metadata"
         },
         "date": {
           "type": "string",
@@ -1617,20 +1834,26 @@
       }
     },
     "User_Attributes": {
-      "type": "object",
-      "additionalProperties": {
+      "type": "map",
+      "schema": {
         "type": "string"
       }
     },
     "User_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "User"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "User"
+        }
       }
     },
     "User_Create": {
-      "$extends": "User",
-      "type": "object",
+      "parent": {
+        "type": "reference",
+        "target": "User"
+      },
+      "type": "struct",
       "properties": {
         "password": {
           "type": "string"
@@ -1638,10 +1861,13 @@
       }
     },
     "User_Update": {
-      "$extends": "User"
+      "parent": {
+        "type": "reference",
+        "target": "User"
+      }
     },
     "Webhook": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1660,14 +1886,15 @@
         },
         "responses": {
           "type": "array",
-          "items": {
-            "$ref": "Webhook_Response"
+          "schema": {
+            "type": "reference",
+            "target": "Webhook_Response"
           }
         }
       }
     },
     "Webhook_Response": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "integer"
@@ -1691,16 +1918,25 @@
       }
     },
     "Webhook_Collection": {
-      "$ref": "common:Collection",
-      "$template": {
-        "T": "Webhook"
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Webhook"
+        }
       }
     },
     "Webhook_Create": {
-      "$extends": "Webhook"
+      "parent": {
+        "type": "reference",
+        "target": "Webhook"
+      }
     },
     "Webhook_Update": {
-      "$extends": "Webhook"
+      "parent": {
+        "type": "reference",
+        "target": "Webhook"
+      }
     }
   }
 }

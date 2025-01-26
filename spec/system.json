@@ -35,23 +35,25 @@
         },
         "categories": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
         "scopes": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
         "apps": {
-          "$ref": "About_Apps"
+          "type": "reference",
+          "target": "About_Apps"
         },
         "links": {
           "type": "array",
-          "items": {
-            "$ref": "About_Link"
+          "schema": {
+            "type": "reference",
+            "target": "About_Link"
           }
         }
       }
@@ -63,7 +65,7 @@
       }
     },
     "About_Link": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "rel": {
           "type": "string"
@@ -74,39 +76,49 @@
       }
     },
     "Debug": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "headers": {
-          "$ref": "Debug_Headers"
+          "type": "reference",
+          "target": "Debug_Headers"
         },
         "parameters": {
-          "$ref": "Debug_Parameters"
+          "type": "reference",
+          "target": "Debug_Parameters"
         },
         "body": {
-          "$ref": "Debug_Body"
+          "type": "reference",
+          "target": "Debug_Body"
         }
       }
     },
     "Debug_Headers": {
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Debug_Parameters": {
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Debug_Body": {
-      "type": "object",
-      "additionalProperties": true
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     },
     "Health": {
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "Health_Check"
+      "type": "map",
+      "schema": {
+        "type": "reference",
+        "target": "Health_Check"
       }
     },
     "Health_Check": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "healthy": {
           "type": "boolean"
@@ -117,7 +129,7 @@
       }
     },
     "OAuth_Configuration": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "issuer": {
           "type": "string"
@@ -127,7 +139,7 @@
         },
         "token_endpoint_auth_methods_supported": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
@@ -136,46 +148,50 @@
         },
         "scopes_supported": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         },
         "claims_supported": {
           "type": "array",
-          "items": {
+          "schema": {
             "type": "string"
           }
         }
       }
     },
     "Route": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "routes": {
-          "$ref": "Route_Path"
+          "type": "reference",
+          "target": "Route_Path"
         }
       }
     },
     "Route_Path": {
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "Route_Method"
+      "type": "map",
+      "schema": {
+        "type": "reference",
+        "target": "Route_Method"
       }
     },
     "Route_Method": {
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "string"
+      "type": "map",
+      "schema": {
+        "type": "string"
       }
     },
     "Schema": {
-      "type": "object",
+      "type": "struct",
       "properties": {
         "schema": {
-          "$ref": "Schema_TypeSchema"
+          "type": "reference",
+          "target": "Schema_TypeSchema"
         },
         "form": {
-          "$ref": "Schema_Form"
+          "type": "reference",
+          "target": "Schema_Form"
         }
       }
     },
