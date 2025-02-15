@@ -22,46 +22,46 @@ class GeneratorProviderChangelog implements \JsonSerializable, \PSX\Record\Recor
     /**
      * @param array<Schema>|null $schemas
      */
-    public function setSchemas(?array $schemas) : void
+    public function setSchemas(?array $schemas): void
     {
         $this->schemas = $schemas;
     }
     /**
      * @return array<Schema>|null
      */
-    public function getSchemas() : ?array
+    public function getSchemas(): ?array
     {
         return $this->schemas;
     }
     /**
      * @param array<Action>|null $actions
      */
-    public function setActions(?array $actions) : void
+    public function setActions(?array $actions): void
     {
         $this->actions = $actions;
     }
     /**
      * @return array<Action>|null
      */
-    public function getActions() : ?array
+    public function getActions(): ?array
     {
         return $this->actions;
     }
     /**
      * @param array<Operation>|null $operations
      */
-    public function setOperations(?array $operations) : void
+    public function setOperations(?array $operations): void
     {
         $this->operations = $operations;
     }
     /**
      * @return array<Operation>|null
      */
-    public function getOperations() : ?array
+    public function getOperations(): ?array
     {
         return $this->operations;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -70,7 +70,7 @@ class GeneratorProviderChangelog implements \JsonSerializable, \PSX\Record\Recor
         $record->put('operations', $this->operations);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

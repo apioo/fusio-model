@@ -13,55 +13,55 @@ class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?SchemaSource $source = null;
     protected ?SchemaForm $form = null;
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setStatus(?int $status) : void
+    public function setStatus(?int $status): void
     {
         $this->status = $status;
     }
-    public function getStatus() : ?int
+    public function getStatus(): ?int
     {
         return $this->status;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setSource(?SchemaSource $source) : void
+    public function setSource(?SchemaSource $source): void
     {
         $this->source = $source;
     }
-    public function getSource() : ?SchemaSource
+    public function getSource(): ?SchemaSource
     {
         return $this->source;
     }
-    public function setForm(?SchemaForm $form) : void
+    public function setForm(?SchemaForm $form): void
     {
         $this->form = $form;
     }
-    public function getForm() : ?SchemaForm
+    public function getForm(): ?SchemaForm
     {
         return $this->form;
     }
-    public function setMetadata(?\Fusio\Model\Common\Metadata $metadata) : void
+    public function setMetadata(?\Fusio\Model\Common\Metadata $metadata): void
     {
         $this->metadata = $metadata;
     }
-    public function getMetadata() : ?\Fusio\Model\Common\Metadata
+    public function getMetadata(): ?\Fusio\Model\Common\Metadata
     {
         return $this->metadata;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -73,7 +73,7 @@ class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('metadata', $this->metadata);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

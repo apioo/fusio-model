@@ -16,79 +16,79 @@ class Dashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?StatisticChart $mostUsedActivities = null;
     protected ?StatisticChart $activitiesPerUser = null;
     protected ?StatisticChart $userRegistrations = null;
-    public function setErrorsPerOperation(?StatisticChart $errorsPerOperation) : void
+    public function setErrorsPerOperation(?StatisticChart $errorsPerOperation): void
     {
         $this->errorsPerOperation = $errorsPerOperation;
     }
-    public function getErrorsPerOperation() : ?StatisticChart
+    public function getErrorsPerOperation(): ?StatisticChart
     {
         return $this->errorsPerOperation;
     }
-    public function setIncomingRequests(?StatisticChart $incomingRequests) : void
+    public function setIncomingRequests(?StatisticChart $incomingRequests): void
     {
         $this->incomingRequests = $incomingRequests;
     }
-    public function getIncomingRequests() : ?StatisticChart
+    public function getIncomingRequests(): ?StatisticChart
     {
         return $this->incomingRequests;
     }
-    public function setIncomingTransactions(?StatisticChart $incomingTransactions) : void
+    public function setIncomingTransactions(?StatisticChart $incomingTransactions): void
     {
         $this->incomingTransactions = $incomingTransactions;
     }
-    public function getIncomingTransactions() : ?StatisticChart
+    public function getIncomingTransactions(): ?StatisticChart
     {
         return $this->incomingTransactions;
     }
-    public function setMostUsedOperations(?StatisticChart $mostUsedOperations) : void
+    public function setMostUsedOperations(?StatisticChart $mostUsedOperations): void
     {
         $this->mostUsedOperations = $mostUsedOperations;
     }
-    public function getMostUsedOperations() : ?StatisticChart
+    public function getMostUsedOperations(): ?StatisticChart
     {
         return $this->mostUsedOperations;
     }
-    public function setTimePerOperation(?StatisticChart $timePerOperation) : void
+    public function setTimePerOperation(?StatisticChart $timePerOperation): void
     {
         $this->timePerOperation = $timePerOperation;
     }
-    public function getTimePerOperation() : ?StatisticChart
+    public function getTimePerOperation(): ?StatisticChart
     {
         return $this->timePerOperation;
     }
-    public function setTestCoverage(?StatisticChart $testCoverage) : void
+    public function setTestCoverage(?StatisticChart $testCoverage): void
     {
         $this->testCoverage = $testCoverage;
     }
-    public function getTestCoverage() : ?StatisticChart
+    public function getTestCoverage(): ?StatisticChart
     {
         return $this->testCoverage;
     }
-    public function setMostUsedActivities(?StatisticChart $mostUsedActivities) : void
+    public function setMostUsedActivities(?StatisticChart $mostUsedActivities): void
     {
         $this->mostUsedActivities = $mostUsedActivities;
     }
-    public function getMostUsedActivities() : ?StatisticChart
+    public function getMostUsedActivities(): ?StatisticChart
     {
         return $this->mostUsedActivities;
     }
-    public function setActivitiesPerUser(?StatisticChart $activitiesPerUser) : void
+    public function setActivitiesPerUser(?StatisticChart $activitiesPerUser): void
     {
         $this->activitiesPerUser = $activitiesPerUser;
     }
-    public function getActivitiesPerUser() : ?StatisticChart
+    public function getActivitiesPerUser(): ?StatisticChart
     {
         return $this->activitiesPerUser;
     }
-    public function setUserRegistrations(?StatisticChart $userRegistrations) : void
+    public function setUserRegistrations(?StatisticChart $userRegistrations): void
     {
         $this->userRegistrations = $userRegistrations;
     }
-    public function getUserRegistrations() : ?StatisticChart
+    public function getUserRegistrations(): ?StatisticChart
     {
         return $this->userRegistrations;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -103,7 +103,7 @@ class Dashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('userRegistrations', $this->userRegistrations);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

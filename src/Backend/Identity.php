@@ -15,71 +15,71 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $class = null;
     protected ?IdentityConfig $config = null;
     protected ?bool $allowCreate = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setAppId(?int $appId) : void
+    public function setAppId(?int $appId): void
     {
         $this->appId = $appId;
     }
-    public function getAppId() : ?int
+    public function getAppId(): ?int
     {
         return $this->appId;
     }
-    public function setRoleId(?int $roleId) : void
+    public function setRoleId(?int $roleId): void
     {
         $this->roleId = $roleId;
     }
-    public function getRoleId() : ?int
+    public function getRoleId(): ?int
     {
         return $this->roleId;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setIcon(?string $icon) : void
+    public function setIcon(?string $icon): void
     {
         $this->icon = $icon;
     }
-    public function getIcon() : ?string
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
-    public function setClass(?string $class) : void
+    public function setClass(?string $class): void
     {
         $this->class = $class;
     }
-    public function getClass() : ?string
+    public function getClass(): ?string
     {
         return $this->class;
     }
-    public function setConfig(?IdentityConfig $config) : void
+    public function setConfig(?IdentityConfig $config): void
     {
         $this->config = $config;
     }
-    public function getConfig() : ?IdentityConfig
+    public function getConfig(): ?IdentityConfig
     {
         return $this->config;
     }
-    public function setAllowCreate(?bool $allowCreate) : void
+    public function setAllowCreate(?bool $allowCreate): void
     {
         $this->allowCreate = $allowCreate;
     }
-    public function getAllowCreate() : ?bool
+    public function getAllowCreate(): ?bool
     {
         return $this->allowCreate;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -93,7 +93,7 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('allowCreate', $this->allowCreate);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

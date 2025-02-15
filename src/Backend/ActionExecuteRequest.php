@@ -12,47 +12,47 @@ class ActionExecuteRequest implements \JsonSerializable, \PSX\Record\RecordableI
     protected ?string $parameters = null;
     protected ?string $headers = null;
     protected ?ActionExecuteRequestBody $body = null;
-    public function setMethod(?string $method) : void
+    public function setMethod(?string $method): void
     {
         $this->method = $method;
     }
-    public function getMethod() : ?string
+    public function getMethod(): ?string
     {
         return $this->method;
     }
-    public function setUriFragments(?string $uriFragments) : void
+    public function setUriFragments(?string $uriFragments): void
     {
         $this->uriFragments = $uriFragments;
     }
-    public function getUriFragments() : ?string
+    public function getUriFragments(): ?string
     {
         return $this->uriFragments;
     }
-    public function setParameters(?string $parameters) : void
+    public function setParameters(?string $parameters): void
     {
         $this->parameters = $parameters;
     }
-    public function getParameters() : ?string
+    public function getParameters(): ?string
     {
         return $this->parameters;
     }
-    public function setHeaders(?string $headers) : void
+    public function setHeaders(?string $headers): void
     {
         $this->headers = $headers;
     }
-    public function getHeaders() : ?string
+    public function getHeaders(): ?string
     {
         return $this->headers;
     }
-    public function setBody(?ActionExecuteRequestBody $body) : void
+    public function setBody(?ActionExecuteRequestBody $body): void
     {
         $this->body = $body;
     }
-    public function getBody() : ?ActionExecuteRequestBody
+    public function getBody(): ?ActionExecuteRequestBody
     {
         return $this->body;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -63,7 +63,7 @@ class ActionExecuteRequest implements \JsonSerializable, \PSX\Record\RecordableI
         $record->put('body', $this->body);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

@@ -23,99 +23,99 @@ class UserAccount implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?array $plans = null;
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     protected ?\PSX\DateTime\LocalDateTime $date = null;
-    public function setId(?int $id) : void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
-    public function setPlanId(?int $planId) : void
+    public function setPlanId(?int $planId): void
     {
         $this->planId = $planId;
     }
-    public function getPlanId() : ?int
+    public function getPlanId(): ?int
     {
         return $this->planId;
     }
-    public function setStatus(?int $status) : void
+    public function setStatus(?int $status): void
     {
         $this->status = $status;
     }
-    public function getStatus() : ?int
+    public function getStatus(): ?int
     {
         return $this->status;
     }
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setEmail(?string $email) : void
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
     }
-    public function getEmail() : ?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
-    public function setPoints(?int $points) : void
+    public function setPoints(?int $points): void
     {
         $this->points = $points;
     }
-    public function getPoints() : ?int
+    public function getPoints(): ?int
     {
         return $this->points;
     }
     /**
      * @param array<string>|null $scopes
      */
-    public function setScopes(?array $scopes) : void
+    public function setScopes(?array $scopes): void
     {
         $this->scopes = $scopes;
     }
     /**
      * @return array<string>|null
      */
-    public function getScopes() : ?array
+    public function getScopes(): ?array
     {
         return $this->scopes;
     }
     /**
      * @param array<UserPlan>|null $plans
      */
-    public function setPlans(?array $plans) : void
+    public function setPlans(?array $plans): void
     {
         $this->plans = $plans;
     }
     /**
      * @return array<UserPlan>|null
      */
-    public function getPlans() : ?array
+    public function getPlans(): ?array
     {
         return $this->plans;
     }
-    public function setMetadata(?\Fusio\Model\Common\Metadata $metadata) : void
+    public function setMetadata(?\Fusio\Model\Common\Metadata $metadata): void
     {
         $this->metadata = $metadata;
     }
-    public function getMetadata() : ?\Fusio\Model\Common\Metadata
+    public function getMetadata(): ?\Fusio\Model\Common\Metadata
     {
         return $this->metadata;
     }
-    public function setDate(?\PSX\DateTime\LocalDateTime $date) : void
+    public function setDate(?\PSX\DateTime\LocalDateTime $date): void
     {
         $this->date = $date;
     }
-    public function getDate() : ?\PSX\DateTime\LocalDateTime
+    public function getDate(): ?\PSX\DateTime\LocalDateTime
     {
         return $this->date;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -131,7 +131,7 @@ class UserAccount implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('date', $this->date);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

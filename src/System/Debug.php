@@ -10,31 +10,31 @@ class Debug implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?DebugHeaders $headers = null;
     protected ?DebugParameters $parameters = null;
     protected ?DebugBody $body = null;
-    public function setHeaders(?DebugHeaders $headers) : void
+    public function setHeaders(?DebugHeaders $headers): void
     {
         $this->headers = $headers;
     }
-    public function getHeaders() : ?DebugHeaders
+    public function getHeaders(): ?DebugHeaders
     {
         return $this->headers;
     }
-    public function setParameters(?DebugParameters $parameters) : void
+    public function setParameters(?DebugParameters $parameters): void
     {
         $this->parameters = $parameters;
     }
-    public function getParameters() : ?DebugParameters
+    public function getParameters(): ?DebugParameters
     {
         return $this->parameters;
     }
-    public function setBody(?DebugBody $body) : void
+    public function setBody(?DebugBody $body): void
     {
         $this->body = $body;
     }
-    public function getBody() : ?DebugBody
+    public function getBody(): ?DebugBody
     {
         return $this->body;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -43,7 +43,7 @@ class Debug implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('body', $this->body);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }

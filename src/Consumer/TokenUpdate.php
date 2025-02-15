@@ -9,23 +9,23 @@ class TokenUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $name = null;
     protected ?\PSX\DateTime\LocalDate $expire = null;
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setExpire(?\PSX\DateTime\LocalDate $expire) : void
+    public function setExpire(?\PSX\DateTime\LocalDate $expire): void
     {
         $this->expire = $expire;
     }
-    public function getExpire() : ?\PSX\DateTime\LocalDate
+    public function getExpire(): ?\PSX\DateTime\LocalDate
     {
         return $this->expire;
     }
-    public function toRecord() : \PSX\Record\RecordInterface
+    public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
@@ -33,7 +33,7 @@ class TokenUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('expire', $this->expire);
         return $record;
     }
-    public function jsonSerialize() : object
+    public function jsonSerialize(): object
     {
         return (object) $this->toRecord()->getAll();
     }
