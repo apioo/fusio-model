@@ -1385,6 +1385,9 @@
           "type": "reference",
           "target": "Schema_Form"
         },
+        "readonly": {
+          "type": "boolean"
+        },
         "metadata": {
           "type": "reference",
           "target": "common:Metadata"
