@@ -1535,12 +1535,6 @@
         }
       }
     },
-    "Statistic_Chart_Data": {
-      "type": "map",
-      "schema": {
-        "type": "any"
-      }
-    },
     "Statistic_Chart": {
       "type": "struct",
       "properties": {
