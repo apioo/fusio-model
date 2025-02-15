@@ -1547,19 +1547,25 @@
             "type": "string"
           }
         },
-        "data": {
-          "type": "array",
-          "schema": {
-            "type": "array",
-            "schema": {
-              "type": "number"
-            }
-          }
-        },
         "series": {
           "type": "array",
           "schema": {
-            "type": "string"
+            "type": "reference",
+            "target": "Statistic_Chart_Series"
+          }
+        }
+      }
+    },
+    "Statistic_Chart_Series": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "schema": {
+            "type": "number"
           }
         }
       }
