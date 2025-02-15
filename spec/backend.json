@@ -1553,8 +1553,10 @@
         "data": {
           "type": "array",
           "schema": {
-            "type": "reference",
-            "target": "Statistic_Chart_Data"
+            "type": "array",
+            "schema": {
+              "type": "number"
+            }
           }
         },
         "series": {
