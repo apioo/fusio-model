@@ -12,11 +12,7 @@ class StatisticChart implements \JsonSerializable, \PSX\Record\RecordableInterfa
      */
     protected ?array $labels = null;
     /**
-     * @var array<array<float>>|null
-     */
-    protected ?array $data = null;
-    /**
-     * @var array<string>|null
+     * @var array<StatisticChartSeries>|null
      */
     protected ?array $series = null;
     /**
@@ -34,28 +30,14 @@ class StatisticChart implements \JsonSerializable, \PSX\Record\RecordableInterfa
         return $this->labels;
     }
     /**
-     * @param array<array<float>>|null $data
-     */
-    public function setData(?array $data): void
-    {
-        $this->data = $data;
-    }
-    /**
-     * @return array<array<float>>|null
-     */
-    public function getData(): ?array
-    {
-        return $this->data;
-    }
-    /**
-     * @param array<string>|null $series
+     * @param array<StatisticChartSeries>|null $series
      */
     public function setSeries(?array $series): void
     {
         $this->series = $series;
     }
     /**
-     * @return array<string>|null
+     * @return array<StatisticChartSeries>|null
      */
     public function getSeries(): ?array
     {
@@ -66,7 +48,6 @@ class StatisticChart implements \JsonSerializable, \PSX\Record\RecordableInterfa
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('labels', $this->labels);
-        $record->put('data', $this->data);
         $record->put('series', $this->series);
         return $record;
     }
