@@ -12,6 +12,7 @@ class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $name = null;
     protected ?SchemaSource $source = null;
     protected ?SchemaForm $form = null;
+    protected ?bool $readonly = null;
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id): void
     {
@@ -53,6 +54,14 @@ class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->form;
     }
+    public function setReadonly(?bool $readonly): void
+    {
+        $this->readonly = $readonly;
+    }
+    public function getReadonly(): ?bool
+    {
+        return $this->readonly;
+    }
     public function setMetadata(?\Fusio\Model\Common\Metadata $metadata): void
     {
         $this->metadata = $metadata;
@@ -70,6 +79,7 @@ class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('name', $this->name);
         $record->put('source', $this->source);
         $record->put('form', $this->form);
+        $record->put('readonly', $this->readonly);
         $record->put('metadata', $this->metadata);
         return $record;
     }
