@@ -43,6 +43,7 @@
       }
     },
     "App_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -180,6 +181,7 @@
       }
     },
     "Event_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -206,6 +208,7 @@
       }
     },
     "Identity_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -248,6 +251,7 @@
       }
     },
     "Log_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -273,6 +277,7 @@
       }
     },
     "Grant_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -303,6 +308,7 @@
       }
     },
     "Page_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -339,6 +345,7 @@
       }
     },
     "Plan_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -401,6 +408,7 @@
       }
     },
     "Scope_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -441,6 +449,7 @@
       }
     },
     "Token_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -539,6 +548,7 @@
       }
     },
     "Transaction_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -745,6 +755,7 @@
       }
     },
     "Webhook_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",

@@ -52,12 +52,14 @@
       }
     },
     "Action_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Action"
       }
     },
     "Action_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Action"
@@ -87,6 +89,7 @@
       }
     },
     "Action_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -201,18 +204,21 @@
       }
     },
     "App_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "App"
       }
     },
     "App_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "App"
       }
     },
     "App_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -262,6 +268,7 @@
       }
     },
     "Audit_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -315,6 +322,7 @@
       }
     },
     "Category_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -324,12 +332,14 @@
       }
     },
     "Category_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Category"
       }
     },
     "Category_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Category"
@@ -356,6 +366,7 @@
       }
     },
     "Config_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -365,6 +376,7 @@
       }
     },
     "Config_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Config"
@@ -403,6 +415,7 @@
       }
     },
     "Connection_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -412,12 +425,14 @@
       }
     },
     "Connection_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Connection"
       }
     },
     "Connection_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Connection"
@@ -550,6 +565,7 @@
       }
     },
     "Cronjob_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -559,36 +575,34 @@
       }
     },
     "Cronjob_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Cronjob"
       }
     },
     "Cronjob_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Cronjob"
       }
     },
-    "Database_Connections": {
+    "Database": {
       "type": "struct",
       "properties": {
-        "connections": {
-          "type": "array",
-          "schema": {
-            "type": "string"
-          }
+        "name": {
+          "type": "string"
         }
       }
     },
-    "Database_Tables": {
+    "Database_Collection": {
       "type": "struct",
-      "properties": {
-        "tables": {
-          "type": "array",
-          "schema": {
-            "type": "string"
-          }
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Database"
         }
       }
     },
@@ -702,12 +716,13 @@
         }
       }
     },
-    "Database_Rows": {
+    "Database_Table_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
         "template": {
-          "T": "Database_Row"
+          "T": "Database_Table"
         }
       }
     },
@@ -715,6 +730,16 @@
       "type": "map",
       "schema": {
         "type": "any"
+      }
+    },
+    "Database_Row_Collection": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Database_Row"
+        }
       }
     },
     "Dashboard": {
@@ -780,6 +805,7 @@
       }
     },
     "Event_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -789,12 +815,14 @@
       }
     },
     "Event_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Event"
       }
     },
     "Event_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Event"
@@ -837,6 +865,7 @@
       }
     },
     "Identity_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -846,12 +875,14 @@
       }
     },
     "Identity_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Identity"
       }
     },
     "Identity_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Identity"
@@ -994,6 +1025,7 @@
       }
     },
     "Log_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1023,6 +1055,7 @@
       }
     },
     "Log_Error_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1127,6 +1160,7 @@
       }
     },
     "Operation_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1136,12 +1170,14 @@
       }
     },
     "Operation_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Operation"
       }
     },
     "Operation_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Operation"
@@ -1172,6 +1208,7 @@
       }
     },
     "Page_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1181,12 +1218,14 @@
       }
     },
     "Page_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Page"
       }
     },
     "Page_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Page"
@@ -1229,6 +1268,7 @@
       }
     },
     "Plan_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1238,12 +1278,14 @@
       }
     },
     "Plan_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Plan"
       }
     },
     "Plan_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Plan"
@@ -1270,6 +1312,7 @@
       }
     },
     "Role_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1279,12 +1322,14 @@
       }
     },
     "Role_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Role"
       }
     },
     "Role_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Role"
@@ -1322,6 +1367,7 @@
       }
     },
     "Rate_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1331,12 +1377,14 @@
       }
     },
     "Rate_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Rate"
       }
     },
     "Rate_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Rate"
@@ -1409,6 +1457,7 @@
       }
     },
     "Schema_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1418,12 +1467,14 @@
       }
     },
     "Schema_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Schema"
       }
     },
     "Schema_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Schema"
@@ -1474,6 +1525,7 @@
       }
     },
     "Scope_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1483,12 +1535,14 @@
       }
     },
     "Scope_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Scope"
       }
     },
     "Scope_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Scope"
@@ -1651,12 +1705,14 @@
       }
     },
     "Test_Config": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Action_Execute_Request"
       }
     },
     "Test_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1701,6 +1757,7 @@
       }
     },
     "Transaction_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1735,6 +1792,7 @@
       }
     },
     "Trash_Data_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1783,6 +1841,7 @@
       }
     },
     "Token_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1845,6 +1904,7 @@
       }
     },
     "User_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1854,11 +1914,11 @@
       }
     },
     "User_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "User"
       },
-      "type": "struct",
       "properties": {
         "password": {
           "type": "string"
@@ -1866,6 +1926,7 @@
       }
     },
     "User_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "User"
@@ -1923,6 +1984,7 @@
       }
     },
     "Webhook_Collection": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
@@ -1932,12 +1994,14 @@
       }
     },
     "Webhook_Create": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Webhook"
       }
     },
     "Webhook_Update": {
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Webhook"
