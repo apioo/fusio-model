@@ -417,6 +417,50 @@
         }
       }
     },
+    "Scope_Categories": {
+      "type": "struct",
+      "properties": {
+        "categories": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Scope_Category"
+          }
+        }
+      }
+    },
+    "Scope_Category": {
+      "type": "struct",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "scopes": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Scope_Category_Scope"
+          }
+        }
+      }
+    },
+    "Scope_Category_Scope": {
+      "type": "struct",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
     "Token": {
       "type": "struct",
       "properties": {
