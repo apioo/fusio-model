@@ -190,6 +190,43 @@
         }
       }
     },
+    "Form": {
+      "type": "struct",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "jsonSchema": {
+          "type": "any"
+        },
+        "uiSchema": {
+          "type": "any"
+        },
+        "metadata": {
+          "type": "reference",
+          "target": "common:Metadata"
+        }
+      }
+    },
+    "Form_Collection": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Form"
+        }
+      }
+    },
     "Identity": {
       "type": "struct",
       "properties": {
