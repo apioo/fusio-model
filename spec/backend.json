@@ -810,6 +810,58 @@
         "target": "Event"
       }
     },
+    "Firewall": {
+      "type": "struct",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "mask": {
+          "type": "string"
+        },
+        "expire": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "metadata": {
+          "type": "reference",
+          "target": "common:Metadata"
+        }
+      }
+    },
+    "Firewall_Collection": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Firewall"
+        }
+      }
+    },
+    "Firewall_Create": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Firewall"
+      }
+    },
+    "Firewall_Update": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Firewall"
+      }
+    },
     "Form": {
       "type": "struct",
       "properties": {
