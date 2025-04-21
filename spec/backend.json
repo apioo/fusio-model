@@ -826,7 +826,7 @@
           "type": "string"
         },
         "mask": {
-          "type": "string"
+          "type": "integer"
         },
         "expire": {
           "type": "string",
