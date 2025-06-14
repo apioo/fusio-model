@@ -160,6 +160,65 @@
         }
       }
     },
+    "API_Catalog": {
+      "type": "struct",
+      "properties": {
+        "linkset": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "API_Catalog_LinkSet"
+          }
+        }
+      }
+    },
+    "API_Catalog_LinkSet": {
+      "type": "struct",
+      "properties": {
+        "anchor": {
+          "type": "string"
+        },
+        "service-desc": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "API_Catalog_Link"
+          }
+        },
+        "service-doc": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "API_Catalog_Link"
+          }
+        },
+        "service-meta": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "API_Catalog_Link"
+          }
+        },
+        "status": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "API_Catalog_Link"
+          }
+        }
+      }
+    },
+    "API_Catalog_Link": {
+      "type": "struct",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
     "Route": {
       "type": "struct",
       "properties": {
