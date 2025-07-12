@@ -133,31 +133,16 @@
         "type": {
           "type": "string"
         },
-        "token": {
-          "type": "reference",
-          "target": "Authorize_Response_Token"
-        },
         "code": {
           "type": "string"
         },
+        "error": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
         "redirectUri": {
-          "type": "string"
-        }
-      }
-    },
-    "Authorize_Response_Token": {
-      "type": "struct",
-      "properties": {
-        "access_token": {
-          "type": "string"
-        },
-        "token_type": {
-          "type": "string"
-        },
-        "expires_in": {
-          "type": "string"
-        },
-        "scope": {
           "type": "string"
         }
       }
