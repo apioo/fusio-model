@@ -8,8 +8,9 @@ namespace Fusio\Model\Consumer;
 class AuthorizeResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $type = null;
-    protected ?AuthorizeResponseToken $token = null;
     protected ?string $code = null;
+    protected ?string $error = null;
+    protected ?string $state = null;
     protected ?string $redirectUri = null;
     public function setType(?string $type): void
     {
@@ -19,14 +20,6 @@ class AuthorizeResponse implements \JsonSerializable, \PSX\Record\RecordableInte
     {
         return $this->type;
     }
-    public function setToken(?AuthorizeResponseToken $token): void
-    {
-        $this->token = $token;
-    }
-    public function getToken(): ?AuthorizeResponseToken
-    {
-        return $this->token;
-    }
     public function setCode(?string $code): void
     {
         $this->code = $code;
@@ -34,6 +27,22 @@ class AuthorizeResponse implements \JsonSerializable, \PSX\Record\RecordableInte
     public function getCode(): ?string
     {
         return $this->code;
+    }
+    public function setError(?string $error): void
+    {
+        $this->error = $error;
+    }
+    public function getError(): ?string
+    {
+        return $this->error;
+    }
+    public function setState(?string $state): void
+    {
+        $this->state = $state;
+    }
+    public function getState(): ?string
+    {
+        return $this->state;
     }
     public function setRedirectUri(?string $redirectUri): void
     {
@@ -48,8 +57,9 @@ class AuthorizeResponse implements \JsonSerializable, \PSX\Record\RecordableInte
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('type', $this->type);
-        $record->put('token', $this->token);
         $record->put('code', $this->code);
+        $record->put('error', $this->error);
+        $record->put('state', $this->state);
         $record->put('redirectUri', $this->redirectUri);
         return $record;
     }
