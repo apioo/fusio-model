@@ -209,32 +209,42 @@
           "pattern": "^[a-zA-Z0-9\\-\\_]{3,64}$"
         },
         "url": {
+          "description": "Url where the app is hosted",
           "type": "string"
         },
         "parameters": {
+          "description": "Optional URL-encoded parameters of the app i.e. foo=bar&bar=foo",
           "type": "string"
         },
         "appKey": {
-          "type": "string"
+          "description": "The app key also known as client id which is generated on creation",
+          "type": "string",
+          "readOnly": true
         },
         "appSecret": {
-          "type": "string"
+          "description": "The app secret also known as client secret which is generated on creation",
+          "type": "string",
+          "readOnly": true
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         },
         "date": {
+          "description": "The create date of this object",
           "type": "string",
           "format": "date-time"
         },
         "scopes": {
+          "description": "A list of assigned scopes for this app",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "tokens": {
+          "description": "A list of tokens which are assigned to this app",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -258,6 +268,7 @@
       }
     },
     "App_Collection": {
+      "description": "A paginated collection of app objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -268,6 +279,7 @@
       }
     },
     "Audit": {
+      "description": "This object represents an audit which is created every time something was changed at the system",
       "type": "struct",
       "properties": {
         "id": {
@@ -284,19 +296,24 @@
           "target": "User"
         },
         "event": {
+          "description": "Trigger event of this audit",
           "type": "string"
         },
         "ip": {
+          "description": "IP which as issued the request",
           "type": "string"
         },
         "message": {
+          "description": "Message of this audit event",
           "type": "string"
         },
         "content": {
+          "description": "Content of this adit event",
           "type": "reference",
           "target": "Audit_Object"
         },
         "date": {
+          "description": "Insert date of this audit event",
           "type": "string",
           "format": "date-time"
         }
@@ -310,6 +327,7 @@
       }
     },
     "Audit_Collection": {
+      "description": "A paginated collection of audit objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -320,6 +338,7 @@
       }
     },
     "Backup_Export": {
+      "description": "Export of the complete system configuration",
       "type": "struct",
       "properties": {
         "export": {
@@ -328,6 +347,7 @@
       }
     },
     "Backup_Import": {
+      "description": "Import a previously exported system configuration",
       "type": "struct",
       "properties": {
         "import": {
@@ -336,6 +356,7 @@
       }
     },
     "Backup_Import_Result": {
+      "description": "Result of a backup import operation",
       "type": "struct",
       "properties": {
         "success": {
@@ -353,6 +374,7 @@
       }
     },
     "Category": {
+      "description": "This object represents a category. Every user is assigned to a category and can only view objects which are also assigned to the same category, through this it is possible to build separate areas for external developers",
       "type": "struct",
       "properties": {
         "id": {
@@ -368,6 +390,7 @@
       }
     },
     "Category_Collection": {
+      "description": "A paginated collection of category objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -392,6 +415,7 @@
       }
     },
     "Config": {
+      "description": "This object represents a system configuration",
       "type": "struct",
       "properties": {
         "id": {
@@ -400,6 +424,7 @@
           "readOnly": true
         },
         "type": {
+          "description": "The config value type",
           "type": "integer"
         },
         "name": {
@@ -407,14 +432,17 @@
           "type": "string"
         },
         "description": {
+          "description": "A short description fo this configuration value",
           "type": "string"
         },
         "value": {
+          "description": "The actual config value",
           "type": "any"
         }
       }
     },
     "Config_Collection": {
+      "description": "A paginated collection of config objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -432,6 +460,7 @@
       }
     },
     "Connection": {
+      "description": "This object represents a connection to an external system like i.e. a database, message-queue or client-sdk",
       "type": "struct",
       "properties": {
         "id": {
@@ -445,6 +474,7 @@
           "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
         },
         "class": {
+          "description": "Underlying class of this connection which returns a configured client connection i.e. database, message-queue or client-sdk",
           "type": "string"
         },
         "oauth2": {
@@ -452,22 +482,26 @@
           "type": "boolean"
         },
         "config": {
+          "description": "Contains the connection specific configuration",
           "type": "reference",
           "target": "Connection_Config"
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Connection_Config": {
+      "description": "The connection configuration which contains arbitrary key-value entries",
       "type": "map",
       "schema": {
         "type": "any"
       }
     },
     "Connection_Collection": {
+      "description": "A paginated collection of connection objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -492,6 +526,7 @@
       }
     },
     "Connection_Index": {
+      "description": "Contains all possible classes which can be used at an connection as class",
       "type": "struct",
       "properties": {
         "connections": {
@@ -504,60 +539,21 @@
       }
     },
     "Connection_Index_Entry": {
+      "description": "Represents a concrete connection class",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Human-readable name of the connection class",
           "type": "string"
         },
         "class": {
+          "description": "Technical identifier of the connection class",
           "type": "string"
-        }
-      }
-    },
-    "Connection_Introspection_Entities": {
-      "type": "struct",
-      "properties": {
-        "entities": {
-          "type": "array",
-          "schema": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "Connection_Introspection_Entity": {
-      "type": "struct",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "headers": {
-          "type": "array",
-          "schema": {
-            "type": "string"
-          }
-        },
-        "rows": {
-          "type": "array",
-          "schema": {
-            "type": "reference",
-            "target": "Connection_Introspection_Entity_Row"
-          }
-        }
-      }
-    },
-    "Connection_Introspection_Entity_Row": {
-      "type": "struct",
-      "properties": {
-        "values": {
-          "type": "array",
-          "schema": {
-            "type": "string"
-          }
         }
       }
     },
     "Connection_Redirect_Response": {
+      "description": "Redirect response to initiate an OAuth2 flow",
       "type": "struct",
       "properties": {
         "redirectUri": {
@@ -566,6 +562,7 @@
       }
     },
     "Cronjob": {
+      "description": "This object represents a cronjob which can invoke an action at a specific interval",
       "type": "struct",
       "properties": {
         "id": {
@@ -579,23 +576,29 @@
           "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
         },
         "cron": {
+          "description": "The cron expression i.e. */5 * * * * for every 5 minutes",
           "type": "string"
         },
         "action": {
+          "description": "The target action which gets invoked",
           "type": "string"
         },
         "executeDate": {
+          "description": "The last execution date",
           "type": "string",
           "format": "date-time"
         },
         "exitCode": {
+          "description": "The last exit code",
           "type": "integer"
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         },
         "errors": {
+          "description": "Contains an array of errors in case the cronjob has failed",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -605,6 +608,7 @@
       }
     },
     "Cronjob_Error": {
+      "description": "Represents an error which occurred on cronjob execution",
       "type": "struct",
       "properties": {
         "message": {
@@ -622,6 +626,7 @@
       }
     },
     "Cronjob_Collection": {
+      "description": "A paginated collection of cronjob objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -646,12 +651,15 @@
       }
     },
     "Database_Table": {
+      "description": "This object represents a relational table on a database connection",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Name of the table",
           "type": "string"
         },
         "columns": {
+          "description": "Available columns on the table",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -659,9 +667,11 @@
           }
         },
         "primaryKey": {
+          "description": "The primary key column",
           "type": "string"
         },
         "indexes": {
+          "description": "Available indices on the table",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -669,6 +679,7 @@
           }
         },
         "foreignKeys": {
+          "description": "Available foreign key constraints",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -678,53 +689,69 @@
       }
     },
     "Database_Table_Column": {
+      "description": "This object represents a column at a relation table",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Name of the column",
           "type": "string"
         },
         "type": {
+          "description": "The column type i.e. integer or string",
           "type": "string"
         },
         "length": {
+          "description": "Optional the max length of the column",
           "type": "integer"
         },
         "precision": {
+          "description": "Optional the precision of the column",
           "type": "integer"
         },
         "scale": {
+          "description": "Optional the scale of the column",
           "type": "integer"
         },
         "unsigned": {
+          "description": "Indicates whether the column is unsigned, relevant for integer types",
           "type": "boolean"
         },
         "fixed": {
+          "description": "Indicates whether the column has a fixed length",
           "type": "boolean"
         },
         "notNull": {
+          "description": "Indicates whether the column allows null",
           "type": "boolean"
         },
         "autoIncrement": {
+          "description": "Indicates whether this column is an auto increment column",
           "type": "boolean"
         },
         "default": {
+          "description": "Optional defines the default value",
           "type": "any"
         },
         "comment": {
+          "description": "Optional a comment for this column",
           "type": "string"
         }
       }
     },
     "Database_Table_Index": {
+      "description": "This object represents a table index on a relational database",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Name of the index",
           "type": "string"
         },
         "unique": {
+          "description": "Indicates whether the index is unique",
           "type": "boolean"
         },
         "columns": {
+          "description": "Columns assigned ot the index",
           "type": "array",
           "schema": {
             "type": "string"
@@ -733,21 +760,26 @@
       }
     },
     "Database_Table_ForeignKeyConstraint": {
+      "description": "This object represents a foreign key constraint on a relational database",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Name of the foreign key constraint",
           "type": "string"
         },
         "foreignTable": {
+          "description": "Name of the foreign table",
           "type": "string"
         },
         "localColumnNames": {
+          "description": "Local column names",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "foreignColumnNames": {
+          "description": "Foreign column names",
           "type": "array",
           "schema": {
             "type": "string"
@@ -766,12 +798,14 @@
       }
     },
     "Database_Row": {
+      "description": "This object represents a row on a relational table",
       "type": "map",
       "schema": {
         "type": "any"
       }
     },
     "Database_Row_Collection": {
+      "description": "A paginated collection of database rows",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -782,6 +816,7 @@
       }
     },
     "Dashboard": {
+      "description": "Represents an object containing all widget data for the dashboard",
       "type": "struct",
       "properties": {
         "errorsPerOperation": {
@@ -823,6 +858,7 @@
       }
     },
     "Event": {
+      "description": "This object represents an event which can be triggered by an action",
       "type": "struct",
       "properties": {
         "id": {
@@ -842,12 +878,14 @@
           "type": "string"
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Event_Collection": {
+      "description": "A paginated collection of event objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -872,6 +910,7 @@
       }
     },
     "Firewall": {
+      "description": "This object represents a firewall rule which blocks specific IP addresses",
       "type": "struct",
       "properties": {
         "id": {
@@ -885,22 +924,27 @@
           "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
         },
         "type": {
+          "description": "The type of the rule either 1 = allow or 0 = deny",
           "type": "integer"
         },
         "ip": {
+          "description": "The target IP address",
           "type": "string"
         },
         "expire": {
+          "description": "The expire date",
           "type": "string",
           "format": "date-time"
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Firewall_Collection": {
+      "description": "A paginated collection of firewall objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -925,6 +969,7 @@
       }
     },
     "Form": {
+      "description": "This object represents a form which helps to dynamically generate a form at a frontend app",
       "type": "struct",
       "properties": {
         "id": {
@@ -943,18 +988,22 @@
           "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
         },
         "operationId": {
+          "description": "Target operation which gets invoked through this form",
           "type": "integer"
         },
         "uiSchema": {
+          "description": "Optional an UI schema to dynamically describe this form",
           "type": "any"
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Form_Collection": {
+      "description": "A paginated collection of form objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -979,6 +1028,7 @@
       }
     },
     "Identity": {
+      "description": "This object represents an identity which allows to authenticate with a remote identity provider",
       "type": "struct",
       "properties": {
         "id": {
@@ -987,9 +1037,11 @@
           "readOnly": true
         },
         "appId": {
+          "description": "The target app for this identity",
           "type": "integer"
         },
         "roleId": {
+          "description": "Role which is assigned to new users",
           "type": "integer"
         },
         "name": {
@@ -998,9 +1050,11 @@
           "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
         },
         "icon": {
+          "description": "An icon for this identity provider",
           "type": "string"
         },
         "class": {
+          "description": "Underlying class of this identity provider",
           "type": "string"
         },
         "config": {
@@ -1019,6 +1073,7 @@
       }
     },
     "Identity_Collection": {
+      "description": "A paginated collection of identity objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1043,6 +1098,7 @@
       }
     },
     "Identity_Index": {
+      "description": "Contains all possible classes which can be used at an identity as class",
       "type": "struct",
       "properties": {
         "providers": {
@@ -1055,17 +1111,21 @@
       }
     },
     "Identity_Index_Entry": {
+      "description": "Represents a concrete identity class",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Human-readable name of the identity class",
           "type": "string"
         },
         "class": {
+          "description": "Technical identifier of the identity class",
           "type": "string"
         }
       }
     },
     "Generator_Index_Providers": {
+      "description": "Contains all possible classes which can be used at an generator as class",
       "type": "struct",
       "properties": {
         "providers": {
@@ -1078,12 +1138,15 @@
       }
     },
     "Generator_Index_Provider": {
+      "description": "Represents a concrete generator class",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Human-readable name of the generator class",
           "type": "string"
         },
         "class": {
+          "description": "Technical identifier of the generator class",
           "type": "string"
         }
       }
@@ -1142,6 +1205,7 @@
       }
     },
     "Log": {
+      "description": "This object represents a log entry. Every HTTP requests to the system generates such a log entry.",
       "type": "struct",
       "properties": {
         "id": {
@@ -1150,28 +1214,36 @@
           "readOnly": true
         },
         "ip": {
+          "description": "The remote IP which has initiated the request",
           "type": "string"
         },
         "userAgent": {
+          "description": "The user agent provided by the HTTP user agent header",
           "type": "string"
         },
         "method": {
+          "description": "The HTTP method i.e. GET or POST",
           "type": "string"
         },
         "path": {
+          "description": "The target path",
           "type": "string"
         },
         "header": {
+          "description": "The provided HTTP headers",
           "type": "string"
         },
         "body": {
+          "description": "The provided HTTP body",
           "type": "string"
         },
         "date": {
+          "description": "Insert date of this request",
           "type": "string",
           "format": "date-time"
         },
         "errors": {
+          "description": "An array of errors which occurred through this request",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -1181,6 +1253,7 @@
       }
     },
     "Log_Collection": {
+      "description": "A paginated collection of log objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1220,6 +1293,7 @@
       }
     },
     "Log_Error_Collection": {
+      "description": "A paginated collection of log error objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1230,6 +1304,7 @@
       }
     },
     "Operation": {
+      "description": "This object represents an operation, an operation invokes an action in case a specific HTTP method and path was requested. It defines also schema information about the request and response payload",
       "type": "struct",
       "properties": {
         "id": {
@@ -1243,58 +1318,73 @@
           "readOnly": true
         },
         "active": {
+          "description": "Indicates whether the operation is active",
           "type": "boolean"
         },
         "public": {
+          "description": "Indicates whether the operation is public, if false a user must provide an Authorization header with an Bearer access token",
           "type": "boolean"
         },
         "stability": {
+          "description": "Describes the stability of this operation 0 = deprecated, 1 = experimental, 2 = stable and 3 = legacy",
           "type": "integer"
         },
         "description": {
+          "description": "A short description of this operation, it should explain the operation in a simple and precise way",
           "type": "string"
         },
         "httpMethod": {
+          "description": "The target HTTP method i.e. GET or POST",
           "type": "string"
         },
         "httpPath": {
+          "description": "The target HTTP path i.e. /foo or /product/:product_id",
           "type": "string"
         },
         "httpCode": {
+          "description": "The success HTTP code i.e. 200 or 201",
           "type": "integer"
         },
         "name": {
-          "description": "Unique name of the object",
+          "description": "Unique name of the object. It is recommended to group your operations into logical units by using a dot i.e. product.getAll and product.insert which has also an effect on the automatically generated SDK",
           "type": "string",
           "pattern": "^[a-zA-Z0-9\\_\\.]{3,64}$"
         },
         "parameters": {
+          "description": "Describes available query parameters",
           "type": "reference",
           "target": "Operation_Parameters"
         },
         "incoming": {
+          "description": "Describes the incoming request payload",
           "type": "string"
         },
         "outgoing": {
+          "description": "Describes the outgoing response payload",
           "type": "string"
         },
         "throws": {
+          "description": "Describes error responses for i.e. client or server errors",
           "type": "reference",
           "target": "Operation_Throws"
         },
         "action": {
+          "description": "The target action to invoke",
           "type": "string"
         },
         "costs": {
+          "description": "Costs to invoke this operation. A user can only invoke this operation in case he has enough points",
           "type": "integer"
         },
         "scopes": {
+          "description": "Scopes which are required to invoke this operation",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         }
@@ -1331,6 +1421,7 @@
       }
     },
     "Operation_Collection": {
+      "description": "A paginated collection of operation objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1355,6 +1446,7 @@
       }
     },
     "Page": {
+      "description": "This object represents a page at the developer portal",
       "type": "struct",
       "properties": {
         "id": {
@@ -1368,21 +1460,27 @@
           "readOnly": true
         },
         "title": {
+          "description": "Title of the page",
           "type": "string"
         },
         "slug": {
-          "type": "string"
+          "description": "Slug of the page which gets dynamically generated from the title",
+          "type": "string",
+          "readOnly": true
         },
         "content": {
+          "description": "HTML content of this page",
           "type": "string"
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Page_Collection": {
+      "description": "A paginated collection of page objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1407,6 +1505,7 @@
       }
     },
     "Plan": {
+      "description": "This object represents a plan, a plan allows users to obtain points or in general subscribe to your app",
       "type": "struct",
       "properties": {
         "id": {
@@ -1419,33 +1518,41 @@
           "type": "string"
         },
         "description": {
+          "description": "Short description of the plan",
           "type": "string"
         },
         "price": {
+          "description": "The price of this plan",
           "type": "number"
         },
         "points": {
+          "description": "The points which are assigned to the user on purchase",
           "type": "integer"
         },
         "period": {
+          "description": "Whether the plan is one-time or periodically",
           "type": "integer"
         },
         "externalId": {
+          "description": "An external id of a remote payment provider like Stripe",
           "type": "string"
         },
         "scopes": {
+          "description": "Scopes which are assigned dynamically to the user on purchase",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Plan_Collection": {
+      "description": "A paginated collection of plan objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1470,6 +1577,7 @@
       }
     },
     "Rate": {
+      "description": "This object represents a rate limitation, which allows to limit the requests which a user can send",
       "type": "struct",
       "properties": {
         "id": {
@@ -1478,6 +1586,7 @@
           "readOnly": true
         },
         "priority": {
+          "description": "All rates are applied based on the priority, higher priorities are applied first",
           "type": "integer"
         },
         "name": {
@@ -1486,12 +1595,15 @@
           "pattern": "^[a-zA-Z0-9\\-\\_]{3,64}$"
         },
         "rateLimit": {
+          "description": "Maximum number of allowed requests",
           "type": "integer"
         },
         "timespan": {
+          "description": "Timespan for the allowed requests",
           "type": "string"
         },
         "allocation": {
+          "description": "Through a rate allocation a user gets assigned to a specific rate",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -1499,12 +1611,14 @@
           }
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Rate_Collection": {
+      "description": "A paginated collection of rate objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1529,6 +1643,7 @@
       }
     },
     "Rate_Allocation": {
+      "description": "This object represents a rate allocation, in case a request matches it gets assigned to the attached rate",
       "type": "struct",
       "properties": {
         "id": {
@@ -1549,11 +1664,13 @@
           "type": "integer"
         },
         "authenticated": {
+          "description": "Whether the request is authenticated",
           "type": "boolean"
         }
       }
     },
     "Role": {
+      "description": "This object represents a role, every user is assigned to a role and all scopes of the role are automatically attached to the user",
       "type": "struct",
       "properties": {
         "id": {
@@ -1562,6 +1679,7 @@
           "readOnly": true
         },
         "categoryId": {
+          "description": "The assigned category id of this role",
           "type": "integer"
         },
         "name": {
@@ -1570,6 +1688,7 @@
           "pattern": "^[a-zA-Z0-9\\-\\_]{3,64}$"
         },
         "scopes": {
+          "description": "All scopes which are assigned to this role",
           "type": "array",
           "schema": {
             "type": "string"
@@ -1578,6 +1697,7 @@
       }
     },
     "Role_Collection": {
+      "description": "A paginated collection of role objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1602,6 +1722,7 @@
       }
     },
     "Schema": {
+      "description": "This object represents a schema to describe a JSON payload",
       "type": "struct",
       "properties": {
         "id": {
@@ -1620,17 +1741,12 @@
           "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
         },
         "source": {
+          "description": "The TypeSchema specification to describe a JSON payload",
           "type": "reference",
           "target": "Schema_Source"
         },
-        "form": {
-          "type": "reference",
-          "target": "Schema_Form"
-        },
-        "readonly": {
-          "type": "boolean"
-        },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         }
@@ -1643,14 +1759,8 @@
         "type": "any"
       }
     },
-    "Schema_Form": {
-      "description": "Contains a UI vocabulary to describe the UI of the schema",
-      "type": "map",
-      "schema": {
-        "type": "any"
-      }
-    },
     "Schema_Collection": {
+      "description": "A paginated collection of schema objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1683,6 +1793,7 @@
       }
     },
     "Scope": {
+      "description": "This object represents a scope. A scope is assigned to a user and is required to access operations",
       "type": "struct",
       "properties": {
         "id": {
@@ -1696,9 +1807,11 @@
           "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
         },
         "description": {
+          "description": "Short description of the scope",
           "type": "string"
         },
         "operations": {
+          "description": "All operations which can be access through this scope",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -1706,6 +1819,7 @@
           }
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         }
@@ -1723,6 +1837,7 @@
       }
     },
     "Scope_Collection": {
+      "description": "A paginated collection of scope objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1848,6 +1963,7 @@
       }
     },
     "Sdk_Types": {
+      "description": "Represents available SDK type which can be generated",
       "type": "map",
       "schema": {
         "type": "string"
@@ -1879,6 +1995,7 @@
       }
     },
     "Test": {
+      "description": "This object represents a test. A test helps to verify that all operations work as expected",
       "type": "struct",
       "properties": {
         "id": {
@@ -1914,6 +2031,7 @@
       }
     },
     "Test_Collection": {
+      "description": "A paginated collection of test objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1924,6 +2042,7 @@
       }
     },
     "Transaction": {
+      "description": "This object represents a transaction. A transaction is generated by the system in case the payment provide provides a message that the payment was successfully executed",
       "type": "struct",
       "properties": {
         "id": {
@@ -1961,6 +2080,7 @@
       }
     },
     "Transaction_Collection": {
+      "description": "A paginated collection of transaction objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2000,6 +2120,7 @@
       }
     },
     "Trash_Data_Collection": {
+      "description": "A paginated collection of deleted objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2018,6 +2139,7 @@
       }
     },
     "Token": {
+      "description": "This object represents a token, this is the access token which a user needs to provide through the Authorization header",
       "type": "struct",
       "properties": {
         "id": {
@@ -2053,6 +2175,7 @@
       }
     },
     "Token_Collection": {
+      "description": "A paginated collection of token objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2106,6 +2229,7 @@
           }
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         },
@@ -2122,6 +2246,7 @@
       }
     },
     "User_Collection": {
+      "description": "A paginated collection of user objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2204,6 +2329,7 @@
       }
     },
     "Webhook_Collection": {
+      "description": "A paginated collection of webhook objects",
       "type": "struct",
       "parent": {
         "type": "reference",
