@@ -2139,7 +2139,7 @@
       }
     },
     "Token": {
-      "description": "This object represents a token, this is the access token which a user needs to provide through the Authorization header",
+      "description": "This object represents a token, this an access token which was requested by a user",
       "type": "struct",
       "properties": {
         "id": {
@@ -2186,6 +2186,7 @@
       }
     },
     "User": {
+      "description": "This object represents a user",
       "type": "struct",
       "properties": {
         "id": {
@@ -2194,9 +2195,11 @@
           "readOnly": true
         },
         "roleId": {
+          "description": "A role which is assigned to the user",
           "type": "integer"
         },
         "planId": {
+          "description": "A plan which is assigned to the user",
           "type": "integer"
         },
         "status": {
@@ -2210,12 +2213,15 @@
           "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,255}$"
         },
         "email": {
+          "description": "The email address of the user",
           "type": "string"
         },
         "points": {
+          "description": "Points assigned to the user",
           "type": "integer"
         },
         "scopes": {
+          "description": "List of scopes which are assigned to the user",
           "type": "array",
           "schema": {
             "type": "string"
@@ -2234,6 +2240,7 @@
           "target": "common:Metadata"
         },
         "date": {
+          "description": "The insert date",
           "type": "string",
           "format": "date-time"
         }
@@ -2276,6 +2283,7 @@
       }
     },
     "Webhook": {
+      "description": "This object represents a webhook, a webhook is called in case a specific event was triggered",
       "type": "struct",
       "properties": {
         "id": {
