@@ -1759,6 +1759,13 @@
         "type": "any"
       }
     },
+    "Schema_Form": {
+      "description": "Contains a UI vocabulary to describe the UI of the schema",
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
+    },
     "Schema_Collection": {
       "description": "A paginated collection of schema objects",
       "type": "struct",
