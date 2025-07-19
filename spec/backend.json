@@ -1415,9 +1415,8 @@
           "readOnly": true
         },
         "name": {
-          "description": "Unique name of the object",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
+          "description": "Name of the plan",
+          "type": "string"
         },
         "description": {
           "type": "string"
