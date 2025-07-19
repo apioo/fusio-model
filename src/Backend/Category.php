@@ -6,6 +6,7 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a category. Every user is assigned to a category and can only view objects which are also assigned to the same category, through this it is possible to build separate areas for external developers')]
 class Category implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]

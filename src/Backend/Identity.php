@@ -6,15 +6,20 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents an identity which allows to authenticate with a remote identity provider')]
 class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('The target app for this identity')]
     protected ?int $appId = null;
+    #[Description('Role which is assigned to new users')]
     protected ?int $roleId = null;
     #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('An icon for this identity provider')]
     protected ?string $icon = null;
+    #[Description('Underlying class of this identity provider')]
     protected ?string $class = null;
     protected ?IdentityConfig $config = null;
     protected ?bool $allowCreate = null;

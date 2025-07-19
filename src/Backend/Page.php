@@ -6,15 +6,20 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a page at the developer portal')]
 class Page implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('Status of the object either 1 = visible, 2 = invisible or 0 = deleted')]
     protected ?int $status = null;
+    #[Description('Title of the page')]
     protected ?string $title = null;
+    #[Description('Slug of the page which gets dynamically generated from the title')]
     protected ?string $slug = null;
+    #[Description('HTML content of this page')]
     protected ?string $content = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id): void
     {

@@ -4,10 +4,14 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents a concrete generator class')]
 class GeneratorIndexProvider implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Human-readable name of the generator class')]
     protected ?string $name = null;
+    #[Description('Technical identifier of the generator class')]
     protected ?string $class = null;
     public function setName(?string $name): void
     {

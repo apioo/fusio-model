@@ -6,15 +6,20 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a firewall rule which blocks specific IP addresses')]
 class Firewall implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('The type of the rule either 1 = allow or 0 = deny')]
     protected ?int $type = null;
+    #[Description('The target IP address')]
     protected ?string $ip = null;
+    #[Description('The expire date')]
     protected ?\PSX\DateTime\LocalDateTime $expire = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id): void
     {

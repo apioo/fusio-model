@@ -4,7 +4,9 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents an object containing all widget data for the dashboard')]
 class Dashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?StatisticChart $errorsPerOperation = null;

@@ -4,7 +4,9 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Import a previously exported system configuration')]
 class BackupImport implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $import = null;

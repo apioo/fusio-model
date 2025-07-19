@@ -6,6 +6,7 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a form which helps to dynamically generate a form at a frontend app')]
 class Form implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
@@ -14,8 +15,11 @@ class Form implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?int $status = null;
     #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('Target operation which gets invoked through this form')]
     protected ?int $operationId = null;
+    #[Description('Optional an UI schema to dynamically describe this form')]
     protected mixed $uiSchema = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id): void
     {

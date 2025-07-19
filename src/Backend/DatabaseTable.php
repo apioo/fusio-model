@@ -4,22 +4,29 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a relational table on a database connection')]
 class DatabaseTable implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Name of the table')]
     protected ?string $name = null;
     /**
      * @var array<DatabaseTableColumn>|null
      */
+    #[Description('Available columns on the table')]
     protected ?array $columns = null;
+    #[Description('The primary key column')]
     protected ?string $primaryKey = null;
     /**
      * @var array<DatabaseTableIndex>|null
      */
+    #[Description('Available indices on the table')]
     protected ?array $indexes = null;
     /**
      * @var array<DatabaseTableForeignKeyConstraint>|null
      */
+    #[Description('Available foreign key constraints')]
     protected ?array $foreignKeys = null;
     public function setName(?string $name): void
     {

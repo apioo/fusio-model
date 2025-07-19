@@ -6,14 +6,18 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a system configuration')]
 class Config implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('The config value type')]
     protected ?int $type = null;
     #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('A short description fo this configuration value')]
     protected ?string $description = null;
+    #[Description('The actual config value')]
     protected mixed $value = null;
     public function setId(?int $id): void
     {

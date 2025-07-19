@@ -4,7 +4,9 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Export of the complete system configuration')]
 class BackupExport implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $export = null;
