@@ -6,19 +6,25 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a rate limitation, which allows to limit the requests which a user can send')]
 class Rate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('All rates are applied based on the priority, higher priorities are applied first')]
     protected ?int $priority = null;
     #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('Maximum number of allowed requests')]
     protected ?int $rateLimit = null;
+    #[Description('Timespan for the allowed requests')]
     protected ?string $timespan = null;
     /**
      * @var array<RateAllocation>|null
      */
+    #[Description('Through a rate allocation a user gets assigned to a specific rate')]
     protected ?array $allocation = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id): void
     {

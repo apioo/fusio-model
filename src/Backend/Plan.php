@@ -6,21 +6,29 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a plan, a plan allows users to obtain points or in general subscribe to your app')]
 class Plan implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
-    #[Description('Unique name of the object')]
+    #[Description('Name of the plan')]
     protected ?string $name = null;
+    #[Description('Short description of the plan')]
     protected ?string $description = null;
+    #[Description('The price of this plan')]
     protected ?float $price = null;
+    #[Description('The points which are assigned to the user on purchase')]
     protected ?int $points = null;
+    #[Description('Whether the plan is one-time or periodically')]
     protected ?int $period = null;
+    #[Description('An external id of a remote payment provider like Stripe')]
     protected ?string $externalId = null;
     /**
      * @var array<string>|null
      */
+    #[Description('Scopes which are assigned dynamically to the user on purchase')]
     protected ?array $scopes = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id): void
     {

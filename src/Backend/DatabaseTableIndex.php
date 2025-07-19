@@ -4,14 +4,19 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a table index on a relational database')]
 class DatabaseTableIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Name of the index')]
     protected ?string $name = null;
+    #[Description('Indicates whether the index is unique')]
     protected ?bool $unique = null;
     /**
      * @var array<string>|null
      */
+    #[Description('Columns assigned ot the index')]
     protected ?array $columns = null;
     public function setName(?string $name): void
     {

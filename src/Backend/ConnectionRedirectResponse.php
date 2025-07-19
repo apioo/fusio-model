@@ -4,7 +4,9 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Redirect response to initiate an OAuth2 flow')]
 class ConnectionRedirectResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $redirectUri = null;

@@ -26,6 +26,7 @@ class User implements \JsonSerializable, \PSX\Record\RecordableInterface
      * @var array<App>|null
      */
     protected ?array $apps = null;
+    #[Description('Use this parameter to attach key-value data')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setId(?int $id): void
