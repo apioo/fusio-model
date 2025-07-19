@@ -6,7 +6,7 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
-#[Description('This object represents a token, this is the access token which a user needs to provide through the Authorization header')]
+#[Description('This object represents a token, this an access token which was requested by a user')]
 class Token implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
