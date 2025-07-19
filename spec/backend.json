@@ -7,45 +7,60 @@
       "type": "struct",
       "properties": {
         "oldPassword": {
+          "description": "The old password",
           "type": "string"
         },
         "newPassword": {
+          "description": "The new password",
           "type": "string"
         },
         "verifyPassword": {
+          "description": "To verify the new password must contain the same value as the new password",
           "type": "string"
         }
       }
     },
     "Action": {
+      "description": "This object represents the business logic which can be executed either through an operation or cronjob",
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "status": {
-          "type": "integer"
+          "description": "Status of the object either 1 = active or 0 = deleted",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
         },
         "class": {
+          "description": "Underlying class of this action which handles the action logic",
           "type": "string"
         },
         "async": {
+          "description": "Whether to execute the action asynchronously, if true the action directly returns a 202 response and the action is executed later on in the background, useful for expensive operations",
           "type": "boolean"
         },
         "config": {
+          "description": "Contains the action specific configuration",
           "type": "reference",
           "target": "Action_Config"
         },
         "metadata": {
+          "description": "Use this parameter to attach key-value data",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Action_Config": {
+      "description": "The action configuration which contains arbitrary key-value entries",
       "type": "map",
       "schema": {
         "type": "any"
@@ -66,6 +81,7 @@
       }
     },
     "Action_Index": {
+      "description": "Contains all possible classes which can be used at an action as class",
       "type": "struct",
       "properties": {
         "actions": {
@@ -78,17 +94,21 @@
       }
     },
     "Action_Index_Entry": {
+      "description": "Represents a concrete action class",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Human-readable name of the action class",
           "type": "string"
         },
         "class": {
+          "description": "Technical identifier of the action class",
           "type": "string"
         }
       }
     },
     "Action_Collection": {
+      "description": "A paginated collection of action objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -99,74 +119,94 @@
       }
     },
     "Action_Execute_Request_Body": {
+      "description": "Represents a request body",
       "type": "map",
       "schema": {
         "type": "any"
       }
     },
     "Action_Execute_Request": {
+      "description": "Represents a request to execute an action",
       "type": "struct",
       "properties": {
         "method": {
+          "description": "HTTP method i.e. GET, POST",
           "type": "string"
         },
         "uriFragments": {
+          "description": "URL-encoded uri fragments i.e. foo=bar&bar=foo",
           "type": "string"
         },
         "parameters": {
+          "description": "URL-encoded query parameters i.e. foo=bar&bar=foo",
           "type": "string"
         },
         "headers": {
+          "description": "URL-encoded headers i.e. foo=bar&bar=foo",
           "type": "string"
         },
         "body": {
+          "description": "Request body of this execution",
           "type": "reference",
           "target": "Action_Execute_Request_Body"
         }
       }
     },
     "Action_Execute_Response_Headers": {
+      "description": "Represents a map of headers",
       "type": "map",
       "schema": {
         "type": "string"
       }
     },
     "Action_Execute_Response_Body": {
+      "description": "Represents a response body",
       "type": "map",
       "schema": {
         "type": "any"
       }
     },
     "Action_Execute_Response": {
+      "description": "Represents an action execution response",
       "type": "struct",
       "properties": {
         "statusCode": {
+          "description": "HTTP status code i.e. 200, 400, etc.",
           "type": "integer"
         },
         "headers": {
+          "description": "The response header returned by the action",
           "type": "reference",
           "target": "Action_Execute_Response_Headers"
         },
         "body": {
+          "description": "The response body returned by the action",
           "type": "reference",
           "target": "Action_Execute_Response_Body"
         }
       }
     },
     "App": {
+      "description": "This object represents an app to access the API on-behalf of a user",
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "userId": {
           "type": "integer"
         },
         "status": {
-          "type": "integer"
+          "description": "Status of the object either 1 = active, 2 = pending, 3 = deactivated or 4 = deleted",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,64}$"
         },
         "url": {
           "type": "string"
@@ -231,7 +271,9 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "app": {
           "type": "reference",
@@ -314,10 +356,14 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
         }
       }
     },
@@ -349,12 +395,15 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "type": {
           "type": "integer"
         },
         "name": {
+          "description": "Unique name of the object",
           "type": "string"
         },
         "description": {
@@ -386,10 +435,14 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
         },
         "class": {
           "type": "string"
@@ -516,10 +569,14 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
         },
         "cron": {
           "type": "string"
@@ -769,10 +826,14 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
         },
         "description": {
           "type": "string"
@@ -814,10 +875,14 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
         },
         "type": {
           "type": "integer"
@@ -863,13 +928,19 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "status": {
-          "type": "integer"
+          "description": "Status of the object either 1 = active or 0 = deleted",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
         },
         "operationId": {
           "type": "integer"
@@ -911,7 +982,9 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "appId": {
           "type": "integer"
@@ -920,7 +993,9 @@
           "type": "integer"
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
         },
         "icon": {
           "type": "string"
@@ -1070,7 +1145,9 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "ip": {
           "type": "string"
@@ -1117,7 +1194,9 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "logId": {
           "type": "integer"
@@ -1154,10 +1233,14 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "status": {
-          "type": "integer"
+          "description": "Status of the object either 1 = active or 0 = deleted",
+          "type": "integer",
+          "readOnly": true
         },
         "active": {
           "type": "boolean"
@@ -1181,7 +1264,9 @@
           "type": "integer"
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\_\\.]{3,64}$"
         },
         "parameters": {
           "type": "reference",
@@ -1273,10 +1358,14 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "status": {
-          "type": "integer"
+          "description": "Status of the object either 1 = visible, 2 = invisible or 0 = deleted",
+          "type": "integer",
+          "readOnly": true
         },
         "title": {
           "type": "string"
@@ -1321,10 +1410,14 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
         },
         "description": {
           "type": "string"
@@ -1377,61 +1470,21 @@
         "target": "Plan"
       }
     },
-    "Role": {
-      "type": "struct",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "categoryId": {
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "scopes": {
-          "type": "array",
-          "schema": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "Role_Collection": {
-      "type": "struct",
-      "parent": {
-        "type": "reference",
-        "target": "common:Collection",
-        "template": {
-          "T": "Role"
-        }
-      }
-    },
-    "Role_Create": {
-      "type": "struct",
-      "parent": {
-        "type": "reference",
-        "target": "Role"
-      }
-    },
-    "Role_Update": {
-      "type": "struct",
-      "parent": {
-        "type": "reference",
-        "target": "Role"
-      }
-    },
     "Rate": {
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "priority": {
           "type": "integer"
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,64}$"
         },
         "rateLimit": {
           "type": "integer"
@@ -1480,7 +1533,9 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "operationId": {
           "type": "integer"
@@ -1499,17 +1554,71 @@
         }
       }
     },
+    "Role": {
+      "type": "struct",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
+        },
+        "categoryId": {
+          "type": "integer"
+        },
+        "name": {
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,64}$"
+        },
+        "scopes": {
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Role_Collection": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Role"
+        }
+      }
+    },
+    "Role_Create": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Role"
+      }
+    },
+    "Role_Update": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Role"
+      }
+    },
     "Schema": {
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "status": {
-          "type": "integer"
+          "description": "Status of the object either 1 = active or 0 = deleted",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
         },
         "source": {
           "type": "reference",
@@ -1578,10 +1687,14 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
         },
         "description": {
           "type": "string"
@@ -1770,10 +1883,14 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "status": {
-          "type": "integer"
+          "description": "Status of the object either 1 = pending, 2 = success, 3 = warning, 4 = error, 5 = skipped or 6 = disabled",
+          "type": "integer",
+          "readOnly": true
         },
         "operationName": {
           "type": "string"
@@ -1811,7 +1928,9 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "userId": {
           "type": "integer"
@@ -1867,10 +1986,14 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "status": {
-          "type": "integer"
+          "description": "Status of the object either 1 = active or 0 = deleted",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
           "type": "string"
@@ -1899,10 +2022,14 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "status": {
-          "type": "integer"
+          "description": "Status of the object either 1 = active or 2 = deleted",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
           "type": "string"
@@ -1940,7 +2067,9 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "roleId": {
           "type": "integer"
@@ -1949,10 +2078,14 @@
           "type": "integer"
         },
         "status": {
-          "type": "integer"
+          "description": "Status of the object either 1 = active, 2 = disabled or 0 = deleted",
+          "type": "integer",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,255}$"
         },
         "email": {
           "type": "string"
@@ -2022,7 +2155,9 @@
       "type": "struct",
       "properties": {
         "id": {
-          "type": "integer"
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
         },
         "eventId": {
           "type": "integer"
