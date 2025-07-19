@@ -4,10 +4,13 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
 class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Status of the object either 1 = active or 0 = deleted')]
     protected ?int $status = null;
     protected ?bool $active = null;
     protected ?bool $public = null;
@@ -16,6 +19,7 @@ class Operation implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $httpMethod = null;
     protected ?string $httpPath = null;
     protected ?int $httpCode = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
     protected ?OperationParameters $parameters = null;
     protected ?string $incoming = null;

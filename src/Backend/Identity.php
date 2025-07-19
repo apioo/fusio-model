@@ -4,12 +4,15 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
 class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     protected ?int $appId = null;
     protected ?int $roleId = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
     protected ?string $icon = null;
     protected ?string $class = null;
