@@ -4,11 +4,14 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
 class Role implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     protected ?int $categoryId = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
     /**
      * @var array<string>|null

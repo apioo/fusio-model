@@ -4,12 +4,17 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents an app to access the API on-behalf of a user')]
 class App implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     protected ?int $userId = null;
+    #[Description('Status of the object either 1 = active, 2 = pending, 3 = deactivated or 4 = deleted')]
     protected ?int $status = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
     protected ?string $url = null;
     protected ?string $parameters = null;

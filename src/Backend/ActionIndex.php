@@ -4,7 +4,9 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Contains all possible classes which can be used at an action as class')]
 class ActionIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**

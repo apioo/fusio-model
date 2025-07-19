@@ -4,10 +4,13 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
 class Plan implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
     protected ?string $description = null;
     protected ?float $price = null;

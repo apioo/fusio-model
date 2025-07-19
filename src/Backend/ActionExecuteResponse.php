@@ -4,11 +4,16 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents an action execution response')]
 class ActionExecuteResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('HTTP status code i.e. 200, 400, etc.')]
     protected ?int $statusCode = null;
+    #[Description('The response header returned by the action')]
     protected ?ActionExecuteResponseHeaders $headers = null;
+    #[Description('The response body returned by the action')]
     protected ?ActionExecuteResponseBody $body = null;
     public function setStatusCode(?int $statusCode): void
     {

@@ -9,7 +9,9 @@ use PSX\Schema\Attribute\Key;
 
 class Connection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Unique name of the object')]
     protected ?string $name = null;
     protected ?string $class = null;
     #[Key('oauth2')]

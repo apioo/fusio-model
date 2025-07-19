@@ -4,13 +4,20 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents a request to execute an action')]
 class ActionExecuteRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('HTTP method i.e. GET, POST')]
     protected ?string $method = null;
+    #[Description('URL-encoded uri fragments i.e. foo=bar&bar=foo')]
     protected ?string $uriFragments = null;
+    #[Description('URL-encoded query parameters i.e. foo=bar&bar=foo')]
     protected ?string $parameters = null;
+    #[Description('URL-encoded headers i.e. foo=bar&bar=foo')]
     protected ?string $headers = null;
+    #[Description('Request body of this execution')]
     protected ?ActionExecuteRequestBody $body = null;
     public function setMethod(?string $method): void
     {
