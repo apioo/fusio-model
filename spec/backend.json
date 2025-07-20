@@ -1356,11 +1356,11 @@
           "target": "Operation_Parameters"
         },
         "incoming": {
-          "description": "Describes the incoming request payload",
+          "description": "Describes the incoming request payload, this must contain a schema name",
           "type": "string"
         },
         "outgoing": {
-          "description": "Describes the outgoing response payload",
+          "description": "Describes the outgoing response payload, this must contain a schema name",
           "type": "string"
         },
         "throws": {
@@ -1369,7 +1369,7 @@
           "target": "Operation_Throws"
         },
         "action": {
-          "description": "The target action to invoke",
+          "description": "The target action to invoke, this must contain an action name",
           "type": "string"
         },
         "costs": {
