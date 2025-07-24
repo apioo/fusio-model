@@ -561,6 +561,52 @@
         }
       }
     },
+    "Connection_Introspection_Entities": {
+      "deprecated": true,
+      "type": "struct",
+      "properties": {
+        "entities": {
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Connection_Introspection_Entity": {
+      "deprecated": true,
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "headers": {
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Connection_Introspection_Entity_Row"
+          }
+        }
+      }
+    },
+    "Connection_Introspection_Entity_Row": {
+      "deprecated": true,
+      "type": "struct",
+      "properties": {
+        "values": {
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "Cronjob": {
       "description": "This object represents a cronjob which can invoke an action at a specific interval",
       "type": "struct",
