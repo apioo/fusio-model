@@ -955,6 +955,45 @@
         "target": "Event"
       }
     },
+    "File": {
+      "description": "This object represents a file on the filesystem",
+      "type": "struct",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "description": "Name of the file",
+          "type": "string"
+        },
+        "contentType": {
+          "description": "MIME type of the file",
+          "type": "string"
+        },
+        "checksum": {
+          "description": "Checksum of the file",
+          "type": "string"
+        },
+        "lastModified": {
+          "description": "Last modified date of the file",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "File_Collection": {
+      "description": "A paginated collection of file objects",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "File"
+        }
+      }
+    },
     "Firewall": {
       "description": "This object represents a firewall rule which blocks specific IP addresses",
       "type": "struct",
