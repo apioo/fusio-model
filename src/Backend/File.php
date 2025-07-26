@@ -10,7 +10,7 @@ use PSX\Schema\Attribute\Description;
 class File implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
-    protected ?int $id = null;
+    protected ?string $id = null;
     #[Description('Name of the file')]
     protected ?string $name = null;
     #[Description('MIME type of the file')]
@@ -19,11 +19,11 @@ class File implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $checksum = null;
     #[Description('Last modified date of the file')]
     protected ?\PSX\DateTime\LocalDateTime $lastModified = null;
-    public function setId(?int $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
