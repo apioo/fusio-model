@@ -1112,6 +1112,52 @@
         "target": "Form"
       }
     },
+    "Http_Request": {
+      "description": "This object represents a HTTP request",
+      "type": "struct",
+      "properties": {
+        "method": {
+          "description": "HTTP method i.e. GET, POST",
+          "type": "string"
+        },
+        "uri": {
+          "description": "HTTP request uri",
+          "type": "string"
+        },
+        "headers": {
+          "description": "HTTP request headers",
+          "type": "map",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "body": {
+          "description": "HTTP request body",
+          "type": "string"
+        }
+      }
+    },
+    "Http_Response": {
+      "description": "This object represents a HTTP response",
+      "type": "struct",
+      "properties": {
+        "statusCode": {
+          "description": "HTTP status code",
+          "type": "integer"
+        },
+        "headers": {
+          "description": "HTTP response headers",
+          "type": "map",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "body": {
+          "description": "HTTP response body",
+          "type": "string"
+        }
+      }
+    },
     "Identity": {
       "description": "This object represents an identity which allows to authenticate with a remote identity provider",
       "type": "struct",
