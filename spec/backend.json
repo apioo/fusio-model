@@ -2276,6 +2276,60 @@
         }
       }
     },
+    "Trigger": {
+      "description": "This object represents a trigger which can invoke an action on a custom event",
+      "type": "struct",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
+        },
+        "event": {
+          "description": "The name of the trigger event",
+          "type": "string"
+        },
+        "action": {
+          "description": "The target action which gets invoked",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Use this parameter to attach key-value data",
+          "type": "reference",
+          "target": "common:Metadata"
+        }
+      }
+    },
+    "Trigger_Collection": {
+      "description": "A paginated collection of trigger objects",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Trigger"
+        }
+      }
+    },
+    "Trigger_Create": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Trigger"
+      }
+    },
+    "Trigger_Update": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Trigger"
+      }
+    },
     "Token": {
       "description": "This object represents a token, this an access token which was requested by a user",
       "type": "struct",
