@@ -387,6 +387,58 @@
         }
       }
     },
+    "Bundle": {
+      "description": "This object represents a bundle which allows you to submit action, schema, event, cronjob and trigger configuration from you local instance to the Fusio marketplace",
+      "type": "struct",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
+        },
+        "config": {
+          "description": "The bundle configuration",
+          "type": "reference",
+          "target": "Bundle_Config"
+        }
+      }
+    },
+    "Bundle_Config": {
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
+    },
+    "Bundle_Collection": {
+      "description": "A paginated collection of bundle objects",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Bundle"
+        }
+      }
+    },
+    "Bundle_Create": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Bundle"
+      }
+    },
+    "Bundle_Update": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Bundle"
+      }
+    },
     "Category": {
       "description": "This object represents a category. Every user is assigned to a category and can only view objects which are also assigned to the same category, through this it is possible to build separate areas for external developers",
       "type": "struct",
