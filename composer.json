@@ -10,16 +10,12 @@
       "homepage": "https://chrisk.app/"
     }
   ],
-  "scripts": {
-    "generate": "@php gen.php",
-    "psalm": "@php vendor/vimeo/psalm/psalm"
-  },
   "require": {
     "php": ">=8.0",
     "psx/record": "^3.0"
   },
   "require-dev": {
-    "vimeo/psalm": "^4.0",
+    "phpstan/phpstan": "^2.1",
     "psx/schema": "^7.0"
   },
   "autoload": {
