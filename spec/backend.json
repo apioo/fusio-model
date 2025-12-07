@@ -401,6 +401,26 @@
           "type": "string",
           "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
         },
+        "version": {
+          "description": "Version of this bundle",
+          "type": "string"
+        },
+        "icon": {
+          "description": "Icon to represent this bundle",
+          "type": "string"
+        },
+        "summary": {
+          "description": "Short summary which explains the use case for this bundle",
+          "type": "string"
+        },
+        "description": {
+          "description": "Long description how to use this bundle may also contains markdown syntax",
+          "type": "string"
+        },
+        "cost": {
+          "description": "Optional a cost for this bundle",
+          "type": "integer"
+        },
         "config": {
           "description": "The bundle configuration",
           "type": "reference",
