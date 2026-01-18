@@ -200,6 +200,186 @@
         }
       }
     },
+    "Agent_Request": {
+      "description": "This object represents an agent request",
+      "type": "struct",
+      "properties": {
+        "message": {
+          "description": "The input message",
+          "type": "string"
+        },
+        "schemas": {
+          "description": "Optional schemas which are attached to the context",
+          "type": "array",
+          "schema": {
+            "type": "number"
+          }
+        },
+        "actions": {
+          "description": "Optional actions which are attached to the context",
+          "type": "array",
+          "schema": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "Agent_Response": {
+      "description": "This object represents an agent call response",
+      "type": "struct",
+      "properties": {
+        "result": {
+          "description": "The agent result",
+          "type": "reference",
+          "target": "Agent_Result"
+        }
+      }
+    },
+    "Agent_Result": {
+      "description": "Agent call result",
+      "type": "struct",
+      "base": true,
+      "discriminator": "type",
+      "mapping": {
+        "Agent_Result_Binary": "binary",
+        "Agent_Result_Choice": "choice",
+        "Agent_Result_Object": "object",
+        "Agent_Result_Text": "text",
+        "Agent_Result_ToolCall": "tool_call"
+      },
+      "properties": {
+        "type": {
+          "description": "The result type",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Optional result metadata",
+          "type": "map",
+          "schema": {
+            "type": "any"
+          }
+        }
+      }
+    },
+    "Agent_Result_Binary": {
+      "description": "Binary agent result",
+      "parent": {
+        "type": "reference",
+        "target": "Agent_Result"
+      },
+      "properties": {
+        "mime": {
+          "description": "The mime of the binary data",
+          "type": "string"
+        },
+        "data": {
+          "description": "The base64 encoded binary data",
+          "type": "string"
+        }
+      }
+    },
+    "Agent_Result_Choice": {
+      "description": "Choice agent result",
+      "parent": {
+        "type": "reference",
+        "target": "Agent_Result"
+      },
+      "properties": {
+        "items": {
+          "description": "Contains multiple agent results",
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Result"
+          }
+        }
+      }
+    },
+    "Agent_Result_Object": {
+      "description": "Structured agent result",
+      "parent": {
+        "type": "reference",
+        "target": "Agent_Result"
+      },
+      "properties": {
+        "payload": {
+          "description": "The structured JSON payload",
+          "type": "any"
+        }
+      }
+    },
+    "Agent_Result_Stream": {
+      "description": "Stream agent result",
+      "parent": {
+        "type": "reference",
+        "target": "Agent_Result"
+      },
+      "properties": {
+        "events": {
+          "description": "An array of events",
+          "type": "array",
+          "schema": {
+            "type": "any"
+          }
+        }
+      }
+    },
+    "Agent_Result_Text": {
+      "description": "Text agent result",
+      "parent": {
+        "type": "reference",
+        "target": "Agent_Result"
+      },
+      "properties": {
+        "content": {
+          "description": "The output text",
+          "type": "string"
+        }
+      }
+    },
+    "Agent_Result_ToolCall": {
+      "description": "Tool call agent result",
+      "parent": {
+        "type": "reference",
+        "target": "Agent_Result"
+      },
+      "properties": {
+        "functions": {
+          "description": "An array of functions to invoke",
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Result_ToolCall_Function"
+          }
+        }
+      }
+    },
+    "Agent_Result_ToolCall_Function": {
+      "description": "A tool call function",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "function": {
+          "type": "reference",
+          "target": "Agent_Result_ToolCall_Function_Details"
+        }
+      }
+    },
+    "Agent_Result_ToolCall_Function_Details": {
+      "description": "Agent call function details",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "arguments": {
+          "type": "string"
+        }
+      }
+    },
     "App": {
       "description": "This object represents an app to access the API on-behalf of a user",
       "type": "struct",
