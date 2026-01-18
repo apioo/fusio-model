@@ -16,6 +16,9 @@ class SchemaPreviewResponse implements \JsonSerializable, \PSX\Record\Recordable
     {
         return $this->preview;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

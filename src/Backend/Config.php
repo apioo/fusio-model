@@ -59,6 +59,9 @@ class Config implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->value;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

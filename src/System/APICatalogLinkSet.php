@@ -92,6 +92,9 @@ class APICatalogLinkSet implements \JsonSerializable, \PSX\Record\RecordableInte
     {
         return $this->status;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

@@ -70,6 +70,9 @@ class Webhook implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->responses;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

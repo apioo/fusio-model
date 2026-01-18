@@ -34,6 +34,9 @@ class StatisticCount implements \JsonSerializable, \PSX\Record\RecordableInterfa
     {
         return $this->to;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

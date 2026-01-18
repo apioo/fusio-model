@@ -37,6 +37,9 @@ class TrashData implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->name;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

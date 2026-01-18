@@ -69,6 +69,9 @@ class Form implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->metadata;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

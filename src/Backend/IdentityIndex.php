@@ -27,6 +27,9 @@ class IdentityIndex implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         return $this->providers;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

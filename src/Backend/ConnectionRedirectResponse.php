@@ -18,6 +18,9 @@ class ConnectionRedirectResponse implements \JsonSerializable, \PSX\Record\Recor
     {
         return $this->redirectUri;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

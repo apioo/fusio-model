@@ -25,6 +25,9 @@ class APICatalogLink implements \JsonSerializable, \PSX\Record\RecordableInterfa
     {
         return $this->type;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

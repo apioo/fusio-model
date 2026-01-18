@@ -59,6 +59,9 @@ abstract class FormElement implements \JsonSerializable, \PSX\Record\RecordableI
     {
         return $this->help;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

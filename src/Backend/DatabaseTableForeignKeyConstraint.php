@@ -67,6 +67,9 @@ class DatabaseTableForeignKeyConstraint implements \JsonSerializable, \PSX\Recor
     {
         return $this->foreignColumnNames;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

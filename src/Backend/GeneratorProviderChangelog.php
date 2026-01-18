@@ -61,6 +61,9 @@ class GeneratorProviderChangelog implements \JsonSerializable, \PSX\Record\Recor
     {
         return $this->operations;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

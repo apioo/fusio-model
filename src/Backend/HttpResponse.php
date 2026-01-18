@@ -48,6 +48,9 @@ class HttpResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->body;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

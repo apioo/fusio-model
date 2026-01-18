@@ -16,6 +16,9 @@ class UserCreate extends User implements \JsonSerializable, \PSX\Record\Recordab
     {
         return $this->password;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

@@ -34,6 +34,9 @@ class ScopeCategoryScope implements \JsonSerializable, \PSX\Record\RecordableInt
     {
         return $this->description;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

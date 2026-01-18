@@ -29,6 +29,9 @@ class ActionIndexEntry implements \JsonSerializable, \PSX\Record\RecordableInter
     {
         return $this->class;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

@@ -54,6 +54,9 @@ class ConnectionIntrospectionEntity implements \JsonSerializable, \PSX\Record\Re
     {
         return $this->rows;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

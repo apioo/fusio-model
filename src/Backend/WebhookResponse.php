@@ -61,6 +61,9 @@ class WebhookResponse implements \JsonSerializable, \PSX\Record\RecordableInterf
     {
         return $this->executeDate;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */

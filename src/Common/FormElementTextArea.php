@@ -16,6 +16,9 @@ class FormElementTextArea extends FormElement implements \JsonSerializable, \PSX
     {
         return $this->mode;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
