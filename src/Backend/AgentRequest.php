@@ -9,8 +9,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents an agent request')]
 class AgentRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    #[Description('The input message')]
-    protected ?string $message = null;
+    #[Description('The input')]
+    protected ?AgentMessage $input = null;
     /**
      * @var array<float>|null
      */
@@ -21,13 +21,13 @@ class AgentRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
      */
     #[Description('Optional actions which are attached to the context')]
     protected ?array $actions = null;
-    public function setMessage(?string $message): void
+    public function setInput(?AgentMessage $input): void
     {
-        $this->message = $message;
+        $this->input = $input;
     }
-    public function getMessage(): ?string
+    public function getInput(): ?AgentMessage
     {
-        return $this->message;
+        return $this->input;
     }
     /**
      * @param array<float>|null $schemas
@@ -64,7 +64,7 @@ class AgentRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
-        $record->put('message', $this->message);
+        $record->put('input', $this->input);
         $record->put('schemas', $this->schemas);
         $record->put('actions', $this->actions);
         return $record;

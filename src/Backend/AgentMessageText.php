@@ -7,7 +7,7 @@ namespace Fusio\Model\Backend;
 use PSX\Schema\Attribute\Description;
 
 #[Description('Text agent result')]
-class AgentResultText extends AgentResult implements \JsonSerializable, \PSX\Record\RecordableInterface
+class AgentMessageText extends AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('The output text')]
     protected ?string $content = null;

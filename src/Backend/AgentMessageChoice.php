@@ -7,22 +7,22 @@ namespace Fusio\Model\Backend;
 use PSX\Schema\Attribute\Description;
 
 #[Description('Choice agent result')]
-class AgentResultChoice extends AgentResult implements \JsonSerializable, \PSX\Record\RecordableInterface
+class AgentMessageChoice extends AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
-     * @var array<AgentResult>|null
+     * @var array<AgentMessage>|null
      */
     #[Description('Contains multiple agent results')]
     protected ?array $items = null;
     /**
-     * @param array<AgentResult>|null $items
+     * @param array<AgentMessage>|null $items
      */
     public function setItems(?array $items): void
     {
         $this->items = $items;
     }
     /**
-     * @return array<AgentResult>|null
+     * @return array<AgentMessage>|null
      */
     public function getItems(): ?array
     {

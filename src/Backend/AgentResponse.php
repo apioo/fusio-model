@@ -6,18 +6,18 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
-#[Description('This object represents an agent call response')]
+#[Description('This object represents an agent response')]
 class AgentResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    #[Description('The agent result')]
-    protected ?AgentResult $result = null;
-    public function setResult(?AgentResult $result): void
+    #[Description('The output')]
+    protected ?AgentMessage $output = null;
+    public function setOutput(?AgentMessage $output): void
     {
-        $this->result = $result;
+        $this->output = $output;
     }
-    public function getResult(): ?AgentResult
+    public function getOutput(): ?AgentMessage
     {
-        return $this->result;
+        return $this->output;
     }
     /**
      * @return \PSX\Record\RecordInterface<mixed>
@@ -26,7 +26,7 @@ class AgentResponse implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
-        $record->put('result', $this->result);
+        $record->put('output', $this->output);
         return $record;
     }
     public function jsonSerialize(): object

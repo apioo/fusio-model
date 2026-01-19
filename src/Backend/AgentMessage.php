@@ -10,12 +10,12 @@ use PSX\Schema\Attribute\Discriminator;
 
 #[Description('Agent call result')]
 #[Discriminator('type')]
-#[DerivedType(AgentResultBinary::class, 'binary')]
-#[DerivedType(AgentResultChoice::class, 'choice')]
-#[DerivedType(AgentResultObject::class, 'object')]
-#[DerivedType(AgentResultText::class, 'text')]
-#[DerivedType(AgentResultToolCall::class, 'tool_call')]
-abstract class AgentResult implements \JsonSerializable, \PSX\Record\RecordableInterface
+#[DerivedType(AgentMessageBinary::class, 'binary')]
+#[DerivedType(AgentMessageChoice::class, 'choice')]
+#[DerivedType(AgentMessageObject::class, 'object')]
+#[DerivedType(AgentMessageText::class, 'text')]
+#[DerivedType(AgentMessageToolCall::class, 'tool_call')]
+abstract class AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('The result type')]
     protected ?string $type = null;

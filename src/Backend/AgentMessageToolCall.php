@@ -7,22 +7,22 @@ namespace Fusio\Model\Backend;
 use PSX\Schema\Attribute\Description;
 
 #[Description('Tool call agent result')]
-class AgentResultToolCall extends AgentResult implements \JsonSerializable, \PSX\Record\RecordableInterface
+class AgentMessageToolCall extends AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
-     * @var array<AgentResultToolCallFunction>|null
+     * @var array<AgentMessageToolCallFunction>|null
      */
     #[Description('An array of functions to invoke')]
     protected ?array $functions = null;
     /**
-     * @param array<AgentResultToolCallFunction>|null $functions
+     * @param array<AgentMessageToolCallFunction>|null $functions
      */
     public function setFunctions(?array $functions): void
     {
         $this->functions = $functions;
     }
     /**
-     * @return array<AgentResultToolCallFunction>|null
+     * @return array<AgentMessageToolCallFunction>|null
      */
     public function getFunctions(): ?array
     {

@@ -7,7 +7,7 @@ namespace Fusio\Model\Backend;
 use PSX\Schema\Attribute\Description;
 
 #[Description('Stream agent result')]
-class AgentResultStream extends AgentResult implements \JsonSerializable, \PSX\Record\RecordableInterface
+class AgentMessageStream extends AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<mixed>|null

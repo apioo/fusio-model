@@ -7,11 +7,11 @@ namespace Fusio\Model\Backend;
 use PSX\Schema\Attribute\Description;
 
 #[Description('A tool call function')]
-class AgentResultToolCallFunction implements \JsonSerializable, \PSX\Record\RecordableInterface
+class AgentMessageToolCallFunction implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $id = null;
     protected ?string $type = null;
-    protected ?AgentResultToolCallFunctionDetails $function = null;
+    protected ?AgentMessageToolCallFunctionDetails $function = null;
     public function setId(?string $id): void
     {
         $this->id = $id;
@@ -28,11 +28,11 @@ class AgentResultToolCallFunction implements \JsonSerializable, \PSX\Record\Reco
     {
         return $this->type;
     }
-    public function setFunction(?AgentResultToolCallFunctionDetails $function): void
+    public function setFunction(?AgentMessageToolCallFunctionDetails $function): void
     {
         $this->function = $function;
     }
-    public function getFunction(): ?AgentResultToolCallFunctionDetails
+    public function getFunction(): ?AgentMessageToolCallFunctionDetails
     {
         return $this->function;
     }

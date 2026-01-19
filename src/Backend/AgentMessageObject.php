@@ -7,7 +7,7 @@ namespace Fusio\Model\Backend;
 use PSX\Schema\Attribute\Description;
 
 #[Description('Structured agent result')]
-class AgentResultObject extends AgentResult implements \JsonSerializable, \PSX\Record\RecordableInterface
+class AgentMessageObject extends AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('The structured JSON payload')]
     protected mixed $payload = null;

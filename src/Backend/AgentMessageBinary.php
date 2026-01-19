@@ -7,7 +7,7 @@ namespace Fusio\Model\Backend;
 use PSX\Schema\Attribute\Description;
 
 #[Description('Binary agent result')]
-class AgentResultBinary extends AgentResult implements \JsonSerializable, \PSX\Record\RecordableInterface
+class AgentMessageBinary extends AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('The mime of the binary data')]
     protected ?string $mime = null;
