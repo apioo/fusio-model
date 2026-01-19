@@ -204,9 +204,10 @@
       "description": "This object represents an agent request",
       "type": "struct",
       "properties": {
-        "message": {
-          "description": "The input message",
-          "type": "string"
+        "input": {
+          "description": "The input",
+          "type": "reference",
+          "target": "Agent_Message"
         },
         "schemas": {
           "description": "Optional schemas which are attached to the context",
@@ -225,27 +226,27 @@
       }
     },
     "Agent_Response": {
-      "description": "This object represents an agent call response",
+      "description": "This object represents an agent response",
       "type": "struct",
       "properties": {
-        "result": {
-          "description": "The agent result",
+        "output": {
+          "description": "The output",
           "type": "reference",
-          "target": "Agent_Result"
+          "target": "Agent_Message"
         }
       }
     },
-    "Agent_Result": {
+    "Agent_Message": {
       "description": "Agent call result",
       "type": "struct",
       "base": true,
       "discriminator": "type",
       "mapping": {
-        "Agent_Result_Binary": "binary",
-        "Agent_Result_Choice": "choice",
-        "Agent_Result_Object": "object",
-        "Agent_Result_Text": "text",
-        "Agent_Result_ToolCall": "tool_call"
+        "Agent_Message_Binary": "binary",
+        "Agent_Message_Choice": "choice",
+        "Agent_Message_Object": "object",
+        "Agent_Message_Text": "text",
+        "Agent_Message_ToolCall": "tool_call"
       },
       "properties": {
         "type": {
@@ -261,7 +262,7 @@
         }
       }
     },
-    "Agent_Result_Binary": {
+    "Agent_Message_Binary": {
       "description": "Binary agent result",
       "parent": {
         "type": "reference",
@@ -278,7 +279,7 @@
         }
       }
     },
-    "Agent_Result_Choice": {
+    "Agent_Message_Choice": {
       "description": "Choice agent result",
       "parent": {
         "type": "reference",
@@ -295,7 +296,7 @@
         }
       }
     },
-    "Agent_Result_Object": {
+    "Agent_Message_Object": {
       "description": "Structured agent result",
       "parent": {
         "type": "reference",
@@ -308,7 +309,7 @@
         }
       }
     },
-    "Agent_Result_Stream": {
+    "Agent_Message_Stream": {
       "description": "Stream agent result",
       "parent": {
         "type": "reference",
@@ -324,7 +325,7 @@
         }
       }
     },
-    "Agent_Result_Text": {
+    "Agent_Message_Text": {
       "description": "Text agent result",
       "parent": {
         "type": "reference",
@@ -337,7 +338,7 @@
         }
       }
     },
-    "Agent_Result_ToolCall": {
+    "Agent_Message_ToolCall": {
       "description": "Tool call agent result",
       "parent": {
         "type": "reference",
@@ -349,12 +350,12 @@
           "type": "array",
           "schema": {
             "type": "reference",
-            "target": "Agent_Result_ToolCall_Function"
+            "target": "Agent_Message_ToolCall_Function"
           }
         }
       }
     },
-    "Agent_Result_ToolCall_Function": {
+    "Agent_Message_ToolCall_Function": {
       "description": "A tool call function",
       "properties": {
         "id": {
@@ -365,11 +366,11 @@
         },
         "function": {
           "type": "reference",
-          "target": "Agent_Result_ToolCall_Function_Details"
+          "target": "Agent_Message_ToolCall_Function_Details"
         }
       }
     },
-    "Agent_Result_ToolCall_Function_Details": {
+    "Agent_Message_ToolCall_Function_Details": {
       "description": "Agent call function details",
       "properties": {
         "name": {
