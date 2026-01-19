@@ -266,7 +266,7 @@
       "description": "Binary agent result",
       "parent": {
         "type": "reference",
-        "target": "Agent_Result"
+        "target": "Agent_Message"
       },
       "properties": {
         "mime": {
@@ -283,7 +283,7 @@
       "description": "Choice agent result",
       "parent": {
         "type": "reference",
-        "target": "Agent_Result"
+        "target": "Agent_Message"
       },
       "properties": {
         "items": {
@@ -291,7 +291,7 @@
           "type": "array",
           "schema": {
             "type": "reference",
-            "target": "Agent_Result"
+            "target": "Agent_Message"
           }
         }
       }
@@ -300,7 +300,7 @@
       "description": "Structured agent result",
       "parent": {
         "type": "reference",
-        "target": "Agent_Result"
+        "target": "Agent_Message"
       },
       "properties": {
         "payload": {
@@ -313,7 +313,7 @@
       "description": "Stream agent result",
       "parent": {
         "type": "reference",
-        "target": "Agent_Result"
+        "target": "Agent_Message"
       },
       "properties": {
         "events": {
@@ -329,7 +329,7 @@
       "description": "Text agent result",
       "parent": {
         "type": "reference",
-        "target": "Agent_Result"
+        "target": "Agent_Message"
       },
       "properties": {
         "content": {
@@ -342,7 +342,7 @@
       "description": "Tool call agent result",
       "parent": {
         "type": "reference",
-        "target": "Agent_Result"
+        "target": "Agent_Message"
       },
       "properties": {
         "functions": {
