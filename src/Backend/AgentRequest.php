@@ -12,12 +12,12 @@ class AgentRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
     #[Description('The input')]
     protected ?AgentMessage $input = null;
     /**
-     * @var array<float>|null
+     * @var array<int>|null
      */
     #[Description('Optional schemas which are attached to the context')]
     protected ?array $schemas = null;
     /**
-     * @var array<float>|null
+     * @var array<int>|null
      */
     #[Description('Optional actions which are attached to the context')]
     protected ?array $actions = null;
@@ -30,28 +30,28 @@ class AgentRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
         return $this->input;
     }
     /**
-     * @param array<float>|null $schemas
+     * @param array<int>|null $schemas
      */
     public function setSchemas(?array $schemas): void
     {
         $this->schemas = $schemas;
     }
     /**
-     * @return array<float>|null
+     * @return array<int>|null
      */
     public function getSchemas(): ?array
     {
         return $this->schemas;
     }
     /**
-     * @param array<float>|null $actions
+     * @param array<int>|null $actions
      */
     public function setActions(?array $actions): void
     {
         $this->actions = $actions;
     }
     /**
-     * @return array<float>|null
+     * @return array<int>|null
      */
     public function getActions(): ?array
     {
