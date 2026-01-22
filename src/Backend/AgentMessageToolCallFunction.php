@@ -6,12 +6,12 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
-#[Description('A tool call function')]
+#[Description('Concrete values for a function tool call')]
 class AgentMessageToolCallFunction implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $id = null;
-    protected ?string $type = null;
-    protected ?AgentMessageToolCallFunctionDetails $function = null;
+    protected ?string $name = null;
+    protected ?string $arguments = null;
     public function setId(?string $id): void
     {
         $this->id = $id;
@@ -20,21 +20,21 @@ class AgentMessageToolCallFunction implements \JsonSerializable, \PSX\Record\Rec
     {
         return $this->id;
     }
-    public function setType(?string $type): void
+    public function setName(?string $name): void
     {
-        $this->type = $type;
+        $this->name = $name;
     }
-    public function getType(): ?string
+    public function getName(): ?string
     {
-        return $this->type;
+        return $this->name;
     }
-    public function setFunction(?AgentMessageToolCallFunctionDetails $function): void
+    public function setArguments(?string $arguments): void
     {
-        $this->function = $function;
+        $this->arguments = $arguments;
     }
-    public function getFunction(): ?AgentMessageToolCallFunctionDetails
+    public function getArguments(): ?string
     {
-        return $this->function;
+        return $this->arguments;
     }
     /**
      * @return \PSX\Record\RecordInterface<mixed>
@@ -44,8 +44,8 @@ class AgentMessageToolCallFunction implements \JsonSerializable, \PSX\Record\Rec
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('id', $this->id);
-        $record->put('type', $this->type);
-        $record->put('function', $this->function);
+        $record->put('name', $this->name);
+        $record->put('arguments', $this->arguments);
         return $record;
     }
     public function jsonSerialize(): object

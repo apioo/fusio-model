@@ -12,7 +12,7 @@ class AgentMessageToolCall extends AgentMessage implements \JsonSerializable, \P
     /**
      * @var array<AgentMessageToolCallFunction>|null
      */
-    #[Description('An array of functions to invoke')]
+    #[Description('An array of concrete functions')]
     protected ?array $functions = null;
     /**
      * @param array<AgentMessageToolCallFunction>|null $functions

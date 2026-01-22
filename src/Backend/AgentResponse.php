@@ -9,7 +9,7 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents an agent response')]
 class AgentResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    #[Description('The output')]
+    #[Description('The output message')]
     protected ?AgentMessage $output = null;
     public function setOutput(?AgentMessage $output): void
     {

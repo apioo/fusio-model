@@ -9,7 +9,7 @@ use PSX\Schema\Attribute\Description;
 #[Description('Text agent result')]
 class AgentMessageText extends AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    #[Description('The output text')]
+    #[Description('The content text')]
     protected ?string $content = null;
     public function setContent(?string $content): void
     {
