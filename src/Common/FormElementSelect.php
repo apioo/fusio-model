@@ -4,12 +4,15 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Common;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Form element which represents a select element')]
 class FormElementSelect extends FormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<FormElementSelectOption>|null
      */
+    #[Description('Available options for the select element')]
     protected ?array $options = null;
     /**
      * @param array<FormElementSelectOption>|null $options
