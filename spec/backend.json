@@ -48,7 +48,7 @@
           "type": "boolean"
         },
         "config": {
-          "description": "Contains the action specific configuration",
+          "description": "Contains the action specific configuration. The config depends on the action class, you can get all details of the config format by passing the class to the backend-action-getForm tool",
           "type": "reference",
           "target": "Action_Config"
         },

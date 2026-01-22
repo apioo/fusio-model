@@ -44,6 +44,7 @@
       }
     },
     "Form_Container": {
+      "description": "Represents a config form with a list of elements",
       "type": "struct",
       "properties": {
         "element": {
@@ -56,6 +57,7 @@
       }
     },
     "Form_Element": {
+      "description": "Form base element",
       "type": "struct",
       "base": true,
       "discriminator": "type",
@@ -66,9 +68,6 @@
         "Form_Element_TextArea": "http://fusio-project.org/ns/2015/form/textarea"
       },
       "properties": {
-        "type": {
-          "type": "string"
-        },
         "element": {
           "type": "string"
         },
@@ -84,13 +83,21 @@
       }
     },
     "Form_Element_Input": {
+      "description": "Form element which represents an input element",
       "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Form_Element"
+      },
+      "properties": {
+        "type": {
+          "description": "The input type i.e. text or password, all HTML input types are allowed",
+          "type": "string"
+        }
       }
     },
     "Form_Element_Select": {
+      "description": "Form element which represents a select element",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -98,6 +105,7 @@
       },
       "properties": {
         "options": {
+          "description": "Available options for the select element",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -107,6 +115,7 @@
       }
     },
     "Form_Element_Select_Option": {
+      "description": "Represents a concrete option entry",
       "type": "struct",
       "properties": {
         "key": {
@@ -118,6 +127,7 @@
       }
     },
     "Form_Element_Tag": {
+      "description": "Form element which represents an input tag editor to enter comma-separated values",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -125,6 +135,7 @@
       }
     },
     "Form_Element_TextArea": {
+      "description": "Form element which represents a textarea",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -132,6 +143,7 @@
       },
       "properties": {
         "mode": {
+          "description": "Describes which data is provided at the textarea, this can be i.e. a programming language like php, java or python or also a data format like json",
           "type": "string"
         }
       }
