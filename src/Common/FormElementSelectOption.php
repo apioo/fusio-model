@@ -4,7 +4,9 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Common;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents a concrete option entry')]
 class FormElementSelectOption implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $key = null;

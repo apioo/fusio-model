@@ -4,7 +4,9 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Common;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents a config form with a list of elements')]
 class FormContainer implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
