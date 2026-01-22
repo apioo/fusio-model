@@ -204,24 +204,14 @@
       "description": "This object represents an agent request",
       "type": "struct",
       "properties": {
+        "intent": {
+          "description": "The intent of this request i.e. to develop an action or a general request",
+          "type": "string"
+        },
         "input": {
-          "description": "The input",
+          "description": "The input message",
           "type": "reference",
           "target": "Agent_Message"
-        },
-        "schemas": {
-          "description": "Optional schemas which are attached to the context",
-          "type": "array",
-          "schema": {
-            "type": "integer"
-          }
-        },
-        "actions": {
-          "description": "Optional actions which are attached to the context",
-          "type": "array",
-          "schema": {
-            "type": "integer"
-          }
         }
       }
     },
@@ -230,7 +220,7 @@
       "type": "struct",
       "properties": {
         "output": {
-          "description": "The output",
+          "description": "The output message",
           "type": "reference",
           "target": "Agent_Message"
         }
@@ -333,7 +323,7 @@
       },
       "properties": {
         "content": {
-          "description": "The output text",
+          "description": "The content text",
           "type": "string"
         }
       }
@@ -346,7 +336,7 @@
       },
       "properties": {
         "functions": {
-          "description": "An array of functions to invoke",
+          "description": "An array of concrete functions",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -356,23 +346,11 @@
       }
     },
     "Agent_Message_ToolCall_Function": {
-      "description": "A tool call function",
+      "description": "Concrete values for a function tool call",
       "properties": {
         "id": {
           "type": "string"
         },
-        "type": {
-          "type": "string"
-        },
-        "function": {
-          "type": "reference",
-          "target": "Agent_Message_ToolCall_Function_Details"
-        }
-      }
-    },
-    "Agent_Message_ToolCall_Function_Details": {
-      "description": "Agent call function details",
-      "properties": {
         "name": {
           "type": "string"
         },
