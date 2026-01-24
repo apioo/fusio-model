@@ -359,6 +359,40 @@
         }
       }
     },
+    "Agent": {
+      "description": "This object represents an agent message",
+      "type": "struct",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for the object",
+          "type": "integer"
+        },
+        "origin": {
+          "description": "The origin of this message i.e. 1 = user, 2 = assistant or 3 = system",
+          "type": "integer"
+        },
+        "message": {
+          "description": "The message",
+          "type": "reference",
+          "target": "Agent_Message"
+        },
+        "insertDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Agent_Collection": {
+      "description": "Represents a collection of agent messages",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Agent"
+        }
+      }
+    },
     "App": {
       "description": "This object represents an app to access the API on-behalf of a user",
       "type": "struct",
