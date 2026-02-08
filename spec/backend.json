@@ -152,10 +152,8 @@
         },
         "config": {
           "description": "The provided action configuration",
-          "type": "map",
-          "schema": {
-            "type": "any"
-          }
+          "type": "reference",
+          "target": "Action_Config"
         },
         "insertDate": {
           "type": "string",
