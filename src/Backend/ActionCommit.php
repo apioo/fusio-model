@@ -15,11 +15,8 @@ class ActionCommit implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?User $user = null;
     #[Description('A unique hash which represents this commit')]
     protected ?string $commitHash = null;
-    /**
-     * @var \PSX\Record\Record<mixed>|null
-     */
     #[Description('The provided action configuration')]
-    protected ?\PSX\Record\Record $config = null;
+    protected ?ActionConfig $config = null;
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     public function setId(?int $id): void
     {
@@ -45,17 +42,11 @@ class ActionCommit implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->commitHash;
     }
-    /**
-     * @param \PSX\Record\Record<mixed>|null $config
-     */
-    public function setConfig(?\PSX\Record\Record $config): void
+    public function setConfig(?ActionConfig $config): void
     {
         $this->config = $config;
     }
-    /**
-     * @return \PSX\Record\Record<mixed>|null
-     */
-    public function getConfig(): ?\PSX\Record\Record
+    public function getConfig(): ?ActionConfig
     {
         return $this->config;
     }
