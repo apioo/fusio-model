@@ -132,6 +132,48 @@
         }
       }
     },
+    "Action_Commit": {
+      "description": "An action commit which represents a change in the action configuration",
+      "type": "struct",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
+        },
+        "user": {
+          "description": "The user which has made the change",
+          "type": "reference",
+          "target": "User"
+        },
+        "commitHash": {
+          "description": "A unique hash which represents this commit",
+          "type": "string"
+        },
+        "config": {
+          "description": "The provided action configuration",
+          "type": "map",
+          "schema": {
+            "type": "any"
+          }
+        },
+        "insertDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Action_Commit_Collection": {
+      "description": "A paginated collection of action commit objects",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Action_Commit"
+        }
+      }
+    },
     "Action_Execute_Request_Body": {
       "description": "Represents a request body",
       "type": "map",
@@ -2206,6 +2248,46 @@
       "properties": {
         "preview": {
           "type": "string"
+        }
+      }
+    },
+    "Schema_Commit": {
+      "description": "A schema commit which represents a change in the schema source",
+      "type": "struct",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
+        },
+        "user": {
+          "description": "The user which has made the change",
+          "type": "reference",
+          "target": "User"
+        },
+        "commitHash": {
+          "description": "A unique hash which represents this commit",
+          "type": "string"
+        },
+        "schema": {
+          "description": "The provided schema payload",
+          "type": "reference",
+          "target": "Schema_Source"
+        },
+        "insertDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Schema_Commit_Collection": {
+      "description": "A paginated collection of schema commit objects",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Schema_Commit"
         }
       }
     },
