@@ -2491,6 +2491,51 @@
         }
       }
     },
+    "Taxonomy": {
+      "description": "This object represents a taxonomy. A taxonomy helps to internally organize operations, actions and other entities",
+      "type": "struct",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
+        },
+        "parentId": {
+          "description": "Identifier of the parent object",
+          "type": "integer"
+        },
+        "name": {
+          "description": "Unique name of the object",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-\\_]{3,255}$"
+        }
+      }
+    },
+    "Taxonomy_Collection": {
+      "description": "A paginated collection of taxonomy objects",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Taxonomy"
+        }
+      }
+    },
+    "Taxonomy_Create": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Taxonomy"
+      }
+    },
+    "Taxonomy_Update": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Taxonomy"
+      }
+    },
     "Test": {
       "description": "This object represents a test. A test helps to verify that all operations work as expected",
       "type": "struct",
