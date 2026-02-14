@@ -2536,6 +2536,42 @@
         "target": "Taxonomy"
       }
     },
+    "Taxonomy_Move": {
+      "description": "Moves the provided objects to a taxonomy",
+      "type": "struct",
+      "properties": {
+        "operations": {
+          "type": "array",
+          "schema": {
+            "type": "integer"
+          }
+        },
+        "actions": {
+          "type": "array",
+          "schema": {
+            "type": "integer"
+          }
+        },
+        "events": {
+          "type": "array",
+          "schema": {
+            "type": "integer"
+          }
+        },
+        "cronjobs": {
+          "type": "array",
+          "schema": {
+            "type": "integer"
+          }
+        },
+        "triggers": {
+          "type": "array",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      }
+    },
     "Test": {
       "description": "This object represents a test. A test helps to verify that all operations work as expected",
       "type": "struct",
