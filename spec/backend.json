@@ -271,6 +271,20 @@
         }
       }
     },
+    "Agent_Create": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Agent"
+      }
+    },
+    "Agent_Update": {
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Agent"
+      }
+    },
     "Agent_Collection": {
       "description": "Represents a collection of agent messages",
       "type": "struct",
