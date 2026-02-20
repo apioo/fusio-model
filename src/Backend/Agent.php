@@ -30,6 +30,8 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     #[Description('Action which gets invoked for each generated response')]
     protected ?string $action = null;
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
+    #[Description('Use this parameter to attach key-value data')]
+    protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -106,6 +108,14 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->insertDate;
     }
+    public function setMetadata(?\Fusio\Model\Common\Metadata $metadata): void
+    {
+        $this->metadata = $metadata;
+    }
+    public function getMetadata(): ?\Fusio\Model\Common\Metadata
+    {
+        return $this->metadata;
+    }
     /**
      * @return \PSX\Record\RecordInterface<mixed>
      */
@@ -121,6 +131,7 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('tools', $this->tools);
         $record->put('action', $this->action);
         $record->put('insertDate', $this->insertDate);
+        $record->put('metadata', $this->metadata);
         return $record;
     }
     public function jsonSerialize(): object
