@@ -261,6 +261,10 @@
             "type": "string"
           }
         },
+        "outgoing": {
+          "description": "Describes the outgoing response payload, this must contain a schema name",
+          "type": "string"
+        },
         "action": {
           "description": "Action which gets invoked for each generated response",
           "type": "string"
