@@ -27,6 +27,8 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
      */
     #[Description('Tools available to this agent')]
     protected ?array $tools = null;
+    #[Description('Describes the outgoing response payload, this must contain a schema name')]
+    protected ?string $outgoing = null;
     #[Description('Action which gets invoked for each generated response')]
     protected ?string $action = null;
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
@@ -92,6 +94,14 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->tools;
     }
+    public function setOutgoing(?string $outgoing): void
+    {
+        $this->outgoing = $outgoing;
+    }
+    public function getOutgoing(): ?string
+    {
+        return $this->outgoing;
+    }
     public function setAction(?string $action): void
     {
         $this->action = $action;
@@ -129,6 +139,7 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('introduction', $this->introduction);
         $record->put('messages', $this->messages);
         $record->put('tools', $this->tools);
+        $record->put('outgoing', $this->outgoing);
         $record->put('action', $this->action);
         $record->put('insertDate', $this->insertDate);
         $record->put('metadata', $this->metadata);
