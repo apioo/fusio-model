@@ -6,15 +6,29 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
-#[Description('This object represents an agent message')]
+#[Description('This object represents an agent')]
 class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
-    #[Description('The origin of this message i.e. 1 = user, 2 = assistant or 3 = system')]
-    protected ?int $origin = null;
-    #[Description('The message')]
-    protected ?AgentMessage $message = null;
+    #[Description('Name of the agent')]
+    protected ?string $name = null;
+    #[Description('Description of the agent')]
+    protected ?string $description = null;
+    #[Description('Introduction message')]
+    protected ?string $introduction = null;
+    /**
+     * @var array<AgentMessage>|null
+     */
+    #[Description('Initial messages send to the agent')]
+    protected ?array $messages = null;
+    /**
+     * @var array<string>|null
+     */
+    #[Description('Tools available to this agent')]
+    protected ?array $tools = null;
+    #[Description('Action which gets invoked for each generated response')]
+    protected ?string $action = null;
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     public function setId(?int $id): void
     {
@@ -24,21 +38,65 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->id;
     }
-    public function setOrigin(?int $origin): void
+    public function setName(?string $name): void
     {
-        $this->origin = $origin;
+        $this->name = $name;
     }
-    public function getOrigin(): ?int
+    public function getName(): ?string
     {
-        return $this->origin;
+        return $this->name;
     }
-    public function setMessage(?AgentMessage $message): void
+    public function setDescription(?string $description): void
     {
-        $this->message = $message;
+        $this->description = $description;
     }
-    public function getMessage(): ?AgentMessage
+    public function getDescription(): ?string
     {
-        return $this->message;
+        return $this->description;
+    }
+    public function setIntroduction(?string $introduction): void
+    {
+        $this->introduction = $introduction;
+    }
+    public function getIntroduction(): ?string
+    {
+        return $this->introduction;
+    }
+    /**
+     * @param array<AgentMessage>|null $messages
+     */
+    public function setMessages(?array $messages): void
+    {
+        $this->messages = $messages;
+    }
+    /**
+     * @return array<AgentMessage>|null
+     */
+    public function getMessages(): ?array
+    {
+        return $this->messages;
+    }
+    /**
+     * @param array<string>|null $tools
+     */
+    public function setTools(?array $tools): void
+    {
+        $this->tools = $tools;
+    }
+    /**
+     * @return array<string>|null
+     */
+    public function getTools(): ?array
+    {
+        return $this->tools;
+    }
+    public function setAction(?string $action): void
+    {
+        $this->action = $action;
+    }
+    public function getAction(): ?string
+    {
+        return $this->action;
     }
     public function setInsertDate(?\PSX\DateTime\LocalDateTime $insertDate): void
     {
@@ -56,8 +114,12 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('id', $this->id);
-        $record->put('origin', $this->origin);
-        $record->put('message', $this->message);
+        $record->put('name', $this->name);
+        $record->put('description', $this->description);
+        $record->put('introduction', $this->introduction);
+        $record->put('messages', $this->messages);
+        $record->put('tools', $this->tools);
+        $record->put('action', $this->action);
         $record->put('insertDate', $this->insertDate);
         return $record;
     }

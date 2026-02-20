@@ -6,18 +6,18 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
-#[Description('Structured agent result')]
-class AgentMessageObject extends AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
+#[Description('Text agent message')]
+class AgentContentText extends AgentContent implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    #[Description('The structured JSON payload')]
-    protected mixed $payload = null;
-    public function setPayload(mixed $payload): void
+    #[Description('The content text')]
+    protected ?string $content = null;
+    public function setContent(?string $content): void
     {
-        $this->payload = $payload;
+        $this->content = $content;
     }
-    public function getPayload(): mixed
+    public function getContent(): ?string
     {
-        return $this->payload;
+        return $this->content;
     }
     /**
      * @return \PSX\Record\RecordInterface<mixed>
@@ -26,7 +26,7 @@ class AgentMessageObject extends AgentMessage implements \JsonSerializable, \PSX
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = parent::toRecord();
-        $record->put('payload', $this->payload);
+        $record->put('content', $this->content);
         return $record;
     }
     public function jsonSerialize(): object

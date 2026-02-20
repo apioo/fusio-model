@@ -7,7 +7,7 @@ namespace Fusio\Model\Backend;
 use PSX\Schema\Attribute\Description;
 
 #[Description('Concrete values for a function tool call')]
-class AgentMessageToolCallFunction implements \JsonSerializable, \PSX\Record\RecordableInterface
+class AgentContentToolCallFunction implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $id = null;
     protected ?string $name = null;
