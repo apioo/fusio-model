@@ -20,11 +20,6 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     #[Description('Introduction message')]
     protected ?string $introduction = null;
     /**
-     * @var array<AgentMessage>|null
-     */
-    #[Description('Initial messages send to the agent')]
-    protected ?array $messages = null;
-    /**
      * @var array<string>|null
      */
     #[Description('Tools available to this agent')]
@@ -75,20 +70,6 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     public function getIntroduction(): ?string
     {
         return $this->introduction;
-    }
-    /**
-     * @param array<AgentMessage>|null $messages
-     */
-    public function setMessages(?array $messages): void
-    {
-        $this->messages = $messages;
-    }
-    /**
-     * @return array<AgentMessage>|null
-     */
-    public function getMessages(): ?array
-    {
-        return $this->messages;
     }
     /**
      * @param array<string>|null $tools
@@ -148,7 +129,6 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('name', $this->name);
         $record->put('description', $this->description);
         $record->put('introduction', $this->introduction);
-        $record->put('messages', $this->messages);
         $record->put('tools', $this->tools);
         $record->put('outgoing', $this->outgoing);
         $record->put('action', $this->action);
