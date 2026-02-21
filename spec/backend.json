@@ -234,6 +234,10 @@
           "description": "Unique identifier for the object",
           "type": "integer"
         },
+        "connection": {
+          "description": "The agent connection which should be used",
+          "type": "integer"
+        },
         "type": {
           "description": "The agent type",
           "type": "integer"
