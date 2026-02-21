@@ -250,14 +250,6 @@
           "description": "Introduction message",
           "type": "string"
         },
-        "messages": {
-          "description": "Initial messages send to the agent",
-          "type": "array",
-          "schema": {
-            "type": "reference",
-            "target": "Agent_Message"
-          }
-        },
         "tools": {
           "description": "Tools available to this agent",
           "type": "array",
