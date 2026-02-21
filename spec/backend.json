@@ -234,6 +234,10 @@
           "description": "Unique identifier for the object",
           "type": "integer"
         },
+        "type": {
+          "description": "The agent type",
+          "type": "integer"
+        },
         "name": {
           "description": "Name of the agent",
           "type": "string"
@@ -367,6 +371,7 @@
     },
     "Agent_Content_Binary": {
       "description": "Binary agent message",
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Agent_Content"
@@ -384,6 +389,7 @@
     },
     "Agent_Content_Choice": {
       "description": "Choice agent message",
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Agent_Content"
@@ -401,6 +407,7 @@
     },
     "Agent_Content_Object": {
       "description": "Structured agent message",
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Agent_Content"
@@ -414,6 +421,7 @@
     },
     "Agent_Content_Text": {
       "description": "Text agent message",
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Agent_Content"
@@ -427,6 +435,7 @@
     },
     "Agent_Content_ToolCall": {
       "description": "Tool call agent message",
+      "type": "struct",
       "parent": {
         "type": "reference",
         "target": "Agent_Content"
@@ -444,6 +453,7 @@
     },
     "Agent_Content_ToolCall_Function": {
       "description": "Concrete values for a function tool call",
+      "type": "struct",
       "properties": {
         "id": {
           "type": "string"
@@ -452,6 +462,33 @@
           "type": "string"
         },
         "arguments": {
+          "type": "string"
+        }
+      }
+    },
+    "Agent_Tools": {
+      "description": "Represents a collection of available tools",
+      "type": "struct",
+      "properties": {
+        "tools": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Tool"
+          }
+        }
+      }
+    },
+    "Agent_Tool": {
+      "description": "Represents a concrete tool",
+      "type": "struct",
+      "properties": {
+        "name": {
+          "description": "Name of the tool",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the tool",
           "type": "string"
         }
       }
