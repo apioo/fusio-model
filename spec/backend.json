@@ -339,6 +339,28 @@
         }
       }
     },
+    "Agent_Input": {
+      "description": "This object represents an agent input",
+      "type": "struct",
+      "properties": {
+        "input": {
+          "description": "The input",
+          "type": "reference",
+          "target": "Agent_Content"
+        }
+      }
+    },
+    "Agent_Output": {
+      "description": "This object represents an agent output",
+      "type": "struct",
+      "properties": {
+        "output": {
+          "description": "The output",
+          "type": "reference",
+          "target": "Agent_Content"
+        }
+      }
+    },
     "Agent_Content": {
       "description": "Agent message",
       "type": "struct",
