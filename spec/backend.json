@@ -354,6 +354,10 @@
       "description": "This object represents an agent output",
       "type": "struct",
       "properties": {
+        "id": {
+          "description": "Available if the message was persisted",
+          "type": "string"
+        },
         "output": {
           "description": "The output",
           "type": "reference",
