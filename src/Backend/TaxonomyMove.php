@@ -20,6 +20,10 @@ class TaxonomyMove implements \JsonSerializable, \PSX\Record\RecordableInterface
     /**
      * @var array<int>|null
      */
+    protected ?array $schemas = null;
+    /**
+     * @var array<int>|null
+     */
     protected ?array $events = null;
     /**
      * @var array<int>|null
@@ -56,6 +60,20 @@ class TaxonomyMove implements \JsonSerializable, \PSX\Record\RecordableInterface
     public function getActions(): ?array
     {
         return $this->actions;
+    }
+    /**
+     * @param array<int>|null $schemas
+     */
+    public function setSchemas(?array $schemas): void
+    {
+        $this->schemas = $schemas;
+    }
+    /**
+     * @return array<int>|null
+     */
+    public function getSchemas(): ?array
+    {
+        return $this->schemas;
     }
     /**
      * @param array<int>|null $events
@@ -108,6 +126,7 @@ class TaxonomyMove implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record = new \PSX\Record\Record();
         $record->put('operations', $this->operations);
         $record->put('actions', $this->actions);
+        $record->put('schemas', $this->schemas);
         $record->put('events', $this->events);
         $record->put('cronjobs', $this->cronjobs);
         $record->put('triggers', $this->triggers);
