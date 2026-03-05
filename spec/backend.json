@@ -2634,6 +2634,12 @@
             "type": "integer"
           }
         },
+        "schemas": {
+          "type": "array",
+          "schema": {
+            "type": "integer"
+          }
+        },
         "events": {
           "type": "array",
           "schema": {
