@@ -62,10 +62,17 @@
       "base": true,
       "discriminator": "type",
       "mapping": {
-        "Form_Element_Input": "http://fusio-project.org/ns/2015/form/input",
-        "Form_Element_Select": "http://fusio-project.org/ns/2015/form/select",
-        "Form_Element_Tag": "http://fusio-project.org/ns/2015/form/tag",
-        "Form_Element_TextArea": "http://fusio-project.org/ns/2015/form/textarea"
+        "Form_Element_Action": "action",
+        "Form_Element_Agent": "agent",
+        "Form_Element_Checkbox": "checkbox",
+        "Form_Element_Collection": "collection",
+        "Form_Element_Connection": "connection",
+        "Form_Element_Input": "input",
+        "Form_Element_Map": "map",
+        "Form_Element_Select": "select",
+        "Form_Element_TextArea": "textarea",
+        "Form_Element_TypeAPI": "typeapi",
+        "Form_Element_TypeSchema": "typeschema"
       },
       "properties": {
         "element": {
@@ -82,6 +89,46 @@
         }
       }
     },
+    "Form_Element_Action": {
+      "description": "Form element which represents an action selection",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Form_Element_Select"
+      }
+    },
+    "Form_Element_Agent": {
+      "description": "Form element which represents an agent selection",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Form_Element_Select"
+      }
+    },
+    "Form_Element_Checkbox": {
+      "description": "Form element which represents a checkbox element",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Form_Element"
+      }
+    },
+    "Form_Element_Collection": {
+      "description": "Form element which represents a collection element",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Form_Element_Input"
+      }
+    },
+    "Form_Element_Connection": {
+      "description": "Form element which represents a connection selection",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Form_Element_Select"
+      }
+    },
     "Form_Element_Input": {
       "description": "Form element which represents an input element",
       "type": "struct",
@@ -94,6 +141,14 @@
           "description": "The input type i.e. text or password, all HTML input types are allowed",
           "type": "string"
         }
+      }
+    },
+    "Form_Element_Map": {
+      "description": "Form element which represents a map element",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Form_Element_Input"
       }
     },
     "Form_Element_Select": {
@@ -126,14 +181,6 @@
         }
       }
     },
-    "Form_Element_Tag": {
-      "description": "Form element which represents an input tag editor to enter comma-separated values",
-      "type": "struct",
-      "parent": {
-        "type": "reference",
-        "target": "Form_Element"
-      }
-    },
     "Form_Element_TextArea": {
       "description": "Form element which represents a textarea",
       "type": "struct",
@@ -144,6 +191,171 @@
       "properties": {
         "mode": {
           "description": "Describes which data is provided at the textarea, this can be i.e. a programming language like php, java or python or also a data format like json",
+          "type": "string"
+        }
+      }
+    },
+    "Form_Element_TypeAPI": {
+      "description": "Form element which represents a TypeAPI editor",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Form_Element"
+      }
+    },
+    "Form_Element_TypeSchema": {
+      "description": "Form element which represents a TypeSchema editor",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Form_Element"
+      }
+    },
+    "Agent_Input": {
+      "description": "This object represents an agent input",
+      "type": "struct",
+      "properties": {
+        "input": {
+          "description": "The input",
+          "type": "reference",
+          "target": "Agent_Content"
+        }
+      }
+    },
+    "Agent_Output": {
+      "description": "This object represents an agent output",
+      "type": "struct",
+      "properties": {
+        "id": {
+          "description": "Available if the message was persisted",
+          "type": "string"
+        },
+        "output": {
+          "description": "The output",
+          "type": "reference",
+          "target": "Agent_Content"
+        }
+      }
+    },
+    "Agent_Content": {
+      "description": "Agent message",
+      "type": "struct",
+      "base": true,
+      "discriminator": "type",
+      "mapping": {
+        "Agent_Content_Binary": "binary",
+        "Agent_Content_Choice": "choice",
+        "Agent_Content_Object": "object",
+        "Agent_Content_Text": "text",
+        "Agent_Content_ToolCall": "tool_call"
+      },
+      "properties": {
+        "type": {
+          "description": "The result type",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Optional result metadata",
+          "type": "map",
+          "schema": {
+            "type": "any"
+          }
+        }
+      }
+    },
+    "Agent_Content_Binary": {
+      "description": "Binary agent message",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Agent_Content"
+      },
+      "properties": {
+        "mime": {
+          "description": "The mime of the binary data",
+          "type": "string"
+        },
+        "data": {
+          "description": "The base64 encoded binary data",
+          "type": "string"
+        }
+      }
+    },
+    "Agent_Content_Choice": {
+      "description": "Choice agent message",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Agent_Content"
+      },
+      "properties": {
+        "items": {
+          "description": "Contains multiple agent messages",
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Content"
+          }
+        }
+      }
+    },
+    "Agent_Content_Object": {
+      "description": "Structured agent message",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Agent_Content"
+      },
+      "properties": {
+        "payload": {
+          "description": "The structured JSON payload",
+          "type": "any"
+        }
+      }
+    },
+    "Agent_Content_Text": {
+      "description": "Text agent message",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Agent_Content"
+      },
+      "properties": {
+        "content": {
+          "description": "The content text",
+          "type": "string"
+        }
+      }
+    },
+    "Agent_Content_ToolCall": {
+      "description": "Tool call agent message",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Agent_Content"
+      },
+      "properties": {
+        "functions": {
+          "description": "An array of concrete functions",
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Content_ToolCall_Function"
+          }
+        }
+      }
+    },
+    "Agent_Content_ToolCall_Function": {
+      "description": "Concrete values for a function tool call",
+      "type": "struct",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "arguments": {
           "type": "string"
         }
       }
