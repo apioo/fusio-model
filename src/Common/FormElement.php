@@ -10,11 +10,8 @@ use PSX\Schema\Attribute\Discriminator;
 
 #[Description('Form base element')]
 #[Discriminator('type')]
-#[DerivedType(FormElementAction::class, 'action')]
-#[DerivedType(FormElementAgent::class, 'agent')]
 #[DerivedType(FormElementCheckbox::class, 'checkbox')]
 #[DerivedType(FormElementCollection::class, 'collection')]
-#[DerivedType(FormElementConnection::class, 'connection')]
 #[DerivedType(FormElementInput::class, 'input')]
 #[DerivedType(FormElementMap::class, 'map')]
 #[DerivedType(FormElementSelect::class, 'select')]
