@@ -32,11 +32,11 @@ class AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->role;
     }
-    public function setContent(?AgentContent $content): void
+    public function setContent(?\Fusio\Model\Common\AgentContent $content): void
     {
         $this->content = $content;
     }
-    public function getContent(): ?AgentContent
+    public function getContent(): ?\Fusio\Model\Common\AgentContent
     {
         return $this->content;
     }
