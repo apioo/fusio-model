@@ -99,7 +99,13 @@
       "type": "struct",
       "parent": {
         "type": "reference",
-        "target": "Form_Element_Input"
+        "target": "Form_Element"
+      },
+      "properties": {
+        "type": {
+          "description": "The input type i.e. text or password, all HTML input types are allowed",
+          "type": "string"
+        }
       }
     },
     "Form_Element_Input": {
@@ -121,7 +127,13 @@
       "type": "struct",
       "parent": {
         "type": "reference",
-        "target": "Form_Element_Input"
+        "target": "Form_Element"
+      },
+      "properties": {
+        "type": {
+          "description": "The input type i.e. text or password, all HTML input types are allowed",
+          "type": "string"
+        }
       }
     },
     "Form_Element_Select": {
