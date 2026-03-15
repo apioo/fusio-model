@@ -62,11 +62,8 @@
       "base": true,
       "discriminator": "type",
       "mapping": {
-        "Form_Element_Action": "action",
-        "Form_Element_Agent": "agent",
         "Form_Element_Checkbox": "checkbox",
         "Form_Element_Collection": "collection",
-        "Form_Element_Connection": "connection",
         "Form_Element_Input": "input",
         "Form_Element_Map": "map",
         "Form_Element_Select": "select",
@@ -89,22 +86,6 @@
         }
       }
     },
-    "Form_Element_Action": {
-      "description": "Form element which represents an action selection",
-      "type": "struct",
-      "parent": {
-        "type": "reference",
-        "target": "Form_Element_Select"
-      }
-    },
-    "Form_Element_Agent": {
-      "description": "Form element which represents an agent selection",
-      "type": "struct",
-      "parent": {
-        "type": "reference",
-        "target": "Form_Element_Select"
-      }
-    },
     "Form_Element_Checkbox": {
       "description": "Form element which represents a checkbox element",
       "type": "struct",
@@ -119,14 +100,6 @@
       "parent": {
         "type": "reference",
         "target": "Form_Element_Input"
-      }
-    },
-    "Form_Element_Connection": {
-      "description": "Form element which represents a connection selection",
-      "type": "struct",
-      "parent": {
-        "type": "reference",
-        "target": "Form_Element_Select"
       }
     },
     "Form_Element_Input": {
