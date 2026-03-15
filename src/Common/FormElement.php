@@ -10,10 +10,17 @@ use PSX\Schema\Attribute\Discriminator;
 
 #[Description('Form base element')]
 #[Discriminator('type')]
-#[DerivedType(FormElementInput::class, 'http://fusio-project.org/ns/2015/form/input')]
-#[DerivedType(FormElementSelect::class, 'http://fusio-project.org/ns/2015/form/select')]
-#[DerivedType(FormElementTag::class, 'http://fusio-project.org/ns/2015/form/tag')]
-#[DerivedType(FormElementTextArea::class, 'http://fusio-project.org/ns/2015/form/textarea')]
+#[DerivedType(FormElementAction::class, 'action')]
+#[DerivedType(FormElementAgent::class, 'agent')]
+#[DerivedType(FormElementCheckbox::class, 'checkbox')]
+#[DerivedType(FormElementCollection::class, 'collection')]
+#[DerivedType(FormElementConnection::class, 'connection')]
+#[DerivedType(FormElementInput::class, 'input')]
+#[DerivedType(FormElementMap::class, 'map')]
+#[DerivedType(FormElementSelect::class, 'select')]
+#[DerivedType(FormElementTextArea::class, 'textarea')]
+#[DerivedType(FormElementTypeAPI::class, 'typeapi')]
+#[DerivedType(FormElementTypeSchema::class, 'typeschema')]
 abstract class FormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $element = null;
