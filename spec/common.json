@@ -215,6 +215,10 @@
       "description": "This object represents an agent input",
       "type": "struct",
       "properties": {
+        "previousId": {
+          "description": "Optional the previous input id",
+          "type": "string"
+        },
         "input": {
           "description": "The input",
           "type": "reference",
