@@ -320,7 +320,7 @@
         "content": {
           "description": "The message content",
           "type": "reference",
-          "target": "Agent_Content"
+          "target": "common:Agent_Content"
         },
         "insertDate": {
           "type": "string",
