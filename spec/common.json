@@ -216,7 +216,7 @@
       "type": "struct",
       "properties": {
         "previousId": {
-          "description": "Optional the previous input id",
+          "description": "Optional the previous input id, must be an id which has been previously returned by an output",
           "type": "string"
         },
         "input": {
