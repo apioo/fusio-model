@@ -81,7 +81,7 @@
       },
       "properties": {
         "items": {
-          "description": "Contains multiple agent messages",
+          "description": "Contains multiple agent items",
           "type": "array",
           "schema": {
             "type": "reference",
