@@ -348,6 +348,263 @@
           "type": "string"
         }
       }
+    },
+    "Agent_Blueprint": {
+      "type": "struct",
+      "properties": {
+        "operations": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Blueprint_Operation"
+          }
+        },
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "Agent_Blueprint_Operation": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "public": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "httpMethod": {
+          "type": "string"
+        },
+        "httpPath": {
+          "type": "string"
+        },
+        "httpCode": {
+          "type": "integer"
+        },
+        "parameters": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Blueprint_Operation_Parameter"
+          }
+        },
+        "incoming": {
+          "type": "string"
+        },
+        "outgoing": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        }
+      }
+    },
+    "Agent_Blueprint_Operation_Parameter": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Agent_Schema": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "types": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Schema_Type"
+          }
+        },
+        "root": {
+          "type": "integer"
+        }
+      }
+    },
+    "Agent_Schema_Type": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "deprecated": {
+          "type": "boolean"
+        },
+        "parent": {
+          "type": "string",
+          "nullable": true
+        },
+        "reference": {
+          "type": "string",
+          "nullable": true
+        },
+        "properties": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Schema_Type_Property"
+          }
+        }
+      }
+    },
+    "Agent_Schema_Type_Property": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "nullable": {
+          "type": "boolean"
+        },
+        "deprecated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Agent_Database": {
+      "type": "struct",
+      "properties": {
+        "tables": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Database_Table"
+          }
+        }
+      }
+    },
+    "Agent_Database_Table": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "columns": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Database_Table_Column"
+          }
+        },
+        "primaryKey": {
+          "type": "string"
+        },
+        "indexes": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Database_Table_Index"
+          }
+        },
+        "foreignKeys": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Database_Table_ForeignKey"
+          }
+        }
+      }
+    },
+    "Agent_Database_Table_Column": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "length": {
+          "type": "integer",
+          "nullable": true
+        },
+        "precision": {
+          "type": "integer",
+          "nullable": true
+        },
+        "scale": {
+          "type": "integer",
+          "nullable": true
+        },
+        "unsigned": {
+          "type": "boolean"
+        },
+        "fixed": {
+          "type": "boolean"
+        },
+        "notNull": {
+          "type": "boolean"
+        },
+        "autoIncrement": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Agent_Database_Table_Index": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "unique": {
+          "type": "boolean"
+        },
+        "columns": {
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Agent_Database_Table_ForeignKey": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "foreignTable": {
+          "type": "string"
+        },
+        "localColumnNames": {
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "foreignColumnNames": {
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }
