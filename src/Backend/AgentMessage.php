@@ -11,10 +11,12 @@ class AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('The assigned chat id which can be used to load the complete conversation')]
+    protected ?string $chatId = null;
     #[Description('The role of this message i.e. user, assistant or system')]
     protected ?string $role = null;
-    #[Description('The message content')]
-    protected ?\Fusio\Model\Common\AgentContent $content = null;
+    #[Description('The message item')]
+    protected ?\Fusio\Model\Agent\Item $item = null;
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     public function setId(?int $id): void
     {
@@ -24,6 +26,14 @@ class AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->id;
     }
+    public function setChatId(?string $chatId): void
+    {
+        $this->chatId = $chatId;
+    }
+    public function getChatId(): ?string
+    {
+        return $this->chatId;
+    }
     public function setRole(?string $role): void
     {
         $this->role = $role;
@@ -32,13 +42,13 @@ class AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->role;
     }
-    public function setContent(?\Fusio\Model\Common\AgentContent $content): void
+    public function setItem(?\Fusio\Model\Agent\Item $item): void
     {
-        $this->content = $content;
+        $this->item = $item;
     }
-    public function getContent(): ?\Fusio\Model\Common\AgentContent
+    public function getItem(): ?\Fusio\Model\Agent\Item
     {
-        return $this->content;
+        return $this->item;
     }
     public function setInsertDate(?\PSX\DateTime\LocalDateTime $insertDate): void
     {
@@ -56,8 +66,9 @@ class AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('id', $this->id);
+        $record->put('chatId', $this->chatId);
         $record->put('role', $this->role);
-        $record->put('content', $this->content);
+        $record->put('item', $this->item);
         $record->put('insertDate', $this->insertDate);
         return $record;
     }
