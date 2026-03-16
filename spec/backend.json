@@ -313,6 +313,10 @@
           "description": "Unique identifier for the object",
           "type": "integer"
         },
+        "chatId": {
+          "description": "The assigned chat id which can be used to load the complete conversation",
+          "type": "string"
+        },
         "role": {
           "description": "The role of this message i.e. user, assistant or system",
           "type": "string"
