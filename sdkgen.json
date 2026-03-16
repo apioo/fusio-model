@@ -9,6 +9,7 @@
       "target": "./src/Backend",
       "namespace": "Fusio\\Model\\Backend",
       "mapping": {
+        "agent": "Fusio\\Model\\Agent",
         "common": "Fusio\\Model\\Common"
       }
     },
@@ -22,6 +23,13 @@
     "./spec/system.json": {
       "target": "./src/System",
       "namespace": "Fusio\\Model\\System",
+      "mapping": {
+        "common": "Fusio\\Model\\Common"
+      }
+    },
+    "./spec/agent.json": {
+      "target": "./src/Agent",
+      "namespace": "Fusio\\Model\\Agent",
       "mapping": {
         "common": "Fusio\\Model\\Common"
       }

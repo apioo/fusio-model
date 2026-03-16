@@ -1,5 +1,6 @@
 {
   "import": {
+    "agent": "https://raw.githubusercontent.com/apioo/fusio-model/main/spec/agent.json",
     "common": "https://raw.githubusercontent.com/apioo/fusio-model/main/spec/common.json"
   },
   "definitions": {
@@ -321,10 +322,10 @@
           "description": "The role of this message i.e. user, assistant or system",
           "type": "string"
         },
-        "content": {
-          "description": "The message content",
+        "item": {
+          "description": "The message item",
           "type": "reference",
-          "target": "common:Agent_Content"
+          "target": "agent:Item"
         },
         "insertDate": {
           "type": "string",

@@ -1,0 +1,412 @@
+{
+  "definitions": {
+    "Input": {
+      "description": "This object represents an agent input",
+      "type": "struct",
+      "properties": {
+        "previousId": {
+          "description": "Optional the chat id of this conversation",
+          "type": "string"
+        },
+        "item": {
+          "type": "reference",
+          "target": "Item"
+        }
+      }
+    },
+    "Output": {
+      "description": "This object represents an agent output",
+      "type": "struct",
+      "properties": {
+        "id": {
+          "description": "Chat id of this conversation",
+          "type": "string"
+        },
+        "item": {
+          "type": "reference",
+          "target": "Item"
+        }
+      }
+    },
+    "Item": {
+      "description": "Agent item",
+      "type": "struct",
+      "base": true,
+      "discriminator": "type",
+      "mapping": {
+        "Item_Binary": "binary",
+        "Item_Choice": "choice",
+        "Item_Object": "object",
+        "Item_Text": "text",
+        "Item_ToolCall": "tool_call"
+      },
+      "properties": {
+        "type": {
+          "description": "The result type",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Optional result metadata",
+          "type": "map",
+          "schema": {
+            "type": "any"
+          }
+        }
+      }
+    },
+    "Item_Binary": {
+      "description": "Binary agent message",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Item"
+      },
+      "properties": {
+        "mime": {
+          "description": "The mime of the binary data",
+          "type": "string"
+        },
+        "data": {
+          "description": "The base64 encoded binary data",
+          "type": "string"
+        }
+      }
+    },
+    "Item_Choice": {
+      "description": "Choice agent message",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Item"
+      },
+      "properties": {
+        "items": {
+          "description": "Contains multiple agent messages",
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Item"
+          }
+        }
+      }
+    },
+    "Item_Object": {
+      "description": "Structured agent message",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Item"
+      },
+      "properties": {
+        "payload": {
+          "description": "The structured JSON payload",
+          "type": "any"
+        }
+      }
+    },
+    "Item_Text": {
+      "description": "Text agent message",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Item"
+      },
+      "properties": {
+        "content": {
+          "description": "The content text",
+          "type": "string"
+        }
+      }
+    },
+    "Item_ToolCall": {
+      "description": "Tool call agent message",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Item"
+      },
+      "properties": {
+        "functions": {
+          "description": "An array of concrete functions",
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Item_ToolCall_Function"
+          }
+        }
+      }
+    },
+    "Item_ToolCall_Function": {
+      "description": "Concrete values for a function tool call",
+      "type": "struct",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "arguments": {
+          "type": "string"
+        }
+      }
+    },
+    "Blueprint": {
+      "type": "struct",
+      "properties": {
+        "operations": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Blueprint_Operation"
+          }
+        },
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "Blueprint_Operation": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "public": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "httpMethod": {
+          "type": "string"
+        },
+        "httpPath": {
+          "type": "string"
+        },
+        "httpCode": {
+          "type": "integer"
+        },
+        "parameters": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Blueprint_Operation_Parameter"
+          }
+        },
+        "incoming": {
+          "type": "string"
+        },
+        "outgoing": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        }
+      }
+    },
+    "Blueprint_Operation_Parameter": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Schema": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "types": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Schema_Type"
+          }
+        },
+        "root": {
+          "type": "integer"
+        }
+      }
+    },
+    "Schema_Type": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "deprecated": {
+          "type": "boolean"
+        },
+        "parent": {
+          "type": "string",
+          "nullable": true
+        },
+        "reference": {
+          "type": "string",
+          "nullable": true
+        },
+        "properties": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Schema_Type_Property"
+          }
+        }
+      }
+    },
+    "Schema_Type_Property": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "nullable": {
+          "type": "boolean"
+        },
+        "deprecated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Database": {
+      "type": "struct",
+      "properties": {
+        "tables": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Database_Table"
+          }
+        }
+      }
+    },
+    "Database_Table": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "columns": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Database_Table_Column"
+          }
+        },
+        "primaryKey": {
+          "type": "string"
+        },
+        "indexes": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Database_Table_Index"
+          }
+        },
+        "foreignKeys": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Database_Table_ForeignKey"
+          }
+        }
+      }
+    },
+    "Database_Table_Column": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "length": {
+          "type": "integer",
+          "nullable": true
+        },
+        "precision": {
+          "type": "integer",
+          "nullable": true
+        },
+        "scale": {
+          "type": "integer",
+          "nullable": true
+        },
+        "unsigned": {
+          "type": "boolean"
+        },
+        "fixed": {
+          "type": "boolean"
+        },
+        "notNull": {
+          "type": "boolean"
+        },
+        "autoIncrement": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Database_Table_Index": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "unique": {
+          "type": "boolean"
+        },
+        "columns": {
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Database_Table_ForeignKey": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "foreignTable": {
+          "type": "string"
+        },
+        "localColumnNames": {
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "foreignColumnNames": {
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
