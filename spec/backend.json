@@ -2429,6 +2429,28 @@
         }
       }
     },
+    "Specification_Get": {
+      "type": "struct",
+      "properties": {
+        "spec": {
+          "type": "any"
+        }
+      }
+    },
+    "Specification_Publish": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "filterName": {
+          "type": "string"
+        },
+        "standalone": {
+          "type": "boolean"
+        }
+      }
+    },
     "Taxonomy": {
       "description": "This object represents a taxonomy. A taxonomy helps to internally organize operations, actions and other entities",
       "type": "struct",
