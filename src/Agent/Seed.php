@@ -8,20 +8,20 @@ namespace Fusio\Model\Agent;
 class Seed implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
-     * @var \PSX\Record\Record<array<SeedRow>>|null
+     * @var array<SeedTable>|null
      */
-    protected ?\PSX\Record\Record $tables = null;
+    protected ?array $tables = null;
     /**
-     * @param \PSX\Record\Record<array<SeedRow>>|null $tables
+     * @param array<SeedTable>|null $tables
      */
-    public function setTables(?\PSX\Record\Record $tables): void
+    public function setTables(?array $tables): void
     {
         $this->tables = $tables;
     }
     /**
-     * @return \PSX\Record\Record<array<SeedRow>>|null
+     * @return array<SeedTable>|null
      */
-    public function getTables(): ?\PSX\Record\Record
+    public function getTables(): ?array
     {
         return $this->tables;
     }
