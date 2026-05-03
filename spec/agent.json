@@ -415,7 +415,10 @@
           "type": "map",
           "schema": {
             "type": "array",
-            "target": "Seed_Row"
+            "schema": {
+              "type": "reference",
+              "target": "Seed_Row"
+            }
           }
         }
       }
