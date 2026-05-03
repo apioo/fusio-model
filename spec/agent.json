@@ -412,13 +412,25 @@
       "type": "struct",
       "properties": {
         "tables": {
-          "type": "map",
+          "type": "array",
           "schema": {
-            "type": "array",
-            "schema": {
-              "type": "reference",
-              "target": "Seed_Row"
-            }
+            "type": "reference",
+            "target": "Seed_Table"
+          }
+        }
+      }
+    },
+    "Seed_Table": {
+      "type": "struct",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "rows": {
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Seed_Row"
           }
         }
       }
