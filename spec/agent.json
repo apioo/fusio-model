@@ -407,6 +407,24 @@
           }
         }
       }
+    },
+    "Seed": {
+      "type": "struct",
+      "properties": {
+        "tables": {
+          "type": "map",
+          "schema": {
+            "type": "array",
+            "target": "Seed_Row"
+          }
+        }
+      }
+    },
+    "Seed_Row": {
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
     }
   }
 }
