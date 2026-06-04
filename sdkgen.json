@@ -24,6 +24,7 @@
       "target": "./src/Consumer",
       "namespace": "Fusio\\Model\\Consumer",
       "mapping": {
+        "agent": "Fusio\\Model\\Agent",
         "common": "Fusio\\Model\\Common"
       }
     },
