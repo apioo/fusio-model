@@ -15,6 +15,8 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?int $connection = null;
     #[Description('The agent type')]
     protected ?int $type = null;
+    #[Description('Indicates whether the agent is public')]
+    protected ?int $public = null;
     #[Description('Name of the agent')]
     protected ?string $name = null;
     #[Description('Description of the agent')]
@@ -56,6 +58,14 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     public function getType(): ?int
     {
         return $this->type;
+    }
+    public function setPublic(?int $public): void
+    {
+        $this->public = $public;
+    }
+    public function getPublic(): ?int
+    {
+        return $this->public;
     }
     public function setName(?string $name): void
     {
@@ -137,6 +147,7 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('id', $this->id);
         $record->put('connection', $this->connection);
         $record->put('type', $this->type);
+        $record->put('public', $this->public);
         $record->put('name', $this->name);
         $record->put('description', $this->description);
         $record->put('introduction', $this->introduction);
