@@ -16,7 +16,7 @@ class AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
     #[Description('The role of this message i.e. user, assistant or system')]
     protected ?string $role = null;
     #[Description('The message item')]
-    protected ?Item $item = null;
+    protected ?\Fusio\Model\Agent\Item $item = null;
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     public function setId(?int $id): void
     {
@@ -42,11 +42,11 @@ class AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->role;
     }
-    public function setItem(?Item $item): void
+    public function setItem(?\Fusio\Model\Agent\Item $item): void
     {
         $this->item = $item;
     }
-    public function getItem(): ?Item
+    public function getItem(): ?\Fusio\Model\Agent\Item
     {
         return $this->item;
     }
