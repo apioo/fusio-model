@@ -1,5 +1,6 @@
 {
   "import": {
+    "agent": "https://raw.githubusercontent.com/apioo/fusio-model/main/spec/agent.json",
     "common": "https://raw.githubusercontent.com/apioo/fusio-model/main/spec/common.json"
   },
   "definitions": {
