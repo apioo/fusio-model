@@ -243,6 +243,10 @@
           "description": "The agent type",
           "type": "integer"
         },
+        "public": {
+          "description": "Indicates whether the agent is public",
+          "type": "integer"
+        },
         "name": {
           "description": "Name of the agent",
           "type": "string"
