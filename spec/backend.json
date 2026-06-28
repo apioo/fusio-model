@@ -2455,6 +2455,26 @@
         }
       }
     },
+    "Specification_Changelog": {
+      "type": "struct",
+      "properties": {
+        "master": {
+          "type": "any"
+        },
+        "tag": {
+          "type": "any"
+        },
+        "version": {
+          "type": "string"
+        },
+        "changelog": {
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "Taxonomy": {
       "description": "This object represents a taxonomy. A taxonomy helps to internally organize operations, actions and other entities",
       "type": "struct",
