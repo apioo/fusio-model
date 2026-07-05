@@ -23,6 +23,8 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $description = null;
     #[Description('Introduction message')]
     protected ?string $introduction = null;
+    #[Description('The used temperature default is 1.0')]
+    protected ?float $temperature = null;
     /**
      * @var array<string>|null
      */
@@ -91,6 +93,14 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->introduction;
     }
+    public function setTemperature(?float $temperature): void
+    {
+        $this->temperature = $temperature;
+    }
+    public function getTemperature(): ?float
+    {
+        return $this->temperature;
+    }
     /**
      * @param array<string>|null $tools
      */
@@ -151,6 +161,7 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('name', $this->name);
         $record->put('description', $this->description);
         $record->put('introduction', $this->introduction);
+        $record->put('temperature', $this->temperature);
         $record->put('tools', $this->tools);
         $record->put('outgoing', $this->outgoing);
         $record->put('action', $this->action);
