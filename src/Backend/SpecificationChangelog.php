@@ -10,10 +10,7 @@ class SpecificationChangelog implements \JsonSerializable, \PSX\Record\Recordabl
     protected mixed $master = null;
     protected mixed $tag = null;
     protected ?string $version = null;
-    /**
-     * @var array<string>|null
-     */
-    protected ?array $changelog = null;
+    protected ?string $changelog = null;
     public function setMaster(mixed $master): void
     {
         $this->master = $master;
@@ -38,17 +35,11 @@ class SpecificationChangelog implements \JsonSerializable, \PSX\Record\Recordabl
     {
         return $this->version;
     }
-    /**
-     * @param array<string>|null $changelog
-     */
-    public function setChangelog(?array $changelog): void
+    public function setChangelog(?string $changelog): void
     {
         $this->changelog = $changelog;
     }
-    /**
-     * @return array<string>|null
-     */
-    public function getChangelog(): ?array
+    public function getChangelog(): ?string
     {
         return $this->changelog;
     }
