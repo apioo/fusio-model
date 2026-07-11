@@ -2476,10 +2476,7 @@
           "type": "string"
         },
         "changelog": {
-          "type": "array",
-          "schema": {
-            "type": "string"
-          }
+          "type": "string"
         }
       }
     },
