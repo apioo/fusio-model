@@ -5,6 +5,7 @@
   },
   "definitions": {
     "Account_ChangePassword": {
+      "description": "Payload required to update the current user's password",
       "type": "struct",
       "properties": {
         "oldPassword": {
@@ -72,6 +73,7 @@
       }
     },
     "Action_Create": {
+      "description": "Payload for creating a new action entity",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -79,6 +81,7 @@
       }
     },
     "Action_Update": {
+      "description": "Payload for updating an existing action entity",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -94,6 +97,7 @@
           "type": "string"
         },
         "actions": {
+          "description": "List of available action class entries",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -155,6 +159,7 @@
           "target": "Action_Config"
         },
         "insertDate": {
+          "description": "Timestamp when the commit was created",
           "type": "string",
           "format": "date-time"
         }
@@ -303,6 +308,7 @@
           "type": "string"
         },
         "insertDate": {
+          "description": "Timestamp when the agent was created",
           "type": "string",
           "format": "date-time"
         },
@@ -314,6 +320,7 @@
       }
     },
     "Agent_Create": {
+      "description": "Payload for creating a new AI agent",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -321,6 +328,7 @@
       }
     },
     "Agent_Update": {
+      "description": "Payload for updating an existing AI agent",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -364,6 +372,7 @@
           "target": "agent:Item"
         },
         "insertDate": {
+          "description": "Timestamp when the agent message was created",
           "type": "string",
           "format": "date-time"
         }
@@ -389,6 +398,7 @@
           "type": "string"
         },
         "tools": {
+          "description": "List of available tools for agent invocation",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -425,6 +435,7 @@
           "readOnly": true
         },
         "userId": {
+          "description": "Unique identifier of the owning user",
           "type": "integer"
         },
         "status": {
@@ -483,6 +494,7 @@
       }
     },
     "App_Create": {
+      "description": "Payload for creating a new consumer application",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -490,6 +502,7 @@
       }
     },
     "App_Update": {
+      "description": "Payload for updating an existing consumer application",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -521,10 +534,12 @@
           "readOnly": true
         },
         "app": {
+          "description": "Application context associated with this audit event",
           "type": "reference",
           "target": "App"
         },
         "user": {
+          "description": "User context associated with this audit event",
           "type": "reference",
           "target": "User"
         },
@@ -575,6 +590,7 @@
       "type": "struct",
       "properties": {
         "export": {
+          "description": "Base64 or JSON string containing the exported system configuration payload",
           "type": "string"
         }
       }
@@ -584,6 +600,7 @@
       "type": "struct",
       "properties": {
         "import": {
+          "description": "JSON string containing the system configuration payload to import",
           "type": "string"
         }
       }
@@ -593,12 +610,15 @@
       "type": "struct",
       "properties": {
         "success": {
+          "description": "Indicates whether the backup import operation completed successfully",
           "type": "boolean"
         },
         "message": {
+          "description": "Human-readable status or summary message detailing the import result",
           "type": "string"
         },
         "logs": {
+          "description": "Execution logs generated during the backup restoration process",
           "type": "array",
           "schema": {
             "type": "string"
@@ -652,6 +672,7 @@
       }
     },
     "Bundle_Config": {
+      "description": "Configuration settings and resource specs exported within the bundle",
       "type": "map",
       "schema": {
         "type": "any"
@@ -669,6 +690,7 @@
       }
     },
     "Bundle_Create": {
+      "description": "Payload for creating a new configuration bundle",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -676,6 +698,7 @@
       }
     },
     "Bundle_Update": {
+      "description": "Payload for updating an existing configuration bundle",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -714,6 +737,7 @@
       }
     },
     "Category_Create": {
+      "description": "Payload for creating a new category",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -721,6 +745,7 @@
       }
     },
     "Category_Update": {
+      "description": "Payload for updating an existing category",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -770,6 +795,7 @@
       }
     },
     "Config_Update": {
+      "description": "Payload for updating a system configuration entry",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -833,6 +859,7 @@
       }
     },
     "Connection_Create": {
+      "description": "Payload for creating a new connection",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -840,6 +867,7 @@
       }
     },
     "Connection_Update": {
+      "description": "Payload for updating an existing connection",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -855,6 +883,7 @@
           "type": "string"
         },
         "connections": {
+          "description": "List of available connection class entries",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -882,6 +911,7 @@
       "type": "struct",
       "properties": {
         "redirectUri": {
+          "description": "Target URI to redirect the user for OAuth2 authentication",
           "type": "string"
         }
       }
@@ -987,15 +1017,19 @@
       "type": "struct",
       "properties": {
         "message": {
+          "description": "Error message detailing the cause of failure",
           "type": "string"
         },
         "trace": {
+          "description": "Stack trace of the error exception",
           "type": "string"
         },
         "file": {
+          "description": "File path where the execution error occurred",
           "type": "string"
         },
         "line": {
+          "description": "Line number where the execution error occurred",
           "type": "integer"
         }
       }
@@ -1012,6 +1046,7 @@
       }
     },
     "Cronjob_Create": {
+      "description": "Payload for creating a new cronjob",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1019,6 +1054,7 @@
       }
     },
     "Cronjob_Update": {
+      "description": "Payload for updating an existing cronjob",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1163,6 +1199,7 @@
       }
     },
     "Database_Table_Collection": {
+      "description": "A paginated collection of database table objects",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1199,38 +1236,47 @@
           "type": "string"
         },
         "errorsPerOperation": {
+          "description": "Chart showing errors logged per operation over time",
           "type": "reference",
           "target": "Statistic_Chart"
         },
         "incomingRequests": {
+          "description": "Chart showing total incoming HTTP requests over time",
           "type": "reference",
           "target": "Statistic_Chart"
         },
         "incomingTransactions": {
+          "description": "Chart showing total executed transactions over time",
           "type": "reference",
           "target": "Statistic_Chart"
         },
         "mostUsedOperations": {
+          "description": "Chart displaying the most frequently invoked API operations",
           "type": "reference",
           "target": "Statistic_Chart"
         },
         "timePerOperation": {
+          "description": "Chart depicting average execution time per operation",
           "type": "reference",
           "target": "Statistic_Chart"
         },
         "testCoverage": {
+          "description": "Chart showing automated test execution and coverage metrics",
           "type": "reference",
           "target": "Statistic_Chart"
         },
         "mostUsedActivities": {
+          "description": "Chart showing the most active user activity types",
           "type": "reference",
           "target": "Statistic_Chart"
         },
         "activitiesPerUser": {
+          "description": "Chart breaking down user activity frequencies",
           "type": "reference",
           "target": "Statistic_Chart"
         },
         "userRegistrations": {
+          "description": "Chart tracking user registrations over time",
           "type": "reference",
           "target": "Statistic_Chart"
         }
@@ -1255,9 +1301,11 @@
           "pattern": "^[a-zA-Z0-9\\-\\_\\.]{3,64}$"
         },
         "description": {
+          "description": "Short description explaining the purpose of this event",
           "type": "string"
         },
         "schema": {
+          "description": "Name of the schema defining the event payload structure",
           "type": "string"
         },
         "metadata": {
@@ -1279,6 +1327,7 @@
       }
     },
     "Event_Create": {
+      "description": "Payload for creating a new event entity",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1286,6 +1335,7 @@
       }
     },
     "Event_Update": {
+      "description": "Payload for updating an existing event entity",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1381,6 +1431,7 @@
       }
     },
     "Firewall_Create": {
+      "description": "Payload for creating a new firewall rule",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1388,6 +1439,7 @@
       }
     },
     "Firewall_Update": {
+      "description": "Payload for updating an existing firewall rule",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1444,6 +1496,7 @@
       }
     },
     "Form_Create": {
+      "description": "Payload for creating a new form definition",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1451,6 +1504,7 @@
       }
     },
     "Form_Update": {
+      "description": "Payload for updating an existing form definition",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1538,15 +1592,18 @@
           "type": "string"
         },
         "config": {
+          "description": "Contains identity provider specific configuration values",
           "type": "reference",
           "target": "Identity_Config"
         },
         "allowCreate": {
+          "description": "Indicates whether a new local user account should be created if it does not exist yet",
           "type": "boolean"
         }
       }
     },
     "Identity_Config": {
+      "description": "Identity provider configuration containing key-value parameters",
       "type": "map",
       "schema": {
         "type": "any"
@@ -1564,6 +1621,7 @@
       }
     },
     "Identity_Create": {
+      "description": "Payload for creating a new identity provider entity",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1571,6 +1629,7 @@
       }
     },
     "Identity_Update": {
+      "description": "Payload for updating an existing identity provider entity",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1586,6 +1645,7 @@
           "type": "string"
         },
         "providers": {
+          "description": "List of available identity provider class entries",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -1613,6 +1673,7 @@
       "type": "struct",
       "properties": {
         "providers": {
+          "description": "List of available generator provider entries",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -1636,36 +1697,44 @@
       }
     },
     "Generator_Provider": {
+      "description": "Configuration object used to invoke a schema/operation generator",
       "type": "struct",
       "properties": {
         "path": {
+          "description": "Base HTTP path to mount generated operations",
           "type": "string"
         },
         "scopes": {
+          "description": "Scopes to assign to generated operations",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "public": {
+          "description": "Indicates whether generated operations are publicly accessible",
           "type": "boolean"
         },
         "config": {
+          "description": "Generator specific configuration key-value pairs",
           "type": "reference",
           "target": "Generator_Provider_Config"
         }
       }
     },
     "Generator_Provider_Config": {
+      "description": "Arbitrary configuration map for the generator provider",
       "type": "map",
       "schema": {
         "type": "any"
       }
     },
     "Generator_Provider_Changelog": {
+      "description": "Represents a preview changelog of entities created or updated by a generator run",
       "type": "struct",
       "properties": {
         "schemas": {
+          "description": "List of schemas affected or generated",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -1673,6 +1742,7 @@
           }
         },
         "actions": {
+          "description": "List of actions affected or generated",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -1680,6 +1750,7 @@
           }
         },
         "operations": {
+          "description": "List of operations affected or generated",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -1752,6 +1823,7 @@
       }
     },
     "Log_Error": {
+      "description": "Represents an error logged during a specific HTTP request",
       "type": "struct",
       "properties": {
         "kind": {
@@ -1764,21 +1836,27 @@
           "readOnly": true
         },
         "logId": {
+          "description": "Identifier of the associated parent log entry",
           "type": "integer"
         },
         "message": {
+          "description": "Error message detailing the failure context",
           "type": "string"
         },
         "trace": {
+          "description": "Stack trace associated with the error exception",
           "type": "string"
         },
         "file": {
+          "description": "File path where the error was thrown",
           "type": "string"
         },
         "line": {
+          "description": "Line number where the error was thrown",
           "type": "integer"
         },
         "insertDate": {
+          "description": "Timestamp when the log error was recorded",
           "type": "string",
           "format": "date-time"
         }
@@ -1887,6 +1965,7 @@
       }
     },
     "Operation_Parameters": {
+      "description": "Map of path or query parameters accepted by the operation",
       "type": "map",
       "schema": {
         "type": "reference",
@@ -1894,24 +1973,30 @@
       }
     },
     "Operation_Throws": {
+      "description": "Map of HTTP error status codes to target schema names",
       "type": "map",
       "schema": {
         "type": "string"
       }
     },
     "Operation_Schema": {
+      "description": "Defines primitive type constraints for parameter schema definitions",
       "type": "struct",
       "properties": {
         "description": {
+          "description": "Description explaining the parameter purpose",
           "type": "string"
         },
         "type": {
+          "description": "Primitive type of the parameter i.e. string or integer",
           "type": "string"
         },
         "format": {
+          "description": "Type formatting detail i.e. date-time or int64",
           "type": "string"
         },
         "enum": {
+          "description": "Allowed enumerated string value constraints",
           "type": "string"
         }
       }
@@ -1928,6 +2013,7 @@
       }
     },
     "Operation_Create": {
+      "description": "Payload for creating a new operation entity",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1935,6 +2021,7 @@
       }
     },
     "Operation_Update": {
+      "description": "Payload for updating an existing operation entity",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1991,6 +2078,7 @@
       }
     },
     "Page_Create": {
+      "description": "Payload for creating a new portal page",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -1998,6 +2086,7 @@
       }
     },
     "Page_Update": {
+      "description": "Payload for updating an existing portal page",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2067,6 +2156,7 @@
       }
     },
     "Plan_Create": {
+      "description": "Payload for creating a new subscription or point plan",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2074,6 +2164,7 @@
       }
     },
     "Plan_Update": {
+      "description": "Payload for updating an existing plan definition",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2137,6 +2228,7 @@
       }
     },
     "Rate_Create": {
+      "description": "Payload for creating a new rate limit policy",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2144,6 +2236,7 @@
       }
     },
     "Rate_Update": {
+      "description": "Payload for updating an existing rate limit policy",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2160,15 +2253,19 @@
           "readOnly": true
         },
         "operationId": {
+          "description": "Target operation ID for the rate allocation",
           "type": "integer"
         },
         "userId": {
+          "description": "Target user ID for the rate allocation",
           "type": "integer"
         },
         "planId": {
+          "description": "Target plan ID associated with this allocation",
           "type": "integer"
         },
         "appId": {
+          "description": "Target app ID associated with this allocation",
           "type": "integer"
         },
         "authenticated": {
@@ -2220,6 +2317,7 @@
       }
     },
     "Role_Create": {
+      "description": "Payload for creating a new user role entity",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2227,6 +2325,7 @@
       }
     },
     "Role_Update": {
+      "description": "Payload for updating an existing user role entity",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2294,6 +2393,7 @@
       }
     },
     "Schema_Create": {
+      "description": "Payload for creating a new schema definition",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2301,6 +2401,7 @@
       }
     },
     "Schema_Update": {
+      "description": "Payload for updating an existing schema definition",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2308,9 +2409,11 @@
       }
     },
     "Schema_Preview_Response": {
+      "description": "Response container for a generated schema code preview",
       "type": "struct",
       "properties": {
         "preview": {
+          "description": "The formatted source code preview generated from the schema",
           "type": "string"
         }
       }
@@ -2343,6 +2446,7 @@
           "target": "Schema_Source"
         },
         "insertDate": {
+          "description": "Timestamp when the schema commit was created",
           "type": "string",
           "format": "date-time"
         }
@@ -2397,12 +2501,15 @@
       }
     },
     "Scope_Operation": {
+      "description": "Mapping defining access permissions for a specific operation within a scope",
       "type": "struct",
       "properties": {
         "operationId": {
+          "description": "Target operation ID mapped to the scope",
           "type": "integer"
         },
         "allow": {
+          "description": "Indicates whether access to the operation is explicitly granted",
           "type": "boolean"
         }
       }
@@ -2419,6 +2526,7 @@
       }
     },
     "Scope_Create": {
+      "description": "Payload for creating a new scope entity",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2426,6 +2534,7 @@
       }
     },
     "Scope_Update": {
+      "description": "Payload for updating an existing scope entity",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2433,9 +2542,11 @@
       }
     },
     "Scope_Categories": {
+      "description": "Container for grouping available scopes into logical categories",
       "type": "struct",
       "properties": {
         "categories": {
+          "description": "List of scope categories",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -2445,15 +2556,19 @@
       }
     },
     "Scope_Category": {
+      "description": "Represents a functional grouping of scopes",
       "type": "struct",
       "properties": {
         "id": {
+          "description": "Unique identifier for the scope category",
           "type": "integer"
         },
         "name": {
+          "description": "Name of the scope category",
           "type": "string"
         },
         "scopes": {
+          "description": "List of scopes assigned to this category",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -2463,29 +2578,36 @@
       }
     },
     "Scope_Category_Scope": {
+      "description": "Simplified scope representation within a category view",
       "type": "struct",
       "properties": {
         "id": {
+          "description": "Unique identifier for the scope",
           "type": "integer"
         },
         "name": {
+          "description": "Unique name of the scope",
           "type": "string"
         },
         "description": {
+          "description": "Short description explaining the scope purpose",
           "type": "string"
         }
       }
     },
     "Statistic_Chart": {
+      "description": "Represents dataset structures formatted for rendering statistic charts",
       "type": "struct",
       "properties": {
         "labels": {
+          "description": "X-axis labels or time units for the statistic chart",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "series": {
+          "description": "Data series elements displayed within the chart",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -2495,12 +2617,15 @@
       }
     },
     "Statistic_Chart_Series": {
+      "description": "A single data line or bar series for a statistic chart",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Name or key identifier for the data series",
           "type": "string"
         },
         "data": {
+          "description": "Numeric data points corresponding to chart labels",
           "type": "array",
           "schema": {
             "type": "number"
@@ -2509,22 +2634,27 @@
       }
     },
     "Statistic_Count": {
+      "description": "Represents an aggregated count metric over a specific timeframe",
       "type": "struct",
       "properties": {
         "count": {
+          "description": "Total aggregated metric count",
           "type": "integer"
         },
         "from": {
+          "description": "Start timestamp of the metric aggregation period",
           "type": "string",
           "format": "date-time"
         },
         "to": {
+          "description": "End timestamp of the metric aggregation period",
           "type": "string",
           "format": "date-time"
         }
       }
     },
     "Sdk_Response": {
+      "description": "Container listing target SDK languages or formats available for generator execution",
       "type": "struct",
       "properties": {
         "kind": {
@@ -2532,6 +2662,7 @@
           "type": "string"
         },
         "types": {
+          "description": "Map of available SDK generator target identifiers to display names",
           "type": "reference",
           "target": "Sdk_Types"
         }
@@ -2545,17 +2676,21 @@
       }
     },
     "Sdk_Generate": {
+      "description": "Payload defining target format and configuration for triggering an SDK generation run",
       "type": "struct",
       "properties": {
         "format": {
+          "description": "Target language format or output type for the SDK build",
           "type": "string"
         },
         "config": {
+          "description": "Optional generator specific configuration options",
           "type": "string"
         }
       }
     },
     "Sdk_Message": {
+      "description": "Response structure detailing the outcome of an SDK generation job",
       "type": "struct",
       "properties": {
         "kind": {
@@ -2563,51 +2698,65 @@
           "type": "string"
         },
         "success": {
+          "description": "Indicates whether the SDK build was completed successfully",
           "type": "boolean"
         },
         "message": {
+          "description": "Informational status or diagnostic message regarding SDK generation",
           "type": "string"
         },
         "link": {
+          "description": "Download link to retrieve the generated SDK bundle",
           "type": "string"
         }
       }
     },
     "Specification_Get": {
+      "description": "Container delivering the compiled API specification schema object",
       "type": "struct",
       "properties": {
         "spec": {
+          "description": "The raw API specification definition schema content",
           "type": "any"
         }
       }
     },
     "Specification_Publish": {
+      "description": "Payload defining configuration parameters for publishing an API specification export",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Target specification format name to output",
           "type": "string"
         },
         "filterName": {
+          "description": "Optional category or entity filter applied to scope the exported specification",
           "type": "string"
         },
         "standalone": {
+          "description": "Indicates whether the specification output should be rendered as a standalone unit",
           "type": "boolean"
         }
       }
     },
     "Specification_Changelog": {
+      "description": "Represents structural changelog differences between specification versions",
       "type": "struct",
       "properties": {
         "master": {
+          "description": "Specification content corresponding to the current master definition",
           "type": "any"
         },
         "tag": {
+          "description": "Specification content corresponding to the target tagged version",
           "type": "any"
         },
         "version": {
+          "description": "Version identifier for the tag release",
           "type": "string"
         },
         "changelog": {
+          "description": "Formatted summary detailing API changes between master and tag",
           "type": "string"
         }
       }
@@ -2648,6 +2797,7 @@
       }
     },
     "Taxonomy_Create": {
+      "description": "Payload for creating a new taxonomy organization node",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2655,6 +2805,7 @@
       }
     },
     "Taxonomy_Update": {
+      "description": "Payload for updating an existing taxonomy node",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2666,36 +2817,42 @@
       "type": "struct",
       "properties": {
         "operations": {
+          "description": "List of operation IDs to assign to the taxonomy",
           "type": "array",
           "schema": {
             "type": "integer"
           }
         },
         "actions": {
+          "description": "List of action IDs to assign to the taxonomy",
           "type": "array",
           "schema": {
             "type": "integer"
           }
         },
         "schemas": {
+          "description": "List of schema IDs to assign to the taxonomy",
           "type": "array",
           "schema": {
             "type": "integer"
           }
         },
         "events": {
+          "description": "List of event IDs to assign to the taxonomy",
           "type": "array",
           "schema": {
             "type": "integer"
           }
         },
         "cronjobs": {
+          "description": "List of cronjob IDs to assign to the taxonomy",
           "type": "array",
           "schema": {
             "type": "integer"
           }
         },
         "triggers": {
+          "description": "List of trigger IDs to assign to the taxonomy",
           "type": "array",
           "schema": {
             "type": "integer"
@@ -2722,21 +2879,26 @@
           "readOnly": true
         },
         "operationName": {
+          "description": "The target operation name being tested",
           "type": "string"
         },
         "message": {
+          "description": "The result or error message of the test run",
           "type": "string"
         },
         "response": {
+          "description": "The raw payload or output produced by the test execution",
           "type": "string"
         },
         "config": {
+          "description": "The payload configuration passed to the test execution",
           "type": "reference",
           "target": "Test_Config"
         }
       }
     },
     "Test_Config": {
+      "description": "Configuration parameters for executing a test run",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2768,29 +2930,37 @@
           "readOnly": true
         },
         "userId": {
+          "description": "Unique identifier of the associated user",
           "type": "integer"
         },
         "planId": {
+          "description": "Unique identifier of the associated plan",
           "type": "integer"
         },
         "transactionId": {
+          "description": "External reference or gateway transaction identifier",
           "type": "string"
         },
         "amount": {
+          "description": "Monetary amount paid for the transaction",
           "type": "number"
         },
         "points": {
+          "description": "Number of credits or points credited by this transaction",
           "type": "number"
         },
         "periodStart": {
+          "description": "Start timestamp of the active billing period",
           "type": "string",
           "format": "date-time"
         },
         "periodEnd": {
+          "description": "End timestamp of the active billing period",
           "type": "string",
           "format": "date-time"
         },
         "insertDate": {
+          "description": "Creation timestamp of the transaction record",
           "type": "string",
           "format": "date-time"
         }
@@ -2808,9 +2978,11 @@
       }
     },
     "Trash_Types": {
+      "description": "List of available entity types that can be restored from the trash",
       "type": "struct",
       "properties": {
         "types": {
+          "description": "Array of restorably deleted object type identifiers",
           "type": "array",
           "schema": {
             "type": "string"
@@ -2819,6 +2991,7 @@
       }
     },
     "Trash_Data": {
+      "description": "This object represents a deleted item stored in the trash bin",
       "type": "struct",
       "properties": {
         "id": {
@@ -2832,6 +3005,7 @@
           "readOnly": true
         },
         "name": {
+          "description": "Display name or label of the deleted entity",
           "type": "string"
         }
       }
@@ -2848,9 +3022,11 @@
       }
     },
     "Trash_Restore": {
+      "description": "Request payload to restore an item from the trash bin",
       "type": "struct",
       "properties": {
         "id": {
+          "description": "Unique identifier of the deleted entity to restore",
           "type": "integer"
         }
       }
@@ -2900,6 +3076,7 @@
       }
     },
     "Trigger_Create": {
+      "description": "Request payload to create a new trigger",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2907,6 +3084,7 @@
       }
     },
     "Trigger_Update": {
+      "description": "Request payload to update an existing trigger",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -2932,22 +3110,27 @@
           "readOnly": true
         },
         "name": {
+          "description": "Name or friendly description for the token",
           "type": "string"
         },
         "scopes": {
+          "description": "List of access scopes granted to this token",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "ip": {
+          "description": "IP address from which the token was requested",
           "type": "string"
         },
         "expire": {
+          "description": "Expiration timestamp after which the token is invalid",
           "type": "string",
           "format": "date-time"
         },
         "date": {
+          "description": "Creation timestamp of the token",
           "type": "string",
           "format": "date-time"
         }
@@ -3011,6 +3194,7 @@
           }
         },
         "apps": {
+          "description": "List of applications associated with or owned by the user",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -3030,6 +3214,7 @@
       }
     },
     "User_Attributes": {
+      "description": "Key-value pair map containing custom dynamic attributes associated with a user",
       "type": "map",
       "schema": {
         "type": "string"
@@ -3047,6 +3232,7 @@
       }
     },
     "User_Create": {
+      "description": "Request payload to register or create a new user account",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -3054,11 +3240,13 @@
       },
       "properties": {
         "password": {
+          "description": "Plaintext password for the user account during creation",
           "type": "string"
         }
       }
     },
     "User_Update": {
+      "description": "Request payload to update existing user account information",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -3079,18 +3267,23 @@
           "readOnly": true
         },
         "eventId": {
+          "description": "Unique identifier of the event that triggers this webhook",
           "type": "integer"
         },
         "userId": {
+          "description": "Unique identifier of the user who owns this webhook",
           "type": "integer"
         },
         "name": {
+          "description": "Friendly name or identifier for the webhook configuration",
           "type": "string"
         },
         "endpoint": {
+          "description": "Target HTTP URL where payload notifications will be delivered",
           "type": "string"
         },
         "responses": {
+          "description": "Historical log of HTTP responses received from dispatch attempts",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -3100,24 +3293,31 @@
       }
     },
     "Webhook_Response": {
+      "description": "Log record representing an execution attempt and delivery response for a webhook target",
       "type": "struct",
       "properties": {
         "id": {
+          "description": "Unique identifier for the webhook response log entry",
           "type": "integer"
         },
         "status": {
+          "description": "Internal status code of the webhook delivery attempt",
           "type": "integer"
         },
         "code": {
+          "description": "HTTP status code returned by the remote webhook endpoint",
           "type": "integer"
         },
         "attempts": {
+          "description": "Number of retry attempts executed for this webhook dispatch",
           "type": "integer"
         },
         "error": {
+          "description": "Error message details if the delivery attempt failed",
           "type": "string"
         },
         "executeDate": {
+          "description": "Timestamp when the webhook dispatch was attempted",
           "type": "string",
           "format": "date-time"
         }
@@ -3135,6 +3335,7 @@
       }
     },
     "Webhook_Create": {
+      "description": "Request payload to create a new webhook subscription",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -3142,6 +3343,7 @@
       }
     },
     "Webhook_Update": {
+      "description": "Request payload to update an existing webhook subscription",
       "type": "struct",
       "parent": {
         "type": "reference",

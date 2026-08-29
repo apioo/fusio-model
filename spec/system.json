@@ -8,52 +8,66 @@
           "type": "string"
         },
         "apiVersion": {
+          "description": "The current version of the API",
           "type": "string"
         },
         "title": {
+          "description": "The title or name of the API project",
           "type": "string"
         },
         "description": {
+          "description": "A comprehensive description of the API and its capabilities",
           "type": "string"
         },
         "termsOfService": {
+          "description": "URL to the terms of service for using the API",
           "type": "string"
         },
         "contactName": {
+          "description": "The name of the primary contact person or organization for the API",
           "type": "string"
         },
         "contactUrl": {
+          "description": "URL to contact information or support site for the API",
           "type": "string"
         },
         "contactEmail": {
+          "description": "The email address to reach out to for API support",
           "type": "string"
         },
         "licenseName": {
+          "description": "The name of the license under which the API is exposed",
           "type": "string"
         },
         "licenseUrl": {
+          "description": "URL to the full text of the API license agreement",
           "type": "string"
         },
         "paymentCurrency": {
+          "description": "The primary ISO currency code used for API billing and payments",
           "type": "string"
         },
         "categories": {
+          "description": "List of categories or tags assigned to classify the API",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "scopes": {
+          "description": "List of global scopes available across the API",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "apps": {
+          "description": "Map of available application endpoints or integration links",
           "type": "reference",
           "target": "About_Apps"
         },
         "links": {
+          "description": "List of related hypermedia links providing contextual navigational paths",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -72,9 +86,11 @@
       "type": "struct",
       "properties": {
         "rel": {
+          "description": "The relationship type defining the target URL's connection to the current context",
           "type": "string"
         },
         "href": {
+          "description": "The target URI for the linked resource",
           "type": "string"
         }
       }
@@ -83,14 +99,17 @@
       "type": "struct",
       "properties": {
         "headers": {
+          "description": "Map of HTTP headers captured during the debug request",
           "type": "reference",
           "target": "Debug_Headers"
         },
         "parameters": {
+          "description": "Map of query parameters passed with the debug request",
           "type": "reference",
           "target": "Debug_Parameters"
         },
         "body": {
+          "description": "Payload body received during the debug request",
           "type": "reference",
           "target": "Debug_Body"
         }
@@ -129,9 +148,11 @@
           "type": "string"
         },
         "healthy": {
+          "description": "Indicates whether the specific service component is operational",
           "type": "boolean"
         },
         "error": {
+          "description": "Error details or message explaining why the check failed, if applicable",
           "type": "string"
         }
       }
@@ -140,27 +161,33 @@
       "type": "struct",
       "properties": {
         "issuer": {
+          "description": "URL identifying the authorization server providing OpenID Connect/OAuth features",
           "type": "string"
         },
         "token_endpoint": {
+          "description": "URL of the authorization server's OAuth 2.0 token endpoint",
           "type": "string"
         },
         "token_endpoint_auth_methods_supported": {
+          "description": "List of client authentication methods supported by the token endpoint",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "userinfo_endpoint": {
+          "description": "URL of the OAuth 2.0 UserInfo endpoint for retrieving user claims",
           "type": "string"
         },
         "scopes_supported": {
+          "description": "List of OAuth 2.0 scope values supported by the authorization server",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "claims_supported": {
+          "description": "List of UserInfo claim names supported by the authorization server",
           "type": "array",
           "schema": {
             "type": "string"
@@ -172,6 +199,7 @@
       "type": "struct",
       "properties": {
         "linkset": {
+          "description": "Array of RFC 9264 linksets defining API catalog relations",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -184,9 +212,11 @@
       "type": "struct",
       "properties": {
         "anchor": {
+          "description": "The base URI anchoring the target link relations within the set",
           "type": "string"
         },
         "service-desc": {
+          "description": "Links pointing to machine-readable service descriptions (e.g., OpenAPI specs)",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -194,6 +224,7 @@
           }
         },
         "service-doc": {
+          "description": "Links pointing to human-readable documentation for the service",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -201,6 +232,7 @@
           }
         },
         "service-meta": {
+          "description": "Links providing metadata endpoints related to the API service catalog entry",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -208,6 +240,7 @@
           }
         },
         "status": {
+          "description": "Links pointing to operational status or health resources for the service",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -220,9 +253,11 @@
       "type": "struct",
       "properties": {
         "href": {
+          "description": "Target URI of the linked catalog resource",
           "type": "string"
         },
         "type": {
+          "description": "Media type or format of the targeted resource (e.g., application/json)",
           "type": "string"
         }
       }
@@ -235,6 +270,7 @@
           "type": "string"
         },
         "routes": {
+          "description": "Mapping of API endpoint paths to their supported HTTP methods and handlers",
           "type": "reference",
           "target": "Route_Path"
         }
@@ -261,10 +297,12 @@
           "type": "string"
         },
         "schema": {
+          "description": "TypeSchema definition object containing structural constraints",
           "type": "reference",
           "target": "Schema_TypeSchema"
         },
         "form": {
+          "description": "UI layout or form representation options mapped to the schema",
           "type": "reference",
           "target": "Schema_Form"
         }
@@ -286,21 +324,27 @@
       "type": "struct",
       "properties": {
         "algorithm": {
+          "description": "Cryptographic algorithm used to generate the proof-of-work/CAPTCHA challenge",
           "type": "string"
         },
         "challenge": {
+          "description": "Unique challenge string to be solved or signed by the client",
           "type": "string"
         },
         "maxnumber": {
+          "description": "Maximum integer bound used for the proof-of-work search space",
           "type": "integer"
         },
         "salt": {
+          "description": "Random salt appended to the challenge string during verification",
           "type": "string"
         },
         "signature": {
+          "description": "Server-generated signature validating the authenticity of the challenge",
           "type": "string"
         },
         "expires": {
+          "description": "Unix timestamp indicating when the CAPTCHA challenge becomes invalid",
           "type": "integer"
         }
       }

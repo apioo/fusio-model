@@ -9,6 +9,7 @@
           "type": "string"
         },
         "item": {
+          "description": "The payload item sent to the agent",
           "type": "reference",
           "target": "Item"
         }
@@ -23,6 +24,7 @@
           "type": "string"
         },
         "item": {
+          "description": "The response payload item produced by the agent",
           "type": "reference",
           "target": "Item"
         }
@@ -141,20 +143,25 @@
       "type": "struct",
       "properties": {
         "id": {
+          "description": "Unique identifier for the function call execution context",
           "type": "string"
         },
         "name": {
+          "description": "The name of the targeted tool or function to execute",
           "type": "string"
         },
         "arguments": {
+          "description": "JSON string of arguments passed into the function call",
           "type": "string"
         }
       }
     },
     "Blueprint": {
+      "description": "Blueprint defining operations and schemas for agent capabilities",
       "type": "struct",
       "properties": {
         "operations": {
+          "description": "Array of API or tool operations supported by the blueprint",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -162,32 +169,41 @@
           }
         },
         "schema": {
+          "description": "TypeSchema specification associated with the blueprint",
           "type": "string"
         }
       }
     },
     "Blueprint_Operation": {
+      "description": "An operational endpoint exposed within a blueprint",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Unique name of the operation",
           "type": "string"
         },
         "public": {
+          "description": "Indicates whether the operation is publicly accessible",
           "type": "boolean"
         },
         "description": {
+          "description": "A description of the operation purpose and functionality",
           "type": "string"
         },
         "httpMethod": {
+          "description": "The HTTP verb assigned to this operation (e.g., GET, POST)",
           "type": "string"
         },
         "httpPath": {
+          "description": "The endpoint URL path pattern",
           "type": "string"
         },
         "httpCode": {
+          "description": "Expected successful HTTP response status code",
           "type": "integer"
         },
         "parameters": {
+          "description": "List of input parameters accepted by this operation",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -195,37 +211,47 @@
           }
         },
         "incoming": {
+          "description": "Reference schema for the incoming request payload",
           "type": "string"
         },
         "outgoing": {
+          "description": "Reference schema for the outgoing response payload",
           "type": "string"
         },
         "action": {
+          "description": "The execution logic or backend action handler assigned to this operation",
           "type": "string"
         }
       }
     },
     "Blueprint_Operation_Parameter": {
+      "description": "Input parameter definition for a blueprint operation",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Name of the parameter",
           "type": "string"
         },
         "type": {
+          "description": "Data type or location of the parameter",
           "type": "string"
         },
         "description": {
+          "description": "Detailed explanation of the parameter purpose",
           "type": "string"
         }
       }
     },
     "Schema": {
+      "description": "TypeSchema container holding structural definitions",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Name of the schema document",
           "type": "string"
         },
         "types": {
+          "description": "Collection of defined types in this schema",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -233,34 +259,43 @@
           }
         },
         "root": {
+          "description": "Index or identifier pointing to the root entry type",
           "type": "integer"
         }
       }
     },
     "Schema_Type": {
+      "description": "Definition of a structural type within a TypeSchema",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Unique identifier of the type definition",
           "type": "string"
         },
         "type": {
+          "description": "Base primitive or compound structural category",
           "type": "string"
         },
         "description": {
+          "description": "Detailed description of the type",
           "type": "string"
         },
         "deprecated": {
+          "description": "Flags whether this type definition is deprecated",
           "type": "boolean"
         },
         "parent": {
+          "description": "Optional parent type name if extending another struct",
           "type": "string",
           "nullable": true
         },
         "reference": {
+          "description": "Optional target type name if this type acts as a reference or alias",
           "type": "string",
           "nullable": true
         },
         "properties": {
+          "description": "Properties or fields declared on this type",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -270,29 +305,37 @@
       }
     },
     "Schema_Type_Property": {
+      "description": "Property declaration on a struct type",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Property key name",
           "type": "string"
         },
         "type": {
+          "description": "Data type or reference target of the property",
           "type": "string"
         },
         "description": {
+          "description": "Detailed description of the property field",
           "type": "string"
         },
         "nullable": {
+          "description": "Indicates if null is an acceptable value for this property",
           "type": "boolean"
         },
         "deprecated": {
+          "description": "Flags whether this property is marked for deprecation",
           "type": "boolean"
         }
       }
     },
     "Database": {
+      "description": "Relational database structure definition",
       "type": "struct",
       "properties": {
         "tables": {
+          "description": "List of database table definitions",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -302,12 +345,15 @@
       }
     },
     "Database_Table": {
+      "description": "Relational database table representation",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Name of the database table",
           "type": "string"
         },
         "columns": {
+          "description": "Collection of column definitions in the table",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -315,9 +361,11 @@
           }
         },
         "primaryKey": {
+          "description": "Name of the primary key column or index",
           "type": "string"
         },
         "indexes": {
+          "description": "List of table index configurations",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -325,6 +373,7 @@
           }
         },
         "foreignKeys": {
+          "description": "List of foreign key constraint definitions referencing other tables",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -334,50 +383,64 @@
       }
     },
     "Database_Table_Column": {
+      "description": "Column specification for a database table",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Column identifier name",
           "type": "string"
         },
         "type": {
+          "description": "Database SQL data type",
           "type": "string"
         },
         "length": {
+          "description": "Maximum character or byte length for string-like columns",
           "type": "integer",
           "nullable": true
         },
         "precision": {
+          "description": "Total number of digits allowed for numeric data types",
           "type": "integer",
           "nullable": true
         },
         "scale": {
+          "description": "Number of digits to the right of the decimal point for numeric data types",
           "type": "integer",
           "nullable": true
         },
         "unsigned": {
+          "description": "Indicates whether the numeric column is unsigned",
           "type": "boolean"
         },
         "fixed": {
+          "description": "Indicates fixed-length storage (e.g., CHAR vs VARCHAR)",
           "type": "boolean"
         },
         "notNull": {
+          "description": "Specifies if NULL values are forbidden in this column",
           "type": "boolean"
         },
         "autoIncrement": {
+          "description": "Indicates if the database automatically increments integer keys for new rows",
           "type": "boolean"
         }
       }
     },
     "Database_Table_Index": {
+      "description": "Database index definition",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Index identifier name",
           "type": "string"
         },
         "unique": {
+          "description": "Flags whether the index enforces unique constraints across its columns",
           "type": "boolean"
         },
         "columns": {
+          "description": "Ordered list of column names included in the index",
           "type": "array",
           "schema": {
             "type": "string"
@@ -386,21 +449,26 @@
       }
     },
     "Database_Table_ForeignKey": {
+      "description": "Foreign key constraint mapping between tables",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Constraint name identifier",
           "type": "string"
         },
         "foreignTable": {
+          "description": "Target referenced table name",
           "type": "string"
         },
         "localColumnNames": {
+          "description": "List of local columns participating in the foreign key constraint",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "foreignColumnNames": {
+          "description": "List of target table columns referenced by the foreign key constraint",
           "type": "array",
           "schema": {
             "type": "string"
@@ -409,9 +477,11 @@
       }
     },
     "Seed": {
+      "description": "Database seed dataset definition",
       "type": "struct",
       "properties": {
         "tables": {
+          "description": "Array of seed configurations grouped by table",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -421,12 +491,15 @@
       }
     },
     "Seed_Table": {
+      "description": "Seed data targeting a specific database table",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Target database table name",
           "type": "string"
         },
         "rows": {
+          "description": "List of key-value row objects to populate during database seeding",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -436,6 +509,7 @@
       }
     },
     "Seed_Row": {
+      "description": "Key-value pair map representing a single database row entry",
       "type": "map",
       "schema": {
         "type": "any"

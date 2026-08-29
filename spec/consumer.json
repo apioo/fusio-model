@@ -63,6 +63,7 @@
           "target": "agent:Item"
         },
         "insertDate": {
+          "description": "Timestamp when the message was created",
           "type": "string",
           "format": "date-time"
         }
@@ -80,6 +81,7 @@
       }
     },
     "App": {
+      "description": "Represents a consumer application registered by a user",
       "type": "struct",
       "properties": {
         "kind": {
@@ -87,42 +89,53 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the application",
           "type": "integer"
         },
         "userId": {
+          "description": "Unique identifier of the owning user",
           "type": "integer"
         },
         "status": {
+          "description": "Current operational status of the application",
           "type": "integer"
         },
         "name": {
+          "description": "Name of the application",
           "type": "string"
         },
         "url": {
+          "description": "Homepage or callback URL of the application",
           "type": "string"
         },
         "appKey": {
+          "description": "Client app key used for API authentication",
           "type": "string"
         },
         "appSecret": {
+          "description": "Client secret used for API authentication",
           "type": "string"
         },
         "date": {
+          "description": "Creation timestamp of the application",
           "type": "string"
         },
         "scopes": {
+          "description": "List of scopes assigned to this application",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "metadata": {
+          "description": "Custom key-value metadata associated with the application",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "App_Collection": {
+      "description": "Collection of consumer applications",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -133,15 +146,19 @@
       }
     },
     "App_Create": {
+      "description": "Payload for creating a new consumer application",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Name of the application to create",
           "type": "string"
         },
         "url": {
+          "description": "Homepage or redirect URL for the application",
           "type": "string"
         },
         "scopes": {
+          "description": "List of scopes requested for the application",
           "type": "array",
           "schema": {
             "type": "string"
@@ -150,15 +167,19 @@
       }
     },
     "App_Update": {
+      "description": "Payload for updating an existing consumer application",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Updated name for the application",
           "type": "string"
         },
         "url": {
+          "description": "Updated URL for the application",
           "type": "string"
         },
         "scopes": {
+          "description": "Updated list of scopes for the application",
           "type": "array",
           "schema": {
             "type": "string"
@@ -167,15 +188,19 @@
       }
     },
     "Authorize_Meta": {
+      "description": "Metadata for an OAuth authorization request screen",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Name of the application requesting authorization",
           "type": "string"
         },
         "url": {
+          "description": "Website or documentation URL of the requesting application",
           "type": "string"
         },
         "scopes": {
+          "description": "List of scopes requested for user consent",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -185,49 +210,63 @@
       }
     },
     "Authorize_Request": {
+      "description": "Parameters sent to initiate an OAuth authorization decision",
       "type": "struct",
       "properties": {
         "responseType": {
+          "description": "OAuth 2.0 response type (e.g., code)",
           "type": "string"
         },
         "clientId": {
+          "description": "App key / client ID requesting authorization",
           "type": "string"
         },
         "redirectUri": {
+          "description": "Callback URI where the authorization response will be delivered",
           "type": "string"
         },
         "scope": {
+          "description": "Space-delimited list of requested scopes",
           "type": "string"
         },
         "state": {
+          "description": "Opaque value passed to maintain state between request and callback",
           "type": "string"
         },
         "allow": {
+          "description": "User decision to grant or deny access",
           "type": "boolean"
         }
       }
     },
     "Authorize_Response": {
+      "description": "Result of an OAuth authorization decision",
       "type": "struct",
       "properties": {
         "type": {
+          "description": "Response classification or grant type",
           "type": "string"
         },
         "code": {
+          "description": "Authorization code issued upon user approval",
           "type": "string"
         },
         "error": {
+          "description": "Error code if the authorization request failed or was denied",
           "type": "string"
         },
         "state": {
+          "description": "State parameter echoed back from the original authorization request",
           "type": "string"
         },
         "redirectUri": {
+          "description": "Target callback URI for redirection",
           "type": "string"
         }
       }
     },
     "Event": {
+      "description": "Represents an event trigger definition within the platform",
       "type": "struct",
       "properties": {
         "kind": {
@@ -235,21 +274,26 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the event",
           "type": "integer"
         },
         "name": {
+          "description": "Name of the event",
           "type": "string"
         },
         "description": {
+          "description": "Detailed description of when and why this event fires",
           "type": "string"
         },
         "metadata": {
+          "description": "Custom metadata key-value mapping",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Event_Collection": {
+      "description": "Collection of event definitions",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -260,6 +304,7 @@
       }
     },
     "Form": {
+      "description": "Dynamic form configuration entity",
       "type": "struct",
       "properties": {
         "kind": {
@@ -267,30 +312,38 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the form",
           "type": "integer"
         },
         "name": {
+          "description": "Name of the form",
           "type": "string"
         },
         "action": {
+          "description": "Target action path or route triggered on form submission",
           "type": "string"
         },
         "method": {
+          "description": "HTTP method used to submit the form (e.g., POST)",
           "type": "string"
         },
         "jsonSchema": {
+          "description": "JSON Schema validating form structure and data inputs",
           "type": "any"
         },
         "uiSchema": {
+          "description": "UI schema defining control layout and widget presentation options",
           "type": "any"
         },
         "metadata": {
+          "description": "Custom metadata key-value mapping",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Form_Collection": {
+      "description": "Collection of dynamic form definitions",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -301,6 +354,7 @@
       }
     },
     "Identity": {
+      "description": "Identity provider configuration for single sign-on",
       "type": "struct",
       "properties": {
         "kind": {
@@ -308,20 +362,25 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the identity provider",
           "type": "integer"
         },
         "name": {
+          "description": "Display name of the identity provider (e.g., GitHub, Google)",
           "type": "string"
         },
         "icon": {
+          "description": "CSS icon class or visual asset URL representing the provider",
           "type": "string"
         },
         "redirect": {
+          "description": "Redirection endpoint to initiate the third-party authentication flow",
           "type": "string"
         }
       }
     },
     "Identity_Collection": {
+      "description": "Collection of third-party identity providers",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -332,6 +391,7 @@
       }
     },
     "Log": {
+      "description": "Access log entry recording an incoming HTTP request",
       "type": "struct",
       "properties": {
         "kind": {
@@ -339,36 +399,46 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the log entry",
           "type": "integer"
         },
         "appId": {
+          "description": "ID of the application that authorized the request",
           "type": "integer"
         },
         "ip": {
+          "description": "Originating IP address of the caller",
           "type": "string"
         },
         "userAgent": {
+          "description": "User-Agent header string from the client request",
           "type": "string"
         },
         "method": {
+          "description": "HTTP method of the executed request",
           "type": "string"
         },
         "path": {
+          "description": "URL path requested by the client",
           "type": "string"
         },
         "header": {
+          "description": "HTTP request headers recorded for debugging",
           "type": "string"
         },
         "body": {
+          "description": "HTTP request body payload recorded for debugging",
           "type": "string"
         },
         "date": {
+          "description": "Timestamp when the request occurred",
           "type": "string",
           "format": "date-time"
         }
       }
     },
     "Log_Collection": {
+      "description": "Collection of access log records",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -379,6 +449,7 @@
       }
     },
     "Grant": {
+      "description": "Represents user authorization granted to a consumer application",
       "type": "struct",
       "properties": {
         "kind": {
@@ -386,19 +457,23 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the grant record",
           "type": "integer"
         },
         "app": {
+          "description": "Application that received the user grant",
           "type": "reference",
           "target": "App"
         },
         "createDate": {
+          "description": "Timestamp when the user granted access",
           "type": "string",
           "format": "date-time"
         }
       }
     },
     "Grant_Collection": {
+      "description": "Collection of user authorization grant records",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -409,6 +484,7 @@
       }
     },
     "Page": {
+      "description": "Content page definition for developer portal documentation",
       "type": "struct",
       "properties": {
         "kind": {
@@ -416,24 +492,30 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the content page",
           "type": "integer"
         },
         "title": {
+          "description": "Title of the page",
           "type": "string"
         },
         "slug": {
+          "description": "URL-friendly slug identifier for routing",
           "type": "string"
         },
         "content": {
+          "description": "Markdown or HTML body content of the page",
           "type": "string"
         },
         "metadata": {
+          "description": "Custom metadata key-value mapping",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Page_Collection": {
+      "description": "Collection of content page entries",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -444,6 +526,7 @@
       }
     },
     "Plan": {
+      "description": "Subscription or monetization plan for API consumers",
       "type": "struct",
       "properties": {
         "kind": {
@@ -451,30 +534,38 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the plan",
           "type": "integer"
         },
         "name": {
+          "description": "Display name of the plan",
           "type": "string"
         },
         "description": {
+          "description": "Detailed description of plan features and limits",
           "type": "string"
         },
         "price": {
+          "description": "Cost of the plan per billing cycle",
           "type": "number"
         },
         "points": {
+          "description": "Quota points allocated per billing cycle",
           "type": "integer"
         },
         "period": {
+          "description": "Billing period interval classification code",
           "type": "integer"
         },
         "metadata": {
+          "description": "Custom metadata key-value mapping",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Plan_Collection": {
+      "description": "Collection of subscription plans",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -485,41 +576,51 @@
       }
     },
     "Payment_Checkout_Request": {
+      "description": "Request payload to initiate a checkout flow for a plan",
       "type": "struct",
       "properties": {
         "planId": {
+          "description": "Target subscription plan ID to purchase",
           "type": "integer"
         },
         "returnUrl": {
+          "description": "URL where the user is redirected after successful payment completion",
           "type": "string"
         }
       }
     },
     "Payment_Checkout_Response": {
+      "description": "Response payload containing the payment provider checkout URI",
       "type": "struct",
       "properties": {
         "approvalUrl": {
+          "description": "URL to redirect the user to complete payment authorization",
           "type": "string"
         }
       }
     },
     "Payment_Portal_Request": {
+      "description": "Request payload to launch the billing management portal",
       "type": "struct",
       "properties": {
         "returnUrl": {
+          "description": "URL to return to after managing subscription details",
           "type": "string"
         }
       }
     },
     "Payment_Portal_Response": {
+      "description": "Response payload containing the customer portal portal link",
       "type": "struct",
       "properties": {
         "redirectUrl": {
+          "description": "URL to access the customer billing self-service portal",
           "type": "string"
         }
       }
     },
     "Scope": {
+      "description": "Permission scope defining access rights to API endpoints",
       "type": "struct",
       "properties": {
         "kind": {
@@ -527,21 +628,26 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the scope",
           "type": "integer"
         },
         "name": {
+          "description": "Name of the scope key",
           "type": "string"
         },
         "description": {
+          "description": "Detailed explanation of privileges granted by this scope",
           "type": "string"
         },
         "metadata": {
+          "description": "Custom metadata key-value mapping",
           "type": "reference",
           "target": "common:Metadata"
         }
       }
     },
     "Scope_Collection": {
+      "description": "Collection of API permission scopes",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -552,6 +658,7 @@
       }
     },
     "Scope_Categories": {
+      "description": "Grouped list of scope categories for user authorization forms",
       "type": "struct",
       "properties": {
         "kind": {
@@ -559,6 +666,7 @@
           "type": "string"
         },
         "categories": {
+          "description": "List of scope category definitions",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -568,15 +676,19 @@
       }
     },
     "Scope_Category": {
+      "description": "Category grouping related API scopes together",
       "type": "struct",
       "properties": {
         "id": {
+          "description": "Unique identifier for the scope category",
           "type": "integer"
         },
         "name": {
+          "description": "Name of the category grouping",
           "type": "string"
         },
         "scopes": {
+          "description": "List of scopes assigned to this category",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -586,20 +698,25 @@
       }
     },
     "Scope_Category_Scope": {
+      "description": "Scope entry within a specific category group",
       "type": "struct",
       "properties": {
         "id": {
+          "description": "Unique identifier for the scope",
           "type": "integer"
         },
         "name": {
+          "description": "Name key of the scope",
           "type": "string"
         },
         "description": {
+          "description": "Description of access privileges",
           "type": "string"
         }
       }
     },
     "Token": {
+      "description": "Personal access token entity generated for consumer access",
       "type": "struct",
       "properties": {
         "kind": {
@@ -607,34 +724,42 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the token",
           "type": "integer"
         },
         "status": {
+          "description": "Status code indicating if the token is active or revoked",
           "type": "integer"
         },
         "name": {
+          "description": "User-assigned label or name for the token",
           "type": "string"
         },
         "scopes": {
+          "description": "List of scopes assigned to this token",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "ip": {
+          "description": "IP address restriction associated with the token",
           "type": "string"
         },
         "expire": {
+          "description": "Expiration date of the access token",
           "type": "string",
           "format": "date"
         },
         "date": {
+          "description": "Creation date of the token",
           "type": "string",
           "format": "date-time"
         }
       }
     },
     "Token_Collection": {
+      "description": "Collection of personal access tokens",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -645,56 +770,70 @@
       }
     },
     "Token_Create": {
+      "description": "Payload for issuing a new personal access token",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Descriptive name for the token",
           "type": "string"
         },
         "scopes": {
+          "description": "List of requested scopes for the token",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "expire": {
+          "description": "Optional expiration date for the token",
           "type": "string",
           "format": "date"
         }
       }
     },
     "Token_Update": {
+      "description": "Payload for updating an existing personal access token",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Updated name for the token",
           "type": "string"
         },
         "expire": {
+          "description": "Updated expiration date for the token",
           "type": "string",
           "format": "date"
         }
       }
     },
     "Token_AccessToken": {
+      "description": "OAuth 2.0 access token response object",
       "type": "struct",
       "properties": {
         "access_token": {
+          "description": "The bearer access token string",
           "type": "string"
         },
         "token_type": {
+          "description": "Type of token issued (typically Bearer)",
           "type": "string"
         },
         "expires_in": {
+          "description": "Lifetime in seconds of the access token",
           "type": "integer"
         },
         "refresh_token": {
+          "description": "Optional refresh token used to obtain new access tokens",
           "type": "string"
         },
         "scope": {
+          "description": "Space-separated list of scopes granted",
           "type": "string"
         }
       }
     },
     "Transaction": {
+      "description": "Billing transaction record for quota or subscription purchases",
       "type": "struct",
       "properties": {
         "kind": {
@@ -702,42 +841,53 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the transaction record",
           "type": "integer"
         },
         "userId": {
+          "description": "ID of the user who executed the transaction",
           "type": "integer"
         },
         "planId": {
+          "description": "ID of the subscription plan purchased",
           "type": "integer"
         },
         "plan": {
+          "description": "Plan details associated with the transaction",
           "type": "reference",
           "target": "Plan"
         },
         "transactionId": {
+          "description": "External payment processor transaction reference ID",
           "type": "string"
         },
         "amount": {
+          "description": "Monetary amount billed for the transaction",
           "type": "number"
         },
         "points": {
+          "description": "Number of points credited to the user account",
           "type": "number"
         },
         "periodStart": {
+          "description": "Start timestamp of the active billing period",
           "type": "string",
           "format": "date-time"
         },
         "periodEnd": {
+          "description": "End timestamp of the active billing period",
           "type": "string",
           "format": "date-time"
         },
         "insertDate": {
+          "description": "Timestamp when the transaction was recorded",
           "type": "string",
           "format": "date-time"
         }
       }
     },
     "Transaction_Collection": {
+      "description": "Collection of transaction records",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -748,6 +898,7 @@
       }
     },
     "User_Account": {
+      "description": "User profile and subscription status details",
       "type": "struct",
       "properties": {
         "kind": {
@@ -755,30 +906,38 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the user account",
           "type": "integer"
         },
         "planId": {
+          "description": "ID of the user's currently active subscription plan",
           "type": "integer"
         },
         "status": {
+          "description": "Operational status code of the user account",
           "type": "integer"
         },
         "name": {
+          "description": "Full name of the user",
           "type": "string"
         },
         "email": {
+          "description": "Primary email address associated with the account",
           "type": "string"
         },
         "points": {
+          "description": "Current balance of available execution points/quota",
           "type": "integer"
         },
         "scopes": {
+          "description": "List of scopes assigned directly to the user",
           "type": "array",
           "schema": {
             "type": "string"
           }
         },
         "plans": {
+          "description": "List of active plan subscriptions for the user",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -786,81 +945,103 @@
           }
         },
         "metadata": {
+          "description": "Custom key-value metadata attached to the account",
           "type": "reference",
           "target": "common:Metadata"
         },
         "date": {
+          "description": "Registration date of the user account",
           "type": "string",
           "format": "date-time"
         }
       }
     },
     "User_Plan": {
+      "description": "Active plan summary associated with a user",
       "type": "struct",
       "properties": {
         "id": {
+          "description": "Unique identifier for the assigned plan",
           "type": "integer"
         },
         "name": {
+          "description": "Name of the assigned plan",
           "type": "string"
         },
         "price": {
+          "description": "Price of the plan",
           "type": "integer"
         },
         "points": {
+          "description": "Points granted by the plan",
           "type": "integer"
         },
         "period": {
+          "description": "Billing period interval classification code",
           "type": "integer"
         }
       }
     },
     "User_Activate": {
+      "description": "Payload used to activate a user account via token",
       "type": "struct",
       "properties": {
         "token": {
+          "description": "Account activation verification token",
           "type": "string"
         }
       }
     },
     "User_Email": {
+      "description": "Payload used to initiate account recovery or email requests",
       "type": "struct",
       "properties": {
         "email": {
+          "description": "Target email address",
           "type": "string"
         },
         "captcha": {
+          "description": "CAPTCHA challenge response token",
           "type": "string"
         }
       }
     },
     "User_JWT": {
+      "description": "JWT authentication response containing access credentials",
       "type": "struct",
       "properties": {
         "token": {
+          "description": "JSON Web Token string used for authentication",
           "type": "string"
         },
         "expires_in": {
+          "description": "Token validity duration in seconds",
           "type": "integer"
         },
         "refresh_token": {
+          "description": "Refresh token string used to obtain new access tokens",
           "type": "string"
         },
         "scope": {
+          "description": "Space-separated list of granted scopes",
           "type": "string"
         }
       }
     },
     "User_Login": {
+      "description": "Credentials payload for user login",
       "type": "struct",
       "properties": {
         "username": {
+          "description": "Username or email address for authentication",
           "type": "string"
         },
         "password": {
+          "description": "User password",
           "type": "string"
         },
         "scopes": {
+          "description": "Optional list of specific scopes requested for the login session",
           "type": "array",
           "schema": {
             "type": "string"
@@ -869,42 +1050,53 @@
       }
     },
     "User_PasswordReset": {
+      "description": "Payload for completing a password reset",
       "type": "struct",
       "properties": {
         "token": {
+          "description": "Password reset verification token",
           "type": "string"
         },
         "newPassword": {
+          "description": "New password to set for the account",
           "type": "string"
         }
       }
     },
     "User_Refresh": {
+      "description": "Payload to request a refreshed authentication token",
       "type": "struct",
       "properties": {
         "refresh_token": {
+          "description": "Valid refresh token string",
           "type": "string"
         }
       }
     },
     "User_Register": {
+      "description": "Payload for registering a new user account",
       "type": "struct",
       "properties": {
         "name": {
+          "description": "Full name of the user registering",
           "type": "string"
         },
         "email": {
+          "description": "Email address for the new account",
           "type": "string"
         },
         "password": {
+          "description": "Desired account password",
           "type": "string"
         },
         "captcha": {
+          "description": "CAPTCHA challenge response token for anti-spam verification",
           "type": "string"
         }
       }
     },
     "Webhook": {
+      "description": "Webhook endpoint subscription definition",
       "type": "struct",
       "properties": {
         "kind": {
@@ -912,21 +1104,27 @@
           "type": "string"
         },
         "id": {
+          "description": "Unique identifier for the webhook",
           "type": "integer"
         },
         "status": {
+          "description": "Status code indicating whether the webhook subscription is active",
           "type": "integer"
         },
         "event": {
+          "description": "Target event name triggering this webhook",
           "type": "string"
         },
         "name": {
+          "description": "Descriptive label for the webhook registration",
           "type": "string"
         },
         "endpoint": {
+          "description": "Target HTTP endpoint URL to receive webhook event payloads",
           "type": "string"
         },
         "responses": {
+          "description": "List of recent delivery attempts and status responses",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -936,23 +1134,29 @@
       }
     },
     "Webhook_Response": {
+      "description": "Recorded delivery log response for a webhook dispatch",
       "type": "struct",
       "properties": {
         "status": {
+          "description": "Internal status code of the webhook delivery process",
           "type": "integer"
         },
         "code": {
+          "description": "HTTP status code received from the destination endpoint",
           "type": "integer"
         },
         "attempts": {
+          "description": "Number of delivery retry attempts executed",
           "type": "string"
         },
         "executeDate": {
+          "description": "Timestamp when the webhook delivery attempt occurred",
           "type": "string"
         }
       }
     },
     "Webhook_Collection": {
+      "description": "Collection of webhook subscriptions",
       "type": "struct",
       "parent": {
         "type": "reference",
@@ -963,29 +1167,37 @@
       }
     },
     "Webhook_Create": {
+      "description": "Payload for registering a new webhook subscription",
       "type": "struct",
       "properties": {
         "event": {
+          "description": "Event name to subscribe to",
           "type": "string"
         },
         "name": {
+          "description": "Descriptive name for the webhook",
           "type": "string"
         },
         "endpoint": {
+          "description": "Destination HTTP URI for event delivery",
           "type": "string"
         }
       }
     },
     "Webhook_Update": {
+      "description": "Payload for updating an existing webhook subscription",
       "type": "struct",
       "properties": {
         "event": {
+          "description": "Updated event name to subscribe to",
           "type": "string"
         },
         "name": {
+          "description": "Updated descriptive name for the webhook",
           "type": "string"
         },
         "endpoint": {
+          "description": "Updated target HTTP URI for event delivery",
           "type": "string"
         }
       }
