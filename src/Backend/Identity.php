@@ -9,6 +9,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents an identity which allows to authenticate with a remote identity provider')]
 class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('The target app for this identity')]
@@ -23,6 +25,14 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $class = null;
     protected ?IdentityConfig $config = null;
     protected ?bool $allowCreate = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -94,6 +104,7 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('appId', $this->appId);
         $record->put('roleId', $this->roleId);

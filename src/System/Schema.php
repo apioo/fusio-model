@@ -4,11 +4,22 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\System;
 
+use PSX\Schema\Attribute\Description;
 
 class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     protected ?SchemaTypeSchema $schema = null;
     protected ?SchemaForm $form = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setSchema(?SchemaTypeSchema $schema): void
     {
         $this->schema = $schema;
@@ -32,6 +43,7 @@ class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('schema', $this->schema);
         $record->put('form', $this->form);
         return $record;

@@ -9,6 +9,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('An action commit which represents a change in the action configuration')]
 class ActionCommit implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('The user which has made the change')]
@@ -18,6 +20,14 @@ class ActionCommit implements \JsonSerializable, \PSX\Record\RecordableInterface
     #[Description('The provided action configuration')]
     protected ?ActionConfig $config = null;
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -65,6 +75,7 @@ class ActionCommit implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('user', $this->user);
         $record->put('commitHash', $this->commitHash);

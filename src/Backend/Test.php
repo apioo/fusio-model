@@ -9,6 +9,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('This object represents a test. A test helps to verify that all operations work as expected')]
 class Test implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('Status of the object either 1 = pending, 2 = success, 3 = warning, 4 = error, 5 = skipped or 6 = disabled')]
@@ -17,6 +19,14 @@ class Test implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $message = null;
     protected ?string $response = null;
     protected ?TestConfig $config = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -72,6 +82,7 @@ class Test implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('status', $this->status);
         $record->put('operationName', $this->operationName);

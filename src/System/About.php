@@ -4,9 +4,12 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\System;
 
+use PSX\Schema\Attribute\Description;
 
 class About implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     protected ?string $apiVersion = null;
     protected ?string $title = null;
     protected ?string $description = null;
@@ -30,6 +33,14 @@ class About implements \JsonSerializable, \PSX\Record\RecordableInterface
      * @var array<AboutLink>|null
      */
     protected ?array $links = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setApiVersion(?string $apiVersion): void
     {
         $this->apiVersion = $apiVersion;
@@ -167,6 +178,7 @@ class About implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('apiVersion', $this->apiVersion);
         $record->put('title', $this->title);
         $record->put('description', $this->description);

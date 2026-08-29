@@ -4,13 +4,24 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 
 class ScopeCategories implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     /**
      * @var array<ScopeCategory>|null
      */
     protected ?array $categories = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     /**
      * @param array<ScopeCategory>|null $categories
      */
@@ -32,6 +43,7 @@ class ScopeCategories implements \JsonSerializable, \PSX\Record\RecordableInterf
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('categories', $this->categories);
         return $record;
     }

@@ -9,10 +9,20 @@ use PSX\Schema\Attribute\Description;
 #[Description('Contains all possible classes which can be used at an action as class')]
 class ActionIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     /**
      * @var array<ActionIndexEntry>|null
      */
     protected ?array $actions = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     /**
      * @param array<ActionIndexEntry>|null $actions
      */
@@ -34,6 +44,7 @@ class ActionIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('actions', $this->actions);
         return $record;
     }

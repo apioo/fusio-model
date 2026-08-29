@@ -4,9 +4,12 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 
 class Log implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     protected ?int $id = null;
     protected ?int $appId = null;
     protected ?string $ip = null;
@@ -16,6 +19,14 @@ class Log implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $header = null;
     protected ?string $body = null;
     protected ?\PSX\DateTime\LocalDateTime $date = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -95,6 +106,7 @@ class Log implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('appId', $this->appId);
         $record->put('ip', $this->ip);

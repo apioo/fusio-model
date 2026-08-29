@@ -9,10 +9,20 @@ use PSX\Schema\Attribute\Description;
 #[Description('Contains all possible classes which can be used at an identity as class')]
 class IdentityIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     /**
      * @var array<IdentityIndexEntry>|null
      */
     protected ?array $providers = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     /**
      * @param array<IdentityIndexEntry>|null $providers
      */
@@ -34,6 +44,7 @@ class IdentityIndex implements \JsonSerializable, \PSX\Record\RecordableInterfac
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('providers', $this->providers);
         return $record;
     }

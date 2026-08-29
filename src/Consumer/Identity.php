@@ -4,13 +4,24 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 
 class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     protected ?int $id = null;
     protected ?string $name = null;
     protected ?string $icon = null;
     protected ?string $redirect = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -50,6 +61,7 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('id', $this->id);
         $record->put('name', $this->name);
         $record->put('icon', $this->icon);

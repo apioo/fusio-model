@@ -9,6 +9,8 @@ use PSX\Schema\Attribute\Description;
 #[Description('Represents an object containing all widget data for the dashboard')]
 class Dashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
     protected ?StatisticChart $errorsPerOperation = null;
     protected ?StatisticChart $incomingRequests = null;
     protected ?StatisticChart $incomingTransactions = null;
@@ -18,6 +20,14 @@ class Dashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?StatisticChart $mostUsedActivities = null;
     protected ?StatisticChart $activitiesPerUser = null;
     protected ?StatisticChart $userRegistrations = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setErrorsPerOperation(?StatisticChart $errorsPerOperation): void
     {
         $this->errorsPerOperation = $errorsPerOperation;
@@ -97,6 +107,7 @@ class Dashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('errorsPerOperation', $this->errorsPerOperation);
         $record->put('incomingRequests', $this->incomingRequests);
         $record->put('incomingTransactions', $this->incomingTransactions);

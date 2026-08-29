@@ -9,9 +9,22 @@ use PSX\Schema\Attribute\Description;
 #[Description('Common error message')]
 class Message implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Uniquely identifies the object schema type')]
+    protected ?string $kind = null;
+    #[Description('Indicates whether the requested operation was successful')]
     protected ?bool $success = null;
+    #[Description('Human-readable message describing the outcome of the operation')]
     protected ?string $message = null;
+    #[Description('Optional unique identifier of the resource associated with the operation')]
     protected ?string $id = null;
+    public function setKind(?string $kind): void
+    {
+        $this->kind = $kind;
+    }
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
     public function setSuccess(?bool $success): void
     {
         $this->success = $success;
@@ -43,6 +56,7 @@ class Message implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
+        $record->put('kind', $this->kind);
         $record->put('success', $this->success);
         $record->put('message', $this->message);
         $record->put('id', $this->id);
