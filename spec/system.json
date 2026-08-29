@@ -265,6 +265,29 @@
       "schema": {
         "type": "any"
       }
+    },
+    "Captcha_Challenge": {
+      "type": "struct",
+      "properties": {
+        "algorithm": {
+          "type": "string"
+        },
+        "challenge": {
+          "type": "string"
+        },
+        "maxnumber": {
+          "type": "integer"
+        },
+        "salt": {
+          "type": "string"
+        },
+        "signature": {
+          "type": "string"
+        },
+        "expires": {
+          "type": "integer"
+        }
+      }
     }
   }
 }
