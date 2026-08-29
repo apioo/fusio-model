@@ -4,16 +4,24 @@
       "description": "Base collection",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "totalResults": {
+          "description": "Total number of items available in the entire collection",
           "type": "integer"
         },
         "startIndex": {
+          "description": "Zero-based index of the first item contained in the current response",
           "type": "integer"
         },
         "itemsPerPage": {
+          "description": "Maximum number of items returned in a single response page",
           "type": "integer"
         },
         "entry": {
+          "description": "Array containing the actual paginated collection items",
           "type": "array",
           "schema": {
             "type": "generic",
@@ -26,13 +34,20 @@
       "description": "Common error message",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "success": {
+          "description": "Indicates whether the requested operation was successful",
           "type": "boolean"
         },
         "message": {
+          "description": "Human-readable message describing the outcome of the operation",
           "type": "string"
         },
         "id": {
+          "description": "Optional unique identifier of the resource associated with the operation",
           "type": "string"
         }
       }

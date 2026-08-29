@@ -8,6 +8,10 @@
       "description": "This object represents an agent",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer"
@@ -37,6 +41,10 @@
       "description": "This object represents an agent message",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer"
@@ -74,6 +82,10 @@
     "App": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },
@@ -218,6 +230,10 @@
     "Event": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },
@@ -246,6 +262,10 @@
     "Form": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },
@@ -283,6 +303,10 @@
     "Identity": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },
@@ -310,6 +334,10 @@
     "Log": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },
@@ -353,6 +381,10 @@
     "Grant": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },
@@ -379,6 +411,10 @@
     "Page": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },
@@ -410,6 +446,10 @@
     "Plan": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },
@@ -482,6 +522,10 @@
     "Scope": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },
@@ -510,6 +554,10 @@
     "Scope_Categories": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "categories": {
           "type": "array",
           "schema": {
@@ -554,6 +602,10 @@
     "Token": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },
@@ -645,6 +697,10 @@
     "Transaction": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },
@@ -694,6 +750,10 @@
     "User_Account": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },
@@ -847,6 +907,10 @@
     "Webhook": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "type": "integer"
         },

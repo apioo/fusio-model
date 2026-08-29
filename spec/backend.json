@@ -25,6 +25,10 @@
       "description": "This object represents the business logic which can be executed either through an operation or cronjob",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -85,6 +89,10 @@
       "description": "Contains all possible classes which can be used at an action as class",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "actions": {
           "type": "array",
           "schema": {
@@ -123,6 +131,10 @@
       "description": "An action commit which represents a change in the action configuration",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -211,6 +223,10 @@
       "description": "Represents an action execution response",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "statusCode": {
           "description": "HTTP status code i.e. 200, 400, etc.",
           "type": "integer"
@@ -231,6 +247,10 @@
       "description": "This object represents an agent",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer"
@@ -322,6 +342,10 @@
       "description": "This object represents an agent message",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer"
@@ -360,6 +384,10 @@
       "description": "Represents a collection of available tools",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "tools": {
           "type": "array",
           "schema": {
@@ -387,6 +415,10 @@
       "description": "This object represents an app to access the API on-behalf of a user",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -479,6 +511,10 @@
       "description": "This object represents an audit which is created every time something was changed at the system",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -574,6 +610,10 @@
       "description": "This object represents a bundle which contains action, schema, event, cronjob and trigger configurations from you local instance",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -646,6 +686,10 @@
       "description": "This object represents a category. Every user is assigned to a category and can only view objects which are also assigned to the same category, through this it is possible to build separate areas for external developers",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -687,6 +731,10 @@
       "description": "This object represents a system configuration",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -732,6 +780,10 @@
       "description": "This object represents a connection to an external system like i.e. a database, message-queue or client-sdk",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -798,6 +850,10 @@
       "description": "Contains all possible classes which can be used at an connection as class",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "connections": {
           "type": "array",
           "schema": {
@@ -880,6 +936,10 @@
       "description": "This object represents a cronjob which can invoke an action at a specific interval",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -1134,6 +1194,10 @@
       "description": "Represents an object containing all widget data for the dashboard",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "errorsPerOperation": {
           "type": "reference",
           "target": "Statistic_Chart"
@@ -1176,6 +1240,10 @@
       "description": "This object represents an event which can be triggered by an action",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -1267,6 +1335,10 @@
       "description": "This object represents a firewall rule which blocks specific IP addresses",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -1326,6 +1398,10 @@
       "description": "This object represents a form which helps to dynamically generate a form at a frontend app",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -1431,6 +1507,10 @@
       "description": "This object represents an identity which allows to authenticate with a remote identity provider",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -1501,6 +1581,10 @@
       "description": "Contains all possible classes which can be used at an identity as class",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "providers": {
           "type": "array",
           "schema": {
@@ -1608,6 +1692,10 @@
       "description": "This object represents a log entry. Every HTTP requests to the system generates such a log entry.",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -1666,6 +1754,10 @@
     "Log_Error": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -1707,6 +1799,10 @@
       "description": "This object represents an operation, an operation invokes an action in case a specific HTTP method and path was requested. It defines also schema information about the request and response payload",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -1849,6 +1945,10 @@
       "description": "This object represents a page at the developer portal",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -1908,6 +2008,10 @@
       "description": "This object represents a plan, a plan allows users to obtain points or in general subscribe to your app",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -1980,6 +2084,10 @@
       "description": "This object represents a rate limitation, which allows to limit the requests which a user can send",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -2073,6 +2181,10 @@
       "description": "This object represents a role, every user is assigned to a role and all scopes of the role are automatically attached to the user",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -2125,6 +2237,10 @@
       "description": "This object represents a schema to describe a JSON payload",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -2203,6 +2319,10 @@
       "description": "A schema commit which represents a change in the schema source",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -2243,6 +2363,10 @@
       "description": "This object represents a scope. A scope is assigned to a user and is required to access operations",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -2403,6 +2527,10 @@
     "Sdk_Response": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "types": {
           "type": "reference",
           "target": "Sdk_Types"
@@ -2430,6 +2558,10 @@
     "Sdk_Message": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "success": {
           "type": "boolean"
         },
@@ -2484,6 +2616,10 @@
       "description": "This object represents a taxonomy. A taxonomy helps to internally organize operations, actions and other entities",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -2571,6 +2707,10 @@
       "description": "This object represents a test. A test helps to verify that all operations work as expected",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -2618,6 +2758,10 @@
       "description": "This object represents a transaction. The system generates a transaction in case a payment was successfully executed",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -2715,6 +2859,10 @@
       "description": "This object represents a trigger which can invoke an action on a custom event",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -2769,6 +2917,10 @@
       "description": "This object represents a token, this an access token which was requested by a user",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -2816,6 +2968,10 @@
       "description": "This object represents a user",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",
@@ -2913,6 +3069,10 @@
       "description": "This object represents a webhook, a webhook is called in case a specific event was triggered",
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "id": {
           "description": "Unique identifier for the object",
           "type": "integer",

@@ -3,6 +3,10 @@
     "About": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "apiVersion": {
           "type": "string"
         },
@@ -120,6 +124,10 @@
     "Health_Check": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "healthy": {
           "type": "boolean"
         },
@@ -222,6 +230,10 @@
     "Route": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "routes": {
           "type": "reference",
           "target": "Route_Path"
@@ -244,6 +256,10 @@
     "Schema": {
       "type": "struct",
       "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
         "schema": {
           "type": "reference",
           "target": "Schema_TypeSchema"
