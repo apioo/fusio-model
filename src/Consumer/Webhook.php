@@ -6,18 +6,25 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('Webhook endpoint subscription definition')]
 class Webhook implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Unique identifier for the webhook')]
     protected ?int $id = null;
+    #[Description('Status code indicating whether the webhook subscription is active')]
     protected ?int $status = null;
+    #[Description('Target event name triggering this webhook')]
     protected ?string $event = null;
+    #[Description('Descriptive label for the webhook registration')]
     protected ?string $name = null;
+    #[Description('Target HTTP endpoint URL to receive webhook event payloads')]
     protected ?string $endpoint = null;
     /**
      * @var array<WebhookResponse>|null
      */
+    #[Description('List of recent delivery attempts and status responses')]
     protected ?array $responses = null;
     public function setKind(?string $kind): void
     {

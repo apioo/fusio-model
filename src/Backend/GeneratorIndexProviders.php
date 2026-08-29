@@ -12,6 +12,7 @@ class GeneratorIndexProviders implements \JsonSerializable, \PSX\Record\Recordab
     /**
      * @var array<GeneratorIndexProvider>|null
      */
+    #[Description('List of available generator provider entries')]
     protected ?array $providers = null;
     /**
      * @param array<GeneratorIndexProvider>|null $providers

@@ -4,14 +4,21 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\System;
 
+use PSX\Schema\Attribute\Description;
 
 class CaptchaChallenge implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Cryptographic algorithm used to generate the proof-of-work/CAPTCHA challenge')]
     protected ?string $algorithm = null;
+    #[Description('Unique challenge string to be solved or signed by the client')]
     protected ?string $challenge = null;
+    #[Description('Maximum integer bound used for the proof-of-work search space')]
     protected ?int $maxnumber = null;
+    #[Description('Random salt appended to the challenge string during verification')]
     protected ?string $salt = null;
+    #[Description('Server-generated signature validating the authenticity of the challenge')]
     protected ?string $signature = null;
+    #[Description('Unix timestamp indicating when the CAPTCHA challenge becomes invalid')]
     protected ?int $expires = null;
     public function setAlgorithm(?string $algorithm): void
     {

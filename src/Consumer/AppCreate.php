@@ -4,14 +4,19 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for creating a new consumer application')]
 class AppCreate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Name of the application to create')]
     protected ?string $name = null;
+    #[Description('Homepage or redirect URL for the application')]
     protected ?string $url = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of scopes requested for the application')]
     protected ?array $scopes = null;
     public function setName(?string $name): void
     {

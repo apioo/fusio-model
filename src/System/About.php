@@ -10,28 +10,42 @@ class About implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('The current version of the API')]
     protected ?string $apiVersion = null;
+    #[Description('The title or name of the API project')]
     protected ?string $title = null;
+    #[Description('A comprehensive description of the API and its capabilities')]
     protected ?string $description = null;
+    #[Description('URL to the terms of service for using the API')]
     protected ?string $termsOfService = null;
+    #[Description('The name of the primary contact person or organization for the API')]
     protected ?string $contactName = null;
+    #[Description('URL to contact information or support site for the API')]
     protected ?string $contactUrl = null;
+    #[Description('The email address to reach out to for API support')]
     protected ?string $contactEmail = null;
+    #[Description('The name of the license under which the API is exposed')]
     protected ?string $licenseName = null;
+    #[Description('URL to the full text of the API license agreement')]
     protected ?string $licenseUrl = null;
+    #[Description('The primary ISO currency code used for API billing and payments')]
     protected ?string $paymentCurrency = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of categories or tags assigned to classify the API')]
     protected ?array $categories = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of global scopes available across the API')]
     protected ?array $scopes = null;
+    #[Description('Map of available application endpoints or integration links')]
     protected ?AboutApps $apps = null;
     /**
      * @var array<AboutLink>|null
      */
+    #[Description('List of related hypermedia links providing contextual navigational paths')]
     protected ?array $links = null;
     public function setKind(?string $kind): void
     {

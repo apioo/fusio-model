@@ -4,12 +4,14 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\System;
 
+use PSX\Schema\Attribute\Description;
 
 class APICatalog implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<APICatalogLinkSet>|null
      */
+    #[Description('Array of RFC 9264 linksets defining API catalog relations')]
     protected ?array $linkset = null;
     /**
      * @param array<APICatalogLinkSet>|null $linkset

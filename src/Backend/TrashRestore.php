@@ -4,9 +4,12 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Request payload to restore an item from the trash bin')]
 class TrashRestore implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier of the deleted entity to restore')]
     protected ?int $id = null;
     public function setId(?int $id): void
     {

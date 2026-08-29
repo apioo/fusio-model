@@ -6,16 +6,24 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('Dynamic form configuration entity')]
 class Form implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Unique identifier for the form')]
     protected ?int $id = null;
+    #[Description('Name of the form')]
     protected ?string $name = null;
+    #[Description('Target action path or route triggered on form submission')]
     protected ?string $action = null;
+    #[Description('HTTP method used to submit the form (e.g., POST)')]
     protected ?string $method = null;
+    #[Description('JSON Schema validating form structure and data inputs')]
     protected mixed $jsonSchema = null;
+    #[Description('UI schema defining control layout and widget presentation options')]
     protected mixed $uiSchema = null;
+    #[Description('Custom metadata key-value mapping')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setKind(?string $kind): void
     {

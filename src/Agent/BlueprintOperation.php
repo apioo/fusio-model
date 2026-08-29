@@ -4,21 +4,33 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Agent;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('An operational endpoint exposed within a blueprint')]
 class BlueprintOperation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique name of the operation')]
     protected ?string $name = null;
+    #[Description('Indicates whether the operation is publicly accessible')]
     protected ?bool $public = null;
+    #[Description('A description of the operation purpose and functionality')]
     protected ?string $description = null;
+    #[Description('The HTTP verb assigned to this operation (e.g., GET, POST)')]
     protected ?string $httpMethod = null;
+    #[Description('The endpoint URL path pattern')]
     protected ?string $httpPath = null;
+    #[Description('Expected successful HTTP response status code')]
     protected ?int $httpCode = null;
     /**
      * @var array<BlueprintOperationParameter>|null
      */
+    #[Description('List of input parameters accepted by this operation')]
     protected ?array $parameters = null;
+    #[Description('Reference schema for the incoming request payload')]
     protected ?string $incoming = null;
+    #[Description('Reference schema for the outgoing response payload')]
     protected ?string $outgoing = null;
+    #[Description('The execution logic or backend action handler assigned to this operation')]
     protected ?string $action = null;
     public function setName(?string $name): void
     {

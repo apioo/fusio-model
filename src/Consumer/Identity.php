@@ -6,13 +6,18 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('Identity provider configuration for single sign-on')]
 class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Unique identifier for the identity provider')]
     protected ?int $id = null;
+    #[Description('Display name of the identity provider (e.g., GitHub, Google)')]
     protected ?string $name = null;
+    #[Description('CSS icon class or visual asset URL representing the provider')]
     protected ?string $icon = null;
+    #[Description('Redirection endpoint to initiate the third-party authentication flow')]
     protected ?string $redirect = null;
     public function setKind(?string $kind): void
     {

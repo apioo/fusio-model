@@ -15,9 +15,13 @@ class Test implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?int $id = null;
     #[Description('Status of the object either 1 = pending, 2 = success, 3 = warning, 4 = error, 5 = skipped or 6 = disabled')]
     protected ?int $status = null;
+    #[Description('The target operation name being tested')]
     protected ?string $operationName = null;
+    #[Description('The result or error message of the test run')]
     protected ?string $message = null;
+    #[Description('The raw payload or output produced by the test execution')]
     protected ?string $response = null;
+    #[Description('The payload configuration passed to the test execution')]
     protected ?TestConfig $config = null;
     public function setKind(?string $kind): void
     {

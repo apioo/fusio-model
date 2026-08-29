@@ -19,6 +19,7 @@ class ActionCommit implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $commitHash = null;
     #[Description('The provided action configuration')]
     protected ?ActionConfig $config = null;
+    #[Description('Timestamp when the commit was created')]
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     public function setKind(?string $kind): void
     {

@@ -4,11 +4,16 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for registering a new webhook subscription')]
 class WebhookCreate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Event name to subscribe to')]
     protected ?string $event = null;
+    #[Description('Descriptive name for the webhook')]
     protected ?string $name = null;
+    #[Description('Destination HTTP URI for event delivery')]
     protected ?string $endpoint = null;
     public function setEvent(?string $event): void
     {

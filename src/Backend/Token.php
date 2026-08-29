@@ -15,13 +15,18 @@ class Token implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?int $id = null;
     #[Description('Status of the object either 1 = active or 2 = deleted')]
     protected ?int $status = null;
+    #[Description('Name or friendly description for the token')]
     protected ?string $name = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of access scopes granted to this token')]
     protected ?array $scopes = null;
+    #[Description('IP address from which the token was requested')]
     protected ?string $ip = null;
+    #[Description('Expiration timestamp after which the token is invalid')]
     protected ?\PSX\DateTime\LocalDateTime $expire = null;
+    #[Description('Creation timestamp of the token')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setKind(?string $kind): void
     {

@@ -6,17 +6,24 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('Represents an error logged during a specific HTTP request')]
 class LogError implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Identifier of the associated parent log entry')]
     protected ?int $logId = null;
+    #[Description('Error message detailing the failure context')]
     protected ?string $message = null;
+    #[Description('Stack trace associated with the error exception')]
     protected ?string $trace = null;
+    #[Description('File path where the error was thrown')]
     protected ?string $file = null;
+    #[Description('Line number where the error was thrown')]
     protected ?int $line = null;
+    #[Description('Timestamp when the log error was recorded')]
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     public function setKind(?string $kind): void
     {

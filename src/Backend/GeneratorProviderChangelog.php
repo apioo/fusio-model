@@ -4,20 +4,25 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents a preview changelog of entities created or updated by a generator run')]
 class GeneratorProviderChangelog implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<Schema>|null
      */
+    #[Description('List of schemas affected or generated')]
     protected ?array $schemas = null;
     /**
      * @var array<Action>|null
      */
+    #[Description('List of actions affected or generated')]
     protected ?array $actions = null;
     /**
      * @var array<Operation>|null
      */
+    #[Description('List of operations affected or generated')]
     protected ?array $operations = null;
     /**
      * @param array<Schema>|null $schemas

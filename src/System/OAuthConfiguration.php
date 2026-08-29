@@ -4,29 +4,36 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\System;
 
+use PSX\Schema\Attribute\Description;
 use PSX\Schema\Attribute\Key;
 
 class OAuthConfiguration implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('URL identifying the authorization server providing OpenID Connect/OAuth features')]
     protected ?string $issuer = null;
     #[Key('token_endpoint')]
+    #[Description('URL of the authorization server\'s OAuth 2.0 token endpoint')]
     protected ?string $tokenEndpoint = null;
     /**
      * @var array<string>|null
      */
     #[Key('token_endpoint_auth_methods_supported')]
+    #[Description('List of client authentication methods supported by the token endpoint')]
     protected ?array $tokenEndpointAuthMethodsSupported = null;
     #[Key('userinfo_endpoint')]
+    #[Description('URL of the OAuth 2.0 UserInfo endpoint for retrieving user claims')]
     protected ?string $userinfoEndpoint = null;
     /**
      * @var array<string>|null
      */
     #[Key('scopes_supported')]
+    #[Description('List of OAuth 2.0 scope values supported by the authorization server')]
     protected ?array $scopesSupported = null;
     /**
      * @var array<string>|null
      */
     #[Key('claims_supported')]
+    #[Description('List of UserInfo claim names supported by the authorization server')]
     protected ?array $claimsSupported = null;
     public function setIssuer(?string $issuer): void
     {

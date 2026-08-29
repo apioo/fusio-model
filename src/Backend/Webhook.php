@@ -13,13 +13,18 @@ class Webhook implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Unique identifier of the event that triggers this webhook')]
     protected ?int $eventId = null;
+    #[Description('Unique identifier of the user who owns this webhook')]
     protected ?int $userId = null;
+    #[Description('Friendly name or identifier for the webhook configuration')]
     protected ?string $name = null;
+    #[Description('Target HTTP URL where payload notifications will be delivered')]
     protected ?string $endpoint = null;
     /**
      * @var array<WebhookResponse>|null
      */
+    #[Description('Historical log of HTTP responses received from dispatch attempts')]
     protected ?array $responses = null;
     public function setKind(?string $kind): void
     {

@@ -4,13 +4,20 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Agent;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Property declaration on a struct type')]
 class SchemaTypeProperty implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Property key name')]
     protected ?string $name = null;
+    #[Description('Data type or reference target of the property')]
     protected ?string $type = null;
+    #[Description('Detailed description of the property field')]
     protected ?string $description = null;
+    #[Description('Indicates if null is an acceptable value for this property')]
     protected ?bool $nullable = null;
+    #[Description('Flags whether this property is marked for deprecation')]
     protected ?bool $deprecated = null;
     public function setName(?string $name): void
     {

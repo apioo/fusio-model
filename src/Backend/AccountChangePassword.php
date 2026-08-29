@@ -6,6 +6,7 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('Payload required to update the current user\'s password')]
 class AccountChangePassword implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('The old password')]

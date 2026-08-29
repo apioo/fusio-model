@@ -4,14 +4,19 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for issuing a new personal access token')]
 class TokenCreate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Descriptive name for the token')]
     protected ?string $name = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of requested scopes for the token')]
     protected ?array $scopes = null;
+    #[Description('Optional expiration date for the token')]
     protected ?\PSX\DateTime\LocalDate $expire = null;
     public function setName(?string $name): void
     {

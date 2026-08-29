@@ -4,21 +4,32 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Agent;
 
+use PSX\Schema\Attribute\Description;
 use PSX\Schema\Attribute\Nullable;
 
+#[Description('Column specification for a database table')]
 class DatabaseTableColumn implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Column identifier name')]
     protected ?string $name = null;
+    #[Description('Database SQL data type')]
     protected ?string $type = null;
+    #[Description('Maximum character or byte length for string-like columns')]
     #[Nullable(true)]
     protected ?int $length = null;
+    #[Description('Total number of digits allowed for numeric data types')]
     #[Nullable(true)]
     protected ?int $precision = null;
+    #[Description('Number of digits to the right of the decimal point for numeric data types')]
     #[Nullable(true)]
     protected ?int $scale = null;
+    #[Description('Indicates whether the numeric column is unsigned')]
     protected ?bool $unsigned = null;
+    #[Description('Indicates fixed-length storage (e.g., CHAR vs VARCHAR)')]
     protected ?bool $fixed = null;
+    #[Description('Specifies if NULL values are forbidden in this column')]
     protected ?bool $notNull = null;
+    #[Description('Indicates if the database automatically increments integer keys for new rows')]
     protected ?bool $autoIncrement = null;
     public function setName(?string $name): void
     {

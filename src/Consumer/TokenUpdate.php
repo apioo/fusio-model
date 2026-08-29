@@ -4,10 +4,14 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload for updating an existing personal access token')]
 class TokenUpdate implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Updated name for the token')]
     protected ?string $name = null;
+    #[Description('Updated expiration date for the token')]
     protected ?\PSX\DateTime\LocalDate $expire = null;
     public function setName(?string $name): void
     {

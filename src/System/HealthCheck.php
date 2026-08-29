@@ -10,7 +10,9 @@ class HealthCheck implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Indicates whether the specific service component is operational')]
     protected ?bool $healthy = null;
+    #[Description('Error details or message explaining why the check failed, if applicable')]
     protected ?string $error = null;
     public function setKind(?string $kind): void
     {

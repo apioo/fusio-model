@@ -33,6 +33,7 @@ class User implements \JsonSerializable, \PSX\Record\RecordableInterface
     /**
      * @var array<App>|null
      */
+    #[Description('List of applications associated with or owned by the user')]
     protected ?array $apps = null;
     #[Description('Use this parameter to attach key-value data')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;

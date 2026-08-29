@@ -4,13 +4,20 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Result of an OAuth authorization decision')]
 class AuthorizeResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Response classification or grant type')]
     protected ?string $type = null;
+    #[Description('Authorization code issued upon user approval')]
     protected ?string $code = null;
+    #[Description('Error code if the authorization request failed or was denied')]
     protected ?string $error = null;
+    #[Description('State parameter echoed back from the original authorization request')]
     protected ?string $state = null;
+    #[Description('Target callback URI for redirection')]
     protected ?string $redirectUri = null;
     public function setType(?string $type): void
     {

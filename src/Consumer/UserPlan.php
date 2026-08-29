@@ -4,13 +4,20 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Active plan summary associated with a user')]
 class UserPlan implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the assigned plan')]
     protected ?int $id = null;
+    #[Description('Name of the assigned plan')]
     protected ?string $name = null;
+    #[Description('Price of the plan')]
     protected ?int $price = null;
+    #[Description('Points granted by the plan')]
     protected ?int $points = null;
+    #[Description('Billing period interval classification code')]
     protected ?int $period = null;
     public function setId(?int $id): void
     {

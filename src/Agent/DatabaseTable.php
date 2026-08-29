@@ -4,22 +4,29 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Agent;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Relational database table representation')]
 class DatabaseTable implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Name of the database table')]
     protected ?string $name = null;
     /**
      * @var array<DatabaseTableColumn>|null
      */
+    #[Description('Collection of column definitions in the table')]
     protected ?array $columns = null;
+    #[Description('Name of the primary key column or index')]
     protected ?string $primaryKey = null;
     /**
      * @var array<DatabaseTableIndex>|null
      */
+    #[Description('List of table index configurations')]
     protected ?array $indexes = null;
     /**
      * @var array<DatabaseTableForeignKey>|null
      */
+    #[Description('List of foreign key constraint definitions referencing other tables')]
     protected ?array $foreignKeys = null;
     public function setName(?string $name): void
     {

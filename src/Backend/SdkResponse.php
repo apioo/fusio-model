@@ -6,10 +6,12 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('Container listing target SDK languages or formats available for generator execution')]
 class SdkResponse implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Map of available SDK generator target identifiers to display names')]
     protected ?SdkTypes $types = null;
     public function setKind(?string $kind): void
     {

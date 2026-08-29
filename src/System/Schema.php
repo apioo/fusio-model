@@ -10,7 +10,9 @@ class Schema implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('TypeSchema definition object containing structural constraints')]
     protected ?SchemaTypeSchema $schema = null;
+    #[Description('UI layout or form representation options mapped to the schema')]
     protected ?SchemaForm $form = null;
     public function setKind(?string $kind): void
     {

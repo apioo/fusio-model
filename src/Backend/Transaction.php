@@ -13,13 +13,21 @@ class Transaction implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Unique identifier of the associated user')]
     protected ?int $userId = null;
+    #[Description('Unique identifier of the associated plan')]
     protected ?int $planId = null;
+    #[Description('External reference or gateway transaction identifier')]
     protected ?string $transactionId = null;
+    #[Description('Monetary amount paid for the transaction')]
     protected ?float $amount = null;
+    #[Description('Number of credits or points credited by this transaction')]
     protected ?float $points = null;
+    #[Description('Start timestamp of the active billing period')]
     protected ?\PSX\DateTime\LocalDateTime $periodStart = null;
+    #[Description('End timestamp of the active billing period')]
     protected ?\PSX\DateTime\LocalDateTime $periodEnd = null;
+    #[Description('Creation timestamp of the transaction record')]
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     public function setKind(?string $kind): void
     {

@@ -12,26 +12,32 @@ class TaxonomyMove implements \JsonSerializable, \PSX\Record\RecordableInterface
     /**
      * @var array<int>|null
      */
+    #[Description('List of operation IDs to assign to the taxonomy')]
     protected ?array $operations = null;
     /**
      * @var array<int>|null
      */
+    #[Description('List of action IDs to assign to the taxonomy')]
     protected ?array $actions = null;
     /**
      * @var array<int>|null
      */
+    #[Description('List of schema IDs to assign to the taxonomy')]
     protected ?array $schemas = null;
     /**
      * @var array<int>|null
      */
+    #[Description('List of event IDs to assign to the taxonomy')]
     protected ?array $events = null;
     /**
      * @var array<int>|null
      */
+    #[Description('List of cronjob IDs to assign to the taxonomy')]
     protected ?array $cronjobs = null;
     /**
      * @var array<int>|null
      */
+    #[Description('List of trigger IDs to assign to the taxonomy')]
     protected ?array $triggers = null;
     /**
      * @param array<int>|null $operations

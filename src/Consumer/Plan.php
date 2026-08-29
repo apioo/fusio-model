@@ -6,16 +6,24 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('Subscription or monetization plan for API consumers')]
 class Plan implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Unique identifier for the plan')]
     protected ?int $id = null;
+    #[Description('Display name of the plan')]
     protected ?string $name = null;
+    #[Description('Detailed description of plan features and limits')]
     protected ?string $description = null;
+    #[Description('Cost of the plan per billing cycle')]
     protected ?float $price = null;
+    #[Description('Quota points allocated per billing cycle')]
     protected ?int $points = null;
+    #[Description('Billing period interval classification code')]
     protected ?int $period = null;
+    #[Description('Custom metadata key-value mapping')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setKind(?string $kind): void
     {

@@ -4,18 +4,25 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 use PSX\Schema\Attribute\Key;
 
+#[Description('OAuth 2.0 access token response object')]
 class TokenAccessToken implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Key('access_token')]
+    #[Description('The bearer access token string')]
     protected ?string $accessToken = null;
     #[Key('token_type')]
+    #[Description('Type of token issued (typically Bearer)')]
     protected ?string $tokenType = null;
     #[Key('expires_in')]
+    #[Description('Lifetime in seconds of the access token')]
     protected ?int $expiresIn = null;
     #[Key('refresh_token')]
+    #[Description('Optional refresh token used to obtain new access tokens')]
     protected ?string $refreshToken = null;
+    #[Description('Space-separated list of scopes granted')]
     protected ?string $scope = null;
     public function setAccessToken(?string $accessToken): void
     {

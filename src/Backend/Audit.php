@@ -13,7 +13,9 @@ class Audit implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Application context associated with this audit event')]
     protected ?App $app = null;
+    #[Description('User context associated with this audit event')]
     protected ?User $user = null;
     #[Description('Trigger event of this audit')]
     protected ?string $event = null;

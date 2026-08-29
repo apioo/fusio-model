@@ -4,29 +4,35 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\System;
 
+use PSX\Schema\Attribute\Description;
 use PSX\Schema\Attribute\Key;
 
 class APICatalogLinkSet implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('The base URI anchoring the target link relations within the set')]
     protected ?string $anchor = null;
     /**
      * @var array<APICatalogLink>|null
      */
     #[Key('service-desc')]
+    #[Description('Links pointing to machine-readable service descriptions (e.g., OpenAPI specs)')]
     protected ?array $serviceDesc = null;
     /**
      * @var array<APICatalogLink>|null
      */
     #[Key('service-doc')]
+    #[Description('Links pointing to human-readable documentation for the service')]
     protected ?array $serviceDoc = null;
     /**
      * @var array<APICatalogLink>|null
      */
     #[Key('service-meta')]
+    #[Description('Links providing metadata endpoints related to the API service catalog entry')]
     protected ?array $serviceMeta = null;
     /**
      * @var array<APICatalogLink>|null
      */
+    #[Description('Links pointing to operational status or health resources for the service')]
     protected ?array $status = null;
     public function setAnchor(?string $anchor): void
     {

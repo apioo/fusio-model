@@ -4,10 +4,13 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\System;
 
+use PSX\Schema\Attribute\Description;
 
 class APICatalogLink implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Target URI of the linked catalog resource')]
     protected ?string $href = null;
+    #[Description('Media type or format of the targeted resource (e.g., application/json)')]
     protected ?string $type = null;
     public function setHref(?string $href): void
     {

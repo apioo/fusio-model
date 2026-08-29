@@ -4,12 +4,15 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('List of available entity types that can be restored from the trash')]
 class TrashTypes implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<string>|null
      */
+    #[Description('Array of restorably deleted object type identifiers')]
     protected ?array $types = null;
     /**
      * @param array<string>|null $types

@@ -6,19 +6,30 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('Billing transaction record for quota or subscription purchases')]
 class Transaction implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Unique identifier for the transaction record')]
     protected ?int $id = null;
+    #[Description('ID of the user who executed the transaction')]
     protected ?int $userId = null;
+    #[Description('ID of the subscription plan purchased')]
     protected ?int $planId = null;
+    #[Description('Plan details associated with the transaction')]
     protected ?Plan $plan = null;
+    #[Description('External payment processor transaction reference ID')]
     protected ?string $transactionId = null;
+    #[Description('Monetary amount billed for the transaction')]
     protected ?float $amount = null;
+    #[Description('Number of points credited to the user account')]
     protected ?float $points = null;
+    #[Description('Start timestamp of the active billing period')]
     protected ?\PSX\DateTime\LocalDateTime $periodStart = null;
+    #[Description('End timestamp of the active billing period')]
     protected ?\PSX\DateTime\LocalDateTime $periodEnd = null;
+    #[Description('Timestamp when the transaction was recorded')]
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     public function setKind(?string $kind): void
     {

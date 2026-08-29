@@ -6,12 +6,16 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('Represents user authorization granted to a consumer application')]
 class Grant implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Unique identifier for the grant record')]
     protected ?int $id = null;
+    #[Description('Application that received the user grant')]
     protected ?App $app = null;
+    #[Description('Timestamp when the user granted access')]
     protected ?\PSX\DateTime\LocalDateTime $createDate = null;
     public function setKind(?string $kind): void
     {

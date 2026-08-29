@@ -4,12 +4,15 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Agent;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Relational database structure definition')]
 class Database implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<DatabaseTable>|null
      */
+    #[Description('List of database table definitions')]
     protected ?array $tables = null;
     /**
      * @param array<DatabaseTable>|null $tables

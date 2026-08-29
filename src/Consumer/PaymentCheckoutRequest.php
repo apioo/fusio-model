@@ -4,10 +4,14 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Request payload to initiate a checkout flow for a plan')]
 class PaymentCheckoutRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Target subscription plan ID to purchase')]
     protected ?int $planId = null;
+    #[Description('URL where the user is redirected after successful payment completion')]
     protected ?string $returnUrl = null;
     public function setPlanId(?int $planId): void
     {

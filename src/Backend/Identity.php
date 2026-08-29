@@ -23,7 +23,9 @@ class Identity implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $icon = null;
     #[Description('Underlying class of this identity provider')]
     protected ?string $class = null;
+    #[Description('Contains identity provider specific configuration values')]
     protected ?IdentityConfig $config = null;
+    #[Description('Indicates whether a new local user account should be created if it does not exist yet')]
     protected ?bool $allowCreate = null;
     public function setKind(?string $kind): void
     {

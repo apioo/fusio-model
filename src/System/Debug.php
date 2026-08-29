@@ -4,11 +4,15 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\System;
 
+use PSX\Schema\Attribute\Description;
 
 class Debug implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Map of HTTP headers captured during the debug request')]
     protected ?DebugHeaders $headers = null;
+    #[Description('Map of query parameters passed with the debug request')]
     protected ?DebugParameters $parameters = null;
+    #[Description('Payload body received during the debug request')]
     protected ?DebugBody $body = null;
     public function setHeaders(?DebugHeaders $headers): void
     {

@@ -14,6 +14,7 @@ class AgentTools implements \JsonSerializable, \PSX\Record\RecordableInterface
     /**
      * @var array<AgentTool>|null
      */
+    #[Description('List of available tools for agent invocation')]
     protected ?array $tools = null;
     public function setKind(?string $kind): void
     {

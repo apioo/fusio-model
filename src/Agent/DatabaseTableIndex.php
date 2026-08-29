@@ -4,14 +4,19 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Agent;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Database index definition')]
 class DatabaseTableIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Index identifier name')]
     protected ?string $name = null;
+    #[Description('Flags whether the index enforces unique constraints across its columns')]
     protected ?bool $unique = null;
     /**
      * @var array<string>|null
      */
+    #[Description('Ordered list of column names included in the index')]
     protected ?array $columns = null;
     public function setName(?string $name): void
     {

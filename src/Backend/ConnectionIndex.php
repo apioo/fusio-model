@@ -14,6 +14,7 @@ class ConnectionIndex implements \JsonSerializable, \PSX\Record\RecordableInterf
     /**
      * @var array<ConnectionIndexEntry>|null
      */
+    #[Description('List of available connection class entries')]
     protected ?array $connections = null;
     public function setKind(?string $kind): void
     {

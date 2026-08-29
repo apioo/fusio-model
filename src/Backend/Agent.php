@@ -38,6 +38,7 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $outgoing = null;
     #[Description('Action which gets invoked for each generated response')]
     protected ?string $action = null;
+    #[Description('Timestamp when the agent was created')]
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     #[Description('Use this parameter to attach key-value data')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;

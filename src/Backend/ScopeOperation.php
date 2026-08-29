@@ -4,10 +4,14 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Mapping defining access permissions for a specific operation within a scope')]
 class ScopeOperation implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Target operation ID mapped to the scope')]
     protected ?int $operationId = null;
+    #[Description('Indicates whether access to the operation is explicitly granted')]
     protected ?bool $allow = null;
     public function setOperationId(?int $operationId): void
     {

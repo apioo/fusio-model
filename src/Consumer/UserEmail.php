@@ -4,10 +4,14 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Payload used to initiate account recovery or email requests')]
 class UserEmail implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Target email address')]
     protected ?string $email = null;
+    #[Description('CAPTCHA challenge response token')]
     protected ?string $captcha = null;
     public function setEmail(?string $email): void
     {

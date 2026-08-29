@@ -13,6 +13,7 @@ class App implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Unique identifier of the owning user')]
     protected ?int $userId = null;
     #[Description('Status of the object either 1 = active, 2 = pending, 3 = deactivated or 4 = deleted')]
     protected ?int $status = null;

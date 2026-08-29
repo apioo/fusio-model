@@ -4,14 +4,19 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Represents a functional grouping of scopes')]
 class ScopeCategory implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Unique identifier for the scope category')]
     protected ?int $id = null;
+    #[Description('Name of the scope category')]
     protected ?string $name = null;
     /**
      * @var array<ScopeCategoryScope>|null
      */
+    #[Description('List of scopes assigned to this category')]
     protected ?array $scopes = null;
     public function setId(?int $id): void
     {

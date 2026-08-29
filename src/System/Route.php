@@ -10,6 +10,7 @@ class Route implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Mapping of API endpoint paths to their supported HTTP methods and handlers')]
     protected ?RoutePath $routes = null;
     public function setKind(?string $kind): void
     {

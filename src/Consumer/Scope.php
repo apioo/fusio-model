@@ -6,13 +6,18 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('Permission scope defining access rights to API endpoints')]
 class Scope implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Unique identifier for the scope')]
     protected ?int $id = null;
+    #[Description('Name of the scope key')]
     protected ?string $name = null;
+    #[Description('Detailed explanation of privileges granted by this scope')]
     protected ?string $description = null;
+    #[Description('Custom metadata key-value mapping')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setKind(?string $kind): void
     {

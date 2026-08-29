@@ -14,6 +14,7 @@ class IdentityIndex implements \JsonSerializable, \PSX\Record\RecordableInterfac
     /**
      * @var array<IdentityIndexEntry>|null
      */
+    #[Description('List of available identity provider class entries')]
     protected ?array $providers = null;
     public function setKind(?string $kind): void
     {

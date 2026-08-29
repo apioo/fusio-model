@@ -14,6 +14,7 @@ class ActionIndex implements \JsonSerializable, \PSX\Record\RecordableInterface
     /**
      * @var array<ActionIndexEntry>|null
      */
+    #[Description('List of available action class entries')]
     protected ?array $actions = null;
     public function setKind(?string $kind): void
     {

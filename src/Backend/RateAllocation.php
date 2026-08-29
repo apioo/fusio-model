@@ -11,9 +11,13 @@ class RateAllocation implements \JsonSerializable, \PSX\Record\RecordableInterfa
 {
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('Target operation ID for the rate allocation')]
     protected ?int $operationId = null;
+    #[Description('Target user ID for the rate allocation')]
     protected ?int $userId = null;
+    #[Description('Target plan ID associated with this allocation')]
     protected ?int $planId = null;
+    #[Description('Target app ID associated with this allocation')]
     protected ?int $appId = null;
     #[Description('Whether the request is authenticated')]
     protected ?bool $authenticated = null;

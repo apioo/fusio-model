@@ -11,6 +11,7 @@ class Input implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Optional the chat id of this conversation')]
     protected ?string $previousId = null;
+    #[Description('The payload item sent to the agent')]
     protected ?Item $item = null;
     public function setPreviousId(?string $previousId): void
     {

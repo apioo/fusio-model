@@ -4,12 +4,15 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Agent;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Database seed dataset definition')]
 class Seed implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<SeedTable>|null
      */
+    #[Description('Array of seed configurations grouped by table')]
     protected ?array $tables = null;
     /**
      * @param array<SeedTable>|null $tables

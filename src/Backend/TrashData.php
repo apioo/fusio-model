@@ -6,12 +6,14 @@ namespace Fusio\Model\Backend;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('This object represents a deleted item stored in the trash bin')]
 class TrashData implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
     #[Description('Status of the object either 1 = active or 0 = deleted')]
     protected ?int $status = null;
+    #[Description('Display name or label of the deleted entity')]
     protected ?string $name = null;
     public function setId(?int $id): void
     {

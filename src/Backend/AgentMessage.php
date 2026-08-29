@@ -19,6 +19,7 @@ class AgentMessage implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $role = null;
     #[Description('The message item')]
     protected ?\Fusio\Model\Agent\Item $item = null;
+    #[Description('Timestamp when the agent message was created')]
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     public function setKind(?string $kind): void
     {

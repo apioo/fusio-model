@@ -4,11 +4,16 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Agent;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Input parameter definition for a blueprint operation')]
 class BlueprintOperationParameter implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Name of the parameter')]
     protected ?string $name = null;
+    #[Description('Data type or location of the parameter')]
     protected ?string $type = null;
+    #[Description('Detailed explanation of the parameter purpose')]
     protected ?string $description = null;
     public function setName(?string $name): void
     {

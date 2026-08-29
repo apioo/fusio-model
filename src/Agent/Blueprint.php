@@ -4,13 +4,17 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Agent;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Blueprint defining operations and schemas for agent capabilities')]
 class Blueprint implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<BlueprintOperation>|null
      */
+    #[Description('Array of API or tool operations supported by the blueprint')]
     protected ?array $operations = null;
+    #[Description('TypeSchema specification associated with the blueprint')]
     protected ?string $schema = null;
     /**
      * @param array<BlueprintOperation>|null $operations

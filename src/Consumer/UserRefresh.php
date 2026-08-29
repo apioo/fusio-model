@@ -4,11 +4,14 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 use PSX\Schema\Attribute\Key;
 
+#[Description('Payload to request a refreshed authentication token')]
 class UserRefresh implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Key('refresh_token')]
+    #[Description('Valid refresh token string')]
     protected ?string $refreshToken = null;
     public function setRefreshToken(?string $refreshToken): void
     {

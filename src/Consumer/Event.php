@@ -6,13 +6,18 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('Represents an event trigger definition within the platform')]
 class Event implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Unique identifier for the event')]
     protected ?int $id = null;
+    #[Description('Name of the event')]
     protected ?string $name = null;
+    #[Description('Detailed description of when and why this event fires')]
     protected ?string $description = null;
+    #[Description('Custom metadata key-value mapping')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
     public function setKind(?string $kind): void
     {

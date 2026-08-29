@@ -11,14 +11,23 @@ class Dashboard implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Chart showing errors logged per operation over time')]
     protected ?StatisticChart $errorsPerOperation = null;
+    #[Description('Chart showing total incoming HTTP requests over time')]
     protected ?StatisticChart $incomingRequests = null;
+    #[Description('Chart showing total executed transactions over time')]
     protected ?StatisticChart $incomingTransactions = null;
+    #[Description('Chart displaying the most frequently invoked API operations')]
     protected ?StatisticChart $mostUsedOperations = null;
+    #[Description('Chart depicting average execution time per operation')]
     protected ?StatisticChart $timePerOperation = null;
+    #[Description('Chart showing automated test execution and coverage metrics')]
     protected ?StatisticChart $testCoverage = null;
+    #[Description('Chart showing the most active user activity types')]
     protected ?StatisticChart $mostUsedActivities = null;
+    #[Description('Chart breaking down user activity frequencies')]
     protected ?StatisticChart $activitiesPerUser = null;
+    #[Description('Chart tracking user registrations over time')]
     protected ?StatisticChart $userRegistrations = null;
     public function setKind(?string $kind): void
     {

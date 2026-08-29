@@ -19,6 +19,7 @@ class SchemaCommit implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $commitHash = null;
     #[Description('The provided schema payload')]
     protected ?SchemaSource $schema = null;
+    #[Description('Timestamp when the schema commit was created')]
     protected ?\PSX\DateTime\LocalDateTime $insertDate = null;
     public function setKind(?string $kind): void
     {

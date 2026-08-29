@@ -4,9 +4,11 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Consumer;
 
+use PSX\Schema\Attribute\Description;
 /**
  * @extends \Fusio\Model\Common\Collection<Scope>
  */
+#[Description('Collection of API permission scopes')]
 class ScopeCollection extends \Fusio\Model\Common\Collection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

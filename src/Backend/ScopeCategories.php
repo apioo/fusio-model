@@ -4,12 +4,15 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Backend;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Container for grouping available scopes into logical categories')]
 class ScopeCategories implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<ScopeCategory>|null
      */
+    #[Description('List of scope categories')]
     protected ?array $categories = null;
     /**
      * @param array<ScopeCategory>|null $categories

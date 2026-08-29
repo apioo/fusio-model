@@ -15,7 +15,9 @@ class Event implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?int $id = null;
     #[Description('Unique name of the object')]
     protected ?string $name = null;
+    #[Description('Short description explaining the purpose of this event')]
     protected ?string $description = null;
+    #[Description('Name of the schema defining the event payload structure')]
     protected ?string $schema = null;
     #[Description('Use this parameter to attach key-value data')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;

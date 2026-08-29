@@ -4,13 +4,17 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Agent;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Seed data targeting a specific database table')]
 class SeedTable implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Target database table name')]
     protected ?string $name = null;
     /**
      * @var array<SeedRow>|null
      */
+    #[Description('List of key-value row objects to populate during database seeding')]
     protected ?array $rows = null;
     public function setName(?string $name): void
     {

@@ -6,25 +6,36 @@ namespace Fusio\Model\Consumer;
 
 use PSX\Schema\Attribute\Description;
 
+#[Description('User profile and subscription status details')]
 class UserAccount implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
+    #[Description('Unique identifier for the user account')]
     protected ?int $id = null;
+    #[Description('ID of the user\'s currently active subscription plan')]
     protected ?int $planId = null;
+    #[Description('Operational status code of the user account')]
     protected ?int $status = null;
+    #[Description('Full name of the user')]
     protected ?string $name = null;
+    #[Description('Primary email address associated with the account')]
     protected ?string $email = null;
+    #[Description('Current balance of available execution points/quota')]
     protected ?int $points = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of scopes assigned directly to the user')]
     protected ?array $scopes = null;
     /**
      * @var array<UserPlan>|null
      */
+    #[Description('List of active plan subscriptions for the user')]
     protected ?array $plans = null;
+    #[Description('Custom key-value metadata attached to the account')]
     protected ?\Fusio\Model\Common\Metadata $metadata = null;
+    #[Description('Registration date of the user account')]
     protected ?\PSX\DateTime\LocalDateTime $date = null;
     public function setKind(?string $kind): void
     {

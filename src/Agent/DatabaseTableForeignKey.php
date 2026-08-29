@@ -4,18 +4,24 @@ declare(strict_types = 1);
 
 namespace Fusio\Model\Agent;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Foreign key constraint mapping between tables')]
 class DatabaseTableForeignKey implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('Constraint name identifier')]
     protected ?string $name = null;
+    #[Description('Target referenced table name')]
     protected ?string $foreignTable = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of local columns participating in the foreign key constraint')]
     protected ?array $localColumnNames = null;
     /**
      * @var array<string>|null
      */
+    #[Description('List of target table columns referenced by the foreign key constraint')]
     protected ?array $foreignColumnNames = null;
     public function setName(?string $name): void
     {
