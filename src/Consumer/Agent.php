@@ -13,6 +13,8 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     protected ?string $kind = null;
     #[Description('Unique identifier for the object')]
     protected ?int $id = null;
+    #[Description('The agent type')]
+    protected ?int $type = null;
     #[Description('Name of the agent')]
     protected ?string $name = null;
     #[Description('Description of the agent')]
@@ -32,6 +34,14 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+    public function setType(?int $type): void
+    {
+        $this->type = $type;
+    }
+    public function getType(): ?int
+    {
+        return $this->type;
     }
     public function setName(?string $name): void
     {
@@ -58,6 +68,7 @@ class Agent implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record = new \PSX\Record\Record();
         $record->put('kind', $this->kind);
         $record->put('id', $this->id);
+        $record->put('type', $this->type);
         $record->put('name', $this->name);
         $record->put('description', $this->description);
         return $record;
