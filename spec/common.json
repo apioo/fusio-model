@@ -77,8 +77,11 @@
       "base": true,
       "discriminator": "type",
       "mapping": {
+        "Form_Element_Action": "action",
+        "Form_Element_Agent": "agent",
         "Form_Element_Checkbox": "checkbox",
         "Form_Element_Collection": "collection",
+        "Form_Element_Connection": "connection",
         "Form_Element_Input": "input",
         "Form_Element_Map": "map",
         "Form_Element_Select": "select",
@@ -101,6 +104,22 @@
         }
       }
     },
+    "Form_Element_Action": {
+      "description": "Form element to select an action",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Form_Element"
+      }
+    },
+    "Form_Element_Agent": {
+      "description": "Form element to select an agent",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Form_Element"
+      }
+    },
     "Form_Element_Checkbox": {
       "description": "Form element which represents a checkbox element",
       "type": "struct",
@@ -119,6 +138,20 @@
       "properties": {
         "type": {
           "description": "The input type i.e. text or password, all HTML input types are allowed",
+          "type": "string"
+        }
+      }
+    },
+    "Form_Element_Connection": {
+      "description": "Form element to select a connection",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "Form_Element"
+      },
+      "properties": {
+        "class": {
+          "description": "Optional to select only specific connection classes",
           "type": "string"
         }
       }
