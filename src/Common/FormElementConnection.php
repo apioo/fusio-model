@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types = 1);
+
+namespace Fusio\Model\Common;
+
+use PSX\Schema\Attribute\Description;
+
+#[Description('Form element to select a connection')]
+class FormElementConnection extends FormElement implements \JsonSerializable, \PSX\Record\RecordableInterface
+{
+    #[Description('Optional to select only specific connection classes')]
+    protected ?string $class = null;
+    public function setClass(?string $class): void
+    {
+        $this->class = $class;
+    }
+    public function getClass(): ?string
+    {
+        return $this->class;
+    }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
+    public function toRecord(): \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = parent::toRecord();
+        $record->put('class', $this->class);
+        return $record;
+    }
+    public function jsonSerialize(): object
+    {
+        return (object) $this->toRecord()->getAll();
+    }
+}
+
