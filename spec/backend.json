@@ -114,6 +114,10 @@
           "description": "Human-readable name of the action class",
           "type": "string"
         },
+        "description": {
+          "description": "A longer description what the action does",
+          "type": "string"
+        },
         "class": {
           "description": "Technical identifier of the action class",
           "type": "string"
@@ -902,6 +906,10 @@
       "properties": {
         "name": {
           "description": "Human-readable name of the connection class",
+          "type": "string"
+        },
+        "description": {
+          "description": "A longer description what the connection does",
           "type": "string"
         },
         "class": {
