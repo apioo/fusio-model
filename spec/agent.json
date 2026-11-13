@@ -168,8 +168,8 @@
             "target": "Blueprint_Operation"
           }
         },
-        "schema": {
-          "description": "TypeSchema specification associated with the blueprint",
+        "database": {
+          "description": "Textual description of app_ tables, columns, and foreign keys",
           "type": "string"
         }
       }
