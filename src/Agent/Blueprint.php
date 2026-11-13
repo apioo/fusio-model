@@ -14,8 +14,8 @@ class Blueprint implements \JsonSerializable, \PSX\Record\RecordableInterface
      */
     #[Description('Array of API or tool operations supported by the blueprint')]
     protected ?array $operations = null;
-    #[Description('TypeSchema specification associated with the blueprint')]
-    protected ?string $schema = null;
+    #[Description('Textual description of app_ tables, columns, and foreign keys')]
+    protected ?string $database = null;
     /**
      * @param array<BlueprintOperation>|null $operations
      */
@@ -30,13 +30,13 @@ class Blueprint implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         return $this->operations;
     }
-    public function setSchema(?string $schema): void
+    public function setDatabase(?string $database): void
     {
-        $this->schema = $schema;
+        $this->database = $database;
     }
-    public function getSchema(): ?string
+    public function getDatabase(): ?string
     {
-        return $this->schema;
+        return $this->database;
     }
     /**
      * @return \PSX\Record\RecordInterface<mixed>
@@ -46,7 +46,7 @@ class Blueprint implements \JsonSerializable, \PSX\Record\RecordableInterface
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('operations', $this->operations);
-        $record->put('schema', $this->schema);
+        $record->put('database', $this->database);
         return $record;
     }
     public function jsonSerialize(): object
