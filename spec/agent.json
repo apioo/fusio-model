@@ -509,10 +509,17 @@
       }
     },
     "Seed_Row": {
-      "description": "Key-value pair map representing a single database row entry",
-      "type": "map",
-      "schema": {
-        "type": "any"
+      "description": "Represents a single database row entry",
+      "type": "struct",
+      "properties": {
+        "column": {
+          "description": "Target table column",
+          "type": "string"
+        },
+        "value": {
+          "description": "The value to insert",
+          "type": "string"
+        }
       }
     }
   }
