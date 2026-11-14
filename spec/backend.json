@@ -425,6 +425,101 @@
         }
       }
     },
+    "Agent_Task": {
+      "description": "This object represents a task which executes the action of an agent in the background, i.e. to create all resources of a generated blueprint",
+      "type": "struct",
+      "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier for the object",
+          "type": "integer"
+        },
+        "status": {
+          "description": "The status of the task, one of: pending, running, completed, failed or canceled",
+          "type": "string"
+        },
+        "item": {
+          "description": "The agent output which is processed by the task",
+          "type": "reference",
+          "target": "agent:Item"
+        },
+        "steps": {
+          "description": "A log of all steps which were executed by the task",
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Agent_Task_Step"
+          }
+        },
+        "message": {
+          "description": "A message which describes the result of the task",
+          "type": "string"
+        },
+        "startDate": {
+          "description": "Timestamp when the task was started by a worker",
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "description": "Timestamp when the task was completed, failed or canceled",
+          "type": "string",
+          "format": "date-time"
+        },
+        "insertDate": {
+          "description": "Timestamp when the task was created",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Agent_Task_Step": {
+      "description": "Represents a single step of an agent task",
+      "type": "struct",
+      "properties": {
+        "name": {
+          "description": "Name of the step, i.e. \"Schema create: Todo-Item\"",
+          "type": "string"
+        },
+        "success": {
+          "description": "Indicates whether the step was successful",
+          "type": "boolean"
+        },
+        "message": {
+          "description": "A message which describes the result of the step",
+          "type": "string"
+        },
+        "insertDate": {
+          "description": "Timestamp when the step was executed",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Agent_Task_Create": {
+      "description": "Payload for creating a new agent task, the provided item is passed to the action of the agent",
+      "type": "struct",
+      "properties": {
+        "item": {
+          "description": "The agent output which should be processed, i.e. a generated blueprint",
+          "type": "reference",
+          "target": "agent:Item"
+        }
+      }
+    },
+    "Agent_Task_Collection": {
+      "description": "Represents a collection of agent tasks",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Agent_Task"
+        }
+      }
+    },
     "App": {
       "description": "This object represents an app to access the API on-behalf of a user",
       "type": "struct",
