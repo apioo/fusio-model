@@ -6,28 +6,27 @@ namespace Fusio\Model\Agent;
 
 use PSX\Schema\Attribute\Description;
 
-#[Description('Represents a single database row entry')]
+#[Description('Represents a single row of data containing values aligned by index with the columns array.')]
 class SeedRow implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    #[Description('Target table column')]
-    protected ?string $column = null;
-    #[Description('The value to insert')]
-    protected ?string $value = null;
-    public function setColumn(?string $column): void
+    /**
+     * @var array<string>|null
+     */
+    #[Description('An ordered array of cell values for this row, where each value maps directly to the column at the same index.')]
+    protected ?array $values = null;
+    /**
+     * @param array<string>|null $values
+     */
+    public function setValues(?array $values): void
     {
-        $this->column = $column;
+        $this->values = $values;
     }
-    public function getColumn(): ?string
+    /**
+     * @return array<string>|null
+     */
+    public function getValues(): ?array
     {
-        return $this->column;
-    }
-    public function setValue(?string $value): void
-    {
-        $this->value = $value;
-    }
-    public function getValue(): ?string
-    {
-        return $this->value;
+        return $this->values;
     }
     /**
      * @return \PSX\Record\RecordInterface<mixed>
@@ -36,8 +35,7 @@ class SeedRow implements \JsonSerializable, \PSX\Record\RecordableInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
-        $record->put('column', $this->column);
-        $record->put('value', $this->value);
+        $record->put('values', $this->values);
         return $record;
     }
     public function jsonSerialize(): object

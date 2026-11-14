@@ -6,13 +6,13 @@ namespace Fusio\Model\Agent;
 
 use PSX\Schema\Attribute\Description;
 
-#[Description('Database seed dataset definition')]
+#[Description('A collection of database seed tables designed to populate or initialize data stores.')]
 class Seed implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     /**
      * @var array<SeedTable>|null
      */
-    #[Description('Array of seed configurations grouped by table')]
+    #[Description('List of database tables with their corresponding columns and rows to be seeded.')]
     protected ?array $tables = null;
     /**
      * @param array<SeedTable>|null $tables

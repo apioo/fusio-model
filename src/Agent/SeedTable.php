@@ -6,15 +6,20 @@ namespace Fusio\Model\Agent;
 
 use PSX\Schema\Attribute\Description;
 
-#[Description('Seed data targeting a specific database table')]
+#[Description('Represents seed data targeting a specific relational database table, defining its structure and rows.')]
 class SeedTable implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
-    #[Description('Target database table name')]
+    #[Description('The exact name of the target database table (e.g., \'users\', \'settings\').')]
     protected ?string $name = null;
+    /**
+     * @var array<string>|null
+     */
+    #[Description('Ordered array of column names corresponding to the database table schema.')]
+    protected ?array $columns = null;
     /**
      * @var array<SeedRow>|null
      */
-    #[Description('List of key-value row objects to populate during database seeding')]
+    #[Description('Ordered list of data rows to seed into the table.')]
     protected ?array $rows = null;
     public function setName(?string $name): void
     {
@@ -23,6 +28,20 @@ class SeedTable implements \JsonSerializable, \PSX\Record\RecordableInterface
     public function getName(): ?string
     {
         return $this->name;
+    }
+    /**
+     * @param array<string>|null $columns
+     */
+    public function setColumns(?array $columns): void
+    {
+        $this->columns = $columns;
+    }
+    /**
+     * @return array<string>|null
+     */
+    public function getColumns(): ?array
+    {
+        return $this->columns;
     }
     /**
      * @param array<SeedRow>|null $rows
@@ -46,6 +65,7 @@ class SeedTable implements \JsonSerializable, \PSX\Record\RecordableInterface
         /** @var \PSX\Record\Record<mixed> $record */
         $record = new \PSX\Record\Record();
         $record->put('name', $this->name);
+        $record->put('columns', $this->columns);
         $record->put('rows', $this->rows);
         return $record;
     }
