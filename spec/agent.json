@@ -477,11 +477,11 @@
       }
     },
     "Seed": {
-      "description": "Database seed dataset definition",
+      "description": "A collection of database seed tables designed to populate or initialize data stores.",
       "type": "struct",
       "properties": {
         "tables": {
-          "description": "Array of seed configurations grouped by table",
+          "description": "List of database tables with their corresponding columns and rows to be seeded.",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -491,15 +491,22 @@
       }
     },
     "Seed_Table": {
-      "description": "Seed data targeting a specific database table",
+      "description": "Represents seed data targeting a specific relational database table, defining its structure and rows.",
       "type": "struct",
       "properties": {
         "name": {
-          "description": "Target database table name",
+          "description": "The exact name of the target database table (e.g., 'users', 'settings').",
           "type": "string"
         },
+        "columns": {
+          "description": "Ordered array of column names corresponding to the database table schema.",
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
+        },
         "rows": {
-          "description": "List of key-value row objects to populate during database seeding",
+          "description": "Ordered list of data rows to seed into the table.",
           "type": "array",
           "schema": {
             "type": "reference",
@@ -509,16 +516,15 @@
       }
     },
     "Seed_Row": {
-      "description": "Represents a single database row entry",
+      "description": "Represents a single row of data containing values aligned by index with the columns array.",
       "type": "struct",
       "properties": {
-        "column": {
-          "description": "Target table column",
-          "type": "string"
-        },
-        "value": {
-          "description": "The value to insert",
-          "type": "string"
+        "values": {
+          "description": "An ordered array of cell values for this row, where each value maps directly to the column at the same index.",
+          "type": "array",
+          "schema": {
+            "type": "string"
+          }
         }
       }
     }
