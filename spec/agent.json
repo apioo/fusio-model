@@ -313,8 +313,13 @@
           "type": "string"
         },
         "type": {
-          "description": "Data type or reference target of the property",
+          "description": "Data type of the property, one of: string, integer, number, boolean, any, object, array, map",
           "type": "string"
+        },
+        "reference": {
+          "description": "Target of the property. Required if type is object (name of a type), array (item type) or map (value type), the value is either the name of a type defined in types or a scalar type (string, integer, number, boolean, any). Null for scalar properties",
+          "type": "string",
+          "nullable": true
         },
         "description": {
           "description": "Detailed description of the property field",
