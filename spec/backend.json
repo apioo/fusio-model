@@ -1862,7 +1862,7 @@
         }
       }
     },
-    "Log": {
+    "Log_Request": {
       "description": "This object represents a log entry. Every HTTP requests to the system generates such a log entry.",
       "type": "struct",
       "properties": {
@@ -1911,17 +1911,25 @@
             "type": "reference",
             "target": "Log_Error"
           }
+        },
+        "messages": {
+          "description": "An array of messages which occurred through this request",
+          "type": "array",
+          "schema": {
+            "type": "reference",
+            "target": "Log_Message"
+          }
         }
       }
     },
-    "Log_Collection": {
+    "Log_Request_Collection": {
       "description": "A paginated collection of log objects",
       "type": "struct",
       "parent": {
         "type": "reference",
         "target": "common:Collection",
         "template": {
-          "T": "Log"
+          "T": "Log_Request"
         }
       }
     },
@@ -1973,6 +1981,61 @@
         "target": "common:Collection",
         "template": {
           "T": "Log_Error"
+        }
+      }
+    },
+    "Log_Message": {
+      "description": "Represents an message logged during a specific HTTP request",
+      "type": "struct",
+      "properties": {
+        "kind": {
+          "description": "Uniquely identifies the object schema type",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier for the object",
+          "type": "integer",
+          "readOnly": true
+        },
+        "logId": {
+          "description": "Identifier of the associated parent log entry",
+          "type": "integer"
+        },
+        "level": {
+          "description": "Log level described by RFC 5424",
+          "type": "integer"
+        },
+        "message": {
+          "description": "Log message",
+          "type": "string"
+        },
+        "context": {
+          "description": "Stack trace associated with the error exception",
+          "type": "reference",
+          "target": "Log_Message_Context"
+        },
+        "insertDate": {
+          "description": "Timestamp when the log error was recorded",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Log_Message_Context": {
+      "description": "Represents a log context",
+      "type": "map",
+      "schema": {
+        "type": "any"
+      }
+    },
+    "Log_Message_Collection": {
+      "description": "A paginated collection of log error objects",
+      "type": "struct",
+      "parent": {
+        "type": "reference",
+        "target": "common:Collection",
+        "template": {
+          "T": "Log_Message"
         }
       }
     },
