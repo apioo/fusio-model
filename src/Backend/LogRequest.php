@@ -7,7 +7,7 @@ namespace Fusio\Model\Backend;
 use PSX\Schema\Attribute\Description;
 
 #[Description('This object represents a log entry. Every HTTP requests to the system generates such a log entry.')]
-class Log implements \JsonSerializable, \PSX\Record\RecordableInterface
+class LogRequest implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     #[Description('Uniquely identifies the object schema type')]
     protected ?string $kind = null;
@@ -32,6 +32,11 @@ class Log implements \JsonSerializable, \PSX\Record\RecordableInterface
      */
     #[Description('An array of errors which occurred through this request')]
     protected ?array $errors = null;
+    /**
+     * @var array<LogMessage>|null
+     */
+    #[Description('An array of messages which occurred through this request')]
+    protected ?array $messages = null;
     public function setKind(?string $kind): void
     {
         $this->kind = $kind;
@@ -119,6 +124,20 @@ class Log implements \JsonSerializable, \PSX\Record\RecordableInterface
         return $this->errors;
     }
     /**
+     * @param array<LogMessage>|null $messages
+     */
+    public function setMessages(?array $messages): void
+    {
+        $this->messages = $messages;
+    }
+    /**
+     * @return array<LogMessage>|null
+     */
+    public function getMessages(): ?array
+    {
+        return $this->messages;
+    }
+    /**
      * @return \PSX\Record\RecordInterface<mixed>
      */
     public function toRecord(): \PSX\Record\RecordInterface
@@ -135,6 +154,7 @@ class Log implements \JsonSerializable, \PSX\Record\RecordableInterface
         $record->put('body', $this->body);
         $record->put('date', $this->date);
         $record->put('errors', $this->errors);
+        $record->put('messages', $this->messages);
         return $record;
     }
     public function jsonSerialize(): object
